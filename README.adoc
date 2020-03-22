@@ -26,11 +26,11 @@ La página oficial de Wren es http://wren.io[Wren.io].
 
 ### ¿Qué es un _Wren_?
 
-_Wren_ es una https://es.wikipedia.org/wiki/Troglodytidae[tipo de ave pequeña] perteneciente a la familia de los trogodítidos. En Chile tenemos al https://www.avesdechile.cl/074.htm[Chercán o Chochin Criollo].
+_Wren_ es una https://es.wikipedia.org/wiki/Troglodytidae[tipo de ave pequeña] perteneciente a la familia de los troglodítidos. En Chile tenemos al https://www.avesdechile.cl/074.htm[Chercán o Chochin Criollo].
 
 image:https://user-images.githubusercontent.com/292738/77261969-2240d580-6c71-11ea-93d0-4341e82c2f92.png[Chochin Criollo - Fotografía por Juan Tassara B.]
 
-> Fotografía por Juan Tassara B.
+> Fotografía por Juan Tassara B en https://www.avesdechile.cl.
 
 
 ## ¿Cómo usar Wren?
