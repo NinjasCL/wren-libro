@@ -18,7 +18,7 @@ toc::[]
 
 https://github.com/wren-lang/wren[_Wren]_ es un lenguaje de programación https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos[orientado a objetos] creado por http://journal.stuffwithstuff.com/[Bob Nystrom], un ex desarrollador de videojuegos y creador de otros lenguajes de programación como https://github.com/munificent/vigil[Vigil], http://finch.stuffwithstuff.com/[Finch] y http://magpie-lang.org/[Magpie]. Ha escrito dos libros: http://gameprogrammingpatterns.com/[Game Programming Patterns] y http://craftinginterpreters.com/[Crafting Interpreters]. 
 
-El primer _commit_ de _Wren_ fue escrito el https://github.com/wren-lang/wren/tree/2f6a6889f1b4a1ba86aeb169e7398704b1ee04c0[22 de Octubre del 2013] y su versión más reciente es la _0.3_. Actualmente _Bob Nystrom_ pasó a ser colaborador y la evolución del lenguaje fue asignada a https://github.com/underscorediscovery[_discovery].
+El primer _commit_ de _Wren_ fue escrito el https://github.com/wren-lang/wren/tree/2f6a6889f1b4a1ba86aeb169e7398704b1ee04c0[22 de Octubre del 2013] y su versión más reciente es la _0.3_. Actualmente _Bob Nystrom_ pasó a ser colaborador y la evolución del lenguaje fue asignada a https://github.com/underscorediscovery[_discovery] (creador del https://luxeengine.com[game engine Luxe]).
 
 _Wren_ fue creado como una alternativa a _Lua_ y otros https://en.wikipedia.org/wiki/Scripting_language[lenguajes de scripting] para personas que estuvieran más familiarizadas con lenguajes orientados a objetos como _Java_, _C#_, o _C++_. Su principal foco es la simpleza.
 
@@ -38,8 +38,27 @@ image:https://user-images.githubusercontent.com/292738/77261969-2240d580-6c71-11
 _Wren_ es un lenguaje interpretado, lo que significa que no requiere de compilación. Basta simplemente tener un intérprete para ejecutar los algoritmos. Hay varias alternativas.
 
 1. https://github.com/wren-lang/wren[Compilar tu propio intérprete de _Wren_]. Esta es la opción para valientes.
+
 2. https://github.com/wren-lang/wren-cli/releases[Utiliza _Wren CLI_] para ejecutar archivos _*.wren_.
+
 3. Utiliza un engine de juegos como https://domeengine.com/[_Dome_], https://tic.computer[_TIC 80_] o https://luxeengine.com/alpha/[_Luxe_] que traen _Wren_ listo para llegar y utilizar.
+
 4. Utiliza http://ppvk.github.io/wren-nest/[_Wren Nest_] para probar el lenguaje en tu navegador. (Puede que no tenga las últimas novedades).
 
-Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` para ver el resultado.
+Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` para ver el resultado de tu script.
+
+## Nociones Básicas
+
+### Palabras Reservadas
+
+Wren es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:
+
+_break, class, construct, else, false, for, foreign, if, import, in, is,_
+_null, return, static, super, this, true, var, while_
+
+#### Caracteres Significativos
+
+- Caracteres comunes (`+, -, *, /, <>, =, !, (), [], |, .`)
+- Comentarios (`/* */`, `//`)
+- Retorno de carro (`\n`)
+
