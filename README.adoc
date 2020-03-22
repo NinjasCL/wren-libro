@@ -53,12 +53,14 @@ Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` par
 
 Wren es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:
 
-_break, class, construct, else, false, for, foreign, if, import, in, is,_
-_null, return, static, super, this, true, var, while_
+```
+break class construct else false for foreign if import 
+in is null return static super this true var while
+```
 
 #### Caracteres Significativos
 
-- Caracteres comunes (`+, -, *, /, <>, =, !, (), [], |, .`)
+- Caracteres comunes (`+ - * / < > = ! ( ) [ ] | . " { } ,`)
 - Comentarios (`/* */`, `//`)
 - Retorno de carro (`\n`)
 
