@@ -1,0 +1,25 @@
+:toc: macro
+:toc-title: Tabla de Contenidos
+:toclevels: 3
+
+# Wren Adventures
+
+En este pequeño documento se detallarán lo básico del lenguaje de programación http://wren.io[Wren]. 
+
+Escrito por https://ninjas.cl[Camilo Castro] y https://github.com/ninjascl/wren-adventures/graphs/contributors[colaboradores]. Para https://ninjas.cl[Ninjas.cl].
+
+Esta obra está bajo una http://creativecommons.org/licenses/by-nc-sa/4.0/[Licencia Creative Commons Atribución-No-Comercial-Compartir-Igual 4.0 Internacional]
+
+http://creativecommons.org/licenses/by-nc-sa/4.0/[image:https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png[Licencia Creative Commons]]
+
+toc::[]
+
+## Pequeña Historia de Wren
+
+https://github.com/wren-lang/wren[_Wren]_ es un lenguaje de programación https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos[orientado a objetos] creado por http://journal.stuffwithstuff.com/[Bob Nystrom], un ex desarrollador de videojuegos y creador de otros lenguajes de programación como https://github.com/munificent/vigil[Vigil], http://finch.stuffwithstuff.com/[Finch] y http://magpie-lang.org/[Magpie]. Ha escrito dos libros: http://gameprogrammingpatterns.com/[Game Programming Patterns] y http://craftinginterpreters.com/[Crafting Interpreters]. 
+
+El primer commit de _Wren_ fue escrito el https://github.com/wren-lang/wren/tree/2f6a6889f1b4a1ba86aeb169e7398704b1ee04c0[22 de Octubre del 2013] y su versión más reciente es la _0.3_. Actualmente _Bob Nystrom_ pasó a ser colaborador y la evolución del lenguaje fue asignada a https://github.com/underscorediscovery[_discovery].
+
+_Wren_ fue creado como una alternativa a _Lua_ y otros https://en.wikipedia.org/wiki/Scripting_language[lenguajes de scripting] para personas que estuvieran más familiarizadas con lenguajes orientados a objetos como _Java_, _C#_, o _C++_. Su principal foco es la simpleza.
+
+
