@@ -60,7 +60,7 @@ in is null return static super this true var while
 
 #### Caracteres Significativos
 
-- Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } ,`)
+- Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } , & ^ ? : ~`)
 - Comentarios (`/* */`, `//`)
 - Retorno de carro (`\n`)
 
