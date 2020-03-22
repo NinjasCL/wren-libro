@@ -35,6 +35,11 @@ image:https://user-images.githubusercontent.com/292738/77261969-2240d580-6c71-11
 
 ## ¿Cómo usar Wren?
 
-_Wren_ es un lenguaje interpretado, lo que significa que no requiere de compilación. Basta simplemente tener un intérprete para ejecutar los algoritmos.
+_Wren_ es un lenguaje interpretado, lo que significa que no requiere de compilación. Basta simplemente tener un intérprete para ejecutar los algoritmos. Hay varias alternativas.
 
+1. https://github.com/wren-lang/wren[Compilar tu propio intérprete de _Wren_]. Esta es la opción para valientes.
+2. https://github.com/wren-lang/wren-cli/releases[Utiliza _Wren CLI_] para ejecutar archivos _*.wren_.
+3. Utiliza un engine de juegos como https://domeengine.com/[_Dome_], https://tic.computer[_TIC 80_] o https://luxeengine.com/alpha/[_Luxe_] que traen _Wren_ listo para llegar y utilizar.
+4. Utiliza http://ppvk.github.io/wren-nest/[_Wren Nest_] para probar el lenguaje en tu navegador. (Puede que no tenga las últimas novedades).
 
+Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` para ver el resultado.
