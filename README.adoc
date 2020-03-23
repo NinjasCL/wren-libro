@@ -136,12 +136,17 @@ Los comentarios utilizan la misma sintaxis que el https://es.wikipedia.org/wiki/
 Los símbolos son los siguientes: `/* */` (multi línea) y `//` (línea única).
 
 ```
+
+// Comentario de una sola línea
+
 /*
 Este comentario 
 tiene múltiples
 líneas
 */
 ```
+
+Se pueden anidar los comentarios. útil para comentar código que ya tenga comentarios.
 
 ```
 /*
@@ -154,7 +159,26 @@ líneas.
 */
 ```
 
+#### Tip
 
+Puedes combinar los comentarios de una sola línea con los de múltiples líneas para
+comentar/descomentar rápidamente secciones de código.
 
+```js
+// /*
+   codigo()
+// */
+```
 
+Al eliminar el comentario de la primera línea, el código será comentado. De esta forma rápidamente
+puedes activar o desactivar seccones de código.
 
+Puede aún ser más simplificado de esta forma
+
+```js
+//*
+   codigo()
+// */
+```
+
+Si se elimina el primer `/` el código será comentado. Por lo que se ahorra un par de movimientos al realizar el comentario.
