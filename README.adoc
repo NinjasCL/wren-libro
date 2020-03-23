@@ -53,7 +53,7 @@ Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` par
 
 _Wren_ utiliza los saltos de línea (`\n`), por lo que no es necesario utilizar el punto y coma (`;`) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.
 
-#### Ejemplo: *String multilínea*
+#### Ejemplo: *String multi línea*
 
 _Wren_ permite string multilíneas utilizando el caracter de comillas dobles (`"`). El mismo caracter sirve para líneas simples. El caracter de comilla simple (`'`) no es significativo para _Wren_.
 
@@ -127,6 +127,34 @@ in is null return static super this true var while
 #### Caracteres Significativos
 
 - Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } , & ^ ? : ~ _`)
-- Comentarios (`/* */`, `//`)
 - Retorno de carro (`\n`)
+
+### Comentarios
+
+Los comentarios utilizan la misma sintaxis que el https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)[`Lenguaje de Programación C`].
+
+Los símbolos son los siguientes: `/* */` (multi línea) y `//` (línea única).
+
+```
+/*
+Este comentario 
+tiene múltiples
+líneas
+*/
+```
+
+```
+/*
+Este comentario 
+tiene múltiples
+líneas.
+  /* También puedes incluir comentarios, 
+  dentro de comentarios multi línea. 
+  */
+*/
+```
+
+
+
+
 
