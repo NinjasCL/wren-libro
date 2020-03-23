@@ -209,6 +209,8 @@ Si se elimina el primer `/` el código será comentado. Por lo que se ahorra un 
 
 Similar al _Lenguaje C_, para los indentificadores se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas. Solo se permiten letras (`A - Z`, `a - z`), números (`0 - 9`) y guión bajo (`_`). No se permiten espacios o comenzar con un número.
 
+#### Ejemplo de Identificadores válidos
+
 ```js
 hola 
 camelCase 
@@ -216,6 +218,17 @@ PascalCase
 _under_score 
 abc123 
 TODAS_MAYUSCULAS
+```
+
+#### Ejemplo de Identificadores no válidos
+
+```js
+13hola 
+mi-variable
+$miVariable 
+mi variable
+👨miVariable
+mi👨Variable
 ```
 
 #### UTF-8
