@@ -173,6 +173,12 @@ comentar/descomentar rápidamente secciones de código.
 Al eliminar el comentario de la primera línea, el código será comentado. De esta forma rápidamente
 puedes activar o desactivar seccones de código.
 
+```js
+/*
+   codigo()
+// */
+```
+
 Puede aún ser más simplificado de esta forma
 
 ```js
@@ -182,3 +188,9 @@ Puede aún ser más simplificado de esta forma
 ```
 
 Si se elimina el primer `/` el código será comentado. Por lo que se ahorra un par de movimientos al realizar el comentario.
+
+```js
+/*
+   codigo()
+// */
+```
