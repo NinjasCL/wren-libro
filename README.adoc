@@ -49,9 +49,53 @@ Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` par
 
 ## Nociones Básicas
 
+### Saltos de línea
+
+_Wren_ utiliza los saltos de línea (`\n`), por lo que no es necesario utilizar el punto y coma (`;`) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.
+
+Ejemplo: *String multilínea*
+
+_Wren_ permite string multilíneas utilizando el caracter de comillas dobles (`"`).
+
+```js
+"
+ Todo esto es una string multi línea
+ Wren esperará hasta que aparezca 
+ la siguiente comilla doble.
+ Los strings multi línea en Wren guardan tanto espacios como saltos de línea en su interior.
+ (no son omitidos).
+"
+```
+
+Esto provoca un comportamiento inusual al momento de llamar métodos.
+
+Esto es válido (Genera un número al azar del 0 al 9).
+
+```js
+Random.new().int(10)
+```
+
+Esto no es válido.
+
+```js
+Random
+.new()
+.int(10)
+```
+
+Para ser válido necesitamos poner un punto al final de la línea.
+
+```js
+Random.
+new().
+int(10)
+```
+
+Este comportamiento inusual espera ser reparado en la versión `0.4`.
+
 ### Palabras Reservadas
 
-Wren es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:
+_Wren_ es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:
 
 ```
 break class construct else false for foreign if import 
@@ -60,7 +104,7 @@ in is null return static super this true var while
 
 #### Caracteres Significativos
 
-- Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } , & ^ ? : ~`)
+- Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } , & ^ ? : ~ _`)
 - Comentarios (`/* */`, `//`)
 - Retorno de carro (`\n`)
 
