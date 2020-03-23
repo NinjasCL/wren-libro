@@ -78,6 +78,16 @@ var animales = [
 ]
 ```
 
+#### Ejemplo: *Parámetros de un método*
+
+```js
+ MiClase.metodo(
+       parametro1,
+       parametro2,
+       parametro3
+ )
+```
+
 #### Ejemplo: *Generar un número al azar del 0 al 9*.
 
 Al considerar los saltos de línea significativos, 
@@ -171,7 +181,7 @@ comentar/descomentar rápidamente secciones de código.
 ```
 
 Al eliminar el comentario de la primera línea, el código será comentado. De esta forma rápidamente
-puedes activar o desactivar seccones de código.
+puedes activar o desactivar secciones de código.
 
 ```js
 /*
