@@ -222,13 +222,14 @@ TODAS_MAYUSCULAS
 
 #### Ejemplo de Identificadores no válidos
 
-```js
+```
 13hola 
 mi-variable
 $miVariable 
 mi variable
+ñandú
 👨miVariable
-mi👨Variable
+mi👩Variable
 ```
 
 #### UTF-8
