@@ -204,3 +204,26 @@ Si se elimina el primer `/` el código será comentado. Por lo que se ahorra un 
    codigo()
 // */
 ```
+
+### Identificadores
+
+Similar al _Lenguaje C_, para los indentificadores se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas.
+
+```js
+hola 
+camelCase 
+PascalCase 
+_under_score 
+abc123 
+TODAS_MAYUSCULAS
+```
+
+#### UTF-8
+
+No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es conversable.
+
+#### Identificadores con Guión Bajo
+
+Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es un campo de instancia, mientras que con dos guiones bajos indican que es un campo de clase. Más detalles en la sección de Clases.
+
+
