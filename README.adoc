@@ -55,7 +55,7 @@ _Wren_ utiliza los saltos de línea (`\n`), por lo que no es necesario utilizar 
 
 Ejemplo: *String multilínea*
 
-_Wren_ permite string multilíneas utilizando el caracter de comillas dobles (`"`).
+_Wren_ permite string multilíneas utilizando el caracter de comillas dobles (`"`). El mismo caracter sirve para líneas simples. El caracter de comilla simple (`'`) no es significativo para _Wren_.
 
 ```js
 "
