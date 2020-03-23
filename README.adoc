@@ -107,6 +107,14 @@ int(10)
 
 Este comportamiento inusual espera ser reparado en la versión `0.4`.
 
+#### Ejemplo: *Error*
+
+La siguiente línea arroja error debido a que no tiene un salto de línea o una operación.
+
+```js
+Random.new().int(10) Random.new().int(10)
+```
+
 ### Palabras Reservadas
 
 _Wren_ es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:
