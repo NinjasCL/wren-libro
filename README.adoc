@@ -67,15 +67,29 @@ _Wren_ permite string multilíneas utilizando el caracter de comillas dobles (`"
 "
 ```
 
-Esto provoca un comportamiento inusual al momento de llamar métodos.
+Ejemplo: *Lista de elementos*
 
-Esto es válido (Genera un número al azar del 0 al 9).
+```js
+var animales = [
+  "perro",
+  "gato",
+  "condor",
+  "huemul"
+]
+```
+
+Al considerar los saltos de línea significativos, 
+provoca un comportamiento inusual al momento de llamar métodos.
+
+Ejemplo: *Generar un número al azar del 0 al 9*.
+
+Instrucción en una sola línea.
 
 ```js
 Random.new().int(10)
 ```
 
-Esto no es válido.
+Esto no es válido en _Wren_ (Pero si es válido en la mayoría de los lenguajes de programación).
 
 ```js
 Random
@@ -97,7 +111,7 @@ Este comportamiento inusual espera ser reparado en la versión `0.4`.
 
 _Wren_ es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:
 
-```
+```js
 break class construct else false for foreign if import 
 in is null return static super this true var while
 ```
