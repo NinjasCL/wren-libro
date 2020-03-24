@@ -254,6 +254,9 @@ Por ejemplo `"hola".count` devolverá `4`. Hay que tener cuidado con los caracte
 
 ```js
 
+System.print("a".count) // Retorna 1.
+System.print("a".bytes.count) // Retorna 1 (Parte de la tabla ASCII original).
+
 System.print("ñ".count) // Retorna 1.
 System.print("ñ".bytes.count) // Retorna 2.
 
