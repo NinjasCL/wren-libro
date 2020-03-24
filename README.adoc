@@ -53,20 +53,6 @@ Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` par
 
 _Wren_ utiliza los saltos de línea (`\n`), por lo que no es necesario utilizar el punto y coma (`;`) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.
 
-#### Ejemplo: *String multi línea*
-
-_Wren_ permite string multilíneas utilizando el caracter de comillas dobles (`"`). El mismo caracter sirve para líneas simples. El caracter de comilla simple (`'`) no es significativo para _Wren_.
-
-```js
-"
- Todo esto es una string multi línea
- Wren esperará hasta que aparezca 
- la siguiente comilla doble.
- Los strings multi línea en Wren guardan tanto espacios como saltos de línea en su interior.
- (no son omitidos).
-"
-```
-
 #### Ejemplo: *Lista de elementos*
 
 ```js
@@ -250,9 +236,29 @@ Un caso especial es para los identificadores con guión bajo como `_color` (un g
 
 ### Strings
 
-Las cadenas de caracteres son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_.
+Las cadenas de caracteres son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_. El caracter de comilla simple (`'`) no es significativo para _Wren_.
 
-Las strings pueden contener caracteres unicode.
+Las strings pueden contener caracteres unicode en http://utf8everywhere.org/[UTF-8].
+
+#### *String de una línea*
+
+```js
+"Solo es necesario comillas dobles"
+```
+
+#### *String multi línea*
+
+_Wren_ permite string multi líneas utilizando el mismo caracter de comillas dobles (`"`) de las strings de una sola línea. 
+
+```python
+"
+ Todo esto es una string multi línea
+ Wren esperará hasta que aparezca 
+ la siguiente comilla doble.
+ Los strings multi línea en Wren guardan tanto espacios como saltos de línea en su interior.
+ (no son omitidos).
+"
+```
 
 #### Contando el largo del string
 
