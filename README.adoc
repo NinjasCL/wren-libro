@@ -253,6 +253,10 @@ Si utilizamos la propiedad `count` podremos obtener el largo de un string.
 Por ejemplo `"hola".count` devolverá `4`. Hay que tener cuidado con los caracteres unicode (emojis), ya que el largo dependerá de lo que se esté contando. _Wren_ cuenta los escalares unicode cuando se trata de emojis (similar al comportamiento de https://www.ruby-lang.org/en/[_Ruby_] y https://www.python.org/[_Python 3_]).
 
 ```js
+
+System.print("ñ".count) // Retorna 1.
+System.print("ñ".bytes.count) // Retorna 2.
+
 System.print("👨‍👩‍👧‍👦".count) // Retorna 7 al contar los caracteres escalares de Unicode
 System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar unidades de código UTF-8
 ```
