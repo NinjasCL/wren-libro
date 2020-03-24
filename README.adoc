@@ -274,7 +274,7 @@ System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar un
 
 `System.print("👨‍👩‍👧‍👦".count)` retorna 7 por que se está contando los caracteres escalares de unicode, es decir, el emoji 👨‍👩‍👧‍👦 está formado por los siguientes escalares : 👨 + caracter de unión de ancho cero + 👩 + caracter de unión de ancho cero + 👧 + caracter de unión de ancho cero + 👦.
 
-Hay dos formas de contar adicionales que _Wren_ todavía no soporta. Que es contar por unidades de código _UTF-16_ y considerar los emojis compuestos como una unidad.
+Hay dos formas de contar adicionales que _Wren_ no soporta. Que es contar por unidades de código _UTF-16_ y considerar los emojis compuestos como una unidad.
 
-El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificación _UTF-16_. Mientras que debería ser de largo 1 si lo consideramos como un caracter singular.
+El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificación _UTF-16_. Mientras que debería ser de largo 1 si lo consideramos como un caracter singular (lo que percibe el usuario). Según los amigos de http://utf8everywhere.org/[UTF-8 Everywhere] contar de estas formas es poco productivo, ya que lo que importa es realmente los code units (unidades de código) UTF-8 que tienen los bytes al escribir un string. Por lo que _Wren_ tiene un comportamiento adecuado. De todas formas ese tipo de conversiones y conteo podría programarse con códigos externos a _Wren_.
 
