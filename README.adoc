@@ -234,7 +234,15 @@ mi👩Variable
 
 #### Unicode
 
-No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.
+No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] o https://www.emojicode.org/[Emoji Code] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.
+
+Ejemplo de EmojiCode
+
+```
+🏁 🍇
+  😀 🔤Hello World!🔤❗️
+🍉
+```
 
 #### Identificadores con Guión Bajo
 
