@@ -261,9 +261,5 @@ System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar un
 
 Hay dos formas de contar adicionales que _Wren_ todavía no soporta. Que es contar por unidades de código _UTF-16_ y considerar los emojis compuestos como una unidad.
 
-Estas podrían ser las funciones para retornar el conteo en los formatos faltantes.
-
- - `System.print("👨‍👩‍👧‍👦".utf16.count)`: debería retornar. `11` al contar en el formato de _UTF-16_
- - `System.print("👨‍👩‍👧‍👦".unit.count)`: debería retornar `1` al contar el emoji como una unidad.
-
+El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificación _UTF-16_. Mientras que debería ser de largo 1 si lo consideramos como un caracter singular.
 
