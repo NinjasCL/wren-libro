@@ -232,7 +232,7 @@ Ejemplo de EmojiCode
 
 #### Identificadores con Guión Bajo
 
-Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es un campo de instancia, mientras que con dos guiones bajos indican que es un campo de clase. Más detalles en la sección de Clases.
+Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.
 
 ### Strings
 
@@ -250,7 +250,7 @@ Las strings pueden contener caracteres unicode en http://utf8everywhere.org/[UTF
 
 _Wren_ permite string multi líneas utilizando el mismo caracter de comillas dobles (`"`) de las strings de una sola línea. 
 
-```python
+```js
 "
  Todo esto es una string multi línea
  Wren esperará hasta que aparezca 
