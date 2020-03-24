@@ -232,12 +232,38 @@ mi variable
 mi👩Variable
 ```
 
-#### UTF-8
+#### Unicode
 
-No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es conversable.
+No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.
 
 #### Identificadores con Guión Bajo
 
 Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es un campo de instancia, mientras que con dos guiones bajos indican que es un campo de clase. Más detalles en la sección de Clases.
+
+### Strings
+
+Las cadenas de caracteres son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_.
+
+Las strings pueden contener caracteres unicode.
+
+#### Contando el largo del string
+
+Si utilizamos la propiedad `count` podremos obtener el largo de un string.
+
+Por ejemplo `"hola".count` devolverá `4`. Hay que tener cuidado con los caracteres unicode (emojis), ya que el largo dependerá de lo que se esté contando. _Wren_ cuenta los escalares unicode cuando se trata de emojis (similar al comportamiento de https://www.ruby-lang.org/en/[_Ruby_] y https://www.python.org/[_Python 3_]).
+
+```js
+System.print("👨‍👩‍👧‍👦".count) // Retorna 7 al contar los caracteres escalares de Unicode
+System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar unidades de código UTF-8
+```
+
+`System.print("👨‍👩‍👧‍👦".count)` retorna 7 por que se está contando los caracteres escalares de unicode, es decir, el emoji 👨‍👩‍👧‍👦 está formado por los siguientes escalares : 👨 + caracter de unión de ancho cero + 👩 + caracter de unión de ancho cero + 👧 + caracter de unión de ancho cero + 👦.
+
+Hay dos formas de contar adicionales que _Wren_ todavía no soporta. Que es contar por unidades de código _UTF-16_ y considerar los emojis compuestos como una unidad.
+
+Estas podrían ser las funciones para retornar el conteo en los formatos faltantes.
+
+ - `System.print("👨‍👩‍👧‍👦".utf16.count)`: debería retornar. `11` al contar en el formato de _UTF-16_
+ - `System.print("👨‍👩‍👧‍👦".unit.count)`: debería retornar `1` al contar el emoji como una unidad.
 
 
