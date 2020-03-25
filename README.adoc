@@ -264,7 +264,7 @@ _Wren_ permite string multi líneas utilizando el mismo caracter de comillas dob
 
 Si utilizamos la propiedad `count` podremos obtener el largo de un string.
 
-Por ejemplo `"hola".count` devolverá `4`. Hay que tener cuidado con los caracteres unicode (emojis), ya que el largo dependerá de lo que se esté contando. _Wren_ cuenta los escalares unicode cuando se trata de emojis (similar al comportamiento de https://www.ruby-lang.org/en/[_Ruby_] y https://www.python.org/[_Python 3_]).
+Por ejemplo `"hola".count` devolverá `4`. Hay que tener cuidado con los caracteres unicode (emojis), ya que el largo dependerá de lo que se esté contando. _Wren_ cuenta las unidades de código (code unit) unicode, por que todos los strings están bajo _UTF-8_ (similar al comportamiento de https://www.ruby-lang.org/en/[_Ruby_] y https://www.python.org/[_Python 3_]).
 
 ```js
 
@@ -277,13 +277,15 @@ System.print("ñ".bytes.count) // Retorna 2.
 System.print("👹".count) // Retorna 1.
 System.print("👹".bytes.count) // Retorna 4.
 
-System.print("👨‍👩‍👧‍👦".count) // Retorna 7 al contar los caracteres escalares de Unicode
-System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar unidades de código UTF-8
+System.print("👨‍👩‍👧‍👦".count) // Retorna 7 al contar la unidades de código de Unicode
+System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar los bytes UTF-8
 ```
 
-`System.print("👨‍👩‍👧‍👦".count)` retorna 7 por que se está contando los caracteres escalares de unicode, es decir, el emoji 👨‍👩‍👧‍👦 está formado por los siguientes escalares : 👨 + caracter de unión de ancho cero + 👩 + caracter de unión de ancho cero + 👧 + caracter de unión de ancho cero + 👦.
+`System.print("👨‍👩‍👧‍👦".count)` retorna 7 por que se está contando las unidades de código de unicode, es decir, el emoji 👨‍👩‍👧‍👦 está formado por los siguientes caracteres : 👨 + caracter de unión de ancho cero + 👩 + caracter de unión de ancho cero + 👧 + caracter de unión de ancho cero + 👦.
 
-Hay dos formas de contar adicionales que _Wren_ no soporta. Que es contar por unidades de código _UTF-16_ y considerar los emojis compuestos como una unidad.
+`System.print("👨‍👩‍👧‍👦".bytes.count)` retorna 25 por que está contando los bytes necesarios para almacenar estos caracteres. bytes es una secuencia de caracteres en C, lo que permite utilizar los Strings para almacenar información en binario.
 
-El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificación _UTF-16_. Mientras que debería ser de largo 1 si lo consideramos como un caracter singular (lo que percibe el usuario). Según los amigos de http://utf8everywhere.org/[UTF-8 Everywhere] contar de estas formas es poco productivo, ya que lo que importa es realmente los code units (unidades de código) UTF-8 que tienen los bytes al escribir un string. Por lo que _Wren_ tiene un comportamiento adecuado. De todas formas ese tipo de conversiones y conteo podría programarse con códigos externos a _Wren_.
+Hay dos formas de contar adicionales que _Wren_ no soporta. La primera es contar por unidades de código _UTF-16_ y la otra es considerar los emojis compuestos como una unidad.
+
+El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificación _UTF-16_. Mientras que debería ser de largo 1 si lo consideramos como un caracter singular (lo que percibe el usuario). Según los amigos de http://utf8everywhere.org/[UTF-8 Everywhere] contar de estas formas es poco productivo, ya que lo que importa es realmente los code units (unidades de código) _UTF-8_ que se tiene al escribir un string. Por lo que _Wren_ tiene un comportamiento adecuado. De todas formas ese tipo de conversiones y conteo podría programarse con códigos externos a _Wren_. Más detalles en el https://www.unicode.org/glossary/[Glosario Unicode].
 
