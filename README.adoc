@@ -289,3 +289,41 @@ Hay dos formas de contar adicionales que _Wren_ no soporta. La primera es contar
 
 El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificación _UTF-16_. Mientras que debería ser de largo 1 si lo consideramos como un caracter singular (lo que percibe el usuario). Según los amigos de http://utf8everywhere.org/[UTF-8 Everywhere] contar de estas formas es poco productivo, ya que lo que importa es realmente los code units (unidades de código) _UTF-8_ que se tiene al escribir un string. Por lo que _Wren_ tiene un comportamiento adecuado. De todas formas ese tipo de conversiones y conteo podría programarse con códigos externos a _Wren_. Más detalles en el https://www.unicode.org/glossary/[Glosario Unicode].
 
+#### Unión e interpolación de strings
+
+Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar las siguientes operaciones: `+` y `%()`.
+
+- `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`.
+- "Hola %(mundo)": Crea un string con la frase `Hola` y el contenido de la variable `mundo`.
+
+La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cual finalmente ejecutará el método `toString` para ser incluido en la cadena de caracteres.
+
+`System.print("La respuesta es %(20 * 2 + 2)!")` = La respuesta es 42.
+
+
+#### Caracteres de Escape
+
+Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir `"Hola Mundo"` incluyendo las comillas, tendríamos que escribilo de esta forma `"\"Hola Mundo\""`. Esto incluirá los caracteres de comillas dobles en la frase.
+
+```js
+"\0" // byte NUL (Nulo) : 0.
+"\"" // Comillas dobles.
+"\\" // Barra invertida.
+"\%" // Signo porcentaje.
+"\a" // Sonido de alarma.
+"\b" // Retroceso.
+"\f" // Alimentación de formularios.
+"\n" // Salto de línea.
+"\r" // Retorno de carro.
+"\t" // Tab.
+"\v" // Tab vertical.
+```
+
+Para indicar caracteres especiales podemos utilizar `\u` (unicode para letras disponibles en los idiomas humanos), `\U` (unicode para letras especiales como emoji) y `\x` (bytes sin codificar).
+
+- `System.print("\u0041\u0b83\u00DE")` = AஃÞ
+- `System.print("\U0001F64A\U0001F680")` = 🙊🚀
+- `System.print("\x48\x69\x2e")` = Hi.
+
+
+
