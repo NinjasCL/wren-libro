@@ -299,7 +299,7 @@ Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar
 La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cual finalmente ejecutará el método `toString` para ser incluido en la cadena de caracteres.
 
 ```js
-System.print("La respuesta es %(20 * 2 + 2)!")
+System.print("La respuesta es %(20 * 2 + 2).")
 ```
 
 > La respuesta es 42.
