@@ -240,13 +240,13 @@ Las cadenas de caracteres son delimitadas por las comillas dobles (`"`). Pueden 
 
 Las strings pueden contener caracteres unicode en http://utf8everywhere.org/[UTF-8].
 
-#### *String de una línea*
+#### String de una línea
 
 ```js
 "Solo es necesario comillas dobles"
 ```
 
-#### *String multi línea*
+#### String multi línea
 
 _Wren_ permite string multi líneas utilizando el mismo caracter de comillas dobles (`"`) de las strings de una sola línea. 
 
@@ -294,11 +294,14 @@ El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificac
 Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar las siguientes operaciones: `+` y `%()`.
 
 - `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`.
-- "Hola %(mundo)": Crea un string con la frase `Hola` y el contenido de la variable `mundo`.
+- `"Hola %(mundo)"`: Crea un string con la frase `Hola` y el contenido de la variable `mundo`.
 
 La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cual finalmente ejecutará el método `toString` para ser incluido en la cadena de caracteres.
 
-`System.print("La respuesta es %(20 * 2 + 2)!")` = La respuesta es 42.
+```js
+System.print("La respuesta es %(20 * 2 + 2)!")
+````
+> La respuesta es 42.
 
 
 #### Caracteres de Escape
