@@ -53,7 +53,7 @@ Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` par
 
 _Wren_ utiliza los saltos de línea (`\n`), por lo que no es necesario utilizar el punto y coma (`;`) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.
 
-#### Ejemplo: *Lista de elementos*
+#### Ejemplo: Lista de elementos
 
 ```js
 var animales = [
@@ -64,7 +64,7 @@ var animales = [
 ]
 ```
 
-#### Ejemplo: *Parámetros de un método*
+#### Ejemplo: Parámetros de un método
 
 ```js
  MiClase.metodo(
@@ -74,7 +74,7 @@ var animales = [
  )
 ```
 
-#### Ejemplo: *Generar un número al azar del 0 al 9*.
+#### Ejemplo: Generar un número al azar del 0 al 9
 
 Al considerar los saltos de línea significativos, 
 provoca un comportamiento inusual al momento de llamar métodos.
@@ -300,7 +300,8 @@ La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cu
 
 ```js
 System.print("La respuesta es %(20 * 2 + 2)!")
-````
+```
+
 > La respuesta es 42.
 
 
