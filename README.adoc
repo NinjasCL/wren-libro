@@ -155,10 +155,11 @@ líneas.
 */
 ```
 
-#### Tip
+#### Tip: Comentarios Tijera
 
 Puedes combinar los comentarios de una sola línea con los de múltiples líneas para
-comentar/descomentar rápidamente secciones de código.
+comentar/descomentar rápidamente secciones de código. Se llaman comentarios tijera
+por que pueden "cortar" un código para no ser ejecutado.
 
 ```js
 // /*
@@ -189,6 +190,14 @@ Si se elimina el primer `/` el código será comentado. Por lo que se ahorra un 
 /*
    codigo()
 // */
+```
+#### Tip: Comentarios de parámetros
+
+En _Wren_ no es posible llamar a los parámetros por su nombre. Por lo que si utilizas una función
+con algunos parámetros, puede ser útil comentar los parámetros.
+
+```js
+circulo(/* x */ 10, /* y */ 20, /* radio */ 10)
 ```
 
 ### Identificadores
