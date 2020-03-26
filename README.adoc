@@ -243,7 +243,7 @@ Ejemplo de EmojiCode
 
 Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.
 
-### Strings
+### http://wren.io/modules/core/string.html:[Strings]
 
 Las cadenas de caracteres son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_. El caracter de comilla simple (`'`) no es significativo para _Wren_.
 
@@ -282,7 +282,7 @@ _Wren_ permite string multi líneas utilizando el mismo caracter de comillas dob
 
 Si utilizamos la propiedad `count` podremos obtener el largo de un string.
 
-Por ejemplo `"hola".count` devolverá `4`. Hay que tener cuidado con los caracteres unicode (emojis), ya que el largo dependerá de lo que se esté contando. _Wren_ cuenta las unidades de código (code unit) unicode, por que todos los strings están bajo _UTF-8_ (similar al comportamiento de https://www.ruby-lang.org/en/[_Ruby_] y https://www.python.org/[_Python 3_]).
+Por ejemplo `"hola".count` devolverá `4`. Hay que tener cuidado con los caracteres unicode (emojis), ya que el largo dependerá de lo que se esté contando. _Wren_ cuenta los puntos de código (code point) unicode, por que todos los strings están bajo _UTF-8_ (similar al comportamiento de https://www.ruby-lang.org/en/[_Ruby_] y https://www.python.org/[_Python 3_]).
 
 ```js
 
@@ -311,7 +311,10 @@ El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificac
 
 Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar las siguientes operaciones: `+` y `%()`.
 
-- `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`.
+- `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza `"Hola" + 1 entregará un error similar a `Runtime error: Right operand must be a string.`. Para poder unirlos tendremos que utiliza el método getter `toString` del número. `"Hola" + 1.toString`, retornando `Hola1`. 
+
+El método `toString` es parte de la clase http://wren.io/modules/core/object.html:[`Object`] la cual es la padre de todos los tipos de datos en _Wren_. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.
+
 - `"Hola %(mundo)"`: Crea un string con la frase `Hola` y el contenido de la variable `mundo`.
 
 La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cual finalmente ejecutará el método `toString` para ser incluido en la cadena de caracteres. Esto incluso permite tener interpolaciones anidadas, pero eso se vuelve poco legible rápidamente.
