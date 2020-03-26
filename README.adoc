@@ -194,7 +194,7 @@ Si se elimina el primer `/` el código será comentado. Por lo que se ahorra un 
 #### Tip: Comentarios de parámetros
 
 En _Wren_ no es posible llamar a los parámetros por su nombre. Por lo que si utilizas una función
-con algunos parámetros, puede ser útil comentar los parámetros.
+con algunos parámetros, puede ser útil comentarlos.
 
 ```js
 circulo(/* x */ 10, /* y */ 20, /* radio */ 10)
@@ -202,7 +202,7 @@ circulo(/* x */ 10, /* y */ 20, /* radio */ 10)
 
 ### Identificadores
 
-Similar al _Lenguaje C_, para los indentificadores se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas. Solo se permiten letras (`A - Z`, `a - z`), números (`0 - 9`) y guión bajo (`_`). No se permiten espacios o comenzar con un número.
+Similar al _Lenguaje C_, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas. Solo se permiten letras (`A - Z`, `a - z`), números (`0 - 9`) y guión bajo (`_`). No se permiten espacios o comenzar con un número.
 
 #### Ejemplo de Identificadores válidos
 
@@ -223,8 +223,8 @@ mi-variable
 $miVariable 
 mi variable
 ñandú
-👨miVariable
-mi👩Variable
+👨miMetodo
+Mi👩clase
 ```
 
 #### Unicode
