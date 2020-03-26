@@ -247,7 +247,16 @@ Un caso especial es para los identificadores con guión bajo como `_color` (un g
 
 Las cadenas de caracteres son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_. El caracter de comilla simple (`'`) no es significativo para _Wren_.
 
-Las strings pueden contener caracteres unicode en http://utf8everywhere.org/[UTF-8].
+Las strings pueden contener caracteres unicode en http://utf8everywhere.org/[UTF-8], como también caracteres no válidos para _UTF-8_. 
+
+Además son inmutables. El string *"porotos"* no podrá ser modificado (cambiando sus caracteres) luego de su creación.
+
+Un string puede contener los siguientes valores:
+
+- Una cadena de texto compuesto por una secuencia de puntos de código textuales (textual code point).
+- Una cadena iterable compuesta por una secuencia de puntos de código numérico (numeric code point).
+- Un arreglo simple de bytes indexeables.
+
 
 #### String de una línea
 
@@ -305,7 +314,7 @@ Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar
 - `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`.
 - `"Hola %(mundo)"`: Crea un string con la frase `Hola` y el contenido de la variable `mundo`.
 
-La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cual finalmente ejecutará el método `toString` para ser incluido en la cadena de caracteres.
+La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cual finalmente ejecutará el método `toString` para ser incluido en la cadena de caracteres. Esto incluso permite tener interpolaciones anidadas, pero eso se vuelve poco legible rápidamente.
 
 ```js
 System.print("La respuesta es %(20 * 2 + 2).")
@@ -338,5 +347,5 @@ Para indicar caracteres especiales podemos utilizar `\u` (unicode para letras di
 - `System.print("\U0001F64A\U0001F680")` = 🙊🚀
 - `System.print("\x48\x69\x2e")` = Hi.
 
-
+#### Obteniendo Caracteres
 
