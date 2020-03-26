@@ -311,7 +311,7 @@ El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificac
 
 Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar las siguientes operaciones: `+` y `%()`.
 
-- `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza `"Hola" + 1 entregará un error similar a `Runtime error: Right operand must be a string.`. Para poder unirlos tendremos que utiliza el método getter `toString` del número. `"Hola" + 1.toString`, retornando `Hola1`. 
+- `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza `"Hola" + 1` entregará un error similar a `Runtime error: Right operand must be a string.`. Para poder unirlos tendremos que utiliza el método getter `toString` del número. `"Hola" + 1.toString`, retornando `Hola1`. 
 
 El método `toString` es parte de la clase http://wren.io/modules/core/object.html:[`Object`] la cual es la padre de todos los tipos de datos en _Wren_. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.
 
