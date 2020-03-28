@@ -47,6 +47,10 @@ _Wren_ es un lenguaje interpretado, lo que significa que no requiere de compilac
 
 Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` para ver el resultado de tu script.
 
+### https://github.com/wren-lang/wren-cli[Wren CLI]
+
+La terminal de _Wren_ llamada _Wren CLI_ (https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos[Interfaz de línea de comandos]) permite tiene dos modos de operación. El primero es el modo https://es.wikipedia.org/wiki/REPL[_REPL_] (Bucle Lectura-Evaluación-Impresión) el cual nos permite evaluar las instrucciones una a una. El segundo modo es el intérprete que permite ejecutar scripts _Wren_.
+
 ## Nociones Básicas
 
 ### Saltos de línea
