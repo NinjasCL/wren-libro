@@ -45,11 +45,50 @@ _Wren_ es un lenguaje interpretado, lo que significa que no requiere de compilac
 
 4. Utiliza http://ppvk.github.io/wren-nest/[_Wren Nest_] para probar el lenguaje en tu navegador. (Puede que no tenga las últimas novedades).
 
-Una vez que tengas tu intérprete instalado puedes ejecutar `wren main.wren` para ver el resultado de tu script.
+Una vez que tengas tu intérprete instalado puedes ejecutar por ejemplo`./wren main.wren` para ver el resultado de tu script.
 
 ### https://github.com/wren-lang/wren-cli[Wren CLI]
 
-La terminal de _Wren_ llamada _Wren CLI_ (https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos[Interfaz de línea de comandos]) permite tiene dos modos de operación. El primero es el modo https://es.wikipedia.org/wiki/REPL[_REPL_] (Bucle Lectura-Evaluación-Impresión) el cual nos permite evaluar las instrucciones una a una. El segundo modo es el intérprete que permite ejecutar scripts _Wren_.
+La terminal de _Wren_ llamada _Wren CLI_ (https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos[Interfaz de línea de comandos]) permite dos modos de operación. El primero es el modo https://es.wikipedia.org/wiki/REPL[_REPL_] (Bucle Lectura-Evaluación-Impresión) el cual nos permite evaluar las instrucciones una a una. El segundo modo es el intérprete que permite ejecutar scripts _Wren_.
+
+Si ejecutamos simplemente el comando `./wren` entraremos al modo _REPL_. Donde se nos mostrará un simpático pajarito y la versión de _Wren_ instalada.
+
+image:https://user-images.githubusercontent.com/292738/77837383-22444800-713f-11ea-8db4-3f404faabc10.png[Wren CLI]
+
+#### Operaciones Matemáticas
+
+Podremos ejecutar operaciones matemáticas como `5 * 5`.
+
+image:https://user-images.githubusercontent.com/292738/77837948-7ce0a280-7145-11ea-8b43-3f91f7491b35.png[5 * 5]
+
+#### System.print()
+
+O También mostrar un mensaje utilizando `System.print()`.
+
+image:https://user-images.githubusercontent.com/292738/77837982-d517a480-7145-11ea-86f4-7a24e5ecc628.png[System.print()]
+
+¿Por qué aparece la palabra `Plop!` dos veces?. Simplemente por que la primera vez es el resultado de la operación `System.print()` (mostrar un valor), mientras que la segunda vez está mostrando el valor retornado por `System.print()`, el cual es el mismo texto.
+
+#### Errores
+
+Si cometemos algún error _Wren CLI_ nos avisará con un bonito mensaje.
+
+image:https://user-images.githubusercontent.com/292738/77838174-c4682e00-7147-11ea-9e82-ffd2dc4dd1f9.png[Error]
+
+#### Ejecución de Archivos
+
+Cuando necesitamos algo mucho más avanzado podemos utilizar archivos que finalicen con la extensión _*.wren*_. El más común es el llamado _main.wren_. Para ejecutar un archivo específico simplemente se debe utilizar `./wren <archivo.wren>`.
+
+1. Creamos un nuevo archivo llamado `main.wren`
+2. Escribimos `System.print("Plop!")` y Guardamos
+3. Finalmente Ejecutamos `./wren main.wren`
+
+Deberíamos ver un resultao similar a este:
+
+image:https://user-images.githubusercontent.com/292738/77839010-7c4d0980-714f-11ea-90df-4330a821d207.png[Plop!]
+
+Notar como solamente aparece una vez "Plop!", ya que no estamos en modalidad _REPL_.
+
 
 ## Nociones Básicas
 
