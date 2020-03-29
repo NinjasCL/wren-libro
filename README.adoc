@@ -77,18 +77,62 @@ image:https://user-images.githubusercontent.com/292738/77838174-c4682e00-7147-11
 
 #### Ejecución de Archivos
 
-Cuando necesitamos algo mucho más avanzado podemos utilizar archivos que finalicen con la extensión _*.wren*_. El más común es el llamado _main.wren_. Para ejecutar un archivo específico simplemente se debe utilizar `./wren <archivo.wren>`.
+Cuando necesitamos algo mucho más avanzado podemos utilizar archivos que finalicen con la extensión _*.wren_. El nombre más común es _main.wren_, aunque puedes llamarlo con cualquier nombre. Para ejecutar un archivo específico simplemente se debe utilizar `./wren <archivo.wren>`.
 
-1. Creamos un nuevo archivo llamado `main.wren`
-2. Escribimos `System.print("Plop!")` y Guardamos
-3. Finalmente Ejecutamos `./wren main.wren`
+1. Creamos un nuevo archivo llamado `main.wren`.
+2. Escribimos nuestro código (En este caso `System.print("Plop!")`) y guardamos.
+3. Finalmente Ejecutamos `./wren main.wren`.
 
-Deberíamos ver un resultao similar a este:
+Deberíamos ver un resultado similar a este:
 
 image:https://user-images.githubusercontent.com/292738/77839010-7c4d0980-714f-11ea-90df-4330a821d207.png[Plop!]
 
 Notar como solamente aparece una vez "Plop!", ya que no estamos en modalidad _REPL_.
 
+#### Códigos de Salida (Exit Code)
+
+Cada vez que un programa termina su ejecución devuelve un código numérico para indicar si terminó exitosamente o tuvo un algún tipo de error mientras se ejecutaba.
+
+La convención tradicional es considerar el código cero (0) como éxito y cualquier otro número como error. No hay un estándar definido para la asignación de números de error. _Wren_ se basa levemente en los códigos utilizados por el sistema operativo https://github.com/openbsd/src/blob/master/include/sysexits.h[_BSD_].
+
+Actualmente no puedes elegir el código de error. _Wren_ automáticamente asignará el código que mejor se ajuste a la situación. Por ejemplo si utilizar la instrucción para terminar la ejecución del programa `Fiber.abort("Mensaje de Error")` el código asignado sera de 70 (error interno del software).
+
+La siguiente es una tabla con los códigos de BSD más algunos otros adicionales.
+
+
+```
+0 - Fin del programa exitoso
+1 - Error desconocido
+2 - (grep) Uso incorrecto del comando | (bash) Error de entrada/salida
+64 - Uso incorrecto del comando
+65 - Error de formato de datos
+66 - Sin acceso a la entrada
+67 - Dirección desconocida
+68 - Nombre de dominio (host name) desconocido
+69 - Servicio no disponible
+70 - Error interno del software
+71 - Error de sistema
+72 - Archivo crítico del sistema no encontrado
+73 - Imposible de crear archivo de salida
+74 - Error de entrada/salida
+75 - Falla temporal
+76 - Error remoto en protocolo
+77 - Permiso denegado
+78 - Error de configuración
+126 - Comando encontrado, pero no es ejecutable
+127 - Comando no encontrado
+128 - Código de salida no válido
+128   Error fatal terminado por kill -9 
+140 - Comando terminado por Ctrl-C
+141 - Comando terminado por Ctrl-D
+255 - Código de salida fuera de rango
+```
+
+Puedes verificar el código numérico de salida utilizando el siguiente comando (bash)
+
+`./wren main.wren | echo "Exit code ${PIPESTATUS[0]}"`
+
+image:https://user-images.githubusercontent.com/292738/77839414-d9968a00-7152-11ea-9bd3-b42ff06a4d1a.png[Exit Code 0]
 
 ## Nociones Básicas
 
