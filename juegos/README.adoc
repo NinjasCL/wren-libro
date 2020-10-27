@@ -6,6 +6,6 @@ Basados principalmente en los códigos diponibles en https://github.com/asweigar
 
 ## ¿Cómo ejecutarlos?
 
-Primero se necesita el [intérprete de Wren](https://github.com/wren-lang/wren-cli/releases/latest). Además de un editor de código como [Visual Studio Code](https://code.visualstudio.com/).
+Primero se necesita el https://github.com/wren-lang/wren-cli/releases/latest[intérprete de Wren]. Además de un editor de código como https://code.visualstudio.com/[Visual Studio Code].
 
 Para mayor documentación sobre la consola y el lenguaje _Wren_ se puede visitar http://wren.io/cli
