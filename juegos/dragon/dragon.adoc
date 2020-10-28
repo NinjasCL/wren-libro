@@ -17,21 +17,14 @@ En este juego, el jugador está en una tierra llena de dragones. Todos los drago
 ```sh
 
 Estás en una tierra llena de dragones. Frente a tí
-
-hay dos cuevas. En una de ellas, el dragón es generoso y amigable
-
-y compartirá su tesoro contigo. El otro dragón
-
+hay dos cuevas. En una de ellas, el dragón es generoso y amigable y compartirá su tesoro contigo. El otro dragón
 es codicioso y está hambriento, y te devorará inmediatamente.
 
 ¿A qué cueva quieres entrar? (1 ó 2)
-
 1
 
 Te aproximas a la cueva...
-
 Es oscura y espeluznante...
-
 ¡Un gran dragon aparece súbitamente frente a tí! Abre sus fauces y...
 
 ¡Te engulle de un bocado!

@@ -34,7 +34,7 @@ var explorarCueva = Fn.new { |cueva|
     // por lo que para obtener 2 segundos
     // debemos multiplicar 2 * 1000
     var dosSegundos = 2 * 1000
-    
+
     System.print("Te aproximas a la cueva...")
     Timer.sleep(dosSegundos)
     
@@ -55,6 +55,8 @@ var explorarCueva = Fn.new { |cueva|
     } else {
       System.print("¡Te engulle de un bocado!")
     }
+
+    System.print()
 }
 
 var jugarDeNuevo = "sí"
