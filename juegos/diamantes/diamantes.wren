@@ -3,6 +3,7 @@ Diamantes, por Al Sweigart <al@inventwithpython.com>
 https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamonds.py
 Dibuja diamantes de varios tamaños.
 Adaptado a Wren por Camilo Castro <camilo@ninjas.cl>
+https://github.com/NinjasCL/wren-libro/blob/main/juegos/diamantes/diamantes.wren
                            /\       /\
                           /  \     //\\
             /\     /\    /    \   ///\\\
@@ -62,9 +63,6 @@ var mostrarDiamanteRelleno = Fn.new { |dimension|
     System.print("/" * (dimension - i))
   }
 }
-
-
-System.print("Diamantes, por Al Sweigart al@inventwithpython.com")
 
 // Muestra 5 diamantes de tamaño 0 al 5:
 for(dimension in 0..5) {
