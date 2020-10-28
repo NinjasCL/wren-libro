@@ -43,7 +43,7 @@ _Wren_ es un lenguaje interpretado, lo que significa que no requiere de compilac
 
 3. Utiliza un engine de juegos como https://domeengine.com/[_Dome_], https://tic.computer[_TIC 80_] o https://luxeengine.com/alpha/[_Luxe_] que traen _Wren_ listo para llegar y utilizar.
 
-4. Utiliza http://ppvk.github.io/wren-nest/[_Wren Nest_] para probar el lenguaje en tu navegador. (Puede que no tenga las últimas novedades).
+4. Utiliza https://wren.io/try/[_Wren Try_] para probar el lenguaje en tu navegador.
 
 Una vez que tengas tu intérprete instalado puedes ejecutar por ejemplo`./wren main.wren` para ver el resultado de tu script.
 
@@ -165,6 +165,9 @@ var animales = [
 
 Al considerar los saltos de línea significativos, 
 provoca un comportamiento inusual al momento de llamar métodos.
+
+> Los números pseudo aleatorios son generados utilizando
+la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia.
 
 Instrucción en una sola línea.
 

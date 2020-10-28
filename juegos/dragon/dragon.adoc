@@ -1,0 +1,43 @@
+## Reino de Dragones
+
+Basado en http://inventwithpython.com/es/6.html[Reino de Dragones].
+
+En este capítulo, escribiremos nuestras propias funciones para que sean llamadas por programas. Una función es como un mini-programa dentro de nuestro programa.
+
+El juego que crearemos para presentar las funciones se llama _"Reino de Dragones"_, y permite al jugador elegir entre dos cuevas, en una de las cuales encontrará un tesoro y en la otra su perdición.
+
+### ¿Cómo Jugar a Reino de Dragones?
+
+En este juego, el jugador está en una tierra llena de dragones. Todos los dragones viven en cuevas junto a sus grandes montones de tesoros encontrados. Algunos dragones son amigables, y compartirán sus tesoros contigo. Otros son codiciosos y hambrientos, y se comerán a cualquiera que entre a su cueva. El jugador se encuentra frente a dos cuevas, una con un dragón amigable y la otra con un dragón hambriento. El jugador tiene que elegir entre las dos.
+
+### Ejemplo de Ejecución
+
+`$ ./wren dragon/dragon.wren`
+
+```sh
+
+Estás en una tierra llena de dragones. Frente a tí
+
+hay dos cuevas. En una de ellas, el dragón es generoso y amigable
+
+y compartirá su tesoro contigo. El otro dragón
+
+es codicioso y está hambriento, y te devorará inmediatamente.
+
+¿A qué cueva quieres entrar? (1 ó 2)
+
+1
+
+Te aproximas a la cueva...
+
+Es oscura y espeluznante...
+
+¡Un gran dragon aparece súbitamente frente a tí! Abre sus fauces y...
+
+¡Te engulle de un bocado!
+
+¿Quieres jugar de nuevo? (sí or no)
+
+no
+
+```

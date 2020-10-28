@@ -1,0 +1,38 @@
+## Adivina el Número
+
+Basado en http://inventwithpython.com/es/4.html[Adivina del Número].
+
+En este capítulo crearás el juego _"Adivina el Número"_. La computadora pensará un número aleatorio entre 1 y 20, y te pedirá que intentes adivinarlo. La computadora te dirá si cada intento es muy alto o muy bajo. Tú ganas si adivinas el número en seis intentos o menos.
+
+Este es un buen juego para codificar ya que usa números aleatorios y bucles, y recibe entradas del usuario en un programa corto. Aprenderás cómo convertir valores a diferentes tipos de datos, y por qué es necesario hacer esto. Dado que este programa es un juego, nos referiremos al usuario como el jugador. Pero llamarlo “usuario” también sería correcto.
+
+### Ejemplo de Ejecución
+
+`$ ./wren adivina/adivina.wren`
+
+```sh
+
+¡Hola! ¿Cómo te llamas?
+
+Alberto
+
+Bueno, Alberto, estoy pensando en un número entre 1 y 20.
+
+Intenta adivinar 1/6.
+
+10
+
+Tu estimación es muy alta.
+
+Intenta adivinar 2/6.
+
+2
+
+Tu estimación es muy baja.
+
+Intenta adivinar 3/6.
+
+4
+
+¡Buen trabajo, Alberto! ¡Has adivinado mi número en 3 intentos!
+```

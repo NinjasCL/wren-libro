@@ -1,4 +1,7 @@
-// Basado en https://github.com/asweigart/inventwithpython3rded/blob/master/translations/es/src/adivinaElN%C3%BAmero.py
+// nombre: adivina.wren
+// autor: Camilo Castro <camilo@ninjas.cl>
+// original: https://github.com/asweigart/inventwithpython3rded/blob/master/translations/es/src/adivinaElN%C3%BAmero.py
+// ejecutar: wren adivina/adivina.wren
 
 import "random" for Random
 import "io" for Stdin
@@ -13,7 +16,10 @@ System.print("¡Hola!, ¿Cómo te llamas?")
 var nombre = Stdin.readLine()
 System.print("Bueno, %(nombre), estoy pensando en un número entre 1 y 20.")
 
-var numero = random.int(1, 20)
+// Un número aleatorio entre 1 y 20.
+// se necesita usar 21 debido a que el generador
+// no incluye el último número.
+var numero = random.int(1, 21)
 var estimacion = -1
 
 while (intentos < maxIntentos) {

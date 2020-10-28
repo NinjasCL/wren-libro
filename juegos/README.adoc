@@ -1,4 +1,8 @@
-# Juegos de Consola en Wren
+:ext-relative:
+:toc: macro
+:toclevels: 4
+
+# Juegos de Terminal en Wren
 
 Una colección de código fuente _Wren_ con juegos simples, basados en texto a modo de ejemplo.
 
@@ -9,3 +13,7 @@ Basados principalmente en los códigos diponibles en https://github.com/asweigar
 Primero se necesita el https://github.com/wren-lang/wren-cli/releases/latest[intérprete de Wren]. Además de un editor de código como https://code.visualstudio.com/[Visual Studio Code].
 
 Para mayor documentación sobre la consola y el lenguaje _Wren_ se puede visitar http://wren.io/cli
+
+toc::[]
+
+include::juegos.adoc[]
