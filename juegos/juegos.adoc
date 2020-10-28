@@ -1,3 +1,4 @@
 
 include::adivina/adivina.adoc[]
 include::dragon/dragon.adoc[]
+include::diamantes/diamantes.adoc[]

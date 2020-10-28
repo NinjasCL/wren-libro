@@ -1,0 +1,83 @@
+## Diamantes
+
+Esta es una simple aplicación creativa que muestra
+diamantes de distintos tamaños.
+
+### Ejemplo de Ejecución
+
+`./wren diamantes/diamantes.wren`
+
+```sh
+Diamantes, por Al Sweigart al@inventwithpython.com
+
+
+/\
+\/
+
+/\
+\/
+
+ /\
+/  \
+\  /
+ \/
+
+ /\
+//\\
+\\//
+ \/
+
+  /\
+ /  \
+/    \
+\    /
+ \  /
+  \/
+
+  /\
+ //\\
+///\\\
+\\\///
+ \\//
+  \/
+
+   /\
+  /  \
+ /    \
+/      \
+\      /
+ \    /
+  \  /
+   \/
+
+   /\
+  //\\
+ ///\\\
+////\\\\
+\\\\////
+ \\\///
+  \\//
+   \/
+
+    /\
+   /  \
+  /    \
+ /      \
+/        \
+\        /
+ \      /
+  \    /
+   \  /
+    \/
+
+    /\
+   //\\
+  ///\\\
+ ////\\\\
+/////\\\\\
+\\\\\/////
+ \\\\////
+  \\\///
+   \\//
+    \/
+```
