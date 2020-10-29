@@ -295,6 +295,9 @@ circulo(/* x */ 10, /* y */ 20, /* radio */ 10)
 O mejor aún utilizar variables con nombres significativos
 
 ```js
+var x = 10
+var y = 20
+var radio = 10
 circulo(x, y, radio)
 ```
 
@@ -418,10 +421,9 @@ El método `toString` es parte de la clase http://wren.io/modules/core/object.ht
 La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cual finalmente ejecutará el método `toString` para ser incluido en la cadena de caracteres. Esto incluso permite tener interpolaciones anidadas, pero eso se vuelve poco legible rápidamente.
 
 ```js
+// muestra: La respuesta es 42.
 System.print("La respuesta es %(20 * 2 + 2).")
 ```
-
-> La respuesta es 42.
 
 #### Multiplicación de Strings
 
