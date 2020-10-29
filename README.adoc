@@ -341,7 +341,7 @@ Ejemplo de EmojiCode
 
 Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.
 
-### http://wren.io/modules/core/string.html:[Cadena de caracteres (Strings)]
+### http://wren.io/modules/core/string.html[Strings: Cadena de caracteres]
 
 Las cadenas de caracteres (_String_) son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_. El caracter de comilla simple (`'`) no es significativo para _Wren_.
 
@@ -434,6 +434,19 @@ System.print("hola " * 3)
 
 > Si bien se pueden sumar (_+_) y multiplicar (_*_), no existe operaciones para resta (_-_) y division (_/_) dentro de una cadena de caracteres.
 
+#### Limitar el máximo de caracteres
+
+El _String_ al ser una _Secuencia_ puede utilizar
+sus métodos como _take()_ que permite obtener los 
+elementos dentro de una secuencia. El método _join()_
+es necesario para convertir nuevamente la secuencia
+en un _String_.
+
+```js
+// muestra: hola
+System.print("hola wren".take(4).join())
+```
+
 #### Caracteres de Escape
 
 Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir `"Hola Mundo"` incluyendo las comillas, tendríamos que escribilo de esta forma `"\"Hola Mundo\""`. Esto incluirá los caracteres de comillas dobles en la frase.
@@ -487,11 +500,4 @@ System.print("hola wren"[2..3])
 ```js
 // muestra: nerw aloh
 System.print("hola wren"[-1..0])
-```
-
-##### Poner límite máximo de caracteres
-
-```js
-// muestra: hola
-System.print("hola wren".take(4).join())
 ```
