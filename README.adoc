@@ -75,7 +75,7 @@ Si cometemos algún error _Wren CLI_ nos avisará con un bonito mensaje.
 
 image:https://user-images.githubusercontent.com/292738/77838174-c4682e00-7147-11ea-9e82-ffd2dc4dd1f9.png[Error]
 
-#### Ejecución de Archivos
+#### Ejecución de archivos
 
 Cuando necesitamos algo mucho más avanzado podemos utilizar archivos que finalicen con la extensión _*.wren_. El nombre más común es _main.wren_, aunque puedes llamarlo con cualquier nombre. Para ejecutar un archivo específico simplemente se debe utilizar `./wren <archivo.wren>`.
 
@@ -89,7 +89,7 @@ image:https://user-images.githubusercontent.com/292738/77839010-7c4d0980-714f-11
 
 Notar como solamente aparece una vez "Plop!", ya que no estamos en modalidad _REPL_.
 
-#### Códigos de Salida (Exit Code)
+#### Códigos de salida (Exit code)
 
 Cada vez que un programa termina su ejecución devuelve un código numérico para indicar si terminó exitosamente o tuvo un algún tipo de error mientras se ejecutaba.
 
@@ -167,7 +167,9 @@ Al considerar los saltos de línea significativos,
 provoca un comportamiento inusual al momento de llamar métodos.
 
 > Los números pseudo aleatorios son generados utilizando
-la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia.
+la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de
+los posibles resultados.
 
 Instrucción en una sola línea.
 
@@ -210,7 +212,7 @@ break class construct else false for foreign if import
 in is null return static super this true var while
 ```
 
-#### Caracteres Significativos
+#### Caracteres significativos
 
 - Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } , & ^ ? : ~ _`)
 - Retorno de carro (`\n`)
@@ -290,6 +292,12 @@ con algunos parámetros, puede ser útil comentarlos.
 circulo(/* x */ 10, /* y */ 20, /* radio */ 10)
 ```
 
+O mejor aún utilizar variables con nombres significativos
+
+```js
+circulo(x, y, radio)
+```
+
 ### Identificadores
 
 Similar al _Lenguaje C_, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas. Solo se permiten letras (`A - Z`, `a - z`), números (`0 - 9`) y guión bajo (`_`). No se permiten espacios o comenzar con un número.
@@ -333,9 +341,9 @@ Ejemplo de EmojiCode
 
 Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.
 
-### http://wren.io/modules/core/string.html:[Strings]
+### http://wren.io/modules/core/string.html:[Cadena de caracteres (Strings)]
 
-Las cadenas de caracteres son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_. El caracter de comilla simple (`'`) no es significativo para _Wren_.
+Las cadenas de caracteres (_String_) son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_. El caracter de comilla simple (`'`) no es significativo para _Wren_.
 
 Las strings pueden contener caracteres unicode en http://utf8everywhere.org/[UTF-8], como también caracteres no válidos para _UTF-8_. 
 
@@ -415,6 +423,16 @@ System.print("La respuesta es %(20 * 2 + 2).")
 
 > La respuesta es 42.
 
+#### Multiplicación de Strings
+
+También se pueden multiplicar para repetir la cadena de caracteres una cantidad de veces determinada.
+
+```js
+// muestra hola hola hola
+System.print("hola " * 3)
+```
+
+> Si bien se pueden sumar (_+_) y multiplicar (_*_), no existe operaciones para resta (_-_) y division (_/_) dentro de una cadena de caracteres.
 
 #### Caracteres de Escape
 
@@ -440,5 +458,40 @@ Para indicar caracteres especiales podemos utilizar `\u` (unicode para letras di
 - `System.print("\U0001F64A\U0001F680")` = 🙊🚀
 - `System.print("\x48\x69\x2e")` = Hi.
 
-#### Obteniendo Caracteres
+#### Rangos de Caracteres
 
+Un _String_ es una _Secuencia_ de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
+utilizando rangos (_Range_). El índice comieza contando
+desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
+desde el final de la cadena.
+
+##### Caracter en posición específica
+
+```js
+// muestra: h
+System.print("hola wren"[0])
+
+// muestra: n
+System.print("hola wren"[-1])
+```
+
+##### Rango de caracteres dentro de una cadena
+
+```js
+// muestra: la
+System.print("hola wren"[2..3])
+```
+
+##### Invertir una cadena de caracteres
+
+```js
+// muestra: nerw aloh
+System.print("hola wren"[-1..0])
+```
+
+##### Poner límite máximo de caracteres
+
+```js
+// muestra: hola
+System.print("hola wren".take(4).join())
+```
