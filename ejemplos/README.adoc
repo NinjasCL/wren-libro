@@ -2,9 +2,9 @@
 :toc: macro
 :toclevels: 4
 
-# Juegos de Terminal en Wren
+# Ejemplos de Terminal en Wren
 
-Una colección de código fuente _Wren_ con juegos simples, basados en texto a modo de ejemplo.
+Una colección de código fuente _Wren_ con juegos y aplicaciones simples, basados en texto a modo de ejemplo.
 
 Basados principalmente en los códigos diponibles en https://github.com/asweigart/PythonStdioGames[Python Stdio Games] y https://github.com/asweigart/inventwithpython3rded[Invent With Python].
 
@@ -16,4 +16,4 @@ Para mayor documentación sobre la consola y el lenguaje _Wren_ se puede visitar
 
 toc::[]
 
-include::juegos.adoc[]
+include::ejemplos.adoc[]
