@@ -32,7 +32,7 @@ INICIO                                  META
 
 #### Código fuente
 
-[source%linenums, js]
+[source, js, linenums]
 ----
 include::caracoles.wren[]
 ----

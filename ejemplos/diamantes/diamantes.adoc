@@ -83,7 +83,7 @@ Basado en https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexa
 
 #### Código fuente
 
-[source%linenums, js]
+[source, js, linenums]
 ----
 include::diamantes.wren[]
 ----

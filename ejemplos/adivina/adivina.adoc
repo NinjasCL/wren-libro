@@ -39,7 +39,7 @@ Intenta adivinar 3/6.
 
 #### Código fuente
 
-[source%linenums, js]
+[source, js, linenums]
 ----
 include::adivina.wren[]
 ----

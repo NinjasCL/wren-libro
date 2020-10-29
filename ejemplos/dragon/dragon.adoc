@@ -35,7 +35,7 @@ no
 
 #### Código fuente
 
-[source%linenums, js]
+[source, js, linenums]
 ----
 include::dragon.wren[]
 ----
