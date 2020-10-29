@@ -19,3 +19,6 @@ include::01-introduction.adoc[]
 include::02-basics.adoc[]
 
 include::03-strings.adoc[]
+
+include::ejemplos/ejemplos.adoc[]
+
