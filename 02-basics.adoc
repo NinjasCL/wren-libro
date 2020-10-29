@@ -218,12 +218,12 @@ Un caso especial es para los identificadores con guión bajo como `_color` (un g
 Para _Wren_ es importante que las clases comiencen
 su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.
 
-Ejemplo:
+Ejemplos
 
 ```js
 // Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
 var Numero = Num
-````
+```
 
 ```js
 // También es válido pero no es recomendable
