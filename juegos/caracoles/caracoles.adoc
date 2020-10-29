@@ -1,0 +1,31 @@
+## Carrera de Caracoles
+
+Una alucinante carrera entre 2 a 8 caracoles.
+Basado en https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py[SnailRace].
+
+
+### Ejemplo de Ejecución
+
+`$ ./wren caracoles/caracoles.wren`
+
+```
+La gran carrera de caracoles
+
+    @v <-- caracol
+
+
+¿Cuántos caracoles correrán? Min:2 Max:8
+2
+Ingresa el nombre del caracol #1:
+Ana
+Ingresa el nombre del caracol #2:
+Berto
+
+INICIO                                  META
+|                                       |
+                                     Ana
+.....................................@v
+                                       Berto
+.......................................@v
+¡Ha ganado Berto!
+```
