@@ -62,13 +62,9 @@ for (i in 1..cantidad) {
   nombres.add(nombre)
 }
 
-var cabeceras = Fn.new {
-  System.print("\n" * 40)
-  System.print("INICIO" + " " * (Constantes.meta - "INICIO".count) + "META")
-  System.print("|" + " " * (Constantes.meta - "|".count) + "|")
-}
-
-cabeceras.call()
+System.print("\n" * 40)
+System.print("INICIO" + " " * (Constantes.meta - "INICIO".count) + "META")
+System.print("|" + " " * (Constantes.meta - "|".count) + "|")
 
 var caracoles = {}
 
@@ -97,7 +93,9 @@ while (true) {
   // 0.5 segundos
   Timer.sleep(500)
 
-  cabeceras.call()
+  System.print("\n" * 40)
+  System.print("INICIO" + " " * (Constantes.meta - "INICIO".count) + "META")
+  System.print("|" + " " * (Constantes.meta - "|".count) + "|")
 
   for (nombre in nombres) {
     var espacios = caracoles[nombre]
