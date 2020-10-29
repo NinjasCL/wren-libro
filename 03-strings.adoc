@@ -1,0 +1,159 @@
+## http://wren.io/modules/core/string.html[Strings: Cadena de caracteres]
+
+Las cadenas de caracteres (_String_) son delimitadas por las comillas dobles (`"`). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el _string_. El caracter de comilla simple (`'`) no es significativo para _Wren_.
+
+Las strings pueden contener caracteres unicode en http://utf8everywhere.org/[UTF-8], como también caracteres no válidos para _UTF-8_. 
+
+Además son inmutables. El string *"porotos"* no podrá ser modificado (cambiando sus caracteres) luego de su creación.
+
+Un string puede contener los siguientes valores:
+
+- Una cadena de texto compuesto por una secuencia de puntos de código textuales (textual code point).
+- Una cadena iterable compuesta por una secuencia de puntos de código numérico (numeric code point).
+- Un arreglo simple de bytes indexeables.
+
+
+### String de una línea
+
+```js
+"Solo es necesario comillas dobles"
+```
+
+### String multi línea
+
+_Wren_ permite string multi líneas utilizando el mismo caracter de comillas dobles (`"`) de las strings de una sola línea. 
+
+```js
+"
+ Todo esto es una string multi línea
+ Wren esperará hasta que aparezca 
+ la siguiente comilla doble.
+ Los strings multi línea en Wren guardan tanto espacios como saltos de línea en su interior.
+ (no son omitidos).
+"
+```
+
+### Contando el largo del string
+
+Si utilizamos la propiedad `count` podremos obtener el largo de un string.
+
+Por ejemplo `"hola".count` devolverá `4`. Hay que tener cuidado con los caracteres unicode (emojis), ya que el largo dependerá de lo que se esté contando. _Wren_ cuenta los puntos de código (code point) unicode, por que todos los strings están bajo _UTF-8_ (similar al comportamiento de https://www.ruby-lang.org/en/[_Ruby_] y https://www.python.org/[_Python 3_]).
+
+```js
+
+System.print("a".count) // Retorna 1.
+System.print("a".bytes.count) // Retorna 1 (Parte de la tabla ASCII original).
+
+System.print("ñ".count) // Retorna 1.
+System.print("ñ".bytes.count) // Retorna 2.
+
+System.print("👹".count) // Retorna 1.
+System.print("👹".bytes.count) // Retorna 4.
+
+System.print("👨‍👩‍👧‍👦".count) // Retorna 7 al contar la unidades de código de Unicode
+System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar los bytes UTF-8
+```
+
+`System.print("👨‍👩‍👧‍👦".count)` retorna 7 por que se está contando las unidades de código de unicode, es decir, el emoji 👨‍👩‍👧‍👦 está formado por los siguientes caracteres : 👨 + caracter de unión de ancho cero + 👩 + caracter de unión de ancho cero + 👧 + caracter de unión de ancho cero + 👦.
+
+`System.print("👨‍👩‍👧‍👦".bytes.count)` retorna 25 por que está contando los bytes necesarios para almacenar estos caracteres. bytes es una secuencia de caracteres en C, lo que permite utilizar los Strings para almacenar información en binario.
+
+Hay dos formas de contar adicionales que _Wren_ no soporta. La primera es contar por unidades de código _UTF-16_ y la otra es considerar los emojis compuestos como una unidad.
+
+El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificación _UTF-16_. Mientras que debería ser de largo 1 si lo consideramos como un caracter singular (lo que percibe el usuario). Según los amigos de http://utf8everywhere.org/[UTF-8 Everywhere] contar de estas formas es poco productivo, ya que lo que importa es realmente los code units (unidades de código) _UTF-8_ que se tiene al escribir un string. Por lo que _Wren_ tiene un comportamiento adecuado. De todas formas ese tipo de conversiones y conteo podría programarse con códigos externos a _Wren_. Más detalles en el https://www.unicode.org/glossary/[Glosario Unicode].
+
+### Unión e interpolación de strings
+
+Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar las siguientes operaciones: `+` y `%()`.
+
+- `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza `"Hola" + 1` entregará un error similar a `Runtime error: Right operand must be a string.`. Para poder unirlos tendremos que utiliza el método getter `toString` del número. `"Hola" + 1.toString`, retornando `Hola1`. 
+
+El método `toString` es parte de la clase http://wren.io/modules/core/object.html:[`Object`] la cual es la padre de todos los tipos de datos en _Wren_. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.
+
+- `"Hola %(mundo)"`: Crea un string con la frase `Hola` y el contenido de la variable `mundo`.
+
+La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cual finalmente ejecutará el método `toString` para ser incluido en la cadena de caracteres. Esto incluso permite tener interpolaciones anidadas, pero eso se vuelve poco legible rápidamente.
+
+```js
+// muestra: La respuesta es 42.
+System.print("La respuesta es %(20 * 2 + 2).")
+```
+
+### Multiplicación de Strings
+
+También se pueden multiplicar para repetir la cadena de caracteres una cantidad de veces determinada.
+
+```js
+// muestra hola hola hola
+System.print("hola " * 3)
+```
+
+> Si bien se pueden sumar (_+_) y multiplicar (_*_), no existe operaciones para resta (_-_) y division (_/_) dentro de una cadena de caracteres.
+
+### Limitar el máximo de caracteres
+
+El _String_ al ser una _Secuencia_ puede utilizar
+sus métodos como _take()_ que permite obtener los 
+elementos dentro de una secuencia. El método _join()_
+es necesario para convertir nuevamente la secuencia
+en un _String_.
+
+```js
+// muestra: hola
+System.print("hola wren".take(4).join())
+```
+
+### Caracteres de Escape
+
+Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir `"Hola Mundo"` incluyendo las comillas, tendríamos que escribilo de esta forma `"\"Hola Mundo\""`. Esto incluirá los caracteres de comillas dobles en la frase.
+
+```js
+"\0" // byte NUL (Nulo) : 0.
+"\"" // Comillas dobles.
+"\\" // Barra invertida.
+"\%" // Signo porcentaje.
+"\a" // Sonido de alarma.
+"\b" // Retroceso.
+"\f" // Alimentación de formularios.
+"\n" // Salto de línea.
+"\r" // Retorno de carro.
+"\t" // Tab.
+"\v" // Tab vertical.
+```
+
+Para indicar caracteres especiales podemos utilizar `\u` (unicode para letras disponibles en los idiomas humanos), `\U` (unicode para letras especiales como emoji) y `\x` (bytes sin codificar).
+
+- `System.print("\u0041\u0b83\u00DE")` = AஃÞ
+- `System.print("\U0001F64A\U0001F680")` = 🙊🚀
+- `System.print("\x48\x69\x2e")` = Hi.
+
+### Rangos de Caracteres
+
+Un _String_ es una _Secuencia_ de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
+utilizando rangos (_Range_). El índice comieza contando
+desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
+desde el final de la cadena.
+
+#### Caracter en posición específica
+
+```js
+// muestra: h
+System.print("hola wren"[0])
+
+// muestra: n
+System.print("hola wren"[-1])
+```
+
+#### Rango de caracteres dentro de una cadena
+
+```js
+// muestra: la
+System.print("hola wren"[2..3])
+```
+
+#### Invertir una cadena de caracteres
+
+```js
+// muestra: nerw aloh
+System.print("hola wren"[-1..0])
+```

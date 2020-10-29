@@ -1,0 +1,40 @@
+= El _Wren_ libro
+Camilo A. Castro <https://github.com/clsource[@clsource]>
+:doctype: book
+:encoding: utf-8
+:numbered:
+:username: clsource
+:source: https://github.com/NinjasCL/wren-libro
+:producer: Ninjas.cl
+:copyright: CC-BY-NC-SA 4.0
+:lang: es
+:description: Un libro sobre el lenguaje de programación Wren.
+:keywords: wren, programación, lenguaje, referencia
+:imagesdir: images
+:front-cover-image: images/default-cover.png
+:epub-chapter-level: 2
+:toc: left
+:toclevels: 2
+
+////
+Organize your book chapter by chapter
+////
+include::abstract.adoc[]
+
+include::preface.adoc[]
+
+include::dedication.adoc[]
+
+include::01-introduction.adoc[]
+
+include::02-basics.adoc[]
+
+include::03-strings.adoc[]
+
+include::bibliography.adoc[]
+
+include::glossary.adoc[]
+
+include::index.adoc[]
+
+include::colophon.adoc[]

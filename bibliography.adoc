@@ -1,0 +1,9 @@
+[bibliography]
+== Bibliografía
+
+Una lista de recursos complementarios y referenciales.
+
+[bibliography]
+.Libros
+
+- [[[id]]] Autor. 'Nombre'. Editorial. ISBN 1-02-123456-1

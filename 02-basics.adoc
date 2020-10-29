@@ -1,0 +1,231 @@
+## Nociones Básicas
+
+Todo lenguaje de programación define estructuras base que 
+determinan la forma de escribir el lenguaje. El siguiente
+capítulo detalla las normas básicas con las que funciona
+_Wren_.
+
+### Saltos de línea
+
+_Wren_ utiliza los saltos de línea (`\n`), por lo que no es necesario utilizar el punto y coma (`;`) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.
+
+#### Ejemplo: Lista de elementos
+
+```js
+var animales = [
+  "perro",
+  "gato",
+  "condor",
+  "huemul"
+]
+```
+
+#### Ejemplo: Parámetros de un método
+
+```js
+ MiClase.metodo(
+       parametro1,
+       parametro2,
+       parametro3
+ )
+```
+
+#### Ejemplo: Generar un número al azar del 0 al 9
+
+Al considerar los saltos de línea significativos, 
+provoca un comportamiento inusual al momento de llamar métodos.
+
+> Los números pseudo aleatorios son generados utilizando
+la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de
+los posibles resultados.
+
+Instrucción en una sola línea.
+
+```js
+Random.new().int(10)
+```
+
+Esto no es válido en _Wren_ (Pero si es válido en la mayoría de los lenguajes de programación).
+
+```js
+Random
+.new()
+.int(10)
+```
+
+Para ser válido necesitamos poner un punto al final de la línea.
+
+```js
+Random.
+new().
+int(10)
+```
+
+Este comportamiento inusual espera ser reparado en la versión `0.4`.
+
+#### Ejemplo: *Error*
+
+La siguiente línea arroja error debido a que no tiene un salto de línea o una operación.
+
+```js
+Random.new().int(10) Random.new().int(10)
+```
+
+### Palabras Reservadas
+
+_Wren_ es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:
+
+```js
+break class construct else false for foreign if import 
+in is null return static super this true var while
+```
+
+#### Caracteres significativos
+
+- Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } , & ^ ? : ~ _`)
+- Retorno de carro (`\n`)
+
+### Comentarios
+
+Los comentarios utilizan la misma sintaxis que el https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)[`Lenguaje de Programación C`].
+
+Los símbolos son los siguientes: `/* */` (multi línea) y `//` (línea única).
+
+```js
+
+// Comentario de una sola línea
+
+/*
+Este comentario 
+tiene múltiples
+líneas
+*/
+```
+
+Se pueden anidar los comentarios. útil para comentar código que ya tenga comentarios.
+
+```js
+/*
+Este comentario 
+tiene múltiples
+líneas.
+  /* También puedes incluir comentarios, 
+  dentro de comentarios multi línea. 
+  */
+*/
+```
+
+#### Tip: Comentarios Tijera
+
+Puedes combinar los comentarios de una sola línea con los de múltiples líneas para
+comentar/descomentar rápidamente secciones de código. Se llaman comentarios tijera
+por que pueden "cortar" un código para no ser ejecutado.
+
+```js
+// /*
+   codigo()
+// */
+```
+
+Al eliminar el comentario de la primera línea, el código será comentado. De esta forma rápidamente
+puedes activar o desactivar secciones de código.
+
+```js
+/*
+   codigo()
+// */
+```
+
+Puede aún ser más simplificado de esta forma
+
+```js
+//*
+   codigo()
+// */
+```
+
+Si se elimina el primer `/` el código será comentado. Por lo que se ahorra un par de movimientos al realizar el comentario.
+
+```js
+/*
+   codigo()
+// */
+```
+#### Tip: Comentarios de parámetros
+
+En _Wren_ no es posible llamar a los parámetros por su nombre. Por lo que si utilizas una función
+con algunos parámetros, puede ser útil comentarlos.
+
+```js
+circulo(/* x */ 10, /* y */ 20, /* radio */ 10)
+```
+
+O mejor aún utilizar variables con nombres significativos
+
+```js
+var x = 10
+var y = 20
+var radio = 10
+circulo(x, y, radio)
+```
+
+### Identificadores
+
+Similar al _Lenguaje C_, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas. Solo se permiten letras (`A - Z`, `a - z`), números (`0 - 9`) y guión bajo (`_`). No se permiten espacios o comenzar con un número o guión alto (`-`).
+
+#### Ejemplo de Identificadores válidos
+
+```js
+hola 
+camelCase 
+PascalCase 
+_under_score 
+abc123 
+TODAS_MAYUSCULAS
+```
+
+#### Ejemplo de Identificadores no válidos
+
+```
+13hola 
+mi-variable
+$miVariable 
+mi variable
+ñandú
+👨miMetodo
+Mi👩clase
+```
+
+#### Unicode
+
+No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] o https://www.emojicode.org/[Emoji Code] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.
+
+Ejemplo de EmojiCode
+
+```
+🏁 🍇
+  😀 🔤Hello World!🔤❗️
+🍉
+```
+
+#### Identificadores que inician con guión bajo
+
+Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.
+
+#### Identificadores de clase
+
+Para _Wren_ es importante que las clases comiencen
+su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.
+
+Ejemplo:
+
+```js
+// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
+var Numero = Num
+````
+
+```js
+// También es válido pero no es recomendable
+class numero is Num {}
+```

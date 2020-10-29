@@ -1,0 +1,119 @@
+## Pequeña Historia de https://github.com/wren-lang/wren[_Wren]_
+
+https://github.com/wren-lang/wren[_Wren]_ es un lenguaje de programación https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos[orientado a objetos] creado por http://journal.stuffwithstuff.com/[Bob Nystrom], un ex desarrollador de videojuegos y creador de otros lenguajes de programación como https://github.com/munificent/vigil[Vigil], http://finch.stuffwithstuff.com/[Finch] y http://magpie-lang.org/[Magpie]. Ha escrito dos libros: http://gameprogrammingpatterns.com/[Game Programming Patterns] y http://craftinginterpreters.com/[Crafting Interpreters]. 
+
+El primer _commit_ de _Wren_ fue escrito el https://github.com/wren-lang/wren/tree/2f6a6889f1b4a1ba86aeb169e7398704b1ee04c0[22 de Octubre del 2013] y su versión más reciente es la _0.3_. Actualmente _Bob Nystrom_ pasó a ser colaborador y la evolución del lenguaje fue asignada a https://github.com/underscorediscovery[_discovery] (creador del https://luxeengine.com[game engine Luxe]).
+
+_Wren_ fue creado como una alternativa a _Lua_ y otros https://en.wikipedia.org/wiki/Scripting_language[lenguajes de scripting] para personas que estuvieran más familiarizadas con lenguajes orientados a objetos como _Java_, _C#_, o _C++_. Su principal foco es la simpleza.
+
+La página oficial de Wren es http://wren.io[Wren.io].
+
+### ¿Qué es un _Wren_?
+
+_Wren_ es una https://es.wikipedia.org/wiki/Troglodytidae[tipo de ave pequeña] perteneciente a la familia de los troglodítidos. En Chile tenemos al https://www.avesdechile.cl/074.htm[Chercán o Chochin Criollo].
+
+image:https://user-images.githubusercontent.com/292738/77261969-2240d580-6c71-11ea-93d0-4341e82c2f92.png[Chochin Criollo - Fotografía por Juan Tassara B.]
+
+> Fotografía por Juan Tassara B en https://www.avesdechile.cl.
+
+
+## ¿Cómo usar Wren?
+
+_Wren_ es un lenguaje interpretado, lo que significa que no requiere de compilación. Basta simplemente tener un intérprete para ejecutar los algoritmos. Hay varias alternativas.
+
+1. https://github.com/wren-lang/wren[Compilar tu propio intérprete de _Wren_]. Esta es la opción para valientes.
+
+2. https://github.com/wren-lang/wren-cli/releases[Utiliza _Wren CLI_] para ejecutar archivos _*.wren_.
+
+3. Utiliza un engine de juegos como https://domeengine.com/[_Dome_], https://tic.computer[_TIC 80_] o https://luxeengine.com/alpha/[_Luxe_] que traen _Wren_ listo para llegar y utilizar.
+
+4. Utiliza https://wren.io/try/[_Wren Try_] para probar el lenguaje en tu navegador.
+
+Una vez que tengas tu intérprete instalado puedes ejecutar por ejemplo`./wren main.wren` para ver el resultado de tu script.
+
+### https://github.com/wren-lang/wren-cli[Wren CLI]
+
+La terminal de _Wren_ llamada _Wren CLI_ (https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos[Interfaz de línea de comandos]) permite dos modos de operación. El primero es el modo https://es.wikipedia.org/wiki/REPL[_REPL_] (Bucle Lectura-Evaluación-Impresión) el cual nos permite evaluar las instrucciones una a una. El segundo modo es el intérprete que permite ejecutar scripts _Wren_.
+
+Si ejecutamos simplemente el comando `./wren` entraremos al modo _REPL_. Donde se nos mostrará un simpático pajarito y la versión de _Wren_ instalada.
+
+image:https://user-images.githubusercontent.com/292738/77837383-22444800-713f-11ea-8db4-3f404faabc10.png[Wren CLI]
+
+#### Operaciones Matemáticas
+
+Podremos ejecutar operaciones matemáticas como `5 * 5`.
+
+image:https://user-images.githubusercontent.com/292738/77837948-7ce0a280-7145-11ea-8b43-3f91f7491b35.png[5 * 5]
+
+#### System.print()
+
+O También mostrar un mensaje utilizando `System.print()`.
+
+image:https://user-images.githubusercontent.com/292738/77837982-d517a480-7145-11ea-86f4-7a24e5ecc628.png[System.print()]
+
+¿Por qué aparece la palabra `Plop!` dos veces?. Simplemente por que la primera vez es el resultado de la operación `System.print()` (mostrar un valor), mientras que la segunda vez está mostrando el valor retornado por `System.print()`, el cual es el mismo texto.
+
+#### Errores
+
+Si cometemos algún error _Wren CLI_ nos avisará con un bonito mensaje.
+
+image:https://user-images.githubusercontent.com/292738/77838174-c4682e00-7147-11ea-9e82-ffd2dc4dd1f9.png[Error]
+
+#### Ejecución de archivos
+
+Cuando necesitamos algo mucho más avanzado podemos utilizar archivos que finalicen con la extensión _*.wren_. El nombre más común es _main.wren_, aunque puedes llamarlo con cualquier nombre. Para ejecutar un archivo específico simplemente se debe utilizar `./wren <archivo.wren>`.
+
+1. Creamos un nuevo archivo llamado `main.wren`.
+2. Escribimos nuestro código (En este caso `System.print("Plop!")`) y guardamos.
+3. Finalmente Ejecutamos `./wren main.wren`.
+
+Deberíamos ver un resultado similar a este:
+
+image:https://user-images.githubusercontent.com/292738/77839010-7c4d0980-714f-11ea-90df-4330a821d207.png[Plop!]
+
+Notar como solamente aparece una vez "Plop!", ya que no estamos en modalidad _REPL_.
+
+#### Códigos de salida (Exit code)
+
+Cada vez que un programa termina su ejecución devuelve un código numérico para indicar si terminó exitosamente o tuvo un algún tipo de error mientras se ejecutaba.
+
+La convención tradicional es considerar el código cero (0) como éxito y cualquier otro número como error. No hay un estándar definido para la asignación de números de error. _Wren_ se basa levemente en los códigos utilizados por el sistema operativo https://github.com/openbsd/src/blob/master/include/sysexits.h[_BSD_].
+
+Actualmente no puedes elegir el código de error. _Wren_ automáticamente asignará el código que mejor se ajuste a la situación. Por ejemplo si utilizar la instrucción para terminar la ejecución del programa `Fiber.abort("Mensaje de Error")` el código asignado sera de 70 (error interno del software).
+
+La siguiente es una tabla con los códigos de BSD más algunos otros adicionales.
+
+
+```
+0 - Fin del programa exitoso
+1 - Error desconocido
+2 - (grep) Uso incorrecto del comando | (bash) Error de entrada/salida
+64 - Uso incorrecto del comando
+65 - Error de formato de datos
+66 - Sin acceso a la entrada
+67 - Dirección desconocida
+68 - Nombre de dominio (host name) desconocido
+69 - Servicio no disponible
+70 - Error interno del software
+71 - Error de sistema
+72 - Archivo crítico del sistema no encontrado
+73 - Imposible de crear archivo de salida
+74 - Error de entrada/salida
+75 - Falla temporal
+76 - Error remoto en protocolo
+77 - Permiso denegado
+78 - Error de configuración
+126 - Comando encontrado, pero no es ejecutable
+127 - Comando no encontrado
+128 - Código de salida no válido
+128   Error fatal terminado por kill -9 
+140 - Comando terminado por Ctrl-C
+141 - Comando terminado por Ctrl-D
+255 - Código de salida fuera de rango
+```
+
+Puedes verificar el código numérico de salida utilizando el siguiente comando (bash)
+
+`./wren main.wren | echo "Exit code ${PIPESTATUS[0]}"`
+
+image:https://user-images.githubusercontent.com/292738/77839414-d9968a00-7152-11ea-9bd3-b42ff06a4d1a.png[Exit Code 0]

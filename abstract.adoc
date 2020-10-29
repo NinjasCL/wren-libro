@@ -1,0 +1,2 @@
+[abstract]
+En este pequeño documento se detallarán lo básico del lenguaje de programación http://wren.io[Wren].
