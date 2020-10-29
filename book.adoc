@@ -3,6 +3,7 @@ Camilo A. Castro <https://github.com/clsource[@clsource]>
 :doctype: book
 :encoding: utf-8
 :numbered:
+:source-linenums-option:
 :username: clsource
 :source: https://github.com/NinjasCL/wren-libro
 :producer: Ninjas.cl
@@ -30,6 +31,8 @@ include::01-introduction.adoc[]
 include::02-basics.adoc[]
 
 include::03-strings.adoc[]
+
+include::examples.adoc[]
 
 include::bibliography.adoc[]
 

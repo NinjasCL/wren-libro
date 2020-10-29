@@ -2,9 +2,7 @@
 
 Basado en http://inventwithpython.com/es/6.html[Reino de Dragones].
 
-En este capítulo, escribiremos nuestras propias funciones para que sean llamadas por programas. Una función es como un mini-programa dentro de nuestro programa.
-
-El juego que crearemos para presentar las funciones se llama _"Reino de Dragones"_, y permite al jugador elegir entre dos cuevas, en una de las cuales encontrará un tesoro y en la otra su perdición.
+El juego se llama _"Reino de Dragones"_, y permite al jugador elegir entre dos cuevas, en una de las cuales encontrará un tesoro y en la otra su perdición.
 
 ### ¿Cómo Jugar a Reino de Dragones?
 
@@ -34,3 +32,10 @@ Es oscura y espeluznante...
 no
 
 ```
+
+#### Código fuente
+
+[source%linenums, js]
+----
+include::dragon.wren[]
+----

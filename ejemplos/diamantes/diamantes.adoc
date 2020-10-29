@@ -1,10 +1,10 @@
-## Diamantes
+### Diamantes
 
 Esta es una simple aplicación creativa que muestra
 diamantes de distintos tamaños.
 Basado en https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamonds.py[Diamonds].
 
-### Ejemplo de Ejecución
+#### Ejemplo de Ejecución
 
 `./wren diamantes/diamantes.wren`
 
@@ -80,3 +80,10 @@ Basado en https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexa
    \\//
     \/
 ```
+
+#### Código fuente
+
+[source%linenums, js]
+----
+include::diamantes.wren[]
+----
