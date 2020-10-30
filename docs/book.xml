@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc maxdepth="2"?>
+<?asciidoc-numbered?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
+<info>
+<title>El <emphasis>Wren</emphasis> libro</title>
+<date>2020-10-30</date>
+<copyright>
+<holder>CC-BY-NC-SA 4.0</holder>
+</copyright>
+<author>
+<personname>
+<firstname>Camilo</firstname>
+<othername>A.</othername>
+<surname>Castro</surname>
+</personname>
+<email>https://github.com/clsource[@clsource]</email>
+</author>
+<authorinitials>CAC</authorinitials>
+<cover role="front">
+<mediaobject>
+<imageobject>
+<imagedata fileref="images/default-cover.png"/>
+</imageobject>
+</mediaobject>
+</cover>
+</info>
+<preface>
+<title></title>
+<abstract>
+<simpara>En este pequeño documento se detallarán lo básico del lenguaje de programación <link xl:href="http://wren.io">Wren</link>.</simpara>
+</abstract>
+</preface>
+<preface xml:id="_prefacio">
+<title>Prefacio</title>
+
+</preface>
+<dedication xml:id="_dedicatoria">
+<title>Dedicatoria</title>
+
+</dedication>
+<chapter xml:id="_pequeña_historia_de_wren">
+<title>Pequeña Historia de <link xl:href="https://github.com/wren-lang/wren"><emphasis>Wren</link></emphasis></title>
+<simpara><link xl:href="https://github.com/wren-lang/wren"><emphasis>Wren</link></emphasis> es un lenguaje de programación <link xl:href="https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos">orientado a objetos</link> creado por <link xl:href="http://journal.stuffwithstuff.com/">Bob Nystrom</link>, un ex desarrollador de videojuegos y creador de otros lenguajes de programación como <link xl:href="https://github.com/munificent/vigil">Vigil</link>, <link xl:href="http://finch.stuffwithstuff.com/">Finch</link> y <link xl:href="http://magpie-lang.org/">Magpie</link>. Ha escrito dos libros: <link xl:href="http://gameprogrammingpatterns.com/">Game Programming Patterns</link> y <link xl:href="http://craftinginterpreters.com/">Crafting Interpreters</link>.</simpara>
+<simpara>El primer <emphasis>commit</emphasis> de <emphasis>Wren</emphasis> fue escrito el <link xl:href="https://github.com/wren-lang/wren/tree/2f6a6889f1b4a1ba86aeb169e7398704b1ee04c0">22 de Octubre del 2013</link> y su versión más reciente es la <emphasis>0.3</emphasis>. Actualmente <emphasis>Bob Nystrom</emphasis> pasó a ser colaborador y la evolución del lenguaje fue asignada a <link xl:href="https://github.com/underscorediscovery">_discovery</link> (creador del <link xl:href="https://luxeengine.com">game engine Luxe</link>).</simpara>
+<simpara><emphasis>Wren</emphasis> fue creado como una alternativa a <emphasis>Lua</emphasis> y otros <link xl:href="https://en.wikipedia.org/wiki/Scripting_language">lenguajes de scripting</link> para personas que estuvieran más familiarizadas con lenguajes orientados a objetos como <emphasis>Java</emphasis>, <emphasis>C#</emphasis>, o <emphasis>C++</emphasis>. Su principal foco es la simpleza.</simpara>
+<simpara>La página oficial de Wren es <link xl:href="http://wren.io">Wren.io</link>.</simpara>
+<section xml:id="_qué_es_un_wren">
+<title>¿Qué es un <emphasis>Wren</emphasis>?</title>
+<simpara><emphasis>Wren</emphasis> es una <link xl:href="https://es.wikipedia.org/wiki/Troglodytidae">tipo de ave pequeña</link> perteneciente a la familia de los troglodítidos. En Chile tenemos al <link xl:href="https://www.avesdechile.cl/074.htm">Chercán o Chochin Criollo</link>.</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://user-images.githubusercontent.com/292738/77261969-2240d580-6c71-11ea-93d0-4341e82c2f92.png"/>
+</imageobject>
+<textobject><phrase>Chochin Criollo - Fotografía por Juan Tassara B.</phrase></textobject>
+</inlinemediaobject></simpara>
+<literallayout class="monospaced">Fotografía por Juan Tassara B en https://www.avesdechile.cl.</literallayout>
+</section>
+</chapter>
+<chapter xml:id="_cómo_usar_wren">
+<title>¿Cómo usar Wren?</title>
+<simpara><emphasis>Wren</emphasis> es un lenguaje interpretado, lo que significa que no requiere de compilación. Basta simplemente tener un intérprete para ejecutar los algoritmos. Hay varias alternativas.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara><link xl:href="https://github.com/wren-lang/wren">Compilar tu propio intérprete de <emphasis>Wren</emphasis></link>. Esta es la opción para valientes.</simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://github.com/wren-lang/wren-cli/releases">Utiliza <emphasis>Wren CLI</emphasis></link> para ejecutar archivos <emphasis>*.wren</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara>Utiliza un engine de juegos como <link xl:href="https://domeengine.com/"><emphasis>Dome</emphasis></link>, <link xl:href="https://tic.computer"><emphasis>TIC 80</emphasis></link> o <link xl:href="https://luxeengine.com/alpha/"><emphasis>Luxe</emphasis></link> que traen <emphasis>Wren</emphasis> listo para llegar y utilizar.</simpara>
+</listitem>
+<listitem>
+<simpara>Utiliza <link xl:href="https://wren.io/try/"><emphasis>Wren Try</emphasis></link> para probar el lenguaje en tu navegador.</simpara>
+</listitem>
+</orderedlist>
+<simpara>Una vez que tengas tu intérprete instalado puedes ejecutar por ejemplo`./wren main.wren` para ver el resultado de tu script.</simpara>
+<section xml:id="_wren_cli">
+<title><link xl:href="https://github.com/wren-lang/wren-cli">Wren CLI</link></title>
+<simpara>La terminal de <emphasis>Wren</emphasis> llamada <emphasis>Wren CLI</emphasis> (<link xl:href="https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos">Interfaz de línea de comandos</link>) permite dos modos de operación. El primero es el modo <link xl:href="https://es.wikipedia.org/wiki/REPL"><emphasis>REPL</emphasis></link> (Bucle Lectura-Evaluación-Impresión) el cual nos permite evaluar las instrucciones una a una. El segundo modo es el intérprete que permite ejecutar scripts <emphasis>Wren</emphasis>.</simpara>
+<simpara>Si ejecutamos simplemente el comando <literal>./wren</literal> entraremos al modo <emphasis>REPL</emphasis>. Donde se nos mostrará un simpático pajarito y la versión de <emphasis>Wren</emphasis> instalada.</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://user-images.githubusercontent.com/292738/77837383-22444800-713f-11ea-8db4-3f404faabc10.png"/>
+</imageobject>
+<textobject><phrase>Wren CLI</phrase></textobject>
+</inlinemediaobject></simpara>
+<section xml:id="_operaciones_matemáticas">
+<title>Operaciones Matemáticas</title>
+<simpara>Podremos ejecutar operaciones matemáticas como <literal>5 * 5</literal>.</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://user-images.githubusercontent.com/292738/77837948-7ce0a280-7145-11ea-8b43-3f91f7491b35.png"/>
+</imageobject>
+<textobject><phrase>5 * 5</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section xml:id="_system_print">
+<title>System.print()</title>
+<simpara>O También mostrar un mensaje utilizando <literal>System.print()</literal>.</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://user-images.githubusercontent.com/292738/77837982-d517a480-7145-11ea-86f4-7a24e5ecc628.png"/>
+</imageobject>
+<textobject><phrase>System.print()</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>¿Por qué aparece la palabra <literal>Plop!</literal> dos veces?. Simplemente por que la primera vez es el resultado de la operación <literal>System.print()</literal> (mostrar un valor), mientras que la segunda vez está mostrando el valor retornado por <literal>System.print()</literal>, el cual es el mismo texto.</simpara>
+</section>
+<section xml:id="_errores">
+<title>Errores</title>
+<simpara>Si cometemos algún error <emphasis>Wren CLI</emphasis> nos avisará con un bonito mensaje.</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://user-images.githubusercontent.com/292738/77838174-c4682e00-7147-11ea-9e82-ffd2dc4dd1f9.png"/>
+</imageobject>
+<textobject><phrase>Error</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section xml:id="_ejecución_de_archivos">
+<title>Ejecución de archivos</title>
+<simpara>Cuando necesitamos algo mucho más avanzado podemos utilizar archivos que finalicen con la extensión <emphasis>*.wren</emphasis>. El nombre más común es <emphasis>main.wren</emphasis>, aunque puedes llamarlo con cualquier nombre. Para ejecutar un archivo específico simplemente se debe utilizar <literal>./wren &lt;archivo.wren&gt;</literal>.</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Creamos un nuevo archivo llamado <literal>main.wren</literal>.</simpara>
+</listitem>
+<listitem>
+<simpara>Escribimos nuestro código (En este caso <literal>System.print("Plop!")</literal>) y guardamos.</simpara>
+</listitem>
+<listitem>
+<simpara>Finalmente Ejecutamos <literal>./wren main.wren</literal>.</simpara>
+</listitem>
+</orderedlist>
+<simpara>Deberíamos ver un resultado similar a este:</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://user-images.githubusercontent.com/292738/77839010-7c4d0980-714f-11ea-90df-4330a821d207.png"/>
+</imageobject>
+<textobject><phrase>Plop!</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>Notar como solamente aparece una vez "Plop!", ya que no estamos en modalidad <emphasis>REPL</emphasis>.</simpara>
+</section>
+<section xml:id="_códigos_de_salida_exit_code">
+<title>Códigos de salida (Exit code)</title>
+<simpara>Cada vez que un programa termina su ejecución devuelve un código numérico para indicar si terminó exitosamente o tuvo un algún tipo de error mientras se ejecutaba.</simpara>
+<simpara>La convención tradicional es considerar el código cero (0) como éxito y cualquier otro número como error. No hay un estándar definido para la asignación de números de error. <emphasis>Wren</emphasis> se basa levemente en los códigos utilizados por el sistema operativo <link xl:href="https://github.com/openbsd/src/blob/master/include/sysexits.h"><emphasis>BSD</emphasis></link>.</simpara>
+<simpara>Actualmente no puedes elegir el código de error. <emphasis>Wren</emphasis> automáticamente asignará el código que mejor se ajuste a la situación. Por ejemplo si utilizar la instrucción para terminar la ejecución del programa <literal>Fiber.abort("Mensaje de Error")</literal> el código asignado sera de 70 (error interno del software).</simpara>
+<simpara>La siguiente es una tabla con los códigos de BSD más algunos otros adicionales.</simpara>
+<screen linenumbering="numbered">0 - Fin del programa exitoso
+1 - Error desconocido
+2 - (grep) Uso incorrecto del comando | (bash) Error de entrada/salida
+64 - Uso incorrecto del comando
+65 - Error de formato de datos
+66 - Sin acceso a la entrada
+67 - Dirección desconocida
+68 - Nombre de dominio (host name) desconocido
+69 - Servicio no disponible
+70 - Error interno del software
+71 - Error de sistema
+72 - Archivo crítico del sistema no encontrado
+73 - Imposible de crear archivo de salida
+74 - Error de entrada/salida
+75 - Falla temporal
+76 - Error remoto en protocolo
+77 - Permiso denegado
+78 - Error de configuración
+126 - Comando encontrado, pero no es ejecutable
+127 - Comando no encontrado
+128 - Código de salida no válido
+128   Error fatal terminado por kill -9
+140 - Comando terminado por Ctrl-C
+141 - Comando terminado por Ctrl-D
+255 - Código de salida fuera de rango</screen>
+<simpara>Puedes verificar el código numérico de salida utilizando el siguiente comando (bash)</simpara>
+<simpara><literal>./wren main.wren | echo "Exit code ${PIPESTATUS[0]}"</literal></simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://user-images.githubusercontent.com/292738/77839414-d9968a00-7152-11ea-9bd3-b42ff06a4d1a.png"/>
+</imageobject>
+<textobject><phrase>Exit Code 0</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+</section>
+</chapter>
+<chapter xml:id="_nociones_básicas">
+<title>Nociones Básicas</title>
+<simpara>Todo lenguaje de programación define estructuras base que
+determinan la forma de escribir el lenguaje. El siguiente
+capítulo detalla las normas básicas con las que funciona
+<emphasis>Wren</emphasis>.</simpara>
+<section xml:id="_saltos_de_línea">
+<title>Saltos de línea</title>
+<simpara><emphasis>Wren</emphasis> utiliza los saltos de línea (<literal>\n</literal>), por lo que no es necesario utilizar el punto y coma (<literal>;</literal>) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.</simpara>
+<section xml:id="_ejemplo_lista_de_elementos">
+<title>Ejemplo: Lista de elementos</title>
+<programlisting language="js" linenumbering="numbered">var animales = [
+  "perro",
+  "gato",
+  "condor",
+  "huemul"
+]</programlisting>
+</section>
+<section xml:id="_ejemplo_parámetros_de_un_método">
+<title>Ejemplo: Parámetros de un método</title>
+<programlisting language="js" linenumbering="numbered"> MiClase.metodo(
+       parametro1,
+       parametro2,
+       parametro3
+ )</programlisting>
+</section>
+<section xml:id="_ejemplo_generar_un_número_al_azar_del_0_al_9">
+<title>Ejemplo: Generar un número al azar del 0 al 9</title>
+<simpara>Al considerar los saltos de línea significativos,
+provoca un comportamiento inusual al momento de llamar métodos.</simpara>
+<blockquote>
+<simpara>Los números pseudo aleatorios son generados utilizando
+la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de
+los posibles resultados.</simpara>
+</blockquote>
+<simpara>Instrucción en una sola línea.</simpara>
+<programlisting language="js" linenumbering="numbered">Random.new().int(10)</programlisting>
+<simpara>Esto no es válido en <emphasis>Wren</emphasis> (Pero si es válido en la mayoría de los lenguajes de programación).</simpara>
+<programlisting language="js" linenumbering="numbered">Random
+.new()
+.int(10)</programlisting>
+<simpara>Para ser válido necesitamos poner un punto al final de la línea.</simpara>
+<programlisting language="js" linenumbering="numbered">Random.
+new().
+int(10)</programlisting>
+<simpara>Este comportamiento inusual espera ser reparado en la versión <literal>0.4</literal>.</simpara>
+</section>
+<section xml:id="_ejemplo_error">
+<title>Ejemplo: <emphasis role="strong">Error</emphasis></title>
+<simpara>La siguiente línea arroja error debido a que no tiene un salto de línea o una operación.</simpara>
+<programlisting language="js" linenumbering="numbered">Random.new().int(10) Random.new().int(10)</programlisting>
+</section>
+</section>
+<section xml:id="_palabras_reservadas">
+<title>Palabras Reservadas</title>
+<simpara><emphasis>Wren</emphasis> es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:</simpara>
+<programlisting language="js" linenumbering="numbered">break class construct else false for foreign if import
+in is null return static super this true var while</programlisting>
+<section xml:id="_caracteres_significativos">
+<title>Caracteres significativos</title>
+<itemizedlist>
+<listitem>
+<simpara>Caracteres comunes (<literal>+ - * / % &lt; &gt; = ! ( ) [ ] | . " { } , &amp; ^ ? : ~ _</literal>)</simpara>
+</listitem>
+<listitem>
+<simpara>Retorno de carro (<literal>\n</literal>)</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section xml:id="_comentarios">
+<title>Comentarios</title>
+<simpara>Los comentarios utilizan la misma sintaxis que el <link xl:href="https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)"><literal>Lenguaje de Programación C</literal></link>.</simpara>
+<simpara>Los símbolos son los siguientes: <literal>/* */</literal> (multi línea) y <literal>//</literal> (línea única).</simpara>
+<programlisting language="js" linenumbering="numbered">// Comentario de una sola línea
+
+/*
+Este comentario
+tiene múltiples
+líneas
+*/</programlisting>
+<simpara>Se pueden anidar los comentarios. útil para comentar código que ya tenga comentarios.</simpara>
+<programlisting language="js" linenumbering="numbered">/*
+Este comentario
+tiene múltiples
+líneas.
+  /* También puedes incluir comentarios,
+  dentro de comentarios multi línea.
+  */
+*/</programlisting>
+<section xml:id="_tip_comentarios_tijera">
+<title>Tip: Comentarios Tijera</title>
+<simpara>Puedes combinar los comentarios de una sola línea con los de múltiples líneas para
+comentar/descomentar rápidamente secciones de código. Se llaman comentarios tijera
+por que pueden "cortar" un código para no ser ejecutado.</simpara>
+<programlisting language="js" linenumbering="numbered">// /*
+   codigo()
+// */</programlisting>
+<simpara>Al eliminar el comentario de la primera línea, el código será comentado. De esta forma rápidamente
+puedes activar o desactivar secciones de código.</simpara>
+<programlisting language="js" linenumbering="numbered">/*
+   codigo()
+// */</programlisting>
+<simpara>Puede aún ser más simplificado de esta forma</simpara>
+<programlisting language="js" linenumbering="numbered">//*
+   codigo()
+// */</programlisting>
+<simpara>Si se elimina el primer <literal>/</literal> el código será comentado. Por lo que se ahorra un par de movimientos al realizar el comentario.</simpara>
+<programlisting language="js" linenumbering="numbered">/*
+   codigo()
+// */</programlisting>
+</section>
+<section xml:id="_tip_comentarios_de_parámetros">
+<title>Tip: Comentarios de parámetros</title>
+<simpara>En <emphasis>Wren</emphasis> no es posible llamar a los parámetros por su nombre. Por lo que si utilizas una función
+con algunos parámetros, puede ser útil comentarlos.</simpara>
+<programlisting language="js" linenumbering="numbered">circulo(/* x */ 10, /* y */ 20, /* radio */ 10)</programlisting>
+<simpara>O mejor aún utilizar variables con nombres significativos</simpara>
+<programlisting language="js" linenumbering="numbered">var x = 10
+var y = 20
+var radio = 10
+circulo(x, y, radio)</programlisting>
+</section>
+</section>
+<section xml:id="_identificadores">
+<title>Identificadores</title>
+<simpara>Similar al <emphasis>Lenguaje C</emphasis>, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la <link xl:href="http://www.asciitable.com/">lista <literal>ascii</literal></link> y comenzar con un caracter alfabético o guión bajo. Los identificadores en <emphasis>Wren</emphasis> diferencian entre mayúsculas y minúsculas. Solo se permiten letras (<literal>A - Z</literal>, <literal>a - z</literal>), números (<literal>0 - 9</literal>) y guión bajo (<literal>_</literal>). No se permiten espacios o comenzar con un número o guión alto (<literal>-</literal>).</simpara>
+<section xml:id="_ejemplo_de_identificadores_válidos">
+<title>Ejemplo de Identificadores válidos</title>
+<programlisting language="js" linenumbering="numbered">hola
+camelCase
+PascalCase
+_under_score
+abc123
+TODAS_MAYUSCULAS</programlisting>
+</section>
+<section xml:id="_ejemplo_de_identificadores_no_válidos">
+<title>Ejemplo de Identificadores no válidos</title>
+<screen linenumbering="numbered">13hola
+mi-variable
+$miVariable
+mi variable
+ñandú
+👨miMetodo
+Mi👩clase</screen>
+</section>
+<section xml:id="_unicode">
+<title>Unicode</title>
+<simpara>No están permitidos caracteres <link xl:href="https://es.wikipedia.org/wiki/UTF-8">UTF-8</link> como la <literal>Ñ</literal> o los emojis en los identificadores. Sin embargo las <literal>Strings</literal> las soportan en su contenido sin problemas. Hay lenguajes como <link xl:href="https://swift.org/"><emphasis>Swift</emphasis></link> o <link xl:href="https://www.emojicode.org/">Emoji Code</link> que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.</simpara>
+<simpara>Ejemplo de EmojiCode</simpara>
+<screen linenumbering="numbered">🏁 🍇
+  😀 🔤Hello World!🔤❗️
+🍉</screen>
+</section>
+<section xml:id="_identificadores_que_inician_con_guión_bajo">
+<title>Identificadores que inician con guión bajo</title>
+<simpara>Un caso especial es para los identificadores con guión bajo como <literal>_color</literal> (un guión bajo al principio) y <literal>__sabor</literal> (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.</simpara>
+</section>
+<section xml:id="_identificadores_de_clase">
+<title>Identificadores de clase</title>
+<simpara>Para <emphasis>Wren</emphasis> es importante que las clases comiencen
+su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.</simpara>
+<simpara>Ejemplos</simpara>
+<programlisting language="js" linenumbering="numbered">// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
+var Numero = Num</programlisting>
+<programlisting language="js" linenumbering="numbered">// También es válido pero no es recomendable
+class numero is Num {}</programlisting>
+</section>
+</section>
+</chapter>
+<chapter xml:id="_strings_cadena_de_caracteres">
+<title><link xl:href="http://wren.io/modules/core/string.html">Strings: Cadena de caracteres</link></title>
+<simpara>Las cadenas de caracteres (<emphasis>String</emphasis>) son delimitadas por las comillas dobles (<literal>"</literal>). Pueden ser de una sola línea o multi línea. En el caso de ser multi línea, estas conservarán todos los caracteres de espacio y salto de línea contenidos en el <emphasis>string</emphasis>. El caracter de comilla simple (<literal>'</literal>) no es significativo para <emphasis>Wren</emphasis>.</simpara>
+<simpara>Las strings pueden contener caracteres unicode en <link xl:href="http://utf8everywhere.org/">UTF-8</link>, como también caracteres no válidos para <emphasis>UTF-8</emphasis>.</simpara>
+<simpara>Además son inmutables. El string <emphasis role="strong">"porotos"</emphasis> no podrá ser modificado (cambiando sus caracteres) luego de su creación.</simpara>
+<simpara>Un string puede contener los siguientes valores:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Una cadena de texto compuesto por una secuencia de puntos de código textuales (textual code point).</simpara>
+</listitem>
+<listitem>
+<simpara>Una cadena iterable compuesta por una secuencia de puntos de código numérico (numeric code point).</simpara>
+</listitem>
+<listitem>
+<simpara>Un arreglo simple de bytes indexeables.</simpara>
+</listitem>
+</itemizedlist>
+<section xml:id="_string_de_una_línea">
+<title>String de una línea</title>
+<programlisting language="js" linenumbering="numbered">"Solo es necesario comillas dobles"</programlisting>
+</section>
+<section xml:id="_string_multi_línea">
+<title>String multi línea</title>
+<simpara><emphasis>Wren</emphasis> permite string multi líneas utilizando el mismo caracter de comillas dobles (<literal>"</literal>) de las strings de una sola línea.</simpara>
+<programlisting language="js" linenumbering="numbered">"
+ Todo esto es una string multi línea
+ Wren esperará hasta que aparezca
+ la siguiente comilla doble.
+ Los strings multi línea en Wren guardan tanto espacios como saltos de línea en su interior.
+ (no son omitidos).
+"</programlisting>
+</section>
+<section xml:id="_contando_el_largo_del_string">
+<title>Contando el largo del string</title>
+<simpara>Si utilizamos la propiedad <literal>count</literal> podremos obtener el largo de un string.</simpara>
+<simpara>Por ejemplo <literal>"hola".count</literal> devolverá <literal>4</literal>. Hay que tener cuidado con los caracteres unicode (emojis), ya que el largo dependerá de lo que se esté contando. <emphasis>Wren</emphasis> cuenta los puntos de código (code point) unicode, por que todos los strings están bajo <emphasis>UTF-8</emphasis> (similar al comportamiento de <link xl:href="https://www.ruby-lang.org/en/"><emphasis>Ruby</emphasis></link> y <link xl:href="https://www.python.org/"><emphasis>Python 3</emphasis></link>).</simpara>
+<programlisting language="js" linenumbering="numbered">System.print("a".count) // Retorna 1.
+System.print("a".bytes.count) // Retorna 1 (Parte de la tabla ASCII original).
+
+System.print("ñ".count) // Retorna 1.
+System.print("ñ".bytes.count) // Retorna 2.
+
+System.print("👹".count) // Retorna 1.
+System.print("👹".bytes.count) // Retorna 4.
+
+System.print("👨‍👩‍👧‍👦".count) // Retorna 7 al contar la unidades de código de Unicode
+System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar los bytes UTF-8</programlisting>
+<simpara><literal>System.print("👨‍👩‍👧‍👦".count)</literal> retorna 7 por que se está contando las unidades de código de unicode, es decir, el emoji 👨‍👩‍👧‍👦 está formado por los siguientes caracteres : 👨 + caracter de unión de ancho cero + 👩 + caracter de unión de ancho cero + 👧 + caracter de unión de ancho cero + 👦.</simpara>
+<simpara><literal>System.print("👨‍👩‍👧‍👦".bytes.count)</literal> retorna 25 por que está contando los bytes necesarios para almacenar estos caracteres. bytes es una secuencia de caracteres en C, lo que permite utilizar los Strings para almacenar información en binario.</simpara>
+<simpara>Hay dos formas de contar adicionales que <emphasis>Wren</emphasis> no soporta. La primera es contar por unidades de código <emphasis>UTF-16</emphasis> y la otra es considerar los emojis compuestos como una unidad.</simpara>
+<simpara>El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificación <emphasis>UTF-16</emphasis>. Mientras que debería ser de largo 1 si lo consideramos como un caracter singular (lo que percibe el usuario). Según los amigos de <link xl:href="http://utf8everywhere.org/">UTF-8 Everywhere</link> contar de estas formas es poco productivo, ya que lo que importa es realmente los code units (unidades de código) <emphasis>UTF-8</emphasis> que se tiene al escribir un string. Por lo que <emphasis>Wren</emphasis> tiene un comportamiento adecuado. De todas formas ese tipo de conversiones y conteo podría programarse con códigos externos a <emphasis>Wren</emphasis>. Más detalles en el <link xl:href="https://www.unicode.org/glossary/">Glosario Unicode</link>.</simpara>
+</section>
+<section xml:id="_unión_e_interpolación_de_strings">
+<title>Unión e interpolación de strings</title>
+<simpara>Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar las siguientes operaciones: <literal>+</literal> y <literal>%()</literal>.</simpara>
+<itemizedlist>
+<listitem>
+<simpara><literal>"Hola" + "Mundo"</literal>: Crea un nuevo string con la unión de <literal>Hola</literal> y <literal>Mundo</literal>. Entregará <literal>HolaMundo</literal>. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza <literal>"Hola" + 1</literal> entregará un error similar a <literal>Runtime error: Right operand must be a string.</literal>. Para poder unirlos tendremos que utiliza el método getter <literal>toString</literal> del número. <literal>"Hola" + 1.toString</literal>, retornando <literal>Hola1</literal>.</simpara>
+</listitem>
+</itemizedlist>
+<simpara>El método <literal>toString</literal> es parte de la clase <link xl:href="http://wren.io/modules/core/object.html:"><literal>Object</literal></link> la cual es la padre de todos los tipos de datos en <emphasis>Wren</emphasis>. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.</simpara>
+<itemizedlist>
+<listitem>
+<simpara><literal>"Hola %(mundo)"</literal>: Crea un string con la frase <literal>Hola</literal> y el contenido de la variable <literal>mundo</literal>.</simpara>
+</listitem>
+</itemizedlist>
+<simpara>La operación <literal>%()</literal> permite incluir cualquier instrucción <emphasis>Wren</emphasis> válida, la cual finalmente ejecutará el método <literal>toString</literal> para ser incluido en la cadena de caracteres. Esto incluso permite tener interpolaciones anidadas, pero eso se vuelve poco legible rápidamente.</simpara>
+<programlisting language="js" linenumbering="numbered">// muestra: La respuesta es 42.
+System.print("La respuesta es %(20 * 2 + 2).")</programlisting>
+</section>
+<section xml:id="_multiplicación_de_strings">
+<title>Multiplicación de Strings</title>
+<simpara>También se pueden multiplicar para repetir la cadena de caracteres una cantidad de veces determinada.</simpara>
+<programlisting language="js" linenumbering="numbered">// muestra hola hola hola
+System.print("hola " * 3)</programlisting>
+<literallayout class="monospaced">Si bien se pueden sumar (_+_) y multiplicar (_*_), no existe operaciones para resta (_-_) y division (_/_) dentro de una cadena de caracteres.</literallayout>
+</section>
+<section xml:id="_limitar_el_máximo_de_caracteres">
+<title>Limitar el máximo de caracteres</title>
+<simpara>El <emphasis>String</emphasis> al ser una <emphasis>Secuencia</emphasis> puede utilizar
+sus métodos como <emphasis>take()</emphasis> que permite obtener los
+elementos dentro de una secuencia. El método <emphasis>join()</emphasis>
+es necesario para convertir nuevamente la secuencia
+en un <emphasis>String</emphasis>.</simpara>
+<programlisting language="js" linenumbering="numbered">// muestra: hola
+System.print("hola wren".take(4).join())</programlisting>
+</section>
+<section xml:id="_caracteres_de_escape">
+<title>Caracteres de Escape</title>
+<simpara>Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir <literal>"Hola Mundo"</literal> incluyendo las comillas, tendríamos que escribilo de esta forma <literal>"\"Hola Mundo\""</literal>. Esto incluirá los caracteres de comillas dobles en la frase.</simpara>
+<programlisting language="js" linenumbering="numbered">"\0" // byte NUL (Nulo) : 0.
+"\"" // Comillas dobles.
+"\\" // Barra invertida.
+"\%" // Signo porcentaje.
+"\a" // Sonido de alarma.
+"\b" // Retroceso.
+"\f" // Alimentación de formularios.
+"\n" // Salto de línea.
+"\r" // Retorno de carro.
+"\t" // Tab.
+"\v" // Tab vertical.</programlisting>
+<simpara>Para indicar caracteres especiales podemos utilizar <literal>\u</literal> (unicode para letras disponibles en los idiomas humanos), <literal>\U</literal> (unicode para letras especiales como emoji) y <literal>\x</literal> (bytes sin codificar).</simpara>
+<itemizedlist>
+<listitem>
+<simpara><literal>System.print("\u0041\u0b83\u00DE")</literal> = AஃÞ</simpara>
+</listitem>
+<listitem>
+<simpara><literal>System.print("\U0001F64A\U0001F680")</literal> = 🙊🚀</simpara>
+</listitem>
+<listitem>
+<simpara><literal>System.print("\x48\x69\x2e")</literal> = Hi.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_rangos_de_caracteres">
+<title>Rangos de Caracteres</title>
+<simpara>Un <emphasis>String</emphasis> es una <emphasis>Secuencia</emphasis> de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
+utilizando rangos (<emphasis>Range</emphasis>). El índice comieza contando
+desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
+desde el final de la cadena.</simpara>
+<section xml:id="_caracter_en_posición_específica">
+<title>Caracter en posición específica</title>
+<programlisting language="js" linenumbering="numbered">// muestra: h
+System.print("hola wren"[0])
+
+// muestra: n
+System.print("hola wren"[-1])</programlisting>
+</section>
+<section xml:id="_rango_de_caracteres_dentro_de_una_cadena">
+<title>Rango de caracteres dentro de una cadena</title>
+<programlisting language="js" linenumbering="numbered">// muestra: la
+System.print("hola wren"[2..3])</programlisting>
+</section>
+<section xml:id="_invertir_una_cadena_de_caracteres">
+<title>Invertir una cadena de caracteres</title>
+<programlisting language="js" linenumbering="numbered">// muestra: nerw aloh
+System.print("hola wren"[-1..0])</programlisting>
+</section>
+</section>
+</chapter>
+<chapter xml:id="_ejemplos_de_terminal_en_wren">
+<title>Ejemplos de Terminal en Wren</title>
+<simpara>Una colección de código fuente <emphasis>Wren</emphasis> con juegos y aplicaciones simples, basados en texto a modo de ejemplo.</simpara>
+<simpara>Basados principalmente en los códigos diponibles en <link xl:href="https://github.com/asweigart/PythonStdioGames">Python Stdio Games</link> y <link xl:href="https://github.com/asweigart/inventwithpython3rded">Invent With Python</link>.</simpara>
+</chapter>
+<chapter xml:id="_cómo_ejecutarlos">
+<title>¿Cómo ejecutarlos?</title>
+<simpara>Primero se necesita el <link xl:href="https://github.com/wren-lang/wren-cli/releases/latest">intérprete de Wren</link>. Además de un editor de código como <link xl:href="https://code.visualstudio.com/">Visual Studio Code</link>.</simpara>
+<simpara>Para mayor documentación sobre la consola y el lenguaje <emphasis>Wren</emphasis> se puede visitar <link xl:href="http://wren.io/cli">http://wren.io/cli</link></simpara>
+<section xml:id="_adivina_el_número">
+<title>Adivina el Número</title>
+<simpara>Basado en <link xl:href="http://inventwithpython.com/es/4.html">Adivina del Número</link>.</simpara>
+<simpara>En el juego <emphasis>"Adivina el Número"</emphasis>. La computadora pensará un número aleatorio entre 1 y 20, y te pedirá que intentes adivinarlo. La computadora te dirá si cada intento es muy alto o muy bajo. Tú ganas si adivinas el número en seis intentos o menos.</simpara>
+<simpara>Este es un buen juego para codificar ya que usa números aleatorios y bucles, y recibe entradas del usuario en un programa corto. Aprenderás cómo convertir valores a diferentes tipos de datos, y por qué es necesario hacer esto. Dado que este programa es un juego, nos referiremos al usuario como el jugador. Pero llamarlo “usuario” también sería correcto.</simpara>
+<section xml:id="_ejemplo_de_ejecución">
+<title>Ejemplo de Ejecución</title>
+<simpara><literal>$ ./wren adivina/adivina.wren</literal></simpara>
+<programlisting language="sh" linenumbering="numbered">¡Hola! ¿Cómo te llamas?
+
+Alberto
+
+Bueno, Alberto, estoy pensando en un número entre 1 y 20.
+
+Intenta adivinar 1/6.
+
+10
+
+Tu estimación es muy alta.
+
+Intenta adivinar 2/6.
+
+2
+
+Tu estimación es muy baja.
+
+Intenta adivinar 3/6.
+
+4
+
+¡Buen trabajo, Alberto! ¡Has adivinado mi número en 3 intentos!</programlisting>
+</section>
+<section xml:id="_código_fuente">
+<title>Código fuente</title>
+<programlisting language="js" linenumbering="numbered">// nombre: adivina.wren
+// autor: Camilo Castro &lt;camilo@ninjas.cl&gt;
+// original: https://github.com/asweigart/inventwithpython3rded/blob/master/translations/es/src/adivinaElN%C3%BAmero.py
+// ejecutar: wren adivina/adivina.wren
+
+import "random" for Random
+import "io" for Stdin
+
+var random = Random.new()
+
+var intentos = 0
+var maxIntentos = 6
+
+System.print("¡Hola!, ¿Cómo te llamas?")
+
+var nombre = Stdin.readLine()
+System.print("Bueno, %(nombre), estoy pensando en un número entre 1 y 20.")
+
+// Un número aleatorio entre 1 y 20.
+// se necesita usar 21 debido a que el generador
+// no incluye el último número.
+var numero = random.int(1, 21)
+var estimacion = -1
+
+while (intentos &lt; maxIntentos) {
+    intentos = intentos + 1
+    System.print("Intenta adivinar %(intentos)/%(maxIntentos)")
+
+    estimacion = Num.fromString(Stdin.readLine())
+
+    if (estimacion is Null) {
+        System.print("Solo admito números")
+    } else if (estimacion &lt; numero) {
+        System.print("Tu estimación es muy baja")
+    } else if (estimacion &gt; numero) {
+        System.print("Tu estimación es muy alta")
+    } else {
+        break
+    }
+}
+
+if (estimacion == numero) {
+    System.print("¡Buen trabajo, %(nombre)! ¡Haz adivinado mi número en %(intentos) intentos!.")
+}
+
+if (estimacion != numero) {
+    System.print("Pues no. El número que estaba pensando era %(numero)")
+}</programlisting>
+</section>
+</section>
+</chapter>
+<chapter xml:id="_reino_de_dragones">
+<title>Reino de Dragones</title>
+<simpara>Basado en <link xl:href="http://inventwithpython.com/es/6.html">Reino de Dragones</link>.</simpara>
+<simpara>El juego se llama <emphasis>"Reino de Dragones"</emphasis>, y permite al jugador elegir entre dos cuevas, en una de las cuales encontrará un tesoro y en la otra su perdición.</simpara>
+<section xml:id="_cómo_jugar_a_reino_de_dragones">
+<title>¿Cómo Jugar a Reino de Dragones?</title>
+<simpara>En este juego, el jugador está en una tierra llena de dragones. Todos los dragones viven en cuevas junto a sus grandes montones de tesoros encontrados. Algunos dragones son amigables, y compartirán sus tesoros contigo. Otros son codiciosos y hambrientos, y se comerán a cualquiera que entre a su cueva. El jugador se encuentra frente a dos cuevas, una con un dragón amigable y la otra con un dragón hambriento. El jugador tiene que elegir entre las dos.</simpara>
+</section>
+<section xml:id="_ejemplo_de_ejecución_2">
+<title>Ejemplo de Ejecución</title>
+<simpara><literal>$ ./wren dragon/dragon.wren</literal></simpara>
+<programlisting language="sh" linenumbering="numbered">Estás en una tierra llena de dragones. Frente a tí
+hay dos cuevas. En una de ellas, el dragón es generoso y amigable y compartirá su tesoro contigo. El otro dragón
+es codicioso y está hambriento, y te devorará inmediatamente.
+
+¿A qué cueva quieres entrar? (1 ó 2)
+1
+
+Te aproximas a la cueva...
+Es oscura y espeluznante...
+¡Un gran dragon aparece súbitamente frente a tí! Abre sus fauces y...
+
+¡Te engulle de un bocado!
+
+¿Quieres jugar de nuevo? (sí or no)
+
+no</programlisting>
+<section xml:id="_código_fuente_2">
+<title>Código fuente</title>
+<programlisting language="js" linenumbering="numbered">// nombre: dragon.wren
+// autor: Camilo Castro &lt;camilo@ninjas.cl&gt;
+// original: https://github.com/asweigart/inventwithpython3rded/blob/master/translations/es/src/drag%C3%B3n.py
+// ejecutar: wren dragon/dragon.wren
+
+import "random" for Random
+import "timer" for Timer
+import "io" for Stdin
+
+var random = Random.new()
+
+var mostrarIntroduccion = Fn.new {
+  System.print("Estás en una tierra llena de dragones. Frente a tí")
+  System.print("hay dos cuevas. En una de ellas, el dragón es generoso y")
+  System.print("amigable y compartirá su tesoro contigo. El otro dragón")
+  System.print("es codicioso y está hambriento, y te devorará inmediatamente.")
+  System.print()
+  }
+
+  var elegirCueva = Fn.new {
+  var cueva = null
+  var primerDragon = "1"
+  var segundoDragon = "2"
+
+  while (cueva != primerDragon &amp;&amp; cueva != segundoDragon) {
+    System.print("¿A qué cueva quieres entrar? (1 ó 2)")
+    cueva = Stdin.readLine()
+  }
+  return cueva
+}
+
+var explorarCueva = Fn.new { |cueva|
+    // existen 1000 millisegundos en un segundo
+    // por lo que para obtener 2 segundos
+    // debemos multiplicar 2 * 1000
+    var dosSegundos = 2 * 1000
+
+    System.print("Te aproximas a la cueva...")
+    Timer.sleep(dosSegundos)
+
+    System.print("Es oscura y espeluznante...")
+    Timer.sleep(dosSegundos)
+
+    System.print("¡Un gran dragon aparece súbitamente frente a tí! Abre sus fauces y...")
+    System.print()
+    Timer.sleep(dosSegundos)
+
+    // Un número aleatorio entre 1 y 2.
+    // se necesita usar 3 debido a que el generador
+    // no incluye el último número
+    var cuevaAmigable = random.int(1, 3).toString
+
+    if (cueva == cuevaAmigable) {
+      System.print("¡Te regala su tesoro!")
+    } else {
+      System.print("¡Te engulle de un bocado!")
+    }
+
+    System.print()
+}
+
+var jugarDeNuevo = "sí"
+while (jugarDeNuevo == "sí" || jugarDeNuevo == "si" || jugarDeNuevo == "s") {
+  mostrarIntroduccion.call()
+  var cueva = elegirCueva.call()
+  explorarCueva.call(cueva)
+
+  System.print("¿Quieres jugar de nuevo? (sí o no)")
+  jugarDeNuevo = Stdin.readLine()
+}
+
+System.print("¡Eso fue divertido, nos vemos luego!")</programlisting>
+</section>
+</section>
+<section xml:id="_diamantes">
+<title>Diamantes</title>
+<simpara>Esta es una simple aplicación creativa que muestra
+diamantes de distintos tamaños.
+Basado en <link xl:href="https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamonds.py">Diamonds</link>.</simpara>
+<section xml:id="_ejemplo_de_ejecución_3">
+<title>Ejemplo de Ejecución</title>
+<simpara><literal>./wren diamantes/diamantes.wren</literal></simpara>
+<programlisting language="sh" linenumbering="numbered">/\
+\/
+
+/\
+\/
+
+ /\
+/  \
+\  /
+ \/
+
+ /\
+//\\
+\\//
+ \/
+
+  /\
+ /  \
+/    \
+\    /
+ \  /
+  \/
+
+  /\
+ //\\
+///\\\
+\\\///
+ \\//
+  \/
+
+   /\
+  /  \
+ /    \
+/      \
+\      /
+ \    /
+  \  /
+   \/
+
+   /\
+  //\\
+ ///\\\
+////\\\\
+\\\\////
+ \\\///
+  \\//
+   \/
+
+    /\
+   /  \
+  /    \
+ /      \
+/        \
+\        /
+ \      /
+  \    /
+   \  /
+    \/
+
+    /\
+   //\\
+  ///\\\
+ ////\\\\
+/////\\\\\
+\\\\\/////
+ \\\\////
+  \\\///
+   \\//
+    \/</programlisting>
+</section>
+<section xml:id="_código_fuente_3">
+<title>Código fuente</title>
+<programlisting language="js" linenumbering="numbered">/*
+Diamantes, por Al Sweigart &lt;al@inventwithpython.com&gt;
+https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamonds.py
+Dibuja diamantes de varios tamaños.
+Adaptado a Wren por Camilo Castro &lt;camilo@ninjas.cl&gt;
+https://github.com/NinjasCL/wren-libro/blob/main/juegos/diamantes/diamantes.wren
+                           /\       /\
+                          /  \     //\\
+            /\     /\    /    \   ///\\\
+           /  \   //\\  /      \ ////\\\\
+ /\   /\  /    \ ///\\\ \      / \\\\////
+/  \ //\\ \    / \\\///  \    /   \\\///
+\  / \\//  \  /   \\//    \  /     \\//
+ \/   \/    \/     \/      \/       \/
+- Tags: tiny, beginner, artistic, pequeño, novato, artistico
+- Version: 1.0.0
+*/
+
+var mostrarDiamanteLineal = Fn.new { |dimension|
+  // Mostrar la parte superior del diamante
+  for (i in 0...dimension) {
+    // Espacio izquierdo
+    System.write(" " * (dimension - i - 1))
+    // Parte izquierda del diamante
+    System.write("/")
+    // Espacio interior del diamante
+    System.write(" " * (i * 2))
+    // Parte derecha del diamante
+    System.print("\\")
+  }
+
+  // Mostrar la parte inferior del diamante
+  for (i in 0...dimension) {
+    // Espacio izquierdo
+    System.write(" " * i)
+    // Lado izquierdo
+    System.write("\\")
+    // Espacio interior
+    System.write(" " * ((dimension - i - 1) * 2))
+    // Lado derecho
+    System.print("/")
+  }
+}
+
+var mostrarDiamanteRelleno = Fn.new { |dimension|
+  // Mostrar la cara superior del diamante
+  for (i in 0...dimension) {
+    // Espaciado izquierdo
+    System.write(" " * (dimension - i - 1))
+    // Lado izquierdo
+    System.write("/" * (i + 1))
+    // Lado derecho
+    System.print("\\" * (i + 1))
+  }
+
+  // Mostrar la cara inferior del diamante
+  for (i in 0...dimension) {
+    // Espaciado izquierdo
+    System.write(" " * i)
+    // Lado izquierdo
+    System.write("\\" * (dimension - i))
+    // Lado derecho
+    System.print("/" * (dimension - i))
+  }
+}
+
+// Muestra 5 diamantes de tamaño 0 al 5:
+for(dimension in 0..5) {
+  mostrarDiamanteLineal.call(dimension)
+  System.print()
+  mostrarDiamanteRelleno.call(dimension)
+  System.print()
+}</programlisting>
+</section>
+</section>
+<section xml:id="_carrera_de_caracoles">
+<title>Carrera de Caracoles</title>
+<simpara>Una alucinante carrera entre 2 a 8 caracoles.
+Basado en <link xl:href="https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py">SnailRace</link>.</simpara>
+<section xml:id="_ejemplo_de_ejecución_4">
+<title>Ejemplo de Ejecución</title>
+<simpara><literal>$ ./wren caracoles/caracoles.wren</literal></simpara>
+<screen linenumbering="numbered">La gran carrera de caracoles
+
+    @v &lt;-- caracol
+
+
+¿Cuántos caracoles correrán? Min:2 Max:8
+2
+Ingresa el nombre del caracol #1:
+Ana
+Ingresa el nombre del caracol #2:
+Berto
+
+INICIO                                  META
+|                                       |
+                                     Ana
+.....................................@v
+                                       Berto
+.......................................@v
+¡Ha ganado Berto!</screen>
+</section>
+<section xml:id="_código_fuente_4">
+<title>Código fuente</title>
+<programlisting language="js" linenumbering="numbered">/*
+Snail Race, por Al Sweigart &lt;al@inventwithpython.com&gt;
+https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py
+Una carrera de caracoles, ¡alucinante!.
+Adaptado a Wren por Camilo Castro &lt;camilo@ninjas.cl&gt;
+https://github.com/NinjasCL/wren-libro/blob/main/juegos/caracoles/caracoles.wren
+- Tags: short, beginner, artistic, corto, novato, artistico
+- Version: 1.0.0
+*/
+import "random" for Random
+import "timer" for Timer
+import "io" for Stdin
+
+var random = Random.new()
+
+class Constantes {
+  static minCaracoles { 2 }
+  static maxCaracoles { 8 }
+  static maxLargoNombre { 20 }
+  static meta { 40 }
+}
+
+
+System.print("
+La gran carrera de caracoles
+
+    @v &lt;-- caracol
+
+")
+
+var cantidad = null
+
+while (true) {
+  System.print("¿Cuántos caracoles correrán? Min:%(Constantes.minCaracoles) Max:%(Constantes.maxCaracoles)")
+  cantidad = Num.fromString(Stdin.readLine())
+  if (cantidad &amp;&amp; cantidad &gt;= Constantes.minCaracoles &amp;&amp; cantidad &lt;= Constantes.maxCaracoles) {
+    break
+  }
+  System.print("Ingresar un número entre %(Constantes.minCaracoles) y %(Constantes.maxCaracoles)")
+}
+
+var nombres = []
+
+for (i in 1..cantidad) {
+  var nombre = ""
+  while (true) {
+
+    System.print("Ingresa el nombre del caracol #%(i):")
+    nombre = Stdin.readLine()
+
+    // Reducimos el nombre a su largo máximo
+    nombre = nombre.take(Constantes.maxLargoNombre).join()
+
+    if (nombre.count == 0) {
+      System.print("Por favor ingresa un nombre.")
+    } else if (nombres.contains(nombre)) {
+      System.print("Nombre ya existe")
+    } else {
+      break
+    }
+  }
+  nombres.add(nombre)
+}
+
+System.print("\n" * 40)
+System.print("INICIO" + " " * (Constantes.meta - "INICIO".count) + "META")
+System.print("|" + " " * (Constantes.meta - "|".count) + "|")
+
+var caracoles = {}
+
+for (nombre in nombres) {
+  System.print(nombre)
+  System.print("@v")
+  caracoles[nombre] = 0
+}
+
+// 1.5 segundos
+Timer.sleep(15 * 100)
+
+while (true) {
+
+  for (i in 0..(random.int(1, cantidad + 1))) {
+    var nombre = random.sample(nombres)
+    caracoles[nombre] = caracoles[nombre] + 1
+
+    if (caracoles[nombre] &gt;= Constantes.meta) {
+      System.print("¡Ha ganado %(nombre)!")
+      // Terminar el proceso del juego
+      Fiber.yield()
+    }
+  }
+
+  // 0.5 segundos
+  Timer.sleep(500)
+
+  System.print("\n" * 40)
+  System.print("INICIO" + " " * (Constantes.meta - "INICIO".count) + "META")
+  System.print("|" + " " * (Constantes.meta - "|".count) + "|")
+
+  for (nombre in nombres) {
+    var espacios = caracoles[nombre]
+    System.print(" " * espacios + nombre)
+    System.print("." * espacios + "@v")
+  }
+}</programlisting>
+</section>
+</section>
+</chapter>
+<bibliography xml:id="_bibliografía">
+<title>Bibliografía</title>
+<simpara>Una lista de recursos complementarios y referenciales.</simpara>
+<bibliodiv>
+<title>Libros</title>
+<bibliomixed>
+<bibliomisc><anchor xml:id="id" xreflabel="[id]"/> Autor. 'Nombre'. Editorial. ISBN 1-02-123456-1</bibliomisc>
+</bibliomixed>
+</bibliodiv>
+</bibliography>
+<index xml:id="_índice">
+<title>Índice</title>
+
+</index>
+<colophon xml:id="_colofón">
+<title>Colofón</title>
+<simpara>Escrito por <link xl:href="https://ninjas.cl">Camilo Castro</link> y <link xl:href="https://github.com/ninjascl/wren-adventures/graphs/contributors">colaboradores</link>. Para <link xl:href="https://ninjas.cl">Ninjas.cl</link>.</simpara>
+<simpara>Esta obra está bajo una <link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-No-Comercial-Compartir-Igual 4.0 Internacional</link></simpara>
+<simpara><link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><inlinemediaobject></link></simpara>
+</colophon>
+</book>

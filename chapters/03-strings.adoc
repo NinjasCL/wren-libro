@@ -88,7 +88,7 @@ También se pueden multiplicar para repetir la cadena de caracteres una cantidad
 System.print("hola " * 3)
 ```
 
-> Si bien se pueden sumar (_+_) y multiplicar (_*_), no existe operaciones para resta (_-_) y division (_/_) dentro de una cadena de caracteres.
+  Si bien se pueden sumar (_+_) y multiplicar (_*_), no existe operaciones para resta (_-_) y division (_/_) dentro de una cadena de caracteres.
 
 ### Limitar el máximo de caracteres
 

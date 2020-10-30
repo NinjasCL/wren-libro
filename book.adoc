@@ -16,6 +16,7 @@ Camilo A. Castro <https://github.com/clsource[@clsource]>
 :epub-chapter-level: 2
 :toc: left
 :toclevels: 2
+:toc-title: Tabla de Contenidos
 
 ////
 Organize your book chapter by chapter
@@ -26,13 +27,13 @@ include::preface.adoc[]
 
 include::dedication.adoc[]
 
-include::01-introduction.adoc[]
+include::chapters/01-introduction.adoc[]
 
-include::02-basics.adoc[]
+include::chapters/02-basics.adoc[]
 
-include::03-strings.adoc[]
+include::chapters/03-strings.adoc[]
 
-include::examples.adoc[]
+include::examples/examples.adoc[]
 
 include::bibliography.adoc[]
 

@@ -4,4 +4,4 @@
 
 toc::[]
 
-include::ejemplos.adoc[]
+include::examples.adoc[]
