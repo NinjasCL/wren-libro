@@ -3,6 +3,6 @@
 b build:
 	asciidoctor -a lang=es -b docbook book.adoc
 	asciidoctor -a lang=es book.adoc
-	mkdir -p docs
-	mv book.html docs/index.html
-	mv book.xml docs/book.xml
+	mkdir -p dist
+	mv book.html dist/index.html
+	mv book.xml dist/book.xml
