@@ -14,11 +14,4 @@ http://creativecommons.org/licenses/by-nc-sa/4.0/[image:https://i.creativecommon
 
 toc::[]
 
-include::01-introduction.adoc[]
-
-include::02-basics.adoc[]
-
-include::03-strings.adoc[]
-
-include::ejemplos/ejemplos.adoc[]
 
