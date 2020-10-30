@@ -496,11 +496,11 @@ System.print("hola wren"[-1..0])</programlisting>
 <title>Ejemplos de Terminal en Wren</title>
 <simpara>Una colección de código fuente <emphasis>Wren</emphasis> con juegos y aplicaciones simples, basados en texto a modo de ejemplo.</simpara>
 <simpara>Basados principalmente en los códigos diponibles en <link xl:href="https://github.com/asweigart/PythonStdioGames">Python Stdio Games</link> y <link xl:href="https://github.com/asweigart/inventwithpython3rded">Invent With Python</link>.</simpara>
-</chapter>
-<chapter xml:id="_cómo_ejecutarlos">
+<section xml:id="_cómo_ejecutarlos">
 <title>¿Cómo ejecutarlos?</title>
 <simpara>Primero se necesita el <link xl:href="https://github.com/wren-lang/wren-cli/releases/latest">intérprete de Wren</link>. Además de un editor de código como <link xl:href="https://code.visualstudio.com/">Visual Studio Code</link>.</simpara>
 <simpara>Para mayor documentación sobre la consola y el lenguaje <emphasis>Wren</emphasis> se puede visitar <link xl:href="http://wren.io/cli">http://wren.io/cli</link></simpara>
+</section>
 <section xml:id="_adivina_el_número">
 <title>Adivina el Número</title>
 <simpara>Basado en <link xl:href="http://inventwithpython.com/es/4.html">Adivina del Número</link>.</simpara>

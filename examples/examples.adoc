@@ -5,7 +5,7 @@ Una colección de código fuente _Wren_ con juegos y aplicaciones simples, basad
 
 Basados principalmente en los códigos diponibles en https://github.com/asweigart/PythonStdioGames[Python Stdio Games] y https://github.com/asweigart/inventwithpython3rded[Invent With Python].
 
-## ¿Cómo ejecutarlos?
+### ¿Cómo ejecutarlos?
 
 Primero se necesita el https://github.com/wren-lang/wren-cli/releases/latest[intérprete de Wren]. Además de un editor de código como https://code.visualstudio.com/[Visual Studio Code].
 
