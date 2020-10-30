@@ -585,8 +585,7 @@ if (estimacion != numero) {
 }</programlisting>
 </section>
 </section>
-</chapter>
-<chapter xml:id="_reino_de_dragones">
+<section xml:id="_reino_de_dragones">
 <title>Reino de Dragones</title>
 <simpara>Basado en <link xl:href="http://inventwithpython.com/es/6.html">Reino de Dragones</link>.</simpara>
 <simpara>El juego se llama <emphasis>"Reino de Dragones"</emphasis>, y permite al jugador elegir entre dos cuevas, en una de las cuales encontrará un tesoro y en la otra su perdición.</simpara>
@@ -613,6 +612,7 @@ Es oscura y espeluznante...
 ¿Quieres jugar de nuevo? (sí or no)
 
 no</programlisting>
+</section>
 <section xml:id="_código_fuente_2">
 <title>Código fuente</title>
 <programlisting language="js" linenumbering="numbered">// nombre: dragon.wren
