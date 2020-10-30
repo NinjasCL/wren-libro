@@ -180,6 +180,32 @@
 </inlinemediaobject></simpara>
 </section>
 </section>
+<section xml:id="_ejercicios">
+<title>Ejercicios</title>
+<section xml:id="ex-c1-e1">
+<title>¡Hola Wren!</title>
+<simpara>Es una <link xl:href="https://es.wikipedia.org/wiki/Hola_mundo">tradición</link> que cuando se esté aprendiendo
+un lenguaje de programación se escriba una variante
+del mensaje "!Hola mundo¡". Este es un programa
+muy simple que permite verificar que tu computadora
+esta correctamente configurada para correr programas
+en <emphasis>Wren</emphasis>.</simpara>
+<simpara>Para este ejercicio simplemente se debe crear un nuevo
+archivo llamado <literal>hola.wren</literal> con una única instrucción
+que muestre el mensaje "¡Hola Wren!".</simpara>
+<simpara>Luego ejecutar el programa utilizando el intérprete de <emphasis>Wren</emphasis>.</simpara>
+<formalpara>
+<title>Ejecución</title>
+<para><literal>$ ./wren hola.wren</literal></para>
+</formalpara>
+<formalpara>
+<title>Salida</title>
+<para>
+<screen linenumbering="numbered">¡Hola Wren!</screen>
+</para>
+</formalpara>
+</section>
+</section>
 </chapter>
 <chapter xml:id="_nociones_básicas">
 <title>Nociones Básicas</title>
@@ -211,12 +237,7 @@ capítulo detalla las normas básicas con las que funciona
 <title>Ejemplo: Generar un número al azar del 0 al 9</title>
 <simpara>Al considerar los saltos de línea significativos,
 provoca un comportamiento inusual al momento de llamar métodos.</simpara>
-<blockquote>
-<simpara>Los números pseudo aleatorios son generados utilizando
-la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de
-los posibles resultados.</simpara>
-</blockquote>
+<literallayout class="monospaced">Los números pseudo aleatorios son generados utilizando la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.</literallayout>
 <simpara>Instrucción en una sola línea.</simpara>
 <programlisting language="js" linenumbering="numbered">Random.new().int(10)</programlisting>
 <simpara>Esto no es válido en <emphasis>Wren</emphasis> (Pero si es válido en la mayoría de los lenguajes de programación).</simpara>
@@ -409,10 +430,10 @@ System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar lo
 <simpara>Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar las siguientes operaciones: <literal>+</literal> y <literal>%()</literal>.</simpara>
 <itemizedlist>
 <listitem>
-<simpara><literal>"Hola" + "Mundo"</literal>: Crea un nuevo string con la unión de <literal>Hola</literal> y <literal>Mundo</literal>. Entregará <literal>HolaMundo</literal>. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza <literal>"Hola" + 1</literal> entregará un error similar a <literal>Runtime error: Right operand must be a string.</literal>. Para poder unirlos tendremos que utiliza el método getter <literal>toString</literal> del número. <literal>"Hola" + 1.toString</literal>, retornando <literal>Hola1</literal>.</simpara>
+<simpara><literal>"Hola" + "Wren"</literal>: Crea un nuevo string con la unión de <literal>Hola</literal> y <literal>Wren</literal>. Entregará <literal>HolaWren</literal>. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza <literal>"Hola" + 1</literal> entregará un error similar a <literal>Runtime error: Right operand must be a string.</literal>. Para poder unirlos tendremos que utiliza el método getter <literal>toString</literal> del número. <literal>"Hola" + 1.toString</literal>, retornando <literal>Hola1</literal>.</simpara>
 </listitem>
 </itemizedlist>
-<simpara>El método <literal>toString</literal> es parte de la clase <link xl:href="http://wren.io/modules/core/object.html:"><literal>Object</literal></link> la cual es la padre de todos los tipos de datos en <emphasis>Wren</emphasis>. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.</simpara>
+<simpara>El método <literal>toString</literal> es parte de la clase <link xl:href="http://wren.io/modules/core/object.html"><literal>Object</literal></link> la cual es la padre de todos los tipos de datos en <emphasis>Wren</emphasis>. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.</simpara>
 <itemizedlist>
 <listitem>
 <simpara><literal>"Hola %(mundo)"</literal>: Crea un string con la frase <literal>Hola</literal> y el contenido de la variable <literal>mundo</literal>.</simpara>
@@ -423,7 +444,7 @@ System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar lo
 System.print("La respuesta es %(20 * 2 + 2).")</programlisting>
 </section>
 <section xml:id="_multiplicación_de_strings">
-<title>Multiplicación de Strings</title>
+<title>Multiplicación de strings</title>
 <simpara>También se pueden multiplicar para repetir la cadena de caracteres una cantidad de veces determinada.</simpara>
 <programlisting language="js" linenumbering="numbered">// muestra hola hola hola
 System.print("hola " * 3)</programlisting>
@@ -439,9 +460,46 @@ en un <emphasis>String</emphasis>.</simpara>
 <programlisting language="js" linenumbering="numbered">// muestra: hola
 System.print("hola wren".take(4).join())</programlisting>
 </section>
+<section xml:id="_caracteres_no_imprimibles">
+<title>Caracteres no imprimibles</title>
+<simpara>Los caracteres no imprimibles o <emphasis>Whitespace</emphasis> son aquellos
+caracteres que el computador puede ver, pero son invisibles
+para una persona. Los caracteres no imprimibles más comunes son el espacio (<emphasis>" "</emphasis>), la tabulación (<emphasis>"\t"</emphasis>) y el salto de línea (<emphasis>"\n"</emphasis>). La combinación de dos caracteres <emphasis>"\t"</emphasis> crea un nuevo espacio tabulado, mientras que la combinación de dos caracteres <emphasis>"\n"</emphasis> crea una nueva línea dentro del <emphasis>String</emphasis>. ¡Puedes usarlos cuantás veces y dónde desees!.</simpara>
+<simpara>Prueba el siguiente código:</simpara>
+<programlisting language="js" linenumbering="numbered">System.print("Hola a todos")
+System.print("\tHola a todos")
+System.print("Hola\na todos")
+System.print("\n\n\nHola\ta\ttodos")</programlisting>
+<section xml:id="_eliminando_caracteres_no_imprimibles">
+<title>Eliminando caracteres no imprimibles</title>
+<simpara>Muchas veces al solicitar datos a un usuario, este puede incluir espacios adicionales al principio o final. Usualmente es buena idea eliminar estos caracteres no imprimibles antes de comenzar a procesar el dato.</simpara>
+<programlisting language="js" linenumbering="numbered">var nombre = " arturo "
+
+// Elimina solamente espacio final
+System.print(nombre.trimEnd())
+
+// Elimina solamente espacio inicial
+System.print(nombre.trimStart())
+
+// Elimina espacio inicial y final
+System.print(nombre.trim())</programlisting>
+<simpara>Si se necesita ver con mayor claridad lo que sucede
+se puede usar el siguiente código:</simpara>
+<programlisting language="js" linenumbering="numbered">var nombre = " arturo "
+
+// Elimina solamente espacio final
+System.print("-" + nombre.trimEnd() + "-")
+
+// Elimina solamente espacio inicial
+System.print("-" + nombre.trimStart() + "-")
+
+// Elimina espacio inicial y final
+System.print("-" + nombre.trim() + "-")</programlisting>
+</section>
+</section>
 <section xml:id="_caracteres_de_escape">
-<title>Caracteres de Escape</title>
-<simpara>Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir <literal>"Hola Mundo"</literal> incluyendo las comillas, tendríamos que escribilo de esta forma <literal>"\"Hola Mundo\""</literal>. Esto incluirá los caracteres de comillas dobles en la frase.</simpara>
+<title>Caracteres de escape</title>
+<simpara>Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir <literal>"Hola Wren"</literal> incluyendo las comillas, tendríamos que escribirlo de esta forma <literal>"\"Hola Wren\""</literal>. Esto incluirá los caracteres de comillas dobles en la frase.</simpara>
 <programlisting language="js" linenumbering="numbered">"\0" // byte NUL (Nulo) : 0.
 "\"" // Comillas dobles.
 "\\" // Barra invertida.
@@ -451,8 +509,8 @@ System.print("hola wren".take(4).join())</programlisting>
 "\f" // Alimentación de formularios.
 "\n" // Salto de línea.
 "\r" // Retorno de carro.
-"\t" // Tab.
-"\v" // Tab vertical.</programlisting>
+"\t" // Tabulación.
+"\v" // Tabulación vertical.</programlisting>
 <simpara>Para indicar caracteres especiales podemos utilizar <literal>\u</literal> (unicode para letras disponibles en los idiomas humanos), <literal>\U</literal> (unicode para letras especiales como emoji) y <literal>\x</literal> (bytes sin codificar).</simpara>
 <itemizedlist>
 <listitem>
@@ -467,7 +525,7 @@ System.print("hola wren".take(4).join())</programlisting>
 </itemizedlist>
 </section>
 <section xml:id="_rangos_de_caracteres">
-<title>Rangos de Caracteres</title>
+<title>Rangos de caracteres</title>
 <simpara>Un <emphasis>String</emphasis> es una <emphasis>Secuencia</emphasis> de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
 utilizando rangos (<emphasis>Range</emphasis>). El índice comieza contando
 desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
@@ -707,65 +765,7 @@ Basado en <link xl:href="https://github.com/asweigart/PythonStdioGames/blob/main
 /  \
 \  /
  \/
-
- /\
-//\\
-\\//
- \/
-
-  /\
- /  \
-/    \
-\    /
- \  /
-  \/
-
-  /\
- //\\
-///\\\
-\\\///
- \\//
-  \/
-
-   /\
-  /  \
- /    \
-/      \
-\      /
- \    /
-  \  /
-   \/
-
-   /\
-  //\\
- ///\\\
-////\\\\
-\\\\////
- \\\///
-  \\//
-   \/
-
-    /\
-   /  \
-  /    \
- /      \
-/        \
-\        /
- \      /
-  \    /
-   \  /
-    \/
-
-    /\
-   //\\
-  ///\\\
- ////\\\\
-/////\\\\\
-\\\\\/////
- \\\\////
-  \\\///
-   \\//
-    \/</programlisting>
+...</programlisting>
 </section>
 <section xml:id="_código_fuente_3">
 <title>Código fuente</title>
@@ -775,14 +775,6 @@ https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamo
 Dibuja diamantes de varios tamaños.
 Adaptado a Wren por Camilo Castro &lt;camilo@ninjas.cl&gt;
 https://github.com/NinjasCL/wren-libro/blob/main/juegos/diamantes/diamantes.wren
-                           /\       /\
-                          /  \     //\\
-            /\     /\    /    \   ///\\\
-           /  \   //\\  /      \ ////\\\\
- /\   /\  /    \ ///\\\ \      / \\\\////
-/  \ //\\ \    / \\\///  \    /   \\\///
-\  / \\//  \  /   \\//    \  /     \\//
- \/   \/    \/     \/      \/       \/
 - Tags: tiny, beginner, artistic, pequeño, novato, artistico
 - Version: 1.0.0
 */
@@ -981,13 +973,238 @@ while (true) {
 </section>
 </section>
 </chapter>
+<chapter xml:id="_soluciones_a_ejercicios">
+<title>Soluciones a Ejercicios</title>
+<simpara>Las siguientes son las soluciones a los ejercicios planteados en el libro. No necesariamente son la única forma de resolverlos. Se recomienda intentar resolver los ejercicios antes de ver las soluciones.</simpara>
+<section xml:id="_capítulo_1">
+<title>Capítulo 1</title>
+<simpara><xref linkend="ex-c1-e1"/></simpara>
+<formalpara>
+<title>Ejecución</title>
+<para><literal>$ ./wren hola.wren</literal></para>
+</formalpara>
+<formalpara>
+<title>Salida</title>
+<para>
+<screen linenumbering="numbered">¡Hola Wren!</screen>
+</para>
+</formalpara>
+<formalpara>
+<title>Código</title>
+<para>
+<programlisting language="js" linenumbering="numbered">// muestra: ¡Hola Wren!
+System.print("¡Hola Wren!")</programlisting>
+</para>
+</formalpara>
+</section>
+</chapter>
+<glossary xml:id="_glosario">
+<title>Glosario</title>
+<simpara>Lista de conceptos utilizados a lo largo de este documento.</simpara>
+<glossentry>
+<glossterm>class</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"clase"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>call</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"llamar"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>construct</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"constructor"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>object</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"objeto"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>start</glossterm>
+<glossdef>
+<simpara>Inicio, principio, comienzo.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>end</glossterm>
+<glossdef>
+<simpara>Fin, término, final.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>each</glossterm>
+<glossdef>
+<simpara>Palabra que significa <emphasis>"cada uno"</emphasis>. Usado en ciclos iterativos para evaluar cada uno de los elementos.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>for</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"para"</emphasis>. Usada dentro de los bucles y en conjunto a la instruacción <emphasis>"import"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>foreign</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"extranjero"</emphasis>. Usada para indicar que la clase, propiedad o variable será implementada fuera de <emphasis>Wren</emphasis>. Normalmente cuando se necesita utilizar código en otros lenguajes como <emphasis>C</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>false</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"falso"</emphasis>. Usado para indicar una condición no se está cumpliendo. Su contraparte es la instrucción <emphasis>"true"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>fiber</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"fibra"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>fn</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"función"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>función</glossterm>
+<glossdef>
+<simpara>Bloque de código que puede ser ejecutado en distintos puntos del ciclo de vida del código. También puede ser asignado a variables.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>new</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"nuevo"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>print</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"mostrar"</emphasis> o <emphasis>"imprimir"</emphasis>. Usado para mostrar un valor.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>parámetro</glossterm>
+<glossdef>
+<simpara>Son variables que son enviados a las funciones. Pueden ser por valor o por referencia.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>static</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"estático"</emphasis>. Usado para indicar que una propiedad o método de una clase no necesita una instancia para ser invocado.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>string</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"cadena de caracteres"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>int</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"número entero"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>float</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"número decimal con punto flotante"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>random</glossterm>
+<glossdef>
+<simpara>Signfica <emphasis>"aleatorio"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>num</glossterm>
+<glossdef>
+<simpara>Significa <emphasis>"número"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>true</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"verdadero"</emphasis>. Usado para indica una condición que si se cumple. Su contraparte es la instrucción <emphasis>"false"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>trim</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"cortar"</emphasis>. Usado para eliminar caracteres dentro de un string.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>import</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"incluir"</emphasis>. Obtener datos desde un archivo e incluir sus contenidos en el contexto.
+Ejemplo <literal>import "random" for Random</literal>.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>if</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"si"</emphasis>. Permite crear una condicional y controlar el flujo de datos dentro de un programa.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>is</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"es"</emphasis>. Permite evaluar si un objeto es miembro de un tipo de clase.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>else</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"en otro caso"</emphasis>. Normalmente usado para indicar una condición alternativa si la condición <emphasis>"if"</emphasis> principal no se cumple.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>var</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"variable"</emphasis>. Usado para declarar una nueva variable.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>while</glossterm>
+<glossdef>
+<simpara>Instrucción que significa <emphasis>"mientras"</emphasis>. Usada dentro de los bucles.</simpara>
+</glossdef>
+</glossentry>
+<glossentry>
+<glossterm>write</glossterm>
+<glossdef>
+<simpara>Instrucción que signiica <emphasis>"escribir"</emphasis>.</simpara>
+</glossdef>
+</glossentry>
+</glossary>
 <bibliography xml:id="_bibliografía">
 <title>Bibliografía</title>
 <simpara>Una lista de recursos complementarios y referenciales.</simpara>
 <bibliodiv>
 <title>Libros</title>
 <bibliomixed>
-<bibliomisc><anchor xml:id="id" xreflabel="[id]"/> Autor. 'Nombre'. Editorial. ISBN 1-02-123456-1</bibliomisc>
+<bibliomisc><anchor xml:id="inventwithpython" xreflabel="[inventwithpython]"/> Albert Sweigart. 'Inventa tus Propios Juegos de computadora con Python'. <link xl:href="http://inventwithpython.com/es">http://inventwithpython.com/es</link>. ISBN 978-1514370926</bibliomisc>
+</bibliomixed>
+</bibliodiv>
+<bibliodiv>
+<title>Sitios Web</title>
+<bibliomixed>
+<bibliomisc><anchor xml:id="introtopython" xreflabel="[introtopython]"/> Eric Matthes. 'Introduction to Python' <link xl:href="https://github.com/ehmatthes/intro_programming">https://github.com/ehmatthes/intro_programming</link></bibliomisc>
+</bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="googlepython" xreflabel="[googlepython]"/> Google. 'Python Class' <link xl:href="http://code.google.com/edu/languages/google-python-class/">http://code.google.com/edu/languages/google-python-class/</link></bibliomisc>
 </bibliomixed>
 </bibliodiv>
 </bibliography>

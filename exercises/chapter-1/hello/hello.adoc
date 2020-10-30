@@ -1,0 +1,16 @@
+
+<<ex-c1-e1>>
+
+.Ejecución
+`$ ./wren hola.wren`
+
+.Salida
+```
+¡Hola Wren!
+```
+
+.Código
+[source, js, linenums]
+----
+include::hello.wren[]
+----

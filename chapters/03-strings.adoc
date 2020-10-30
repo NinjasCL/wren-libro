@@ -66,9 +66,9 @@ El string "👨‍👩‍👧‍👦" debería ser de largo 11 para la codificac
 
 Si deseamos unir varios strings o incluir datos dentro de ellos podemos utilizar las siguientes operaciones: `+` y `%()`.
 
-- `"Hola" + "Mundo"`: Crea un nuevo string con la unión de `Hola` y `Mundo`. Entregará `HolaMundo`. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza `"Hola" + 1` entregará un error similar a `Runtime error: Right operand must be a string.`. Para poder unirlos tendremos que utiliza el método getter `toString` del número. `"Hola" + 1.toString`, retornando `Hola1`. 
+- `"Hola" + "Wren"`: Crea un nuevo string con la unión de `Hola` y `Wren`. Entregará `HolaWren`. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza `"Hola" + 1` entregará un error similar a `Runtime error: Right operand must be a string.`. Para poder unirlos tendremos que utiliza el método getter `toString` del número. `"Hola" + 1.toString`, retornando `Hola1`. 
 
-El método `toString` es parte de la clase http://wren.io/modules/core/object.html:[`Object`] la cual es la padre de todos los tipos de datos en _Wren_. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.
+El método `toString` es parte de la clase http://wren.io/modules/core/object.html[`Object`] la cual es la padre de todos los tipos de datos en _Wren_. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.
 
 - `"Hola %(mundo)"`: Crea un string con la frase `Hola` y el contenido de la variable `mundo`.
 
@@ -79,7 +79,7 @@ La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cu
 System.print("La respuesta es %(20 * 2 + 2).")
 ```
 
-### Multiplicación de Strings
+### Multiplicación de strings
 
 También se pueden multiplicar para repetir la cadena de caracteres una cantidad de veces determinada.
 
@@ -103,9 +103,57 @@ en un _String_.
 System.print("hola wren".take(4).join())
 ```
 
-### Caracteres de Escape
+### Caracteres no imprimibles
 
-Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir `"Hola Mundo"` incluyendo las comillas, tendríamos que escribilo de esta forma `"\"Hola Mundo\""`. Esto incluirá los caracteres de comillas dobles en la frase.
+Los caracteres no imprimibles o _Whitespace_ son aquellos
+caracteres que el computador puede ver, pero son invisibles
+para una persona. Los caracteres no imprimibles más comunes son el espacio (_" "_), la tabulación (_"\t"_) y el salto de línea (_"\n"_). La combinación de dos caracteres _"\t"_ crea un nuevo espacio tabulado, mientras que la combinación de dos caracteres _"\n"_ crea una nueva línea dentro del _String_. ¡Puedes usarlos cuantás veces y dónde desees!.
+
+Prueba el siguiente código:
+
+```js
+System.print("Hola a todos")
+System.print("\tHola a todos")
+System.print("Hola\na todos")
+System.print("\n\n\nHola\ta\ttodos")
+```
+
+#### Eliminando caracteres no imprimibles
+
+Muchas veces al solicitar datos a un usuario, este puede incluir espacios adicionales al principio o final. Usualmente es buena idea eliminar estos caracteres no imprimibles antes de comenzar a procesar el dato.
+
+```js
+var nombre = " arturo "
+
+// Elimina solamente espacio final
+System.print(nombre.trimEnd())
+
+// Elimina solamente espacio inicial
+System.print(nombre.trimStart())
+
+// Elimina espacio inicial y final
+System.print(nombre.trim())
+```
+
+Si se necesita ver con mayor claridad lo que sucede
+se puede usar el siguiente código:
+
+```js
+var nombre = " arturo "
+
+// Elimina solamente espacio final
+System.print("-" + nombre.trimEnd() + "-")
+
+// Elimina solamente espacio inicial
+System.print("-" + nombre.trimStart() + "-")
+
+// Elimina espacio inicial y final
+System.print("-" + nombre.trim() + "-")
+```
+
+### Caracteres de escape
+
+Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir `"Hola Wren"` incluyendo las comillas, tendríamos que escribirlo de esta forma `"\"Hola Wren\""`. Esto incluirá los caracteres de comillas dobles en la frase.
 
 ```js
 "\0" // byte NUL (Nulo) : 0.
@@ -117,8 +165,8 @@ Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemp
 "\f" // Alimentación de formularios.
 "\n" // Salto de línea.
 "\r" // Retorno de carro.
-"\t" // Tab.
-"\v" // Tab vertical.
+"\t" // Tabulación.
+"\v" // Tabulación vertical.
 ```
 
 Para indicar caracteres especiales podemos utilizar `\u` (unicode para letras disponibles en los idiomas humanos), `\U` (unicode para letras especiales como emoji) y `\x` (bytes sin codificar).
@@ -127,7 +175,7 @@ Para indicar caracteres especiales podemos utilizar `\u` (unicode para letras di
 - `System.print("\U0001F64A\U0001F680")` = 🙊🚀
 - `System.print("\x48\x69\x2e")` = Hi.
 
-### Rangos de Caracteres
+### Rangos de caracteres
 
 Un _String_ es una _Secuencia_ de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
 utilizando rangos (_Range_). El índice comieza contando

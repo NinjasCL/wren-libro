@@ -117,3 +117,29 @@ Puedes verificar el código numérico de salida utilizando el siguiente comando 
 `./wren main.wren | echo "Exit code ${PIPESTATUS[0]}"`
 
 image:https://user-images.githubusercontent.com/292738/77839414-d9968a00-7152-11ea-9bd3-b42ff06a4d1a.png[Exit Code 0]
+
+### Ejercicios
+
+[[ex-c1-e1]]
+#### ¡Hola Wren!
+
+Es una https://es.wikipedia.org/wiki/Hola_mundo[tradición] que cuando se esté aprendiendo
+un lenguaje de programación se escriba una variante
+del mensaje "!Hola mundo¡". Este es un programa
+muy simple que permite verificar que tu computadora
+esta correctamente configurada para correr programas
+en _Wren_.
+
+Para este ejercicio simplemente se debe crear un nuevo
+archivo llamado `hola.wren` con una única instrucción
+que muestre el mensaje "¡Hola Wren!".
+
+Luego ejecutar el programa utilizando el intérprete de _Wren_.
+
+.Ejecución
+`$ ./wren hola.wren`
+
+.Salida
+```
+¡Hola Wren!
+```

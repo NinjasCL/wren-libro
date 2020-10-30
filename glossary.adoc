@@ -1,0 +1,101 @@
+[glossary]
+== Glosario
+
+Lista de conceptos utilizados a lo largo de este documento.
+
+[glossary]
+
+class::
+  Significa _"clase"_.
+
+call::
+  Significa _"llamar"_.
+
+construct::
+  Significa _"constructor"_.
+
+object::
+  Significa _"objeto"_.
+
+start::
+  Inicio, principio, comienzo.
+
+end::
+  Fin, término, final.
+
+each::
+  Palabra que significa _"cada uno"_. Usado en ciclos iterativos para evaluar cada uno de los elementos.
+
+for::
+  Instrucción que significa _"para"_. Usada dentro de los bucles y en conjunto a la instruacción _"import"_.
+
+foreign::
+  Instrucción que significa _"extranjero"_. Usada para indicar que la clase, propiedad o variable será implementada fuera de _Wren_. Normalmente cuando se necesita utilizar código en otros lenguajes como _C_.
+
+false::
+  Instrucción que significa _"falso"_. Usado para indicar una condición no se está cumpliendo. Su contraparte es la instrucción _"true"_.
+
+fiber::
+  Significa _"fibra"_.
+
+fn::
+  Significa _"función"_.
+
+función::
+  Bloque de código que puede ser ejecutado en distintos puntos del ciclo de vida del código. También puede ser asignado a variables.
+
+new::
+  Significa _"nuevo"_.
+
+print::
+  Instrucción que significa _"mostrar"_ o _"imprimir"_. Usado para mostrar un valor.
+
+parámetro::
+  Son variables que son enviados a las funciones. Pueden ser por valor o por referencia.
+
+static::
+  Instrucción que significa _"estático"_. Usado para indicar que una propiedad o método de una clase no necesita una instancia para ser invocado.
+
+string::
+  Significa _"cadena de caracteres"_.
+
+int::
+  Significa _"número entero"_.
+
+float::
+  Significa _"número decimal con punto flotante"_.
+
+random::
+  Signfica _"aleatorio"_.
+
+num::
+  Significa _"número"_.
+
+true::
+  Instrucción que significa _"verdadero"_. Usado para indica una condición que si se cumple. Su contraparte es la instrucción _"false"_.
+
+trim::
+  Instrucción que significa _"cortar"_. Usado para eliminar caracteres dentro de un string.
+
+import::
+  Instrucción que significa _"incluir"_. Obtener datos desde un archivo e incluir sus contenidos en el contexto.
+  Ejemplo `import "random" for Random`.
+
+if::
+  Instrucción que significa _"si"_. Permite crear una condicional y controlar el flujo de datos dentro de un programa.
+
+is::
+  Instrucción que significa _"es"_. Permite evaluar si un objeto es miembro de un tipo de clase.
+
+else::
+  Instrucción que significa _"en otro caso"_. Normalmente usado para indicar una condición alternativa si la condición _"if"_ principal no se cumple.
+
+var::
+  Instrucción que significa _"variable"_. Usado para declarar una nueva variable.
+
+while::
+  Instrucción que significa _"mientras"_. Usada dentro de los bucles.
+
+write::
+  Instrucción que signiica _"escribir"_.
+

@@ -35,10 +35,7 @@ var animales = [
 Al considerar los saltos de línea significativos, 
 provoca un comportamiento inusual al momento de llamar métodos.
 
-> Los números pseudo aleatorios son generados utilizando
-la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de
-los posibles resultados.
+  Los números pseudo aleatorios son generados utilizando la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.
 
 Instrucción en una sola línea.
 

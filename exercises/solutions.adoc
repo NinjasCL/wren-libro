@@ -1,0 +1,8 @@
+
+## Soluciones a Ejercicios
+
+Las siguientes son las soluciones a los ejercicios planteados en el libro. No necesariamente son la única forma de resolverlos. Se recomienda intentar resolver los ejercicios antes de ver las soluciones.
+
+### Capítulo 1
+
+include::chapter-1/hello/hello.adoc[]

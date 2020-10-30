@@ -460,6 +460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_cómo_usar_wren">2. ¿Cómo usar Wren?</a>
 <ul class="sectlevel2">
 <li><a href="#_wren_cli">2.1. Wren CLI</a></li>
+<li><a href="#_ejercicios">2.2. Ejercicios</a></li>
 </ul>
 </li>
 <li><a href="#_nociones_básicas">3. Nociones Básicas</a>
@@ -476,10 +477,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_string_multi_línea">4.2. String multi línea</a></li>
 <li><a href="#_contando_el_largo_del_string">4.3. Contando el largo del string</a></li>
 <li><a href="#_unión_e_interpolación_de_strings">4.4. Unión e interpolación de strings</a></li>
-<li><a href="#_multiplicación_de_strings">4.5. Multiplicación de Strings</a></li>
+<li><a href="#_multiplicación_de_strings">4.5. Multiplicación de strings</a></li>
 <li><a href="#_limitar_el_máximo_de_caracteres">4.6. Limitar el máximo de caracteres</a></li>
-<li><a href="#_caracteres_de_escape">4.7. Caracteres de Escape</a></li>
-<li><a href="#_rangos_de_caracteres">4.8. Rangos de Caracteres</a></li>
+<li><a href="#_caracteres_no_imprimibles">4.7. Caracteres no imprimibles</a></li>
+<li><a href="#_caracteres_de_escape">4.8. Caracteres de escape</a></li>
+<li><a href="#_rangos_de_caracteres">4.9. Rangos de caracteres</a></li>
 </ul>
 </li>
 <li><a href="#_ejemplos_de_terminal_en_wren">5. Ejemplos de Terminal en Wren</a>
@@ -491,6 +493,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_carrera_de_caracoles">5.5. Carrera de Caracoles</a></li>
 </ul>
 </li>
+<li><a href="#_soluciones_a_ejercicios">6. Soluciones a Ejercicios</a>
+<ul class="sectlevel2">
+<li><a href="#_capítulo_1">6.1. Capítulo 1</a></li>
+</ul>
+</li>
+<li><a href="#_glosario">Glosario</a></li>
 <li><a href="#_bibliografía">Bibliografía</a></li>
 <li><a href="#_índice">Índice</a></li>
 <li><a href="#_colofón">Colofón</a></li>
@@ -698,6 +706,38 @@ En este pequeño documento se detallarán lo básico del lenguaje de programaci�
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_ejercicios">2.2. Ejercicios</h3>
+<div class="sect3">
+<h4 id="ex-c1-e1">2.2.1. ¡Hola Wren!</h4>
+<div class="paragraph">
+<p>Es una <a href="https://es.wikipedia.org/wiki/Hola_mundo">tradición</a> que cuando se esté aprendiendo
+un lenguaje de programación se escriba una variante
+del mensaje "!Hola mundo¡". Este es un programa
+muy simple que permite verificar que tu computadora
+esta correctamente configurada para correr programas
+en <em>Wren</em>.</p>
+</div>
+<div class="paragraph">
+<p>Para este ejercicio simplemente se debe crear un nuevo
+archivo llamado <code>hola.wren</code> con una única instrucción
+que muestre el mensaje "¡Hola Wren!".</p>
+</div>
+<div class="paragraph">
+<p>Luego ejecutar el programa utilizando el intérprete de <em>Wren</em>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Ejecución</div>
+<p><code>$ ./wren hola.wren</code></p>
+</div>
+<div class="listingblock">
+<div class="title">Salida</div>
+<div class="content">
+<pre class="highlight"><code>¡Hola Wren!</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -745,15 +785,10 @@ capítulo detalla las normas básicas con las que funciona
 <p>Al considerar los saltos de línea significativos,
 provoca un comportamiento inusual al momento de llamar métodos.</p>
 </div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Los números pseudo aleatorios son generados utilizando
-la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de
-los posibles resultados.</p>
+<div class="literalblock">
+<div class="content">
+<pre>Los números pseudo aleatorios son generados utilizando la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.</pre>
 </div>
-</blockquote>
 </div>
 <div class="paragraph">
 <p>Instrucción en una sola línea.</p>
@@ -1104,12 +1139,12 @@ System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar lo
 <div class="ulist">
 <ul>
 <li>
-<p><code>"Hola" + "Mundo"</code>: Crea un nuevo string con la unión de <code>Hola</code> y <code>Mundo</code>. Entregará <code>HolaMundo</code>. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza <code>"Hola" + 1</code> entregará un error similar a <code>Runtime error: Right operand must be a string.</code>. Para poder unirlos tendremos que utiliza el método getter <code>toString</code> del número. <code>"Hola" + 1.toString</code>, retornando <code>Hola1</code>.</p>
+<p><code>"Hola" + "Wren"</code>: Crea un nuevo string con la unión de <code>Hola</code> y <code>Wren</code>. Entregará <code>HolaWren</code>. Es necesario que ambos objetos sean strings. Por ejemplo si se utiliza <code>"Hola" + 1</code> entregará un error similar a <code>Runtime error: Right operand must be a string.</code>. Para poder unirlos tendremos que utiliza el método getter <code>toString</code> del número. <code>"Hola" + 1.toString</code>, retornando <code>Hola1</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>El método <code>toString</code> es parte de la clase <a href="http://wren.io/modules/core/object.html:"><code>Object</code></a> la cual es la padre de todos los tipos de datos en <em>Wren</em>. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.</p>
+<p>El método <code>toString</code> es parte de la clase <a href="http://wren.io/modules/core/object.html"><code>Object</code></a> la cual es la padre de todos los tipos de datos en <em>Wren</em>. Tanto números, booleanos, strings y listas son objetos que heredan de esta clase.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1129,7 +1164,7 @@ System.print("La respuesta es %(20 * 2 + 2).")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multiplicación_de_strings">4.5. Multiplicación de Strings</h3>
+<h3 id="_multiplicación_de_strings">4.5. Multiplicación de strings</h3>
 <div class="paragraph">
 <p>También se pueden multiplicar para repetir la cadena de caracteres una cantidad de veces determinada.</p>
 </div>
@@ -1162,9 +1197,66 @@ System.print("hola wren".take(4).join())</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_caracteres_de_escape">4.7. Caracteres de Escape</h3>
+<h3 id="_caracteres_no_imprimibles">4.7. Caracteres no imprimibles</h3>
 <div class="paragraph">
-<p>Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir <code>"Hola Mundo"</code> incluyendo las comillas, tendríamos que escribilo de esta forma <code>"\"Hola Mundo\""</code>. Esto incluirá los caracteres de comillas dobles en la frase.</p>
+<p>Los caracteres no imprimibles o <em>Whitespace</em> son aquellos
+caracteres que el computador puede ver, pero son invisibles
+para una persona. Los caracteres no imprimibles más comunes son el espacio (<em>" "</em>), la tabulación (<em>"\t"</em>) y el salto de línea (<em>"\n"</em>). La combinación de dos caracteres <em>"\t"</em> crea un nuevo espacio tabulado, mientras que la combinación de dos caracteres <em>"\n"</em> crea una nueva línea dentro del <em>String</em>. ¡Puedes usarlos cuantás veces y dónde desees!.</p>
+</div>
+<div class="paragraph">
+<p>Prueba el siguiente código:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">System.print("Hola a todos")
+System.print("\tHola a todos")
+System.print("Hola\na todos")
+System.print("\n\n\nHola\ta\ttodos")</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_eliminando_caracteres_no_imprimibles">4.7.1. Eliminando caracteres no imprimibles</h4>
+<div class="paragraph">
+<p>Muchas veces al solicitar datos a un usuario, este puede incluir espacios adicionales al principio o final. Usualmente es buena idea eliminar estos caracteres no imprimibles antes de comenzar a procesar el dato.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var nombre = " arturo "
+
+// Elimina solamente espacio final
+System.print(nombre.trimEnd())
+
+// Elimina solamente espacio inicial
+System.print(nombre.trimStart())
+
+// Elimina espacio inicial y final
+System.print(nombre.trim())</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si se necesita ver con mayor claridad lo que sucede
+se puede usar el siguiente código:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var nombre = " arturo "
+
+// Elimina solamente espacio final
+System.print("-" + nombre.trimEnd() + "-")
+
+// Elimina solamente espacio inicial
+System.print("-" + nombre.trimStart() + "-")
+
+// Elimina espacio inicial y final
+System.print("-" + nombre.trim() + "-")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_caracteres_de_escape">4.8. Caracteres de escape</h3>
+<div class="paragraph">
+<p>Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemplo si quisieramos escribir <code>"Hola Wren"</code> incluyendo las comillas, tendríamos que escribirlo de esta forma <code>"\"Hola Wren\""</code>. Esto incluirá los caracteres de comillas dobles en la frase.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1177,8 +1269,8 @@ System.print("hola wren".take(4).join())</code></pre>
 "\f" // Alimentación de formularios.
 "\n" // Salto de línea.
 "\r" // Retorno de carro.
-"\t" // Tab.
-"\v" // Tab vertical.</code></pre>
+"\t" // Tabulación.
+"\v" // Tabulación vertical.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1199,7 +1291,7 @@ System.print("hola wren".take(4).join())</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_rangos_de_caracteres">4.8. Rangos de Caracteres</h3>
+<h3 id="_rangos_de_caracteres">4.9. Rangos de caracteres</h3>
 <div class="paragraph">
 <p>Un <em>String</em> es una <em>Secuencia</em> de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
 utilizando rangos (<em>Range</em>). El índice comieza contando
@@ -1207,7 +1299,7 @@ desde cero para contar desde el principio de la cadena y puede tener valores neg
 desde el final de la cadena.</p>
 </div>
 <div class="sect3">
-<h4 id="_caracter_en_posición_específica">4.8.1. Caracter en posición específica</h4>
+<h4 id="_caracter_en_posición_específica">4.9.1. Caracter en posición específica</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">// muestra: h
@@ -1219,7 +1311,7 @@ System.print("hola wren"[-1])</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rango_de_caracteres_dentro_de_una_cadena">4.8.2. Rango de caracteres dentro de una cadena</h4>
+<h4 id="_rango_de_caracteres_dentro_de_una_cadena">4.9.2. Rango de caracteres dentro de una cadena</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">// muestra: la
@@ -1228,7 +1320,7 @@ System.print("hola wren"[2..3])</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_invertir_una_cadena_de_caracteres">4.8.3. Invertir una cadena de caracteres</h4>
+<h4 id="_invertir_una_cadena_de_caracteres">4.9.3. Invertir una cadena de caracteres</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">// muestra: nerw aloh
@@ -1501,65 +1593,7 @@ Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/g
 /  \
 \  /
  \/
-
- /\
-//\\
-\\//
- \/
-
-  /\
- /  \
-/    \
-\    /
- \  /
-  \/
-
-  /\
- //\\
-///\\\
-\\\///
- \\//
-  \/
-
-   /\
-  /  \
- /    \
-/      \
-\      /
- \    /
-  \  /
-   \/
-
-   /\
-  //\\
- ///\\\
-////\\\\
-\\\\////
- \\\///
-  \\//
-   \/
-
-    /\
-   /  \
-  /    \
- /      \
-/        \
-\        /
- \      /
-  \    /
-   \  /
-    \/
-
-    /\
-   //\\
-  ///\\\
- ////\\\\
-/////\\\\\
-\\\\\/////
- \\\\////
-  \\\///
-   \\//
-    \/</code></pre>
+...</code></pre>
 </div>
 </div>
 </div>
@@ -1573,14 +1607,6 @@ https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamo
 Dibuja diamantes de varios tamaños.
 Adaptado a Wren por Camilo Castro &lt;camilo@ninjas.cl&gt;
 https://github.com/NinjasCL/wren-libro/blob/main/juegos/diamantes/diamantes.wren
-                           /\       /\
-                          /  \     //\\
-            /\     /\    /    \   ///\\\
-           /  \   //\\  /      \ ////\\\\
- /\   /\  /    \ ///\\\ \      / \\\\////
-/  \ //\\ \    / \\\///  \    /   \\\///
-\  / \\//  \  /   \\//    \  /     \\//
- \/   \/    \/     \/      \/       \/
 - Tags: tiny, beginner, artistic, pequeño, novato, artistico
 - Version: 1.0.0
 */
@@ -1795,6 +1821,174 @@ while (true) {
 </div>
 </div>
 <div class="sect1">
+<h2 id="_soluciones_a_ejercicios">6. Soluciones a Ejercicios</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las siguientes son las soluciones a los ejercicios planteados en el libro. No necesariamente son la única forma de resolverlos. Se recomienda intentar resolver los ejercicios antes de ver las soluciones.</p>
+</div>
+<div class="sect2">
+<h3 id="_capítulo_1">6.1. Capítulo 1</h3>
+<div class="paragraph">
+<p><a href="#ex-c1-e1">¡Hola Wren!</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Ejecución</div>
+<p><code>$ ./wren hola.wren</code></p>
+</div>
+<div class="listingblock">
+<div class="title">Salida</div>
+<div class="content">
+<pre class="highlight"><code>¡Hola Wren!</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Código</div>
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// muestra: ¡Hola Wren!
+System.print("¡Hola Wren!")</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glosario">Glosario</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lista de conceptos utilizados a lo largo de este documento.</p>
+</div>
+<div class="dlist glossary">
+<dl>
+<dt>class</dt>
+<dd>
+<p>Significa <em>"clase"</em>.</p>
+</dd>
+<dt>call</dt>
+<dd>
+<p>Significa <em>"llamar"</em>.</p>
+</dd>
+<dt>construct</dt>
+<dd>
+<p>Significa <em>"constructor"</em>.</p>
+</dd>
+<dt>object</dt>
+<dd>
+<p>Significa <em>"objeto"</em>.</p>
+</dd>
+<dt>start</dt>
+<dd>
+<p>Inicio, principio, comienzo.</p>
+</dd>
+<dt>end</dt>
+<dd>
+<p>Fin, término, final.</p>
+</dd>
+<dt>each</dt>
+<dd>
+<p>Palabra que significa <em>"cada uno"</em>. Usado en ciclos iterativos para evaluar cada uno de los elementos.</p>
+</dd>
+<dt>for</dt>
+<dd>
+<p>Instrucción que significa <em>"para"</em>. Usada dentro de los bucles y en conjunto a la instruacción <em>"import"</em>.</p>
+</dd>
+<dt>foreign</dt>
+<dd>
+<p>Instrucción que significa <em>"extranjero"</em>. Usada para indicar que la clase, propiedad o variable será implementada fuera de <em>Wren</em>. Normalmente cuando se necesita utilizar código en otros lenguajes como <em>C</em>.</p>
+</dd>
+<dt>false</dt>
+<dd>
+<p>Instrucción que significa <em>"falso"</em>. Usado para indicar una condición no se está cumpliendo. Su contraparte es la instrucción <em>"true"</em>.</p>
+</dd>
+<dt>fiber</dt>
+<dd>
+<p>Significa <em>"fibra"</em>.</p>
+</dd>
+<dt>fn</dt>
+<dd>
+<p>Significa <em>"función"</em>.</p>
+</dd>
+<dt>función</dt>
+<dd>
+<p>Bloque de código que puede ser ejecutado en distintos puntos del ciclo de vida del código. También puede ser asignado a variables.</p>
+</dd>
+<dt>new</dt>
+<dd>
+<p>Significa <em>"nuevo"</em>.</p>
+</dd>
+<dt>print</dt>
+<dd>
+<p>Instrucción que significa <em>"mostrar"</em> o <em>"imprimir"</em>. Usado para mostrar un valor.</p>
+</dd>
+<dt>parámetro</dt>
+<dd>
+<p>Son variables que son enviados a las funciones. Pueden ser por valor o por referencia.</p>
+</dd>
+<dt>static</dt>
+<dd>
+<p>Instrucción que significa <em>"estático"</em>. Usado para indicar que una propiedad o método de una clase no necesita una instancia para ser invocado.</p>
+</dd>
+<dt>string</dt>
+<dd>
+<p>Significa <em>"cadena de caracteres"</em>.</p>
+</dd>
+<dt>int</dt>
+<dd>
+<p>Significa <em>"número entero"</em>.</p>
+</dd>
+<dt>float</dt>
+<dd>
+<p>Significa <em>"número decimal con punto flotante"</em>.</p>
+</dd>
+<dt>random</dt>
+<dd>
+<p>Signfica <em>"aleatorio"</em>.</p>
+</dd>
+<dt>num</dt>
+<dd>
+<p>Significa <em>"número"</em>.</p>
+</dd>
+<dt>true</dt>
+<dd>
+<p>Instrucción que significa <em>"verdadero"</em>. Usado para indica una condición que si se cumple. Su contraparte es la instrucción <em>"false"</em>.</p>
+</dd>
+<dt>trim</dt>
+<dd>
+<p>Instrucción que significa <em>"cortar"</em>. Usado para eliminar caracteres dentro de un string.</p>
+</dd>
+<dt>import</dt>
+<dd>
+<p>Instrucción que significa <em>"incluir"</em>. Obtener datos desde un archivo e incluir sus contenidos en el contexto.
+Ejemplo <code>import "random" for Random</code>.</p>
+</dd>
+<dt>if</dt>
+<dd>
+<p>Instrucción que significa <em>"si"</em>. Permite crear una condicional y controlar el flujo de datos dentro de un programa.</p>
+</dd>
+<dt>is</dt>
+<dd>
+<p>Instrucción que significa <em>"es"</em>. Permite evaluar si un objeto es miembro de un tipo de clase.</p>
+</dd>
+<dt>else</dt>
+<dd>
+<p>Instrucción que significa <em>"en otro caso"</em>. Normalmente usado para indicar una condición alternativa si la condición <em>"if"</em> principal no se cumple.</p>
+</dd>
+<dt>var</dt>
+<dd>
+<p>Instrucción que significa <em>"variable"</em>. Usado para declarar una nueva variable.</p>
+</dd>
+<dt>while</dt>
+<dd>
+<p>Instrucción que significa <em>"mientras"</em>. Usada dentro de los bucles.</p>
+</dd>
+<dt>write</dt>
+<dd>
+<p>Instrucción que signiica <em>"escribir"</em>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_bibliografía">Bibliografía</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1804,7 +1998,18 @@ while (true) {
 <div class="title">Libros</div>
 <ul class="bibliography">
 <li>
-<p><a id="id"></a>[id] Autor. 'Nombre'. Editorial. ISBN 1-02-123456-1</p>
+<p><a id="inventwithpython"></a>[inventwithpython] Albert Sweigart. 'Inventa tus Propios Juegos de computadora con Python'. <a href="http://inventwithpython.com/es" class="bare">http://inventwithpython.com/es</a>. ISBN 978-1514370926</p>
+</li>
+</ul>
+</div>
+<div class="ulist bibliography">
+<div class="title">Sitios Web</div>
+<ul class="bibliography">
+<li>
+<p><a id="introtopython"></a>[introtopython] Eric Matthes. 'Introduction to Python' <a href="https://github.com/ehmatthes/intro_programming" class="bare">https://github.com/ehmatthes/intro_programming</a></p>
+</li>
+<li>
+<p><a id="googlepython"></a>[googlepython] Google. 'Python Class' <a href="http://code.google.com/edu/languages/google-python-class/" class="bare">http://code.google.com/edu/languages/google-python-class/</a></p>
 </li>
 </ul>
 </div>
@@ -1833,7 +2038,7 @@ while (true) {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-30 15:03:04 -0300
+Last updated 2020-10-30 18:01:04 -0300
 </div>
 </div>
 </body>

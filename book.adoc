@@ -35,9 +35,11 @@ include::chapters/03-strings.adoc[]
 
 include::examples/examples.adoc[]
 
-include::bibliography.adoc[]
+include::exercises/solutions.adoc[]
 
 include::glossary.adoc[]
+
+include::bibliography.adoc[]
 
 include::index.adoc[]
 

@@ -4,14 +4,6 @@ https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamo
 Dibuja diamantes de varios tamaños.
 Adaptado a Wren por Camilo Castro <camilo@ninjas.cl>
 https://github.com/NinjasCL/wren-libro/blob/main/juegos/diamantes/diamantes.wren
-                           /\       /\
-                          /  \     //\\
-            /\     /\    /    \   ///\\\
-           /  \   //\\  /      \ ////\\\\
- /\   /\  /    \ ///\\\ \      / \\\\////
-/  \ //\\ \    / \\\///  \    /   \\\///
-\  / \\//  \  /   \\//    \  /     \\//
- \/   \/    \/     \/      \/       \/
 - Tags: tiny, beginner, artistic, pequeño, novato, artistico
 - Version: 1.0.0
 */
