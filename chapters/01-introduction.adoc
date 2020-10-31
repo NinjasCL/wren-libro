@@ -10,12 +10,17 @@ La página oficial de Wren es http://wren.io[Wren.io].
 
 ### ¿Qué es un _Wren_?
 
-_Wren_ es una https://es.wikipedia.org/wiki/Troglodytidae[tipo de ave pequeña] perteneciente a la familia de los troglodítidos. En Chile tenemos al https://www.avesdechile.cl/074.htm[Chercán o Chochin Criollo].
+_Wren_ es un https://es.wikipedia.org/wiki/Troglodytidae[tipo de ave pequeña] perteneciente a la familia de los troglodítidos (que habita en cavernas o cuevas). En Chile tenemos al https://www.avesdechile.cl/074.htm[Chercán o Chochin Criollo].
 
 image:https://user-images.githubusercontent.com/292738/77261969-2240d580-6c71-11ea-93d0-4341e82c2f92.png[Chochin Criollo - Fotografía por Juan Tassara B.]
 
   Fotografía por Juan Tassara B en https://www.avesdechile.cl.
 
+Esta familia de aves se caracteriza por sus canciones elaboradas y complejas. Es uno de los más queridos compositores de las aves. Sus canciones tienen una rica variedad de cromatura musical.
+
+También son aves muy hogareñas que prefieren quedarse en un mismo territorio a emigrar. Cuando vuelan sorprenden con la gran altura que pueden alcanzar y su rapidez. ¡Nunca sabes en que dirección van a salir!.
+
+En las tradiciones celtas, el _Wren_ es un símbolo de vivacidad y actividad.
 
 ## ¿Cómo usar Wren?
 

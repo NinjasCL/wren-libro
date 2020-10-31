@@ -47,7 +47,7 @@
 <simpara>La página oficial de Wren es <link xl:href="http://wren.io">Wren.io</link>.</simpara>
 <section xml:id="_qué_es_un_wren">
 <title>¿Qué es un <emphasis>Wren</emphasis>?</title>
-<simpara><emphasis>Wren</emphasis> es una <link xl:href="https://es.wikipedia.org/wiki/Troglodytidae">tipo de ave pequeña</link> perteneciente a la familia de los troglodítidos. En Chile tenemos al <link xl:href="https://www.avesdechile.cl/074.htm">Chercán o Chochin Criollo</link>.</simpara>
+<simpara><emphasis>Wren</emphasis> es un <link xl:href="https://es.wikipedia.org/wiki/Troglodytidae">tipo de ave pequeña</link> perteneciente a la familia de los troglodítidos (que habita en cavernas o cuevas). En Chile tenemos al <link xl:href="https://www.avesdechile.cl/074.htm">Chercán o Chochin Criollo</link>.</simpara>
 <simpara><inlinemediaobject>
 <imageobject>
 <imagedata fileref="https://user-images.githubusercontent.com/292738/77261969-2240d580-6c71-11ea-93d0-4341e82c2f92.png"/>
@@ -55,6 +55,9 @@
 <textobject><phrase>Chochin Criollo - Fotografía por Juan Tassara B.</phrase></textobject>
 </inlinemediaobject></simpara>
 <literallayout class="monospaced">Fotografía por Juan Tassara B en https://www.avesdechile.cl.</literallayout>
+<simpara>Esta familia de aves se caracteriza por sus canciones elaboradas y complejas. Es uno de los más queridos compositores de las aves. Sus canciones tienen una rica variedad de cromatura musical.</simpara>
+<simpara>También son aves muy hogareñas que prefieren quedarse en un mismo territorio a emigrar. Cuando vuelan sorprenden con la gran altura que pueden alcanzar y su rapidez. ¡Nunca sabes en que dirección van a salir!.</simpara>
+<simpara>En las tradiciones celtas, el <emphasis>Wren</emphasis> es un símbolo de vivacidad y actividad.</simpara>
 </section>
 </chapter>
 <chapter xml:id="_cómo_usar_wren">
@@ -227,17 +230,34 @@ capítulo detalla las normas básicas con las que funciona
 </section>
 <section xml:id="_ejemplo_parámetros_de_un_método">
 <title>Ejemplo: Parámetros de un método</title>
-<programlisting language="js" linenumbering="numbered"> MiClase.metodo(
-       parametro1,
-       parametro2,
-       parametro3
- )</programlisting>
+<programlisting language="js" linenumbering="numbered">MiClase.metodo(
+  parametro1,
+  parametro2,
+  parametro3
+)</programlisting>
+</section>
+<section xml:id="_ejemplo_condicionales">
+<title>Ejemplo: Condicionales</title>
+<simpara>Los saltos de línea son considerados en la declaración de bloques de código.
+Por lo tanto es importante la posición de las llaves (<emphasis>"{}"</emphasis>) dentro de una instrucción.</simpara>
+<programlisting language="js" linenumbering="numbered">// Correcto
+if (condiction == true) {}</programlisting>
+<programlisting language="js" linenumbering="numbered">// Correcto
+if (condiction == true)   {
+  // ...
+}</programlisting>
+<simpara>Si la llave no está presente en la misma línea, gatillará un error.</simpara>
+<programlisting language="js" linenumbering="numbered">// Error
+if (condiction == true)
+{
+  // ...
+}</programlisting>
 </section>
 <section xml:id="_ejemplo_generar_un_número_al_azar_del_0_al_9">
 <title>Ejemplo: Generar un número al azar del 0 al 9</title>
 <simpara>Al considerar los saltos de línea significativos,
 provoca un comportamiento inusual al momento de llamar métodos.</simpara>
-<literallayout class="monospaced">Los números pseudo aleatorios son generados utilizando la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.</literallayout>
+<literallayout class="monospaced">Los números pseudo aleatorios son generados utilizando la clase `Random`. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.</literallayout>
 <simpara>Instrucción en una sola línea.</simpara>
 <programlisting language="js" linenumbering="numbered">Random.new().int(10)</programlisting>
 <simpara>Esto no es válido en <emphasis>Wren</emphasis> (Pero si es válido en la mayoría de los lenguajes de programación).</simpara>
@@ -261,6 +281,7 @@ int(10)</programlisting>
 <simpara><emphasis>Wren</emphasis> es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:</simpara>
 <programlisting language="js" linenumbering="numbered">break class construct else false for foreign if import
 in is null return static super this true var while</programlisting>
+<literallayout class="monospaced">Una palabra reservada tiene un significado especial para _Wren_, por lo que  no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.</literallayout>
 <section xml:id="_caracteres_significativos">
 <title>Caracteres significativos</title>
 <itemizedlist>
@@ -275,7 +296,12 @@ in is null return static super this true var while</programlisting>
 </section>
 <section xml:id="_comentarios">
 <title>Comentarios</title>
-<simpara>Los comentarios utilizan la misma sintaxis que el <link xl:href="https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)"><literal>Lenguaje de Programación C</literal></link>.</simpara>
+<simpara>Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
+como codificar las soluciones a los problemas. Una vez que se soluciona el problema,
+se dedicará una gran cantidad de tiempo en revisar y perfeccionar el algoritmo.</simpara>
+<simpara>Los comentarios te permiten escribir en lenguaje humano como Inglés o Español, dentro
+de los programas.</simpara>
+<simpara>Los comentarios en <emphasis>Wren</emphasis> utilizan la misma sintaxis que el <link xl:href="https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)"><literal>Lenguaje de Programación C</literal></link>.</simpara>
 <simpara>Los símbolos son los siguientes: <literal>/* */</literal> (multi línea) y <literal>//</literal> (línea única).</simpara>
 <programlisting language="js" linenumbering="numbered">// Comentario de una sola línea
 
@@ -299,20 +325,20 @@ líneas.
 comentar/descomentar rápidamente secciones de código. Se llaman comentarios tijera
 por que pueden "cortar" un código para no ser ejecutado.</simpara>
 <programlisting language="js" linenumbering="numbered">// /*
-   codigo()
+  codigo()
 // */</programlisting>
 <simpara>Al eliminar el comentario de la primera línea, el código será comentado. De esta forma rápidamente
 puedes activar o desactivar secciones de código.</simpara>
 <programlisting language="js" linenumbering="numbered">/*
-   codigo()
+  codigo()
 // */</programlisting>
 <simpara>Puede aún ser más simplificado de esta forma</simpara>
 <programlisting language="js" linenumbering="numbered">//*
-   codigo()
+  codigo()
 // */</programlisting>
 <simpara>Si se elimina el primer <literal>/</literal> el código será comentado. Por lo que se ahorra un par de movimientos al realizar el comentario.</simpara>
 <programlisting language="js" linenumbering="numbered">/*
-   codigo()
+  codigo()
 // */</programlisting>
 </section>
 <section xml:id="_tip_comentarios_de_parámetros">
@@ -325,6 +351,41 @@ con algunos parámetros, puede ser útil comentarlos.</simpara>
 var y = 20
 var radio = 10
 circulo(x, y, radio)</programlisting>
+</section>
+<section xml:id="_cómo_es_un_buen_comentario">
+<title>¿Cómo es un buen comentario?</title>
+<itemizedlist>
+<listitem>
+<simpara>Es completo, corto y directo. La mayoría de los comentarios deberían ser escritos en párrafos.</simpara>
+</listitem>
+<listitem>
+<simpara>Explica tu forma de pensar, para que cuando regreses a leer el código en el futuro puedas comprender cómo se ha resuelto el problema.</simpara>
+</listitem>
+<listitem>
+<simpara>También explica pensando en otros, para que otras personas puedan trabajar en tu código y entender cómo lo haz estructurado.</simpara>
+</listitem>
+<listitem>
+<simpara>Explica una sección difícil con mayor detalle.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_cuándo_comentar">
+<title>¿Cuándo comentar?</title>
+<itemizedlist>
+<listitem>
+<simpara>Cuando tienes que pensar cómo funciona el código antes de escribirlo.</simpara>
+</listitem>
+<listitem>
+<simpara>Cuando probablemente olvides como estabas resolviendo un problema.</simpara>
+</listitem>
+<listitem>
+<simpara>Cuando exista más de una forma de resolver un problema.</simpara>
+</listitem>
+<listitem>
+<simpara>Cuando es poco probable que otros comprendan cómo haz resuelto un problema.</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.</simpara>
 </section>
 </section>
 <section xml:id="_identificadores">
@@ -1099,7 +1160,7 @@ while (jugar) {
     // redondear(alcance * sin(2 * radianes)).
     // Ver: https://es.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/v/projectile-at-an-angle
 
-    distanciaAlcanzada = (alcance * (2 * (anguloElevacion * Num.pi / 180)).sin).round
+    distanciaAlcanzada = (alcance * (anguloElevacion * ( 2 * Num.pi / 180)).sin).round
     distanciaFinal = (distanciaAlcanzada - distanciaObjetivo).abs
     System.print("Distancia Alcanzada: %(distanciaAlcanzada.abs) Distancia Objetivo: %(distanciaObjetivo) Diferencia: %(distanciaFinal)")
 

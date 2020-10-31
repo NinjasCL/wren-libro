@@ -546,7 +546,7 @@ En este pequeño documento se detallarán lo básico del lenguaje de programaci�
 <div class="sect2">
 <h3 id="_qué_es_un_wren">1.1. ¿Qué es un <em>Wren</em>?</h3>
 <div class="paragraph">
-<p><em>Wren</em> es una <a href="https://es.wikipedia.org/wiki/Troglodytidae">tipo de ave pequeña</a> perteneciente a la familia de los troglodítidos. En Chile tenemos al <a href="https://www.avesdechile.cl/074.htm">Chercán o Chochin Criollo</a>.</p>
+<p><em>Wren</em> es un <a href="https://es.wikipedia.org/wiki/Troglodytidae">tipo de ave pequeña</a> perteneciente a la familia de los troglodítidos (que habita en cavernas o cuevas). En Chile tenemos al <a href="https://www.avesdechile.cl/074.htm">Chercán o Chochin Criollo</a>.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="https://user-images.githubusercontent.com/292738/77261969-2240d580-6c71-11ea-93d0-4341e82c2f92.png" alt="Chochin Criollo - Fotografía por Juan Tassara B."></span></p>
@@ -555,6 +555,15 @@ En este pequeño documento se detallarán lo básico del lenguaje de programaci�
 <div class="content">
 <pre>Fotografía por Juan Tassara B en https://www.avesdechile.cl.</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Esta familia de aves se caracteriza por sus canciones elaboradas y complejas. Es uno de los más queridos compositores de las aves. Sus canciones tienen una rica variedad de cromatura musical.</p>
+</div>
+<div class="paragraph">
+<p>También son aves muy hogareñas que prefieren quedarse en un mismo territorio a emigrar. Cuando vuelan sorprenden con la gran altura que pueden alcanzar y su rapidez. ¡Nunca sabes en que dirección van a salir!.</p>
+</div>
+<div class="paragraph">
+<p>En las tradiciones celtas, el <em>Wren</em> es un símbolo de vivacidad y actividad.</p>
 </div>
 </div>
 </div>
@@ -772,23 +781,56 @@ capítulo detalla las normas básicas con las que funciona
 <h4 id="_ejemplo_parámetros_de_un_método">3.1.2. Ejemplo: Parámetros de un método</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js"> MiClase.metodo(
-       parametro1,
-       parametro2,
-       parametro3
- )</code></pre>
+<pre class="highlight"><code class="language-js" data-lang="js">MiClase.metodo(
+  parametro1,
+  parametro2,
+  parametro3
+)</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_generar_un_número_al_azar_del_0_al_9">3.1.3. Ejemplo: Generar un número al azar del 0 al 9</h4>
+<h4 id="_ejemplo_condicionales">3.1.3. Ejemplo: Condicionales</h4>
+<div class="paragraph">
+<p>Los saltos de línea son considerados en la declaración de bloques de código.
+Por lo tanto es importante la posición de las llaves (<em>"{}"</em>) dentro de una instrucción.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Correcto
+if (condiction == true) {}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Correcto
+if (condiction == true)   {
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si la llave no está presente en la misma línea, gatillará un error.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Error
+if (condiction == true)
+{
+  // ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ejemplo_generar_un_número_al_azar_del_0_al_9">3.1.4. Ejemplo: Generar un número al azar del 0 al 9</h4>
 <div class="paragraph">
 <p>Al considerar los saltos de línea significativos,
 provoca un comportamiento inusual al momento de llamar métodos.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Los números pseudo aleatorios son generados utilizando la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.</pre>
+<pre>Los números pseudo aleatorios son generados utilizando la clase `Random`. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -824,7 +866,7 @@ int(10)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_error">3.1.4. Ejemplo: <strong>Error</strong></h4>
+<h4 id="_ejemplo_error">3.1.5. Ejemplo: <strong>Error</strong></h4>
 <div class="paragraph">
 <p>La siguiente línea arroja error debido a que no tiene un salto de línea o una operación.</p>
 </div>
@@ -846,6 +888,11 @@ int(10)</code></pre>
 in is null return static super this true var while</code></pre>
 </div>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>Una palabra reservada tiene un significado especial para _Wren_, por lo que  no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.</pre>
+</div>
+</div>
 <div class="sect3">
 <h4 id="_caracteres_significativos">3.2.1. Caracteres significativos</h4>
 <div class="ulist">
@@ -863,7 +910,16 @@ in is null return static super this true var while</code></pre>
 <div class="sect2">
 <h3 id="_comentarios">3.3. Comentarios</h3>
 <div class="paragraph">
-<p>Los comentarios utilizan la misma sintaxis que el <a href="https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)"><code>Lenguaje de Programación C</code></a>.</p>
+<p>Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
+como codificar las soluciones a los problemas. Una vez que se soluciona el problema,
+se dedicará una gran cantidad de tiempo en revisar y perfeccionar el algoritmo.</p>
+</div>
+<div class="paragraph">
+<p>Los comentarios te permiten escribir en lenguaje humano como Inglés o Español, dentro
+de los programas.</p>
+</div>
+<div class="paragraph">
+<p>Los comentarios en <em>Wren</em> utilizan la misma sintaxis que el <a href="https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)"><code>Lenguaje de Programación C</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>Los símbolos son los siguientes: <code>/* */</code> (multi línea) y <code>//</code> (línea única).</p>
@@ -904,7 +960,7 @@ por que pueden "cortar" un código para no ser ejecutado.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">// /*
-   codigo()
+  codigo()
 // */</code></pre>
 </div>
 </div>
@@ -915,7 +971,7 @@ puedes activar o desactivar secciones de código.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">/*
-   codigo()
+  codigo()
 // */</code></pre>
 </div>
 </div>
@@ -925,7 +981,7 @@ puedes activar o desactivar secciones de código.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">//*
-   codigo()
+  codigo()
 // */</code></pre>
 </div>
 </div>
@@ -935,7 +991,7 @@ puedes activar o desactivar secciones de código.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">/*
-   codigo()
+  codigo()
 // */</code></pre>
 </div>
 </div>
@@ -961,6 +1017,47 @@ var y = 20
 var radio = 10
 circulo(x, y, radio)</code></pre>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cómo_es_un_buen_comentario">3.3.3. ¿Cómo es un buen comentario?</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Es completo, corto y directo. La mayoría de los comentarios deberían ser escritos en párrafos.</p>
+</li>
+<li>
+<p>Explica tu forma de pensar, para que cuando regreses a leer el código en el futuro puedas comprender cómo se ha resuelto el problema.</p>
+</li>
+<li>
+<p>También explica pensando en otros, para que otras personas puedan trabajar en tu código y entender cómo lo haz estructurado.</p>
+</li>
+<li>
+<p>Explica una sección difícil con mayor detalle.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cuándo_comentar">3.3.4. ¿Cuándo comentar?</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Cuando tienes que pensar cómo funciona el código antes de escribirlo.</p>
+</li>
+<li>
+<p>Cuando probablemente olvides como estabas resolviendo un problema.</p>
+</li>
+<li>
+<p>Cuando exista más de una forma de resolver un problema.</p>
+</li>
+<li>
+<p>Cuando es poco probable que otros comprendan cómo haz resuelto un problema.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.</p>
 </div>
 </div>
 </div>
@@ -1956,7 +2053,7 @@ while (jugar) {
     // redondear(alcance * sin(2 * radianes)).
     // Ver: https://es.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/v/projectile-at-an-angle
 
-    distanciaAlcanzada = (alcance * (2 * (anguloElevacion * Num.pi / 180)).sin).round
+    distanciaAlcanzada = (alcance * (anguloElevacion * ( 2 * Num.pi / 180)).sin).round
     distanciaFinal = (distanciaAlcanzada - distanciaObjetivo).abs
     System.print("Distancia Alcanzada: %(distanciaAlcanzada.abs) Distancia Objetivo: %(distanciaObjetivo) Diferencia: %(distanciaFinal)")
 

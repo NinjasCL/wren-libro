@@ -94,7 +94,7 @@ while (jugar) {
     // redondear(alcance * sin(2 * radianes)).
     // Ver: https://es.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/v/projectile-at-an-angle
 
-    distanciaAlcanzada = (alcance * (2 * (anguloElevacion * Num.pi / 180)).sin).round
+    distanciaAlcanzada = (alcance * (anguloElevacion * ( 2 * Num.pi / 180)).sin).round
     distanciaFinal = (distanciaAlcanzada - distanciaObjetivo).abs
     System.print("Distancia Alcanzada: %(distanciaAlcanzada.abs) Distancia Objetivo: %(distanciaObjetivo) Diferencia: %(distanciaFinal)")
 

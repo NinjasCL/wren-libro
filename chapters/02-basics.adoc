@@ -23,11 +23,38 @@ var animales = [
 #### Ejemplo: Parámetros de un método
 
 ```js
- MiClase.metodo(
-       parametro1,
-       parametro2,
-       parametro3
- )
+MiClase.metodo(
+  parametro1,
+  parametro2,
+  parametro3
+)
+```
+
+#### Ejemplo: Condicionales
+
+Los saltos de línea son considerados en la declaración de bloques de código.
+Por lo tanto es importante la posición de las llaves (_"{}"_) dentro de una instrucción.
+
+```js
+// Correcto
+if (condiction == true) {}
+```
+
+```js
+// Correcto
+if (condiction == true)   {
+  // ...
+}
+```
+
+Si la llave no está presente en la misma línea, gatillará un error.
+
+```js
+// Error
+if (condiction == true)
+{
+  // ...
+}
 ```
 
 #### Ejemplo: Generar un número al azar del 0 al 9
@@ -35,7 +62,7 @@ var animales = [
 Al considerar los saltos de línea significativos, 
 provoca un comportamiento inusual al momento de llamar métodos.
 
-  Los números pseudo aleatorios son generados utilizando la clase Random. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.
+  Los números pseudo aleatorios son generados utilizando la clase `Random`. Para generar un número del 0 al 9 se necesita utilizar 10, ya que el número máximo utilizado no está incluido dentro de la secuencia. Es decir se incluye 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (total 10 números) dentro de los posibles resultados.
 
 Instrucción en una sola línea.
 
@@ -78,6 +105,8 @@ break class construct else false for foreign if import
 in is null return static super this true var while
 ```
 
+  Una palabra reservada tiene un significado especial para _Wren_, por lo que  no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.
+
 #### Caracteres significativos
 
 - Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } , & ^ ? : ~ _`)
@@ -85,7 +114,14 @@ in is null return static super this true var while
 
 ### Comentarios
 
-Los comentarios utilizan la misma sintaxis que el https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)[`Lenguaje de Programación C`].
+Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
+como codificar las soluciones a los problemas. Una vez que se soluciona el problema, 
+se dedicará una gran cantidad de tiempo en revisar y perfeccionar el algoritmo.
+
+Los comentarios te permiten escribir en lenguaje humano como Inglés o Español, dentro
+de los programas.
+
+Los comentarios en _Wren_ utilizan la misma sintaxis que el https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n)[`Lenguaje de Programación C`].
 
 Los símbolos son los siguientes: `/* */` (multi línea) y `//` (línea única).
 
@@ -121,7 +157,7 @@ por que pueden "cortar" un código para no ser ejecutado.
 
 ```js
 // /*
-   codigo()
+  codigo()
 // */
 ```
 
@@ -130,7 +166,7 @@ puedes activar o desactivar secciones de código.
 
 ```js
 /*
-   codigo()
+  codigo()
 // */
 ```
 
@@ -138,7 +174,7 @@ Puede aún ser más simplificado de esta forma
 
 ```js
 //*
-   codigo()
+  codigo()
 // */
 ```
 
@@ -146,7 +182,7 @@ Si se elimina el primer `/` el código será comentado. Por lo que se ahorra un 
 
 ```js
 /*
-   codigo()
+  codigo()
 // */
 ```
 #### Tip: Comentarios de parámetros
@@ -166,6 +202,22 @@ var y = 20
 var radio = 10
 circulo(x, y, radio)
 ```
+
+#### ¿Cómo es un buen comentario?
+
+- Es completo, corto y directo. La mayoría de los comentarios deberían ser escritos en párrafos.
+- Explica tu forma de pensar, para que cuando regreses a leer el código en el futuro puedas comprender cómo se ha resuelto el problema.
+- También explica pensando en otros, para que otras personas puedan trabajar en tu código y entender cómo lo haz estructurado.
+- Explica una sección difícil con mayor detalle.
+
+#### ¿Cuándo comentar?
+
+- Cuando tienes que pensar cómo funciona el código antes de escribirlo.
+- Cuando probablemente olvides como estabas resolviendo un problema.
+- Cuando exista más de una forma de resolver un problema.
+- Cuando es poco probable que otros comprendan cómo haz resuelto un problema.
+
+Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.
 
 ### Identificadores
 
