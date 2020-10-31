@@ -45,6 +45,12 @@
 <simpara>El primer <emphasis>commit</emphasis> de <emphasis>Wren</emphasis> fue escrito el <link xl:href="https://github.com/wren-lang/wren/tree/2f6a6889f1b4a1ba86aeb169e7398704b1ee04c0">22 de Octubre del 2013</link> y su versión más reciente es la <emphasis>0.3</emphasis>. Actualmente <emphasis>Bob Nystrom</emphasis> pasó a ser colaborador y la evolución del lenguaje fue asignada a <link xl:href="https://github.com/underscorediscovery">_discovery</link> (creador del <link xl:href="https://luxeengine.com">game engine Luxe</link>).</simpara>
 <simpara><emphasis>Wren</emphasis> fue creado como una alternativa a <emphasis>Lua</emphasis> y otros <link xl:href="https://en.wikipedia.org/wiki/Scripting_language">lenguajes de scripting</link> para personas que estuvieran más familiarizadas con lenguajes orientados a objetos como <emphasis>Java</emphasis>, <emphasis>C#</emphasis>, o <emphasis>C++</emphasis>. Su principal foco es la simpleza.</simpara>
 <simpara>La página oficial de Wren es <link xl:href="http://wren.io">Wren.io</link>.</simpara>
+<simpara>La principal característica de <emphasis>Wren</emphasis> es ser un <emphasis role="strong">lenguaje minimalista</emphasis>. Esto significa
+que no todas las ideas y utilidades serán implementadas en la <emphasis>API</emphasis> oficial. Muchas
+veces se tendrá la obligación de implementar funcionalidades adicionales que en otros
+lenguajes están disponibles de fábrica. Normalmente la recomendación es tener
+una serie de archivos con utilidades a mano y si algún día son implementadas en la <emphasis>API</emphasis>
+oficial, poder reemplazarlos adecuadamente.</simpara>
 <section xml:id="_qué_es_un_wren">
 <title>¿Qué es un <emphasis>Wren</emphasis>?</title>
 <simpara><emphasis>Wren</emphasis> es un <link xl:href="https://es.wikipedia.org/wiki/Troglodytidae">tipo de ave pequeña</link> perteneciente a la familia de los troglodítidos (que habita en cavernas o cuevas). En Chile tenemos al <link xl:href="https://www.avesdechile.cl/074.htm">Chercán o Chochin Criollo</link>.</simpara>
@@ -281,7 +287,7 @@ int(10)</programlisting>
 <simpara><emphasis>Wren</emphasis> es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:</simpara>
 <programlisting language="js" linenumbering="numbered">break class construct else false for foreign if import
 in is null return static super this true var while</programlisting>
-<literallayout class="monospaced">Una palabra reservada tiene un significado especial para _Wren_, por lo que  no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.</literallayout>
+<simpara>Una palabra reservada tiene un significado especial para <emphasis>Wren</emphasis>, por lo que no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.</simpara>
 <section xml:id="_caracteres_significativos">
 <title>Caracteres significativos</title>
 <itemizedlist>
@@ -502,7 +508,10 @@ System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar lo
 </itemizedlist>
 <simpara>La operación <literal>%()</literal> permite incluir cualquier instrucción <emphasis>Wren</emphasis> válida, la cual finalmente ejecutará el método <literal>toString</literal> para ser incluido en la cadena de caracteres. Esto incluso permite tener interpolaciones anidadas, pero eso se vuelve poco legible rápidamente.</simpara>
 <programlisting language="js" linenumbering="numbered">// muestra: La respuesta es 42.
-System.print("La respuesta es %(20 * 2 + 2).")</programlisting>
+System.print("La respuesta es %(20 * 2 + 2).")
+
+// muestra: wow 149
+System.print("wow %((1..3).map {|n| n * n}.join())")</programlisting>
 </section>
 <section xml:id="_multiplicación_de_strings">
 <title>Multiplicación de strings</title>
@@ -1078,7 +1087,6 @@ import "io" for Stdin
 
 var random = Random.new()
 
-// Un número aleatorio entre 10K y 50K
 var alcance = 0
 
 var objetivos = 3
@@ -1127,12 +1135,16 @@ while (jugar) {
   anguloElevacion = 0
   distanciaFinal = 0
   tiros = 1
-  alcance = random.int(10000, 50001)
+
+  // Un número aleatorio entre 10K y 50K
+  // Usamos notación científica para simplificar el número
+  alcance = random.int(10e3, 50e3 + 1)
+
   distanciaObjetivo = random.int(distanciaMinima, alcance + 1)
 
   System.print("El cañón puede disparar hasta %(alcance) metros")
   System.print("El objetivo está a %(distanciaObjetivo) metros")
-  System.print("La fórmula de la distancia es: alcance * sin(2 * ángulo * π / 180)")
+  System.print("La fórmula de la distancia es: alcance * sin(ángulo * 2 * π / 180)")
 
   while (oportunidades &gt; 0) {
 
@@ -1152,12 +1164,12 @@ while (jugar) {
     }
 
     // Calculamos la distancia que el tiro llega con el ángulo ingresado.
-    // La fórmula matemática (ángulo * π / 180) convierte los grados del ángulo de
-    // elevación a radianes.
-    // Luego se obtiene el seno del doble de su valor sin(2 * radianes)
-    // y se multiplica por el alcance alcance * sin(2 * radianes).
-    // Finalmente se eliminan los decimales redondeando el resultado.
-    // redondear(alcance * sin(2 * radianes)).
+    // La fórmula matemática (ángulo * 2π/180) convierte los grados del ángulo de
+    // a radianes. Considerando 360º.
+    // Luego se multiplica el alcance por el seno de los radianes obtenidos
+    // para obtener la distancia alcanzada.
+    // Finalmente se redondea el resultado para obtener un número entero.
+    // Ver: http://math2.org/math/trig/es-tables.htm
     // Ver: https://es.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/v/projectile-at-an-angle
 
     distanciaAlcanzada = (alcance * (anguloElevacion * ( 2 * Num.pi / 180)).sin).round

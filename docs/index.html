@@ -543,6 +543,14 @@ En este pequeño documento se detallarán lo básico del lenguaje de programaci�
 <div class="paragraph">
 <p>La página oficial de Wren es <a href="http://wren.io">Wren.io</a>.</p>
 </div>
+<div class="paragraph">
+<p>La principal característica de <em>Wren</em> es ser un <strong>lenguaje minimalista</strong>. Esto significa
+que no todas las ideas y utilidades serán implementadas en la <em>API</em> oficial. Muchas
+veces se tendrá la obligación de implementar funcionalidades adicionales que en otros
+lenguajes están disponibles de fábrica. Normalmente la recomendación es tener
+una serie de archivos con utilidades a mano y si algún día son implementadas en la <em>API</em>
+oficial, poder reemplazarlos adecuadamente.</p>
+</div>
 <div class="sect2">
 <h3 id="_qué_es_un_wren">1.1. ¿Qué es un <em>Wren</em>?</h3>
 <div class="paragraph">
@@ -888,10 +896,8 @@ int(10)</code></pre>
 in is null return static super this true var while</code></pre>
 </div>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>Una palabra reservada tiene un significado especial para _Wren_, por lo que  no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.</pre>
-</div>
+<div class="paragraph">
+<p>Una palabra reservada tiene un significado especial para <em>Wren</em>, por lo que no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.</p>
 </div>
 <div class="sect3">
 <h4 id="_caracteres_significativos">3.2.1. Caracteres significativos</h4>
@@ -1257,7 +1263,10 @@ System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar lo
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">// muestra: La respuesta es 42.
-System.print("La respuesta es %(20 * 2 + 2).")</code></pre>
+System.print("La respuesta es %(20 * 2 + 2).")
+
+// muestra: wow 149
+System.print("wow %((1..3).map {|n| n * n}.join())")</code></pre>
 </div>
 </div>
 </div>
@@ -1971,7 +1980,6 @@ import "io" for Stdin
 
 var random = Random.new()
 
-// Un número aleatorio entre 10K y 50K
 var alcance = 0
 
 var objetivos = 3
@@ -2020,12 +2028,16 @@ while (jugar) {
   anguloElevacion = 0
   distanciaFinal = 0
   tiros = 1
-  alcance = random.int(10000, 50001)
+
+  // Un número aleatorio entre 10K y 50K
+  // Usamos notación científica para simplificar el número
+  alcance = random.int(10e3, 50e3 + 1)
+
   distanciaObjetivo = random.int(distanciaMinima, alcance + 1)
 
   System.print("El cañón puede disparar hasta %(alcance) metros")
   System.print("El objetivo está a %(distanciaObjetivo) metros")
-  System.print("La fórmula de la distancia es: alcance * sin(2 * ángulo * π / 180)")
+  System.print("La fórmula de la distancia es: alcance * sin(ángulo * 2 * π / 180)")
 
   while (oportunidades &gt; 0) {
 
@@ -2045,12 +2057,12 @@ while (jugar) {
     }
 
     // Calculamos la distancia que el tiro llega con el ángulo ingresado.
-    // La fórmula matemática (ángulo * π / 180) convierte los grados del ángulo de
-    // elevación a radianes.
-    // Luego se obtiene el seno del doble de su valor sin(2 * radianes)
-    // y se multiplica por el alcance alcance * sin(2 * radianes).
-    // Finalmente se eliminan los decimales redondeando el resultado.
-    // redondear(alcance * sin(2 * radianes)).
+    // La fórmula matemática (ángulo * 2π/180) convierte los grados del ángulo de
+    // a radianes. Considerando 360º.
+    // Luego se multiplica el alcance por el seno de los radianes obtenidos
+    // para obtener la distancia alcanzada.
+    // Finalmente se redondea el resultado para obtener un número entero.
+    // Ver: http://math2.org/math/trig/es-tables.htm
     // Ver: https://es.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/v/projectile-at-an-angle
 
     distanciaAlcanzada = (alcance * (anguloElevacion * ( 2 * Num.pi / 180)).sin).round
