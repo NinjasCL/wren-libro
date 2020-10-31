@@ -8,6 +8,8 @@ Una lista de recursos complementarios y referenciales.
 
 - [[[inventwithpython]]] Albert Sweigart. 'Inventa tus Propios Juegos de computadora con Python'. http://inventwithpython.com/es. ISBN 978-1514370926
 
+- [[[alfonseca]]] Manuel Alfonseca. 'Cómo construir juegos de aventura'. https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura. ISBN 84-7688-019-7
+
 .Sitios Web
 
 - [[[introtopython]]] Eric Matthes. 'Introduction to Python' https://github.com/ehmatthes/intro_programming
