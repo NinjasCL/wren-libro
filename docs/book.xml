@@ -65,9 +65,60 @@ oficial, poder reemplazarlos adecuadamente.</simpara>
 <simpara>También son aves muy hogareñas que prefieren quedarse en un mismo territorio a emigrar. Cuando vuelan sorprenden con la gran altura que pueden alcanzar y su rapidez. ¡Nunca sabes en que dirección van a salir!.</simpara>
 <simpara>En las tradiciones celtas, el <emphasis>Wren</emphasis> es un símbolo de vivacidad y actividad.</simpara>
 </section>
-</chapter>
-<chapter xml:id="_cómo_usar_wren">
-<title>¿Cómo usar Wren?</title>
+<section xml:id="_por_qué_aprender_wren">
+<title>¿Por qué aprender <emphasis>Wren</emphasis>?</title>
+<simpara>Existen algunos lenguajes interpretados usados para ser incrustados dentro de aplicaciones. <link xl:href="https://www.lua.org/"><emphasis>Lua</emphasis></link> es uno de los más populares. Actualmente también son populares <link xl:href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><emphasis>JavaScript</emphasis></link> o <link xl:href="https://www.python.org/"><emphasis>Python</emphasis></link>.</simpara>
+<simpara><emphasis>Lua</emphasis> es genial, simple y rápido. Pero muchas veces su naturaleza es un poco incómoda para personas más acostumbaradas a lenguajes como <link xl:href="https://isocpp.org/"><emphasis>C++</emphasis></link> o <link xl:href="https://openjdk.java.net/"><emphasis>Java</emphasis></link>. La sintaxis es diferente y la semántica del modelo de objetos es algo inusual.</simpara>
+<simpara><emphasis>Wren</emphasis> es una alternativa a <emphasis>Lua</emphasis> pensada para personas mas familiarizadas con lenguajes orientados a objetos.</simpara>
+<simpara>Acá podemos comparar la implementación de una clase llamada <emphasis>Cuenta</emphasis> entre
+<emphasis>Lua</emphasis> y <emphasis>Wren</emphasis>.</simpara>
+<formalpara>
+<title>Lua</title>
+<para>
+<programlisting language="lua" linenumbering="numbered">-- cuenta.lua
+
+Cuenta = {}
+Cuenta.__index = Cuenta
+
+function Cuenta.crear(balance)
+  local cuenta = {}             -- nuevo objeto
+  setmetatable(cuenta,Cuenta)   -- hacer el objeto cuenta tenga las propiedades de Cuenta
+  cuenta.balance = balance      -- inicializar el objeto
+  return cuenta
+end
+
+function Cuenta:retirar(monto)
+  self.balance = self.balance - monto
+end
+
+-- crear y usar una Cuenta
+cuenta = Cuenta.crear(1000)
+cuenta:retirar(100)</programlisting>
+</para>
+</formalpara>
+<formalpara>
+<title>Wren</title>
+<para>
+<programlisting language="js" linenumbering="numbered">// cuenta.wren
+
+class Cuenta {
+  construct crear(balance) { _balance = balance }
+  retirar(monto) { _balance = _balance - monto }
+}
+
+// crear y usar una Cuenta
+var cuenta = Cuenta.crear(1000)
+cuenta.retirar(100)</programlisting>
+</para>
+</formalpara>
+<simpara>Los lenguajes orientados a objetos y clases tradicionalmente tienen una reputación
+de ser complejos. Esto es principalmente por que los lenguajes que implementan este paradigma
+son complejos: <emphasis>C++</emphasis>, <emphasis>Java</emphasis>, <link xl:href="https://docs.microsoft.com/en-us/dotnet/csharp/"><emphasis>C#</emphasis></link>, <link xl:href="https://www.ruby-lang.org/en/"><emphasis>Ruby</emphasis></link> y <emphasis>Python</emphasis>.</simpara>
+<simpara>Uno de los objetivos de <emphasis>Wren</emphasis> es demostrar que son dichos lenguajes los complejos, no la orientación a objetos y clases en sí. <link xl:href="https://es.wikipedia.org/wiki/Smalltalk"><emphasis>Smalltalk</emphasis></link> fue uno de los precursores y la inspiración para muchos de aquellos lenguajes. Es tan simple que toda su sintaxis puede ser escrita en una <emphasis>tarjeta kardex</emphasis>. <emphasis>Wren</emphasis> desea ser igual de minimalista, pero al mismo contar con el poder expresivo de las clases y orientación a objetos.</simpara>
+<simpara>Finalmente para responder la pregunta de <emphasis>"¿Por qué aprender Wren?"</emphasis>. Principalmente por que aprender un nuevo lenguaje de programación siempre entregará experiencia que puede ser extrapolada a otros ámbitos y contextos. Tal vez sea más simple de aprender un concepto en <emphasis>Wren</emphasis> que en <emphasis>Python</emphasis> o <emphasis>Lua</emphasis>. Quizás un lenguaje de nicho como <emphasis>Wren</emphasis> no tenga muchas ofertas laborales que lo soliciten, pero todo lo aprendido siempre será nutritivo para el desarrollo profesional.</simpara>
+</section>
+<section xml:id="_cómo_usar_wren">
+<title>¿Cómo usar <emphasis>Wren</emphasis>?</title>
 <simpara><emphasis>Wren</emphasis> es un lenguaje interpretado, lo que significa que no requiere de compilación. Basta simplemente tener un intérprete para ejecutar los algoritmos. Hay varias alternativas.</simpara>
 <orderedlist numeration="arabic">
 <listitem>
@@ -84,6 +135,7 @@ oficial, poder reemplazarlos adecuadamente.</simpara>
 </listitem>
 </orderedlist>
 <simpara>Una vez que tengas tu intérprete instalado puedes ejecutar por ejemplo`./wren main.wren` para ver el resultado de tu script.</simpara>
+</section>
 <section xml:id="_wren_cli">
 <title><link xl:href="https://github.com/wren-lang/wren-cli">Wren CLI</link></title>
 <simpara>La terminal de <emphasis>Wren</emphasis> llamada <emphasis>Wren CLI</emphasis> (<link xl:href="https://es.wikipedia.org/wiki/Interfaz_de_l%C3%ADnea_de_comandos">Interfaz de línea de comandos</link>) permite dos modos de operación. El primero es el modo <link xl:href="https://es.wikipedia.org/wiki/REPL"><emphasis>REPL</emphasis></link> (Bucle Lectura-Evaluación-Impresión) el cual nos permite evaluar las instrucciones una a una. El segundo modo es el intérprete que permite ejecutar scripts <emphasis>Wren</emphasis>.</simpara>
