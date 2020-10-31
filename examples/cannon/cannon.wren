@@ -12,7 +12,6 @@ import "io" for Stdin
 
 var random = Random.new()
 
-// Un número aleatorio entre 10K y 50K
 var alcance = 0
 
 var objetivos = 3
@@ -61,12 +60,16 @@ while (jugar) {
   anguloElevacion = 0
   distanciaFinal = 0
   tiros = 1
-  alcance = random.int(10000, 50001)
+  
+  // Un número aleatorio entre 10K y 50K
+  // Usamos notación científica para simplificar el número
+  alcance = random.int(10e3, 50e3 + 1)
+
   distanciaObjetivo = random.int(distanciaMinima, alcance + 1)
 
   System.print("El cañón puede disparar hasta %(alcance) metros")
   System.print("El objetivo está a %(distanciaObjetivo) metros")
-  System.print("La fórmula de la distancia es: alcance * sin(2 * ángulo * π / 180)")
+  System.print("La fórmula de la distancia es: alcance * sin(ángulo * 2 * π / 180)")
 
   while (oportunidades > 0) {
 
@@ -86,12 +89,12 @@ while (jugar) {
     }
 
     // Calculamos la distancia que el tiro llega con el ángulo ingresado.
-    // La fórmula matemática (ángulo * π / 180) convierte los grados del ángulo de
-    // elevación a radianes.
-    // Luego se obtiene el seno del doble de su valor sin(2 * radianes)
-    // y se multiplica por el alcance alcance * sin(2 * radianes).
-    // Finalmente se eliminan los decimales redondeando el resultado.
-    // redondear(alcance * sin(2 * radianes)).
+    // La fórmula matemática (ángulo * 2π/180) convierte los grados del ángulo de
+    // a radianes. Considerando 360º.
+    // Luego se multiplica el alcance por el seno de los radianes obtenidos
+    // para obtener la distancia alcanzada.
+    // Finalmente se redondea el resultado para obtener un número entero.
+    // Ver: http://math2.org/math/trig/es-tables.htm
     // Ver: https://es.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/v/projectile-at-an-angle
 
     distanciaAlcanzada = (alcance * (anguloElevacion * ( 2 * Num.pi / 180)).sin).round

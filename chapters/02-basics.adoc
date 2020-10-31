@@ -105,7 +105,7 @@ break class construct else false for foreign if import
 in is null return static super this true var while
 ```
 
-  Una palabra reservada tiene un significado especial para _Wren_, por lo que  no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.
+Una palabra reservada tiene un significado especial para _Wren_, por lo que no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.
 
 #### Caracteres significativos
 

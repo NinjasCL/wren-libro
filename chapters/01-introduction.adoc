@@ -8,6 +8,14 @@ _Wren_ fue creado como una alternativa a _Lua_ y otros https://en.wikipedia.org/
 
 La página oficial de Wren es http://wren.io[Wren.io].
 
+La principal característica de _Wren_ es ser un *lenguaje minimalista*. Esto significa 
+que no todas las ideas y utilidades serán implementadas en la _API_ oficial. Muchas
+veces se tendrá la obligación de implementar funcionalidades adicionales que en otros
+lenguajes están disponibles de fábrica. Normalmente la recomendación es tener
+una serie de archivos con utilidades a mano y si algún día son implementadas en la _API_
+oficial, poder reemplazarlos adecuadamente.
+
+
 ### ¿Qué es un _Wren_?
 
 _Wren_ es un https://es.wikipedia.org/wiki/Troglodytidae[tipo de ave pequeña] perteneciente a la familia de los troglodítidos (que habita en cavernas o cuevas). En Chile tenemos al https://www.avesdechile.cl/074.htm[Chercán o Chochin Criollo].

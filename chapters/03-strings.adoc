@@ -77,6 +77,9 @@ La operación `%()` permite incluir cualquier instrucción _Wren_ válida, la cu
 ```js
 // muestra: La respuesta es 42.
 System.print("La respuesta es %(20 * 2 + 2).")
+
+// muestra: wow 149
+System.print("wow %((1..3).map {|n| n * n}.join())") 
 ```
 
 ### Multiplicación de strings
