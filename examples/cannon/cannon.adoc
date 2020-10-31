@@ -1,0 +1,39 @@
+### Cañon
+
+Este juego simula el disparo de un cañón hacia un objetivo.
+Código levemente basado en <<alfonseca>>
+
+#### ¿Cómo Jugar?
+
+El jugador debe ingresar el ángulo para cada tiro del cañón.
+
+#### Ejemplo de Ejecución
+
+```
+Quedan 1 objetivos
+El cañón puede disparar entre 100 a 34595 metros
+El objetivo está a 6788 metros
+La fórmula de la distancia es: alcance_máximo * sin(2 * PI * ángulo / alcance_mínimo)
+
+Ingrese el ángulo para disparar
+5
+Distancia Alcanzada: 10690 Distancia Objetivo: 6788
+
+El tiro se pasó en 3902 metros.
+¡Prueba otra vez!, quedan 4 tiros
+
+Ingrese el ángulo para disparar
+3.1
+Distancia Alcanzada: 6695 Distancia Objetivo: 6788
+
+!!BooOOOM!!
+¡Felicidades!, haz destruido al objetivo en 2 intentos.
+```
+
+
+#### Código fuente
+
+[source, js, linenums]
+----
+include::cannon.wren[]
+----

@@ -18,3 +18,5 @@ include::dragon/dragon.adoc[]
 include::diamantes/diamantes.adoc[]
 
 include::caracoles/caracoles.adoc[]
+
+include::cannon/cannon.adoc[]
