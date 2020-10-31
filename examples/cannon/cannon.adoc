@@ -11,9 +11,9 @@ El jugador debe ingresar el ángulo para cada tiro del cañón.
 
 ```
 Quedan 1 objetivos
-El cañón puede disparar entre 100 a 34595 metros
+El cañón puede disparar hasta 34595 metros
 El objetivo está a 6788 metros
-La fórmula de la distancia es: alcance_máximo * sin(2 * PI * ángulo / alcance_mínimo)
+La fórmula de la distancia es: alcance * sin(2 * ángulo * π / 180)
 
 Ingrese el ángulo para disparar
 5

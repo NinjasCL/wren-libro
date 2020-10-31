@@ -64,9 +64,9 @@ while (jugar) {
   alcance = random.int(10000, 50001)
   distanciaObjetivo = random.int(distanciaMinima, alcance + 1)
 
-  System.print("El cañón puede disparar entre %(distanciaMinima) a %(alcance) metros")
+  System.print("El cañón puede disparar hasta %(alcance) metros")
   System.print("El objetivo está a %(distanciaObjetivo) metros")
-  System.print("La fórmula de la distancia es: alcance_máximo * sin(2 * PI * ángulo / alcance_mínimo)")
+  System.print("La fórmula de la distancia es: alcance * sin(2 * ángulo * π / 180)")
 
   while (oportunidades > 0) {
 
@@ -85,21 +85,28 @@ while (jugar) {
       }
     }
 
-    // Calculamos la distancia que el tiro llega con el ángulo ingresado
-    // redondeamos el resultado a enteros
-    distanciaAlcanzada = (alcance * (2 * Num.pi * anguloElevacion / distanciaMinima).sin).floor
-    System.print("Distancia Alcanzada: %(distanciaAlcanzada.abs) Distancia Objetivo: %(distanciaObjetivo.abs)")
+    // Calculamos la distancia que el tiro llega con el ángulo ingresado.
+    // La fórmula matemática (ángulo * π / 180) convierte los grados del ángulo de
+    // elevación a radianes.
+    // Luego se obtiene el seno del doble de su valor sin(2 * radianes)
+    // y se multiplica por el alcance alcance * sin(2 * radianes).
+    // Finalmente se eliminan los decimales redondeando el resultado.
+    // redondear(alcance * sin(2 * radianes)).
+    // Ver: https://es.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/v/projectile-at-an-angle
+
+    distanciaAlcanzada = (alcance * (2 * (anguloElevacion * Num.pi / 180)).sin).round
     distanciaFinal = (distanciaAlcanzada - distanciaObjetivo).abs
+    System.print("Distancia Alcanzada: %(distanciaAlcanzada.abs) Distancia Objetivo: %(distanciaObjetivo) Diferencia: %(distanciaFinal)")
 
     destruido = (distanciaMinima >= distanciaFinal)
 
     if (destruido) {
       objetivos = objetivos - 1
       jugar = (objetivos > 0)
-      System.print("\n" * 4)
+      System.print()
       System.print("!!BooOOOM!!")
       System.print("¡Felicidades!, haz destruido al objetivo en %(tiros) intentos.")
-      System.print("\n" * 4)
+      System.print()
       break
     }
 
