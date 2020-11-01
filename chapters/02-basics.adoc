@@ -219,6 +219,38 @@ circulo(x, y, radio)
 
 Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.
 
+### Variables
+
+Una variable es un contenedor de un valor específico.
+Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.
+
+```js
+var mensaje = "Hola mundo Wren"
+System.print(mensaje)
+```
+
+Se puede modificar el valor posteriormente
+
+```js
+var mensaje = "Hola mundo Wren"
+System.print(mensaje)
+
+mensaje = "El chercán es una bonita ave"
+System.print(mensaje)
+```
+
+Si usamos una variable sin haberla declarado antes
+recibiremos un error similar a lo siguiente:
+
+```js
+var mensaje = "Hola"
+System.print(mensaj)
+[repl line 1] Error at 'mensaj': Variable is used but not defined.
+```
+
+Debemos siempre procurar que todas nuestras variables estén declaradas
+dentro del contexto y que no existan errores de escritura en sus nombres.
+
 ### Identificadores
 
 Similar al _Lenguaje C_, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas. Solo se permiten letras (`A - Z`, `a - z`), números (`0 - 9`) y guión bajo (`_`). No se permiten espacios o comenzar con un número o guión alto (`-`).
@@ -250,8 +282,7 @@ Mi👩clase
 
 No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] o https://www.emojicode.org/[Emoji Code] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.
 
-Ejemplo de EmojiCode
-
+.EmojiCode
 ```
 🏁 🍇
   😀 🔤Hello World!🔤❗️
@@ -278,3 +309,9 @@ var Numero = Num
 // También es válido pero no es recomendable
 class numero is Num {}
 ```
+
+#### Recomendaciones
+
+- Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo _"ruedasMotocicleta"_ es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".
+
+- La letra _"l"_ mínuscula y la letra _"O"_ mayúscula puede ser confundida con el número _"1"_ y "0" respectivamente.

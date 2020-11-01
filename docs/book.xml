@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>El <emphasis>Wren</emphasis> libro</title>
-<date>2020-10-30</date>
+<date>2020-10-31</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -446,6 +446,26 @@ circulo(x, y, radio)</programlisting>
 <simpara>Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.</simpara>
 </section>
 </section>
+<section xml:id="_variables">
+<title>Variables</title>
+<simpara>Una variable es un contenedor de un valor específico.
+Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.</simpara>
+<programlisting language="js" linenumbering="numbered">var mensaje = "Hola mundo Wren"
+System.print(mensaje)</programlisting>
+<simpara>Se puede modificar el valor posteriormente</simpara>
+<programlisting language="js" linenumbering="numbered">var mensaje = "Hola mundo Wren"
+System.print(mensaje)
+
+mensaje = "El chercán es una bonita ave"
+System.print(mensaje)</programlisting>
+<simpara>Si usamos una variable sin haberla declarado antes
+recibiremos un error similar a lo siguiente:</simpara>
+<programlisting language="js" linenumbering="numbered">var mensaje = "Hola"
+System.print(mensaj)
+[repl line 1] Error at 'mensaj': Variable is used but not defined.</programlisting>
+<simpara>Debemos siempre procurar que todas nuestras variables estén declaradas
+dentro del contexto y que no existan errores de escritura en sus nombres.</simpara>
+</section>
 <section xml:id="_identificadores">
 <title>Identificadores</title>
 <simpara>Similar al <emphasis>Lenguaje C</emphasis>, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la <link xl:href="http://www.asciitable.com/">lista <literal>ascii</literal></link> y comenzar con un caracter alfabético o guión bajo. Los identificadores en <emphasis>Wren</emphasis> diferencian entre mayúsculas y minúsculas. Solo se permiten letras (<literal>A - Z</literal>, <literal>a - z</literal>), números (<literal>0 - 9</literal>) y guión bajo (<literal>_</literal>). No se permiten espacios o comenzar con un número o guión alto (<literal>-</literal>).</simpara>
@@ -471,10 +491,14 @@ Mi👩clase</screen>
 <section xml:id="_unicode">
 <title>Unicode</title>
 <simpara>No están permitidos caracteres <link xl:href="https://es.wikipedia.org/wiki/UTF-8">UTF-8</link> como la <literal>Ñ</literal> o los emojis en los identificadores. Sin embargo las <literal>Strings</literal> las soportan en su contenido sin problemas. Hay lenguajes como <link xl:href="https://swift.org/"><emphasis>Swift</emphasis></link> o <link xl:href="https://www.emojicode.org/">Emoji Code</link> que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.</simpara>
-<simpara>Ejemplo de EmojiCode</simpara>
+<formalpara>
+<title>EmojiCode</title>
+<para>
 <screen linenumbering="numbered">🏁 🍇
   😀 🔤Hello World!🔤❗️
 🍉</screen>
+</para>
+</formalpara>
 </section>
 <section xml:id="_identificadores_que_inician_con_guión_bajo">
 <title>Identificadores que inician con guión bajo</title>
@@ -489,6 +513,17 @@ su nombre con mayúsculas. Si bien es posible definir clases con letras minúscu
 var Numero = Num</programlisting>
 <programlisting language="js" linenumbering="numbered">// También es válido pero no es recomendable
 class numero is Num {}</programlisting>
+</section>
+<section xml:id="_recomendaciones">
+<title>Recomendaciones</title>
+<itemizedlist>
+<listitem>
+<simpara>Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo <emphasis>"ruedasMotocicleta"</emphasis> es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".</simpara>
+</listitem>
+<listitem>
+<simpara>La letra <emphasis>"l"</emphasis> mínuscula y la letra <emphasis>"O"</emphasis> mayúscula puede ser confundida con el número <emphasis>"1"</emphasis> y "0" respectivamente.</simpara>
+</listitem>
+</itemizedlist>
 </section>
 </section>
 </chapter>
@@ -671,6 +706,10 @@ System.print("hola wren"[2..3])</programlisting>
 System.print("hola wren"[-1..0])</programlisting>
 </section>
 </section>
+</chapter>
+<chapter xml:id="_num_números">
+<title><link xl:href="https://wren.io/modules/core/num.html">Num: Números</link></title>
+
 </chapter>
 <chapter xml:id="_ejemplos_de_terminal_en_wren">
 <title>Ejemplos de Terminal en Wren</title>

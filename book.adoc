@@ -33,6 +33,8 @@ include::chapters/02-basics.adoc[]
 
 include::chapters/03-strings.adoc[]
 
+include::chapters/04-numbers.adoc[]
+
 include::examples/examples.adoc[]
 
 include::exercises/solutions.adoc[]
