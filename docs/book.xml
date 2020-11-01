@@ -299,16 +299,18 @@ capítulo detalla las normas básicas con las que funciona
 <simpara>Los saltos de línea son considerados en la declaración de bloques de código.
 Por lo tanto es importante la posición de las llaves (<emphasis>"{}"</emphasis>) dentro de una instrucción.</simpara>
 <programlisting language="js" linenumbering="numbered">// Correcto
-if (condiction == true) {}</programlisting>
+if (condiccion == true) { x = 0 }</programlisting>
 <programlisting language="js" linenumbering="numbered">// Correcto
-if (condiction == true)   {
-  // ...
+if (condiccion == true)   {
+  x = 0
 }</programlisting>
+<programlisting language="js" linenumbering="numbered">// Correcto
+if (condicion == true) x = 0</programlisting>
 <simpara>Si la llave no está presente en la misma línea, gatillará un error.</simpara>
 <programlisting language="js" linenumbering="numbered">// Error
 if (condiction == true)
 {
-  // ...
+  x = 0
 }</programlisting>
 </section>
 <section xml:id="_ejemplo_generar_un_número_al_azar_del_0_al_9">
@@ -333,6 +335,20 @@ int(10)</programlisting>
 <simpara>La siguiente línea arroja error debido a que no tiene un salto de línea o una operación.</simpara>
 <programlisting language="js" linenumbering="numbered">Random.new().int(10) Random.new().int(10)</programlisting>
 </section>
+</section>
+<section xml:id="_retorno_implícito">
+<title>Retorno implícito</title>
+<simpara>Al tener instrucciones de una sola línea se considera
+como que existe una instrucción de retorno (<emphasis>"return"</emphasis>).</simpara>
+<programlisting language="js" linenumbering="numbered">class Auto {
+  // ruedas retornará siempre el valor "4"
+  ruedas {4}
+
+  // similar a ruedas, pero usando una instrucción "return" explícita
+  puertas {
+    return 2
+  }
+}</programlisting>
 </section>
 <section xml:id="_palabras_reservadas">
 <title>Palabras Reservadas</title>
@@ -525,6 +541,10 @@ class numero is Num {}</programlisting>
 </listitem>
 </itemizedlist>
 </section>
+</section>
+<section xml:id="_ejercicios_2">
+<title>Ejercicios</title>
+
 </section>
 </chapter>
 <chapter xml:id="_strings_cadena_de_caracteres">

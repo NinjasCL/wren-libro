@@ -37,14 +37,19 @@ Por lo tanto es importante la posición de las llaves (_"{}"_) dentro de una ins
 
 ```js
 // Correcto
-if (condiction == true) {}
+if (condiccion == true) { x = 0 }
 ```
 
 ```js
 // Correcto
-if (condiction == true)   {
-  // ...
+if (condiccion == true)   {
+  x = 0
 }
+```
+
+```js
+// Correcto
+if (condicion == true) x = 0
 ```
 
 Si la llave no está presente en la misma línea, gatillará un error.
@@ -53,7 +58,7 @@ Si la llave no está presente en la misma línea, gatillará un error.
 // Error
 if (condiction == true)
 {
-  // ...
+  x = 0
 }
 ```
 
@@ -94,6 +99,23 @@ La siguiente línea arroja error debido a que no tiene un salto de línea o una 
 
 ```js
 Random.new().int(10) Random.new().int(10)
+```
+
+### Retorno implícito
+
+Al tener instrucciones de una sola línea se considera
+como que existe una instrucción de retorno (_"return"_).
+
+```js
+class Auto {
+  // ruedas retornará siempre el valor "4"
+  ruedas {4}
+
+  // similar a ruedas, pero usando una instrucción "return" explícita
+  puertas {
+    return 2
+  }
+}
 ```
 
 ### Palabras Reservadas
@@ -315,3 +337,5 @@ class numero is Num {}
 - Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo _"ruedasMotocicleta"_ es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".
 
 - La letra _"l"_ mínuscula y la letra _"O"_ mayúscula puede ser confundida con el número _"1"_ y "0" respectivamente.
+
+### Ejercicios
