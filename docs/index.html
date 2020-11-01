@@ -463,13 +463,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_nociones_básicas">2. Nociones Básicas</a>
 <ul class="sectlevel2">
-<li><a href="#_saltos_de_línea">2.1. Saltos de línea</a></li>
-<li><a href="#_retorno_implícito">2.2. Retorno implícito</a></li>
-<li><a href="#_palabras_reservadas">2.3. Palabras Reservadas</a></li>
-<li><a href="#_comentarios">2.4. Comentarios</a></li>
-<li><a href="#_variables">2.5. Variables</a></li>
-<li><a href="#_identificadores">2.6. Identificadores</a></li>
-<li><a href="#_ejercicios_2">2.7. Ejercicios</a></li>
+<li><a href="#_tipos_de_datos">2.1. Tipos de datos</a></li>
+<li><a href="#_saltos_de_línea">2.2. Saltos de línea</a></li>
+<li><a href="#_retorno_implícito">2.3. Retorno implícito</a></li>
+<li><a href="#_palabras_reservadas">2.4. Palabras Reservadas</a></li>
+<li><a href="#_comentarios">2.5. Comentarios</a></li>
+<li><a href="#_variables">2.6. Variables</a></li>
+<li><a href="#_identificadores">2.7. Identificadores</a></li>
+<li><a href="#_ejercicios_2">2.8. Ejercicios</a></li>
 </ul>
 </li>
 <li><a href="#_strings_cadena_de_caracteres">3. Strings: Cadena de caracteres</a>
@@ -834,12 +835,106 @@ capítulo detalla las normas básicas con las que funciona
 <em>Wren</em>.</p>
 </div>
 <div class="sect2">
-<h3 id="_saltos_de_línea">2.1. Saltos de línea</h3>
+<h3 id="_tipos_de_datos">2.1. Tipos de datos</h3>
+<div class="paragraph">
+<p>Todos los tipos de datos en <em>Wren</em> son objetos, instancias de una clase específica. Las operaciones son métodos disponibles en dichas clases.</p>
+</div>
+<div class="paragraph">
+<div class="title">Wren</div>
+<p>Estas son las clases disponibles dentro del lenguaje <em>Wren</em> "vainilla".</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>Bool</em></p>
+</li>
+<li>
+<p><em>Class</em></p>
+</li>
+<li>
+<p><em>Fiber</em></p>
+</li>
+<li>
+<p><em>Fn</em></p>
+</li>
+<li>
+<p><em>List</em></p>
+</li>
+<li>
+<p><em>Map</em></p>
+</li>
+<li>
+<p><em>Null</em></p>
+</li>
+<li>
+<p><em>Num</em></p>
+</li>
+<li>
+<p><em>Object</em></p>
+</li>
+<li>
+<p><em>Range</em></p>
+</li>
+<li>
+<p><em>Sequence</em></p>
+</li>
+<li>
+<p><em>String</em></p>
+</li>
+<li>
+<p><em>System</em></p>
+</li>
+<li>
+<p><em>Meta</em></p>
+</li>
+<li>
+<p><em>Random</em></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Wren CLI</div>
+<p>Estas clases son exclusivas de la <em>Wren CLI</em>. No estarán disponibles fuera del entorno de ejecución de este intérprete de <em>Wren</em>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>Directory</em></p>
+</li>
+<li>
+<p><em>File</em></p>
+</li>
+<li>
+<p><em>Stat</em></p>
+</li>
+<li>
+<p><em>Stdin</em></p>
+</li>
+<li>
+<p><em>Stdout</em></p>
+</li>
+<li>
+<p><em>Platform</em></p>
+</li>
+<li>
+<p><em>Process</em></p>
+</li>
+<li>
+<p><em>Scheduler</em></p>
+</li>
+<li>
+<p><em>Timer</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_saltos_de_línea">2.2. Saltos de línea</h3>
 <div class="paragraph">
 <p><em>Wren</em> utiliza los saltos de línea (<code>\n</code>), por lo que no es necesario utilizar el punto y coma (<code>;</code>) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.</p>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_lista_de_elementos">2.1.1. Ejemplo: Lista de elementos</h4>
+<h4 id="_ejemplo_lista_de_elementos">2.2.1. Ejemplo: Lista de elementos</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">var animales = [
@@ -852,7 +947,7 @@ capítulo detalla las normas básicas con las que funciona
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_parámetros_de_un_método">2.1.2. Ejemplo: Parámetros de un método</h4>
+<h4 id="_ejemplo_parámetros_de_un_método">2.2.2. Ejemplo: Parámetros de un método</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">MiClase.metodo(
@@ -864,7 +959,7 @@ capítulo detalla las normas básicas con las que funciona
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_condicionales">2.1.3. Ejemplo: Condicionales</h4>
+<h4 id="_ejemplo_condicionales">2.2.3. Ejemplo: Condicionales</h4>
 <div class="paragraph">
 <p>Los saltos de línea son considerados en la declaración de bloques de código.
 Por lo tanto es importante la posición de las llaves (<em>"{}"</em>) dentro de una instrucción.</p>
@@ -903,7 +998,7 @@ if (condiction == true)
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_generar_un_número_al_azar_del_0_al_9">2.1.4. Ejemplo: Generar un número al azar del 0 al 9</h4>
+<h4 id="_ejemplo_generar_un_número_al_azar_del_0_al_9">2.2.4. Ejemplo: Generar un número al azar del 0 al 9</h4>
 <div class="paragraph">
 <p>Al considerar los saltos de línea significativos,
 provoca un comportamiento inusual al momento de llamar métodos.</p>
@@ -946,7 +1041,7 @@ int(10)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_error">2.1.5. Ejemplo: <strong>Error</strong></h4>
+<h4 id="_ejemplo_error">2.2.5. Ejemplo: <strong>Error</strong></h4>
 <div class="paragraph">
 <p>La siguiente línea arroja error debido a que no tiene un salto de línea o una operación.</p>
 </div>
@@ -958,10 +1053,12 @@ int(10)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_retorno_implícito">2.2. Retorno implícito</h3>
+<h3 id="_retorno_implícito">2.3. Retorno implícito</h3>
 <div class="paragraph">
-<p>Al tener instrucciones de una sola línea se considera
-como que existe una instrucción de retorno (<em>"return"</em>).</p>
+<p>Al tener instrucciones de una sola línea, <em>Wren</em> asume
+la existencia de una instrucción de retorno (<em>"return"</em>).
+Si no hay un valor, se asume que el valor de retorno
+es <em>null</em>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -978,7 +1075,7 @@ como que existe una instrucción de retorno (<em>"return"</em>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_palabras_reservadas">2.3. Palabras Reservadas</h3>
+<h3 id="_palabras_reservadas">2.4. Palabras Reservadas</h3>
 <div class="paragraph">
 <p><em>Wren</em> es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:</p>
 </div>
@@ -992,7 +1089,7 @@ in is null return static super this true var while</code></pre>
 <p>Una palabra reservada tiene un significado especial para <em>Wren</em>, por lo que no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.</p>
 </div>
 <div class="sect3">
-<h4 id="_caracteres_significativos">2.3.1. Caracteres significativos</h4>
+<h4 id="_caracteres_significativos">2.4.1. Caracteres significativos</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1006,7 +1103,7 @@ in is null return static super this true var while</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_comentarios">2.4. Comentarios</h3>
+<h3 id="_comentarios">2.5. Comentarios</h3>
 <div class="paragraph">
 <p>Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
 como codificar las soluciones a los problemas. Una vez que se soluciona el problema,
@@ -1049,7 +1146,7 @@ líneas.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tip_comentarios_tijera">2.4.1. Tip: Comentarios Tijera</h4>
+<h4 id="_tip_comentarios_tijera">2.5.1. Tip: Comentarios Tijera</h4>
 <div class="paragraph">
 <p>Puedes combinar los comentarios de una sola línea con los de múltiples líneas para
 comentar/descomentar rápidamente secciones de código. Se llaman comentarios tijera
@@ -1095,7 +1192,7 @@ puedes activar o desactivar secciones de código.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tip_comentarios_de_parámetros">2.4.2. Tip: Comentarios de parámetros</h4>
+<h4 id="_tip_comentarios_de_parámetros">2.5.2. Tip: Comentarios de parámetros</h4>
 <div class="paragraph">
 <p>En <em>Wren</em> no es posible llamar a los parámetros por su nombre. Por lo que si utilizas una función
 con algunos parámetros, puede ser útil comentarlos.</p>
@@ -1118,7 +1215,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cómo_es_un_buen_comentario">2.4.3. ¿Cómo es un buen comentario?</h4>
+<h4 id="_cómo_es_un_buen_comentario">2.5.3. ¿Cómo es un buen comentario?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1137,7 +1234,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cuándo_comentar">2.4.4. ¿Cuándo comentar?</h4>
+<h4 id="_cuándo_comentar">2.5.4. ¿Cuándo comentar?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1160,7 +1257,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_variables">2.5. Variables</h3>
+<h3 id="_variables">2.6. Variables</h3>
 <div class="paragraph">
 <p>Una variable es un contenedor de un valor específico.
 Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.</p>
@@ -1200,12 +1297,12 @@ dentro del contexto y que no existan errores de escritura en sus nombres.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_identificadores">2.6. Identificadores</h3>
+<h3 id="_identificadores">2.7. Identificadores</h3>
 <div class="paragraph">
 <p>Similar al <em>Lenguaje C</em>, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la <a href="http://www.asciitable.com/">lista <code>ascii</code></a> y comenzar con un caracter alfabético o guión bajo. Los identificadores en <em>Wren</em> diferencian entre mayúsculas y minúsculas. Solo se permiten letras (<code>A - Z</code>, <code>a - z</code>), números (<code>0 - 9</code>) y guión bajo (<code>_</code>). No se permiten espacios o comenzar con un número o guión alto (<code>-</code>).</p>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_de_identificadores_válidos">2.6.1. Ejemplo de Identificadores válidos</h4>
+<h4 id="_ejemplo_de_identificadores_válidos">2.7.1. Ejemplo de Identificadores válidos</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">hola
@@ -1218,7 +1315,7 @@ TODAS_MAYUSCULAS</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_de_identificadores_no_válidos">2.6.2. Ejemplo de Identificadores no válidos</h4>
+<h4 id="_ejemplo_de_identificadores_no_válidos">2.7.2. Ejemplo de Identificadores no válidos</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>13hola
@@ -1232,7 +1329,7 @@ Mi👩clase</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_unicode">2.6.3. Unicode</h4>
+<h4 id="_unicode">2.7.3. Unicode</h4>
 <div class="paragraph">
 <p>No están permitidos caracteres <a href="https://es.wikipedia.org/wiki/UTF-8">UTF-8</a> como la <code>Ñ</code> o los emojis en los identificadores. Sin embargo las <code>Strings</code> las soportan en su contenido sin problemas. Hay lenguajes como <a href="https://swift.org/"><em>Swift</em></a> o <a href="https://www.emojicode.org/">Emoji Code</a> que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.</p>
 </div>
@@ -1246,13 +1343,13 @@ Mi👩clase</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_identificadores_que_inician_con_guión_bajo">2.6.4. Identificadores que inician con guión bajo</h4>
+<h4 id="_identificadores_que_inician_con_guión_bajo">2.7.4. Identificadores que inician con guión bajo</h4>
 <div class="paragraph">
 <p>Un caso especial es para los identificadores con guión bajo como <code>_color</code> (un guión bajo al principio) y <code>__sabor</code> (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_identificadores_de_clase">2.6.5. Identificadores de clase</h4>
+<h4 id="_identificadores_de_clase">2.7.5. Identificadores de clase</h4>
 <div class="paragraph">
 <p>Para <em>Wren</em> es importante que las clases comiencen
 su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.</p>
@@ -1274,7 +1371,7 @@ class numero is Num {}</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_recomendaciones">2.6.6. Recomendaciones</h4>
+<h4 id="_recomendaciones">2.7.6. Recomendaciones</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1288,7 +1385,7 @@ class numero is Num {}</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ejercicios_2">2.7. Ejercicios</h3>
+<h3 id="_ejercicios_2">2.8. Ejercicios</h3>
 
 </div>
 </div>

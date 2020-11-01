@@ -5,6 +5,44 @@ determinan la forma de escribir el lenguaje. El siguiente
 capítulo detalla las normas básicas con las que funciona
 _Wren_.
 
+### Tipos de datos
+
+Todos los tipos de datos en _Wren_ son objetos, instancias de una clase específica. Las operaciones son métodos disponibles en dichas clases.
+
+.Wren
+
+Estas son las clases disponibles dentro del lenguaje _Wren_ "vainilla".
+
+. _Bool_
+. _Class_
+. _Fiber_
+. _Fn_
+. _List_
+. _Map_
+. _Null_
+. _Num_
+. _Object_
+. _Range_
+. _Sequence_
+. _String_
+. _System_
+. _Meta_
+. _Random_
+
+.Wren CLI
+
+Estas clases son exclusivas de la _Wren CLI_. No estarán disponibles fuera del entorno de ejecución de este intérprete de _Wren_.
+
+. _Directory_
+. _File_
+. _Stat_
+. _Stdin_
+. _Stdout_
+. _Platform_
+. _Process_
+. _Scheduler_
+. _Timer_
+
 ### Saltos de línea
 
 _Wren_ utiliza los saltos de línea (`\n`), por lo que no es necesario utilizar el punto y coma (`;`) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.
@@ -103,8 +141,10 @@ Random.new().int(10) Random.new().int(10)
 
 ### Retorno implícito
 
-Al tener instrucciones de una sola línea se considera
-como que existe una instrucción de retorno (_"return"_).
+Al tener instrucciones de una sola línea, _Wren_ asume
+la existencia de una instrucción de retorno (_"return"_).
+Si no hay un valor, se asume que el valor de retorno
+es _null_.
 
 ```js
 class Auto {

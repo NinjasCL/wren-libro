@@ -274,6 +274,94 @@ que muestre el mensaje "¡Hola Wren!".</simpara>
 determinan la forma de escribir el lenguaje. El siguiente
 capítulo detalla las normas básicas con las que funciona
 <emphasis>Wren</emphasis>.</simpara>
+<section xml:id="_tipos_de_datos">
+<title>Tipos de datos</title>
+<simpara>Todos los tipos de datos en <emphasis>Wren</emphasis> son objetos, instancias de una clase específica. Las operaciones son métodos disponibles en dichas clases.</simpara>
+<formalpara>
+<title>Wren</title>
+<para>Estas son las clases disponibles dentro del lenguaje <emphasis>Wren</emphasis> "vainilla".</para>
+</formalpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara><emphasis>Bool</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Class</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Fiber</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Fn</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>List</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Map</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Null</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Num</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Object</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Range</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Sequence</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>String</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>System</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Meta</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Random</emphasis></simpara>
+</listitem>
+</orderedlist>
+<formalpara>
+<title>Wren CLI</title>
+<para>Estas clases son exclusivas de la <emphasis>Wren CLI</emphasis>. No estarán disponibles fuera del entorno de ejecución de este intérprete de <emphasis>Wren</emphasis>.</para>
+</formalpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara><emphasis>Directory</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>File</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Stat</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Stdin</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Stdout</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Platform</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Process</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Scheduler</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><emphasis>Timer</emphasis></simpara>
+</listitem>
+</orderedlist>
+</section>
 <section xml:id="_saltos_de_línea">
 <title>Saltos de línea</title>
 <simpara><emphasis>Wren</emphasis> utiliza los saltos de línea (<literal>\n</literal>), por lo que no es necesario utilizar el punto y coma (<literal>;</literal>) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.</simpara>
@@ -338,8 +426,10 @@ int(10)</programlisting>
 </section>
 <section xml:id="_retorno_implícito">
 <title>Retorno implícito</title>
-<simpara>Al tener instrucciones de una sola línea se considera
-como que existe una instrucción de retorno (<emphasis>"return"</emphasis>).</simpara>
+<simpara>Al tener instrucciones de una sola línea, <emphasis>Wren</emphasis> asume
+la existencia de una instrucción de retorno (<emphasis>"return"</emphasis>).
+Si no hay un valor, se asume que el valor de retorno
+es <emphasis>null</emphasis>.</simpara>
 <programlisting language="js" linenumbering="numbered">class Auto {
   // ruedas retornará siempre el valor "4"
   ruedas {4}
