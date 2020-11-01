@@ -1,13 +1,13 @@
-### Cañon
+#### Cañon
 
 Este juego simula el disparo de un cañón hacia un objetivo.
 Código levemente basado en <<alfonseca>>
 
-#### ¿Cómo Jugar?
+##### ¿Cómo Jugar?
 
 El jugador debe ingresar el ángulo para cada tiro del cañón.
 
-#### Ejemplo de Ejecución
+##### Ejemplo de Ejecución
 
 ```
 Quedan 1 objetivos
@@ -31,7 +31,7 @@ Distancia Alcanzada: 6695 Distancia Objetivo: 6788
 ```
 
 
-#### Código fuente
+##### Código fuente
 
 [source, js, linenums]
 ----

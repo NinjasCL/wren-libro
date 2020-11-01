@@ -1,22 +1,37 @@
 
-## Ejemplos de Terminal en Wren
+## Proyectos de ejemplo en Wren
 
-Una colección de código fuente _Wren_ con juegos y aplicaciones simples, basados en texto a modo de ejemplo.
+Una colección de código fuente _Wren_ con juegos y aplicaciones simples.
+Se recomienda utilizar un editor de código como https://vscodium.com/[VS Codium] 
+para escribir los ejemplos.
+
+### Terminal
+
+Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando _Wren CLI_ y la entrada/salida estándar.
 
 Basados principalmente en los códigos diponibles en https://github.com/asweigart/PythonStdioGames[Python Stdio Games] y https://github.com/asweigart/inventwithpython3rded[Invent With Python].
 
-### ¿Cómo ejecutarlos?
+#### ¿Cómo ejecutarlos?
 
-Primero se necesita el https://github.com/wren-lang/wren-cli/releases/latest[intérprete de Wren]. Además de un editor de código como https://code.visualstudio.com/[Visual Studio Code].
+Primero se necesita el https://github.com/wren-lang/wren-cli/releases/latest[intérprete de Wren].
 
 Para mayor documentación sobre la consola y el lenguaje _Wren_ se puede visitar http://wren.io/cli
 
-include::adivina/adivina.adoc[]
+include::terminal/adivina/adivina.adoc[]
 
-include::dragon/dragon.adoc[]
+include::terminal/dragon/dragon.adoc[]
 
-include::diamantes/diamantes.adoc[]
+include::terminal/diamantes/diamantes.adoc[]
 
-include::caracoles/caracoles.adoc[]
+include::terminal/caracoles/caracoles.adoc[]
 
-include::cannon/cannon.adoc[]
+include::terminal/cannon/cannon.adoc[]
+
+### Gráficos
+
+Aplicaciones que necesitan http://tic80.com/[_TIC 80_] u https://domeengine.com/[_Dome Engine_] para ser ejecutados.
+
+
+include::graphics/breakout/breakout.adoc[]
+
+include::graphics/snake/snake.adoc[]

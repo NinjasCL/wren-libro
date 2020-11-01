@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?asciidoc-toc maxdepth="2"?>
+<?asciidoc-toc maxdepth="3"?>
 <?asciidoc-numbered?>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>El <emphasis>Wren</emphasis> libro</title>
-<date>2020-10-31</date>
+<date>2020-11-01</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -821,13 +821,18 @@ System.print("hola wren"[-1..0])</programlisting>
 <title><link xl:href="https://wren.io/modules/core/num.html">Num: Números</link></title>
 
 </chapter>
-<chapter xml:id="_ejemplos_de_terminal_en_wren">
-<title>Ejemplos de Terminal en Wren</title>
-<simpara>Una colección de código fuente <emphasis>Wren</emphasis> con juegos y aplicaciones simples, basados en texto a modo de ejemplo.</simpara>
+<chapter xml:id="_proyectos_de_ejemplo_en_wren">
+<title>Proyectos de ejemplo en Wren</title>
+<simpara>Una colección de código fuente <emphasis>Wren</emphasis> con juegos y aplicaciones simples.
+Se recomienda utilizar un editor de código como <link xl:href="https://vscodium.com/">VS Codium</link>
+para escribir los ejemplos.</simpara>
+<section xml:id="_terminal">
+<title>Terminal</title>
+<simpara>Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando <emphasis>Wren CLI</emphasis> y la entrada/salida estándar.</simpara>
 <simpara>Basados principalmente en los códigos diponibles en <link xl:href="https://github.com/asweigart/PythonStdioGames">Python Stdio Games</link> y <link xl:href="https://github.com/asweigart/inventwithpython3rded">Invent With Python</link>.</simpara>
 <section xml:id="_cómo_ejecutarlos">
 <title>¿Cómo ejecutarlos?</title>
-<simpara>Primero se necesita el <link xl:href="https://github.com/wren-lang/wren-cli/releases/latest">intérprete de Wren</link>. Además de un editor de código como <link xl:href="https://code.visualstudio.com/">Visual Studio Code</link>.</simpara>
+<simpara>Primero se necesita el <link xl:href="https://github.com/wren-lang/wren-cli/releases/latest">intérprete de Wren</link>.</simpara>
 <simpara>Para mayor documentación sobre la consola y el lenguaje <emphasis>Wren</emphasis> se puede visitar <link xl:href="http://wren.io/cli">http://wren.io/cli</link></simpara>
 </section>
 <section xml:id="_adivina_el_número">
@@ -1412,6 +1417,1059 @@ while (jugar) {
     }
   }
 }</programlisting>
+</section>
+</section>
+</section>
+<section xml:id="_gráficos">
+<title>Gráficos</title>
+<simpara>Aplicaciones que necesitan <link xl:href="http://tic80.com/"><emphasis>TIC 80</emphasis></link> u <link xl:href="https://domeengine.com/"><emphasis>Dome Engine</emphasis></link> para ser ejecutados.</simpara>
+<section xml:id="_breakout">
+<title><link xl:href="https://github.com/NinjasCL/breakout">Breakout</link></title>
+<simpara>Un clon simple del famoso juego de <emphasis>Breakout</emphasis>.
+Debes eliminar todos los bloques dentro de la pantalla utilizando
+una raqueta y una pelota. El juego termina si la raqueta falla
+en golpear la pelota.</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://raw.githubusercontent.com/NinjasCL/breakout/main/breakout.gif"/>
+</imageobject>
+<textobject><phrase>Breakout</phrase></textobject>
+</inlinemediaobject></simpara>
+<section xml:id="_código_fuente_6">
+<title>Código fuente</title>
+<programlisting language="js" linenumbering="numbered">// title:  Clone de breakout para TIC-80
+// author: Camilo Castro
+// desc:   Un simple clon de breakout en Wren
+// script: wren
+// based on: https://github.com/digitsensitive/tic-80-tutorials/tree/master/tutorials/breakout
+
+import "random" for Random
+
+var Seed = Random.new()
+var T = TIC
+
+class ScreenWidth {
+    static min {0}
+    static max {240}
+}
+
+class ScreenHeight {
+    static min {0}
+    static max {136}
+}
+
+class Screen {
+    static height {ScreenHeight}
+    static width {ScreenWidth}
+}
+
+class Input {
+    static left {T.btn(2)}
+    static right {T.btn(3)}
+    static x {T.btn(5)}
+}
+
+class Color {
+    static black {0}
+    static white {12}
+    static orange {3}
+    static greyl {13}
+    static greyd {15}
+}
+
+class Collisions {
+   // Implements
+  // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+  static collide(hitbox, hitbox2) {
+    return (hitbox.x &lt; hitbox2.x + hitbox2.width &amp;&amp;
+            hitbox.x + hitbox.width &gt; hitbox2.x &amp;&amp;
+            hitbox.y &lt; hitbox2.y + hitbox2.height &amp;&amp;
+            hitbox.y + hitbox.height &gt; hitbox2.y)
+  }
+}
+
+class PlayerSpeed {
+    x {_x}
+    x = (value) {
+        _x = value
+    }
+
+    max {_max}
+    max = (value) {
+        _max = value
+    }
+
+    construct new() {
+        _x = 0
+        _max = 4
+    }
+}
+
+class Player {
+    x {_x}
+    y {_y}
+    width {_width}
+    height {_height}
+    color {_color}
+    speed {_speed}
+
+    state {_state}
+
+    construct new(state) {
+        _state = state
+        _width = 24
+        _height = 4
+        _y = 120
+        _color = Color.orange
+        reset()
+    }
+
+    reset() {
+        _x = (Screen.width.max/2) - _width/2
+        _speed = PlayerSpeed.new()
+    }
+
+    draw() {
+        T.rect(x, y, width, height, color)
+    }
+
+    wall() {
+        if (x &lt; Screen.width.min) {
+            _x = Screen.width.min
+        } else if(x + width &gt; Screen.width.max) {
+            _x = Screen.width.max - width
+        }
+    }
+
+    collisions() {
+        wall()
+    }
+
+    update() {
+        _x = x + speed.x
+        if (speed.x != 0) {
+            if (speed.x &gt; 0) {
+              speed.x = speed.x - 1
+            } else {
+              speed.x = speed.x + 1
+            }
+        }
+    }
+
+    input() {
+        if (Input.left) {
+                if (speed.x &gt; -speed.max) {
+                    speed.x = speed.x - 2
+                } else {
+                    speed.x = -speed.max
+                }
+            }
+
+            if (Input.right) {
+                if (speed.x &lt; speed.max) {
+                        speed.x = speed.x + 2
+                    } else {
+                        speed.x = speed.max
+                    }
+            }
+    }
+}
+
+class BallSpeed {
+    x {_x}
+    x = (value) {
+        _x = value
+    }
+
+    y {_y}
+    y = (value) {
+        _y = value
+    }
+
+    max {_max}
+
+    construct new() {
+        _x = 0
+        _y = 0
+        _max = 1.5
+    }
+}
+
+class Ball {
+    x {_x}
+    y {_y}
+    width {_width}
+    height {_height}
+    color {_color}
+    deactive {_deactive}
+    speed {_speed}
+
+    player {_player}
+    player = (value) {
+        _player = value
+    }
+
+    state {_state}
+
+    construct new(player, state) {
+        _width = 3
+        _height = 3
+        _color = Color.greyl
+        _player = player
+        _state = state
+        reset()
+    }
+
+    position() {
+        _x = player.x + (player.width / 2) - 1.5
+        _y = player.y - 5
+    }
+
+    reset() {
+        position()
+        _deactive = true
+        _speed = BallSpeed.new()
+    }
+
+    input() {
+        if (deactive) {
+                position()
+                if (Input.x) {
+                    speed.x = (Seed.float(0, 10).floor * 2) - 1
+                        speed.y = speed.y - 1.5
+                        _deactive = false
+                }
+            }
+    }
+
+    wall() {
+        // top
+        if (y &lt; 0) {
+            speed.y = -speed.y
+
+        // left
+        } else if (x &lt; 0) {
+            speed.x = -speed.x
+
+        // right
+        } else if (x &gt; 240 - width) {
+            speed.x = -speed.x
+        }
+    }
+
+    ground() {
+        if (y &gt; 136 - width) {
+                reset()
+                state.lifeDown()
+        }
+    }
+
+    paddle() {
+        if (Collisions.collide(this, player)) {
+            speed.y = -speed.y
+            speed.x = speed.x + 0.3 * player.speed.x
+        }
+    }
+
+    brick(brick) {
+
+        // collide left or right side
+        if (brick.y &lt; y &amp;&amp;
+            y &lt; brick.y + brick.height &amp;&amp;
+            (x &lt; brick.x || brick.x + brick.width &lt; x)) {
+                speed.x = -speed.x
+            }
+        // collide top or bottom
+        if (y &lt; brick.y ||
+        (y &gt; brick.y &amp;&amp; brick.x &lt; x &amp;&amp;
+        x &lt; brick.x + brick.width)) {
+            speed.y = -speed.y
+        }
+    }
+
+    collisions() {
+        wall()
+        ground()
+        paddle()
+    }
+
+    update() {
+        _x = x + speed.x
+        _y = y + speed.y
+
+        if (speed.x &gt; speed.max) {
+            speed.x = speed.max
+        }
+    }
+
+    draw() {
+        T.rect(x, y, width, height, color)
+    }
+}
+
+class Brick {
+    x {_x}
+    y {_y}
+    width {_width}
+    height {_height}
+    color {_color}
+
+    construct new(x, y, color) {
+        _x = x
+        _y = y
+        _width = 10
+        _height = 4
+        _color = color
+    }
+
+    draw() {
+        T.rect(x, y, width, height, color)
+    }
+}
+
+class Board {
+    width {19}
+    height {12}
+
+    ball {_ball}
+    state {_state}
+
+    bricks {
+        if (!_bricks) {
+            _blicks = []
+        }
+
+        return _bricks
+    }
+
+    construct new(ball, state) {
+        _ball = ball
+        _state = state
+        reset()
+    }
+
+    reset() {
+        _bricks = []
+        for (i in 0..height) {
+            for (j in 0..width) {
+                var x = 10 + j * 11
+                var y = 10 + i * 5
+                var color = i + 1
+                var brick = Brick.new(x, y, color)
+                bricks.add(brick)
+            }
+        }
+								ball.reset()
+    }
+
+    draw() {
+        bricks.each {|brick|
+            brick.draw()
+        }
+    }
+
+    collisions() {
+        var index = 0
+        if (bricks.count &lt;= 0) {
+            reset()
+        }
+
+        var note = "C-%(Seed.int(4,7))"
+
+        bricks.each {|brick|
+            if (Collisions.collide(ball, brick)) {
+                T.sfx(0, note, 10)
+                bricks.removeAt(index)
+                ball.brick(brick)
+                state.scoreUp()
+            }
+            index = index + 1
+        }
+    }
+
+    update() {}
+    input() {}
+}
+
+class Stage {
+    objects {_objects}
+    state {_state}
+
+    construct new(state) {
+        _objects = []
+        _state = state
+    }
+
+    add(object) {
+        objects.add(object)
+    }
+
+    input() {
+        if (!state.isPlaying) return
+
+        objects.each {|object|
+            object.input()
+        }
+    }
+
+    draw() {
+        if (!state.isPlaying) return
+
+        objects.each {|object|
+            object.draw()
+        }
+    }
+
+    update() {
+
+        if (!state.isPlaying) return
+
+        objects.each {|object|
+            object.update()
+        }
+    }
+
+    collisions() {
+        if (!state.isPlaying) return
+
+        objects.each {|object|
+            object.collisions()
+        }
+    }
+}
+
+class GUI {
+    player {_player}
+    state {_state}
+
+    construct new(player, state) {
+        _player = player
+        _state = state
+    }
+
+    scores() {
+       // shadow
+        T.print("SCORE ", 5, 1, Color.greyd)
+        T.print(state.score, 40, 1, Color.greyd)
+
+        // forecolor
+        T.print("SCORE ", 5, 0, Color.white)
+        T.print(state.score, 40, 0, Color.white)
+
+        // shadow
+        T.print("LIVES ", 190, 1, Color.greyd)
+        T.print(state.lives, 225, 1, Color.greyd)
+
+        // forecolor
+        T.print("LIVES ", 190, 0, Color.white)
+        T.print(state.lives, 225, 0, Color.white)
+    }
+
+    gameover() {
+      T.print("Game Over", (Screen.width.max/2) - 6 * 4.5, 136/2, Color.white)
+    }
+
+    input() {
+        if (!state.isPlaying &amp;&amp; Input.x) {
+            state.start()
+        }
+    }
+
+    draw() {
+        if (state.isPlaying) {
+            return scores()
+        }
+        gameover()
+    }
+}
+
+class GameState {
+    static game {__game}
+    static game = (value) {
+        __game = value
+    }
+
+    static isPlaying {__playing}
+
+    static score {
+        if (!__score) {
+            __score = 0
+        }
+
+        return __score
+    }
+
+    static score = (value) {
+        __score = value
+    }
+
+    static lives {
+        if (!__lives || __lives &lt; 0) {
+            __lives = 3
+        }
+
+        return __lives
+    }
+
+    static lives = (value) {
+        if (value &lt; 0) {
+            over()
+        }
+        __lives = value
+    }
+
+    static over() {
+        reset()
+        __playing = false
+    }
+
+    static start() {
+        __playing = true
+    }
+
+    static lifeDown() {
+        lives = lives - 1
+    }
+
+    static scoreUp() {
+        score = score + 100
+    }
+
+    static reset() {
+        score = 0
+        lives = 3
+        game.reset()
+    }
+}
+
+
+
+class Game is TIC {
+    player {_player }
+    stage {_stage }
+    gui {_gui }
+
+    construct new() {
+        reset()
+    }
+
+    reset() {
+        GameState.start()
+        GameState.game = this
+
+        _player = Player.new(GameState)
+        _ball = Ball.new(_player, GameState)
+
+        _gui = GUI.new(_player, GameState)
+
+        _board = Board.new(_ball, GameState)
+
+        _stage = Stage.new(GameState)
+        _stage.add(_player)
+        _stage.add(_ball)
+        _stage.add(_board)
+    }
+
+    TIC() {
+        T.cls(0)
+        input()
+        update()
+        collisions()
+        draw()
+    }
+
+    input() {
+        gui.input()
+        stage.input()
+    }
+
+    update() {
+        stage.update()
+    }
+
+    collisions() {
+        stage.collisions()
+    }
+
+    draw() {
+        stage.draw()
+        gui.draw()
+    }
+}
+// &lt;TILES&gt;
+// 001:eccccccccc888888caaaaaaaca888888cacccccccacc0ccccacc0ccccacc0ccc
+// 002:ccccceee8888cceeaaaa0cee888a0ceeccca0ccc0cca0c0c0cca0c0c0cca0c0c
+// 003:eccccccccc888888caaaaaaaca888888cacccccccacccccccacc0ccccacc0ccc
+// 004:ccccceee8888cceeaaaa0cee888a0ceeccca0cccccca0c0c0cca0c0c0cca0c0c
+// 017:cacccccccaaaaaaacaaacaaacaaaaccccaaaaaaac8888888cc000cccecccccec
+// 018:ccca00ccaaaa0ccecaaa0ceeaaaa0ceeaaaa0cee8888ccee000cceeecccceeee
+// 019:cacccccccaaaaaaacaaacaaacaaaaccccaaaaaaac8888888cc000cccecccccec
+// 020:ccca00ccaaaa0ccecaaa0ceeaaaa0ceeaaaa0cee8888ccee000cceeecccceeee
+// &lt;/TILES&gt;
+
+// &lt;WAVES&gt;
+// 000:00000000ffffffff00000000ffffffff
+// 001:0123456789abcdeffedcba9876543210
+// 002:0123456789abcdef0123456789abcdef
+// &lt;/WAVES&gt;
+
+// &lt;SFX&gt;
+// 000:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000
+// 001:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000402000000000
+// 002:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000404000000000
+// 003:000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000405000000000
+// &lt;/SFX&gt;
+
+// &lt;PATTERNS&gt;
+// 000:400008000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+// &lt;/PATTERNS&gt;
+
+// &lt;TRACKS&gt;
+// 000:100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000
+// &lt;/TRACKS&gt;
+
+// &lt;PALETTE&gt;
+// 000:1a1c2c5d275db13e53ef7d57ffcd75a7f07038b76425717929366f3b5dc941a6f673eff7f4f4f494b0c2566c86333c57
+// &lt;/PALETTE&gt;</programlisting>
+</section>
+</section>
+<section xml:id="_snake">
+<title><link xl:href="https://github.com/NinjasCL/snake">Snake</link></title>
+<simpara>Un clon simple del famoso juego de la serpiente.
+Si come se agranda su cola y el juego termina al momento de que la cabeza
+toque una parte de su propio cuerpo.</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://raw.githubusercontent.com/NinjasCL/snake/main/game.gif"/>
+</imageobject>
+<textobject><phrase>Snake</phrase></textobject>
+</inlinemediaobject></simpara>
+<section xml:id="_código_fuente_7">
+<title>Código fuente</title>
+<programlisting language="js" linenumbering="numbered">// title:  Clone de Snake para TIC-80
+// author: Camilo castro
+// desc:   Un pequeño clon de Snake
+// script: wren
+// based on: https://github.com/nesbox/TIC-80/wiki/Snake-Clone-tutorial
+
+import "random" for Random
+
+var Rand = Random.new()
+var T = TIC
+
+class Input {
+		static up {T.btn(0)}
+		static down {T.btn(1)}
+		static left {T.btn(2)}
+		static right {T.btn(3)}
+		static x {T.btn(5)}
+}
+
+class Color {
+  static black {0}
+		static white {12}
+		static green {5}
+		static blue {10}
+		static orange {3}
+		static greyd {15}
+}
+
+class Screen {
+  static width {240}
+		static height {136}
+}
+
+class Position {
+  x {
+		if (!_x) {
+			_x = 0
+			}
+			return _x
+		}
+
+		x = (value) {
+		_x = value
+		}
+
+		y {
+		if (!_y) {
+			_y = 0
+			}
+			return _y
+		}
+
+		y = (value) {
+		_y = value
+		}
+
+		construct new(x, y) {
+			_x = x
+			_y = y
+		}
+}
+
+class GameState {
+  static game {__game}
+		static game = (value) {
+			__game = value
+		}
+
+		static snake {__snake}
+		static snake = (value) {
+			__snake = value
+		}
+
+		static score {
+			if (!__score) {
+				__score = 0
+			}
+			return __score
+		}
+
+		static scoreUp() {
+			__score = score + 100
+		}
+
+  static frame {
+		if (!__frame || __frame &gt; Num.largest - 1) {
+					__frame = 0
+				}
+				return __frame
+		}
+
+		static frameUp() {
+			__frame = frame + 1
+		}
+
+		static isTenthFrame {frame % 10 == 0}
+
+		static isPlaying {
+			if (__isPlaying is Null) {
+				__isPlaying = true
+			}
+			return __isPlaying
+		}
+
+		static isPlaying = (value) {
+			__isPlaying = value
+		}
+
+		static start() {
+			isPlaying = true
+		}
+
+		static gameover() {
+			reset()
+				isPlaying = false
+		}
+
+		static reset() {
+			__score = 0
+			game.reset()
+		}
+}
+
+class Food is Position {
+	snake {_snake}
+
+	construct new (snake) {
+			_snake = snake
+			place()
+	}
+
+	random() {
+		x = Rand.int(0, 29)
+		y = Rand.int(0, 16)
+	}
+
+	place() {
+		random()
+		snake.body.each{|part|
+			if (part.x == x &amp;&amp; part.y == y) {
+					place()
+			}
+		}
+	}
+
+	draw() {
+	  T.rect(x * 8, y * 8, 8, 8, Color.orange)
+	}
+
+	update() {}
+	input() {}
+
+	collisions() {
+		snake.eat(this)
+	}
+}
+
+class Direction {
+	static directions {
+		if (!__directions) {
+				__directions = [
+						Position.new(0, -1), // up
+						Position.new(0, 1), // down
+						Position.new(-1, 0), // left
+						Position.new(1, 0) // right
+				]
+			}
+			return __directions
+		}
+
+		static up {directions[0]}
+		static down {directions[1]}
+		static left {directions[2]}
+		static right {directions[3]}
+}
+
+class Snake {
+  tail {body[0]}
+		neck {body[body.count - 2]}
+		head {body[body.count - 1]}
+		body {
+			if (!_body) {
+					var tail = Position.new(15, 8)
+					var neck = Position.new(14, 8)
+					var head = Position.new(13, 8)
+					_body = [tail, neck, head]
+				}
+				return _body
+		}
+
+		direction {
+			if (!_direction) {
+				_direction = Direction.up
+			}
+			return _direction
+		}
+
+		state {_state}
+
+		construct new(state) {
+			_state = state
+		}
+
+		reset() {
+			_body = null
+			_direction = Direction.up
+		}
+
+		input() {
+			var last = direction
+
+			if (Input.up) {
+				_direction = Direction.up
+			}
+
+			if (Input.down) {
+				_direction = Direction.down
+			}
+
+			if (Input.left) {
+				_direction = Direction.left
+			}
+
+			if (Input.right) {
+				_direction = Direction.right
+			}
+
+			if (head.x + direction.x == neck.x &amp;&amp;
+				head.y + direction.y == neck.y) {
+					_direction = last
+			}
+		}
+
+		draw() {
+			body.each{|part|
+			 T.rect(part.x * 8, part.y * 8, 8, 8, Color.blue)
+			}
+		}
+
+		update() {
+
+			var x = (head.x + direction.x) % 30
+			if (x &lt; 0) {
+				x = 29
+			}
+
+			var y = (head.y + direction.y) % 17
+			if (y &lt; 0) {
+				y = 17
+			}
+
+			var part = Position.new(x, y)
+
+			body.add(part)
+		}
+
+		removeTail() {
+			body.removeAt(0)
+		}
+
+		eat(food) {
+			if (head.x == food.x &amp;&amp; head.y == food.y) {
+				T.sfx(0, "C-5", 10)
+				state.scoreUp()
+				food.place()
+			} else {
+				removeTail()
+			}
+		}
+
+		collisions() {
+
+				// Search if head collisions with body parts
+				// omit last part since its the head
+			body[0...(body.count - 1)].each{|part|
+					if (head.x == part.x &amp;&amp; head.y == part.y) {
+							state.gameover()
+					}
+			}
+		}
+}
+
+class Stage {
+  items {_items}
+
+	construct new() {
+		_items = []
+	}
+
+  add(object) {
+			items.add(object)
+	}
+
+  input() {
+			items.each{|object|
+					object.input()
+			}
+	}
+
+	draw() {
+		items.each{|object|
+			object.draw()
+		}
+	}
+
+	update() {
+		items.each{|object|
+			object.update()
+		}
+	}
+
+	collisions() {
+		items.each{|object|
+			object.collisions()
+		}
+	}
+}
+
+class GUI {
+		state {_state}
+
+		construct new(state) {
+			_state = state
+		}
+
+		score() {
+			T.print("SCORE %(state.score)", 5, 5, Color.blue)
+			T.print("SCORE %(state.score)", 5, 4, Color.white)
+		}
+
+		gameover() {
+			T.cls(Color.black)
+			T.print("Game Over", (Screen.width/2) - 6 * 4.5, (Screen.height / 2), Color.white)
+		}
+
+		input() {
+			if (!state.isPlaying &amp;&amp; Input.x) {
+					state.start()
+			}
+		}
+
+		update() {}
+		collisions() {}
+
+		draw() {
+			if (state.isPlaying) {
+					return score()
+			}
+			gameover()
+		}
+}
+
+class Game is TIC {
+		stage {
+			if (!_stage) {
+					GameState.game = this
+					_stage = Stage.new()
+					_stage.add(snake)
+					_stage.add(food)
+					_stage.add(gui)
+			}
+			return _stage
+		}
+
+		gui {
+			if (!_gui) {
+				_gui = GUI.new(GameState)
+			}
+			return _gui
+		}
+
+		snake {
+			if (!_snake) {
+				_snake = Snake.new(GameState)
+				GameState.snake = _snake
+			}
+			return _snake
+		}
+
+		food {
+			if (!_food) {
+				_food = Food.new(snake)
+			}
+			return _food
+		}
+
+		construct new() {
+				reset()
+		}
+
+		reset() {
+			snake.reset()
+		}
+
+		TIC() {
+			T.cls(Color.green)
+			GameState.frameUp()
+			input()
+
+			if (GameState.isTenthFrame) {
+				update()
+				collisions()
+			}
+
+			draw()
+		}
+
+		input() {
+			stage.input()
+		}
+
+		update() {
+			stage.update()
+		}
+
+		collisions() {
+			stage.collisions()
+		}
+
+		draw() {
+			stage.draw()
+		}
+}</programlisting>
+</section>
 </section>
 </section>
 </chapter>

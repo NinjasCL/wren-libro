@@ -1,14 +1,14 @@
-### Reino de Dragones
+#### Reino de Dragones
 
 Basado en http://inventwithpython.com/es/6.html[Reino de Dragones].
 
 El juego se llama _"Reino de Dragones"_, y permite al jugador elegir entre dos cuevas, en una de las cuales encontrará un tesoro y en la otra su perdición.
 
-#### ¿Cómo Jugar a Reino de Dragones?
+##### ¿Cómo Jugar a Reino de Dragones?
 
 En este juego, el jugador está en una tierra llena de dragones. Todos los dragones viven en cuevas junto a sus grandes montones de tesoros encontrados. Algunos dragones son amigables, y compartirán sus tesoros contigo. Otros son codiciosos y hambrientos, y se comerán a cualquiera que entre a su cueva. El jugador se encuentra frente a dos cuevas, una con un dragón amigable y la otra con un dragón hambriento. El jugador tiene que elegir entre las dos.
 
-#### Ejemplo de Ejecución
+##### Ejemplo de Ejecución
 
 `$ ./wren dragon/dragon.wren`
 
@@ -33,7 +33,7 @@ no
 
 ```
 
-#### Código fuente
+##### Código fuente
 
 [source, js, linenums]
 ----

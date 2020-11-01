@@ -1,0 +1,14 @@
+#### https://github.com/NinjasCL/snake[Snake]
+
+Un clon simple del famoso juego de la serpiente.
+Si come se agranda su cola y el juego termina al momento de que la cabeza
+toque una parte de su propio cuerpo.
+
+image:https://raw.githubusercontent.com/NinjasCL/snake/main/game.gif[Snake]
+
+##### Código fuente
+
+[source, js, linenums]
+----
+include::snake.wren[]
+----

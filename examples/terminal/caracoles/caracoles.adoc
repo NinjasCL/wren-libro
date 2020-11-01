@@ -1,10 +1,10 @@
-### Carrera de Caracoles
+#### Carrera de Caracoles
 
 Una alucinante carrera entre 2 a 8 caracoles.
 Basado en https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py[SnailRace].
 
 
-#### Ejemplo de Ejecución
+##### Ejemplo de Ejecución
 
 `$ ./wren caracoles/caracoles.wren`
 
@@ -30,7 +30,7 @@ INICIO                                  META
 ¡Ha ganado Berto!
 ```
 
-#### Código fuente
+##### Código fuente
 
 [source, js, linenums]
 ----

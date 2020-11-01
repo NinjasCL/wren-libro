@@ -15,7 +15,7 @@ Camilo A. Castro <https://github.com/clsource[@clsource]>
 :front-cover-image: images/default-cover.png
 :epub-chapter-level: 2
 :toc: left
-:toclevels: 2
+:toclevels: 3
 :toc-title: Tabla de Contenidos
 
 ////

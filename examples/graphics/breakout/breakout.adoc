@@ -1,0 +1,16 @@
+#### https://github.com/NinjasCL/breakout[Breakout]
+
+Un clon simple del famoso juego de _Breakout_.
+Debes eliminar todos los bloques dentro de la pantalla utilizando
+una raqueta y una pelota. El juego termina si la raqueta falla
+en golpear la pelota.
+
+
+image:https://raw.githubusercontent.com/NinjasCL/breakout/main/breakout.gif[Breakout]
+
+##### Código fuente
+
+[source, js, linenums]
+----
+include::breakout.wren[]
+----
