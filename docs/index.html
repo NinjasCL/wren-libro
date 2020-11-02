@@ -536,7 +536,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_num_números">4. Num: Números</a></li>
+<li><a href="#_num_números">4. Num: Números</a>
+<ul class="sectlevel2">
+<li><a href="#_punto_flotante">4.1. Punto Flotante</a>
+<ul class="sectlevel3">
+<li><a href="#_comparación_de_punto_flotante">4.1.1. Comparación de Punto Flotante</a></li>
+</ul>
+</li>
+<li><a href="#_formateo_de_punto_flotante">4.2. Formateo de Punto Flotante</a></li>
+</ul>
+</li>
 <li><a href="#_proyectos_de_ejemplo_en_wren">5. Proyectos de ejemplo en Wren</a>
 <ul class="sectlevel2">
 <li><a href="#_terminal">5.1. Terminal</a>
@@ -1745,7 +1754,190 @@ System.print("hola wren"[-1..0])</code></pre>
 <div class="sect1">
 <h2 id="_num_números">4. <a href="https://wren.io/modules/core/num.html">Num: Números</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_punto_flotante">4.1. <a href="https://github.com/Pybonacci/puntoflotante.org">Punto Flotante</a></h3>
+<div class="paragraph">
+<p>La mayor parte de este apartado está basado en el contenido proporcionado por <a href="#puntoflotante">[puntoflotante]</a>.</p>
+</div>
+<div class="paragraph">
+<p>Como la memoria de las computadoras es limitada, no puedes almacenar números
+con precisión infinita, en algún momento tienes que cortar. Pero ¿Cuánta precisión se necesita?
+¿Y <em>dónde</em> se necesita?, ¿Cuántos dígitos enteros y cuántos fraccionarios?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Para un ingeniero construyendo una autopista, no importa si tiene 10 metros o 10.0001 metros de ancho ─ posiblemente ni siquiera sus mediciones eran así de precisas.</p>
+</li>
+<li>
+<p>Para alguien diseñando un microchip, 0.0001 metros (la décima parte de un milímetro) es una diferencia <em>enorme</em> ─ pero nunca tendrá que manejar distancias mayores de 0.1 metros.</p>
+</li>
+<li>
+<p>Un físico necesita usar la <a href="http://es.wikipedia.org/wiki/Velocidad_de_la_luz">velocidad de la luz</a> (más o menos 300000000) y la <a href="http://es.wikipedia.org/wiki/Constante_de_gravitaci%C3%B3n_universal">constante de gravitación universal</a> (más o menos 0.0000000000667) juntas en el mismo cálculo.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Para satisfacer al ingeniero y al diseñador de circuitos integrados, el formato
+tiene que ser preciso para números de órdenes de magnitud muy diferentes. Sin
+embargo, solo se necesita precisión <em>relativa</em>. Para satisfacer al físico, debe
+ser posible hacer cálculos que involucren números de órdenes muy dispares.</p>
+</div>
+<div class="paragraph">
+<p>Básicamente, tener un número fijo de dígitos enteros y fraccionarios no es útil ─ y la solución es un formato con un <em>punto flotante</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="_comparación_de_punto_flotante">4.1.1. Comparación de Punto Flotante</h4>
+<div class="paragraph">
+<p>Si realizamos una pequeña comparación de números con punto flotante, nos encontraremos con que algunas comparaciones simples no pueden ser realizadas correctamente de la forma tradicional.</p>
+</div>
+<div class="paragraph">
+<p>Debido a los errores de redondeo, la mayoría de los números de punto flotante terminan siendo ligeramente imprecisos. Mientras esta imprecisión se mantenga pequeña, normalmente se puede ignorar. Sin embargo, esto significa también que números que se espera que sean iguales (por ejemplo al calcular el mismo resultado utilizando distintos métodos correctos) a veces difieren levemente, y una simple prueba de igualdad falla:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var a = 0.15 + 0.15
+var b = 0.1 + 0.2
 
+// puede ser falso
+if (a == b)
+
+// también puede ser falso
+if (a &gt;= b)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Como los números de punto flotante tienen una cantidad de dígitos limitados, no pueden representar todos los <a href="http://es.wikipedia.org/wiki/N%C3%BAmero_real">números reales</a> de forma precisa: cuando hay más dígitos de los que permite el formato, los que sobran se omiten.</p>
+</div>
+<div class="paragraph">
+<p>La solución es comprobar no si los números son exactamente iguales, sino si su <em>diferencia es muy pequeña</em>. El margen de error frente al que se compara esta diferencia normalmente se llama <em>epsilon</em>.</p>
+</div>
+<div class="paragraph">
+<p>El valor de <em>epsilon</em> dependerá del contexto. Nunca usar un <em>epsilon</em> fijo. Un <em>epsilon</em> fijo elegido porque «parece pequeño» podría perfectamente ser demasiado grande cuando los números que se comparan son también muy pequeños. La comparación devolvería «verdadero» para números muy diferentes. Y cuando los números son muy grandes, el <em>epsilon</em> puede acabar siendo más pequeño que el mínimo error de redondeo, por lo que la comparación siempre devolvería «falso». Por tanto, es necesario ver si el error relativo es menor que <em>epsilon</em>.</p>
+</div>
+<div class="paragraph">
+<p>El código a continuación pasa las pruebas para muchos casos especiales importantes, pero como puedes ver, utiliza cierta lógica no trivial. En particular, tiene que utilizar una definición totalmente distinta del margen de error cuando a o b son cero, porque la definición clásica del error relativo es inútil en esos casos.</p>
+</div>
+<div class="paragraph">
+<p>Hay algunos casos en los que todavía produce resultados inesperados (concretamente, es mucho más estricto cuando un valor es casi cero que cuando es exactamente cero), y algunas de esas pruebas para las que fue desarrollado probablemente especifica un comportamiento que no es apropiado para algunas aplicaciones. Antes de usarlo, ¡asegúrate de que es adecuado para tu aplicación!.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var equivalentes = Fn.new { |a, b, epsilon|
+
+  var absA = a.abs
+  var absB = b.abs
+  var diff = (a - b).abs
+
+  // Atajo, maneja los infinitos
+  if (a == b) {
+      return true
+  }
+
+  // a o b o ambos son cero
+  if (a * b == 0) {
+      // El error relativo no es importante aquí.
+      // Se tiene que utilizar una definición totalmente distinta
+      // del margen de error cuando a o b son cero, porque la definición
+      // clásica del error relativo es inútil en esos casos.
+      return diff &lt; (epsilon * epsilon)
+  }
+
+  // Usar el error relativo
+  return diff / (absA + absB) &lt; epsilon
+}
+
+// Prueba de la función
+var a = 0.15 + 0.15
+var b = 0.1 + 0.2
+
+// Epsilon siempre debe ser entregado según el contexto de comparación
+// no utilizar epsilon fijos.
+var epsilon = 0.001
+
+var eq = equivalentes.call(a, b, epsilon)
+
+// Debería ser verdadero
+System.print(eq)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_formateo_de_punto_flotante">4.2. Formateo de Punto Flotante</h3>
+<div class="paragraph">
+<p>En muchas ocaciones se necesita limitar la cantidad
+de decimales que un número muestra. <em>Wren</em> no cuenta
+con instrucciones para formatear números como <em>C</em> u otros lenguajes (Ejemplo: <a href="http://www.cplusplus.com/reference/cstdio/printf/"><em>"%1.2f"</em></a>.)</p>
+</div>
+<div class="paragraph">
+<p>Sin embargo existen algunas alternativas.</p>
+</div>
+<div class="paragraph">
+<p>Tomemos por ejemplo la constante <em>PI</em> (<code>Num.pi</code>) =~ <em>3.141592</em>.</p>
+</div>
+<div class="paragraph">
+<p>Si solamente quisieramos mostrar la parte entera (<em>3</em>) podemos utilizar el método <em>truncate</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Solamente muestra 3
+System.print(Num.pi.truncate)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si desearamos mostrar <em>3.14</em> podemos usar la siguiente fórmula.</p>
+</div>
+<div class="paragraph">
+<p><code>(numero * 1e&lt;posiciones decimales&gt;).truncate / 1e&lt;posiciones decimales&gt;</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var formateado = (Num.pi * 1e2).truncate / 1e2
+
+// Muestra 3.14
+System.print(formateado)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Podemos crear una función que generalice esta fórmula a cualquier cantidad de decimales.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var formatear = Fn.new {|numero, decimales| (numero * 10.pow(decimales)).truncate / 10.pow(decimales)}
+
+// Muestra 3.14
+System.print(formatear.call(Num.pi, 2))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El problema de esta solución es que existe la posibilidad de perder precisión en los decimales, lo que puede causar problemas de cálculo. Para evitar este problema la solución recomendable es transformar el número a <em>String</em> y obtener los decimales por medio de manipulación de <em>strings</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Convertimos el número a String
+var string = Num.pi.toString
+
+// Queremos mostrar 3.14
+var posiciones = 2
+
+// Buscamos donde comienzan los decimales
+var index = string.indexOf(".")
+
+// Separamos el número entre entero y decimal
+var entero = string[0...index]
+var decimal = string[index + 1..-1]
+
+// Obtenemos los decimales a mostrar
+var decimales = decimal.take(posiciones).join()
+
+// Reunimos la parte entera y decimal
+var formateado = entero + "." + decimales
+
+System.print(formateado)</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3646,6 +3838,9 @@ Ejemplo <code>import "random" for Random</code>.</p>
 </li>
 <li>
 <p><a id="googlepython"></a>[googlepython] Google. 'Python Class' <a href="http://code.google.com/edu/languages/google-python-class/" class="bare">http://code.google.com/edu/languages/google-python-class/</a></p>
+</li>
+<li>
+<p><a id="puntoflotante"></a>[puntoflotante] Michael Borgwardt. <a href="https://github.com/Pybonacci/puntoflotante.org" class="bare">https://github.com/Pybonacci/puntoflotante.org</a></p>
 </li>
 </ul>
 </div>

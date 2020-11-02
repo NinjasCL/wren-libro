@@ -15,3 +15,5 @@ Una lista de recursos complementarios y referenciales.
 - [[[introtopython]]] Eric Matthes. 'Introduction to Python' https://github.com/ehmatthes/intro_programming
 
 - [[[googlepython]]] Google. 'Python Class' http://code.google.com/edu/languages/google-python-class/
+
+- [[[puntoflotante]]] Michael Borgwardt. https://github.com/Pybonacci/puntoflotante.org

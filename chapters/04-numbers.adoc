@@ -1,1 +1,152 @@
 ## https://wren.io/modules/core/num.html[Num: Números]
+
+### https://github.com/Pybonacci/puntoflotante.org[Punto Flotante]
+
+La mayor parte de este apartado está basado en el contenido proporcionado por <<puntoflotante>>.
+
+Como la memoria de las computadoras es limitada, no puedes almacenar números
+con precisión infinita, en algún momento tienes que cortar. Pero ¿Cuánta precisión se necesita?
+¿Y _dónde_ se necesita?, ¿Cuántos dígitos enteros y cuántos fraccionarios?
+
+* Para un ingeniero construyendo una autopista, no importa si tiene 10 metros o 10.0001 metros de ancho ─ posiblemente ni siquiera sus mediciones eran así de precisas.
+
+* Para alguien diseñando un microchip, 0.0001 metros (la décima parte de un milímetro) es una diferencia _enorme_ ─ pero nunca tendrá que manejar distancias mayores de 0.1 metros.
+
+* Un físico necesita usar la http://es.wikipedia.org/wiki/Velocidad_de_la_luz[velocidad de la luz] (más o menos 300000000) y la http://es.wikipedia.org/wiki/Constante_de_gravitaci%C3%B3n_universal[constante de gravitación universal] (más o menos 0.0000000000667) juntas en el mismo cálculo.
+
+Para satisfacer al ingeniero y al diseñador de circuitos integrados, el formato
+tiene que ser preciso para números de órdenes de magnitud muy diferentes. Sin
+embargo, solo se necesita precisión _relativa_. Para satisfacer al físico, debe
+ser posible hacer cálculos que involucren números de órdenes muy dispares.
+
+Básicamente, tener un número fijo de dígitos enteros y fraccionarios no es útil ─ y la solución es un formato con un _punto flotante_.
+
+#### Comparación de Punto Flotante
+
+Si realizamos una pequeña comparación de números con punto flotante, nos encontraremos con que algunas comparaciones simples no pueden ser realizadas correctamente de la forma tradicional.
+
+Debido a los errores de redondeo, la mayoría de los números de punto flotante terminan siendo ligeramente imprecisos. Mientras esta imprecisión se mantenga pequeña, normalmente se puede ignorar. Sin embargo, esto significa también que números que se espera que sean iguales (por ejemplo al calcular el mismo resultado utilizando distintos métodos correctos) a veces difieren levemente, y una simple prueba de igualdad falla:
+
+```js
+var a = 0.15 + 0.15
+var b = 0.1 + 0.2
+
+// puede ser falso
+if (a == b)
+
+// también puede ser falso
+if (a >= b)
+```
+
+Como los números de punto flotante tienen una cantidad de dígitos limitados, no pueden representar todos los http://es.wikipedia.org/wiki/N%C3%BAmero_real[números reales] de forma precisa: cuando hay más dígitos de los que permite el formato, los que sobran se omiten.
+
+La solución es comprobar no si los números son exactamente iguales, sino si su _diferencia es muy pequeña_. El margen de error frente al que se compara esta diferencia normalmente se llama _epsilon_.
+
+El valor de _epsilon_ dependerá del contexto. Nunca usar un _epsilon_ fijo. Un _epsilon_ fijo elegido porque «parece pequeño» podría perfectamente ser demasiado grande cuando los números que se comparan son también muy pequeños. La comparación devolvería «verdadero» para números muy diferentes. Y cuando los números son muy grandes, el _epsilon_ puede acabar siendo más pequeño que el mínimo error de redondeo, por lo que la comparación siempre devolvería «falso». Por tanto, es necesario ver si el error relativo es menor que _epsilon_.
+
+El código a continuación pasa las pruebas para muchos casos especiales importantes, pero como puedes ver, utiliza cierta lógica no trivial. En particular, tiene que utilizar una definición totalmente distinta del margen de error cuando a o b son cero, porque la definición clásica del error relativo es inútil en esos casos.
+
+Hay algunos casos en los que todavía produce resultados inesperados (concretamente, es mucho más estricto cuando un valor es casi cero que cuando es exactamente cero), y algunas de esas pruebas para las que fue desarrollado probablemente especifica un comportamiento que no es apropiado para algunas aplicaciones. Antes de usarlo, ¡asegúrate de que es adecuado para tu aplicación!.
+
+```js
+
+var equivalentes = Fn.new { |a, b, epsilon|
+
+  var absA = a.abs
+  var absB = b.abs
+  var diff = (a - b).abs
+  
+  // Atajo, maneja los infinitos
+  if (a == b) {
+      return true
+  }
+  
+  // a o b o ambos son cero
+  if (a * b == 0) {
+      // El error relativo no es importante aquí.
+      // Se tiene que utilizar una definición totalmente distinta
+      // del margen de error cuando a o b son cero, porque la definición
+      // clásica del error relativo es inútil en esos casos.
+      return diff < (epsilon * epsilon)
+  }
+  
+  // Usar el error relativo
+  return diff / (absA + absB) < epsilon
+}
+
+// Prueba de la función
+var a = 0.15 + 0.15
+var b = 0.1 + 0.2
+
+// Epsilon siempre debe ser entregado según el contexto de comparación
+// no utilizar epsilon fijos.
+var epsilon = 0.001
+
+var eq = equivalentes.call(a, b, epsilon)
+
+// Debería ser verdadero
+System.print(eq)
+```
+
+### Formateo de Punto Flotante
+
+En muchas ocaciones se necesita limitar la cantidad
+de decimales que un número muestra. _Wren_ no cuenta
+con instrucciones para formatear números como _C_ u otros lenguajes (Ejemplo: http://www.cplusplus.com/reference/cstdio/printf/[_"%1.2f"_].)
+
+Sin embargo existen algunas alternativas.
+
+Tomemos por ejemplo la constante _PI_ (`Num.pi`) =~ _3.141592_.
+
+Si solamente quisieramos mostrar la parte entera (_3_) podemos utilizar el método _truncate_.
+
+```js
+// Solamente muestra 3
+System.print(Num.pi.truncate)
+```
+
+Si desearamos mostrar _3.14_ podemos usar la siguiente fórmula.
+
+`(numero * 1e<posiciones decimales>).truncate / 1e<posiciones decimales>`
+
+```js
+var formateado = (Num.pi * 1e2).truncate / 1e2
+
+// Muestra 3.14
+System.print(formateado)
+```
+
+Podemos crear una función que generalice esta fórmula a cualquier cantidad de decimales.
+
+```js
+var formatear = Fn.new {|numero, decimales| (numero * 10.pow(decimales)).truncate / 10.pow(decimales)}
+
+// Muestra 3.14
+System.print(formatear.call(Num.pi, 2))
+```
+
+El problema de esta solución es que existe la posibilidad de perder precisión en los decimales, lo que puede causar problemas de cálculo. Para evitar este problema la solución recomendable es transformar el número a _String_ y obtener los decimales por medio de manipulación de _strings_.
+
+```js
+
+// Convertimos el número a String
+var string = Num.pi.toString
+
+// Queremos mostrar 3.14
+var posiciones = 2
+
+// Buscamos donde comienzan los decimales
+var index = string.indexOf(".")
+
+// Separamos el número entre entero y decimal
+var entero = string[0...index]
+var decimal = string[index + 1..-1]
+
+// Obtenemos los decimales a mostrar
+var decimales = decimal.take(posiciones).join()
+
+// Reunimos la parte entera y decimal
+var formateado = entero + "." + decimales
+
+System.print(formateado)
+```
