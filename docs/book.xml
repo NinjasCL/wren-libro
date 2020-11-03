@@ -231,6 +231,23 @@ son complejos: <emphasis>C++</emphasis>, <emphasis>Java</emphasis>, <link xl:hre
 140 - Comando terminado por Ctrl-C
 141 - Comando terminado por Ctrl-D
 255 - Código de salida fuera de rango</screen>
+<simpara>Esta es la lista de los errores <link xl:href="https://raw.githubusercontent.com/wren-lang/wren/58611240e75522df1a17ba29d8fd2109b4d2f657/test/test.h">usados en <emphasis>Wren</emphasis></link>:</simpara>
+<programlisting language="c" linenumbering="numbered">// Exit codes used by the wren binaries, following the BSD standard
+//
+// The interpreter was used with an incorrect number of arguments
+#define WREN_EX_USAGE 64
+
+// Compilation error
+#define WREN_EX_DATAERR 65
+
+// Runtime error
+#define WREN_EX_SOFTWARE 70
+
+// Cannot open input file
+#define WREN_EX_NOINPUT 66
+
+// I/O Error
+#define WREN_EX_IOERR 74</programlisting>
 <simpara>Puedes verificar el código numérico de salida utilizando el siguiente comando (bash)</simpara>
 <simpara><literal>./wren main.wren | echo "Exit code ${PIPESTATUS[0]}"</literal></simpara>
 <simpara><inlinemediaobject>

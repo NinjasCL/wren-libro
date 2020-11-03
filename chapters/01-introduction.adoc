@@ -181,6 +181,27 @@ La siguiente es una tabla con los códigos de BSD más algunos otros adicionales
 255 - Código de salida fuera de rango
 ```
 
+Esta es la lista de los errores https://raw.githubusercontent.com/wren-lang/wren/58611240e75522df1a17ba29d8fd2109b4d2f657/test/test.h[usados en _Wren_]:
+
+```c
+// Exit codes used by the wren binaries, following the BSD standard
+//
+// The interpreter was used with an incorrect number of arguments
+#define WREN_EX_USAGE 64
+
+// Compilation error
+#define WREN_EX_DATAERR 65
+
+// Runtime error
+#define WREN_EX_SOFTWARE 70
+
+// Cannot open input file
+#define WREN_EX_NOINPUT 66
+
+// I/O Error
+#define WREN_EX_IOERR 74
+```
+
 Puedes verificar el código numérico de salida utilizando el siguiente comando (bash)
 
 `./wren main.wren | echo "Exit code ${PIPESTATUS[0]}"`
