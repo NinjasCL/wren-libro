@@ -538,12 +538,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_num_números">4. Num: Números</a>
 <ul class="sectlevel2">
-<li><a href="#_punto_flotante">4.1. Punto Flotante</a>
+<li><a href="#_enteros">4.1. Enteros</a></li>
+<li><a href="#_punto_flotante">4.2. Punto Flotante</a>
 <ul class="sectlevel3">
-<li><a href="#_comparación_de_punto_flotante">4.1.1. Comparación de Punto Flotante</a></li>
+<li><a href="#_comparación_de_punto_flotante">4.2.1. Comparación de Punto Flotante</a></li>
 </ul>
 </li>
-<li><a href="#_formateo_de_punto_flotante">4.2. Formateo de Punto Flotante</a></li>
+<li><a href="#_formateo_de_punto_flotante">4.3. Formateo de Punto Flotante</a></li>
 </ul>
 </li>
 <li><a href="#_proyectos_de_ejemplo_en_wren">5. Proyectos de ejemplo en Wren</a>
@@ -1754,14 +1755,72 @@ System.print("hola wren"[-1..0])</code></pre>
 <div class="sect1">
 <h2 id="_num_números">4. <a href="https://wren.io/modules/core/num.html">Num: Números</a></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_punto_flotante">4.1. <a href="https://github.com/Pybonacci/puntoflotante.org">Punto Flotante</a></h3>
 <div class="paragraph">
-<p>La mayor parte de este apartado está basado en el contenido proporcionado por <a href="#puntoflotante">[puntoflotante]</a>.</p>
+<p>Los datos numéricos son bastante conocidos, sin embargo hay algunas cosas que se deben tener en cuenta. Como la mayoría de los lenguajes interpretados, <em>Wren</em> tiene un único tipo numérico: punto flotante de doble precisión. Los números en <em>Wren</em> son similares a otros lenguajes y son instancias de la clase <em>Num</em>.</p>
 </div>
 <div class="paragraph">
-<p>Como la memoria de las computadoras es limitada, no puedes almacenar números
-con precisión infinita, en algún momento tienes que cortar. Pero ¿Cuánta precisión se necesita?
+<p>Los siguientes son algunos ejemplos:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Enteros
+0
+1234
+-5678
+
+// Decimales
+3.14159
+1.0
+-12.34
+
+// Notación científica
+0.0314159e02
+314.159e-02</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_enteros">4.1. Enteros</h3>
+<div class="paragraph">
+<p>Se pueden realizar todas las operaciones tradicionales con números enteros. Suma (<em>+</em>), resta (<em>-</em>), multiplicación (<em>*</em>), división (<em>/</em>) y módulo (<em>%</em>). Para utilizar exponentes se debe usar el método <em>pow()</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">System.print(3+2)
+
+System.print(3-2)
+
+System.print(3*2)
+
+System.print(3/2)
+
+System.print(3%2)
+
+System.print(3.pow(2))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También se puede utilizar paréntesis para alterar el orden de las operaciones.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var ordenNormal = 2+3*4
+
+System.print(ordenNormal)
+
+var ordenMio = (2+3)*4
+
+System.print(ordenMio)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_punto_flotante">4.2. <a href="https://github.com/Pybonacci/puntoflotante.org">Punto Flotante</a></h3>
+<div class="paragraph">
+<p>Los números de punto flotante se refieren a cualquier número con una parte decimal. La mayoría del tiempo se comportan de una forma matemática tradicional. Pero en muchas ocaciones se obtienen resultados con una parte decimal más larga de lo esperado. Esto ocurre por como las computadoras representan los números internamente; no tiene que ver con <em>Wren</em> mismo. Básicamente, los humanos están acostumbrados a trabajar con números <em>base 10</em>, donde <em>0.1</em> + <em>0.2</em> = <em>0.3</em>. Pero las computadoras trabajan en <em>base 2</em> y expresan los resultados como una potencia de dos. No existe una representación exacta para <em>0.3</em> en una potencia de dos y por esa razón el resultado presenta tantos decimales.</p>
+</div>
+<div class="paragraph">
+<p>Como la memoria de las computadoras es limitada, no pueden almacenar números
+con precisión infinita, en algún momento se debe limitar. Pero ¿Cuánta precisión se necesita?
 ¿Y <em>dónde</em> se necesita?, ¿Cuántos dígitos enteros y cuántos fraccionarios?</p>
 </div>
 <div class="ulist">
@@ -1787,7 +1846,7 @@ ser posible hacer cálculos que involucren números de órdenes muy dispares.</p
 <p>Básicamente, tener un número fijo de dígitos enteros y fraccionarios no es útil ─ y la solución es un formato con un <em>punto flotante</em>.</p>
 </div>
 <div class="sect3">
-<h4 id="_comparación_de_punto_flotante">4.1.1. Comparación de Punto Flotante</h4>
+<h4 id="_comparación_de_punto_flotante">4.2.1. Comparación de Punto Flotante</h4>
 <div class="paragraph">
 <p>Si realizamos una pequeña comparación de números con punto flotante, nos encontraremos con que algunas comparaciones simples no pueden ser realizadas correctamente de la forma tradicional.</p>
 </div>
@@ -1800,10 +1859,10 @@ ser posible hacer cálculos que involucren números de órdenes muy dispares.</p
 var b = 0.1 + 0.2
 
 // puede ser falso
-if (a == b)
+if (a == b) {}
 
 // también puede ser falso
-if (a &gt;= b)</code></pre>
+if (a &gt;= b) {}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1864,7 +1923,7 @@ System.print(eq)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_formateo_de_punto_flotante">4.2. Formateo de Punto Flotante</h3>
+<h3 id="_formateo_de_punto_flotante">4.3. Formateo de Punto Flotante</h3>
 <div class="paragraph">
 <p>En muchas ocaciones se necesita limitar la cantidad
 de decimales que un número muestra. <em>Wren</em> no cuenta

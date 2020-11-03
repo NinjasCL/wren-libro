@@ -819,11 +819,49 @@ System.print("hola wren"[-1..0])</programlisting>
 </chapter>
 <chapter xml:id="_num_números">
 <title><link xl:href="https://wren.io/modules/core/num.html">Num: Números</link></title>
+<simpara>Los datos numéricos son bastante conocidos, sin embargo hay algunas cosas que se deben tener en cuenta. Como la mayoría de los lenguajes interpretados, <emphasis>Wren</emphasis> tiene un único tipo numérico: punto flotante de doble precisión. Los números en <emphasis>Wren</emphasis> son similares a otros lenguajes y son instancias de la clase <emphasis>Num</emphasis>.</simpara>
+<simpara>Los siguientes son algunos ejemplos:</simpara>
+<programlisting language="js" linenumbering="numbered">// Enteros
+0
+1234
+-5678
+
+// Decimales
+3.14159
+1.0
+-12.34
+
+// Notación científica
+0.0314159e02
+314.159e-02</programlisting>
+<section xml:id="_enteros">
+<title>Enteros</title>
+<simpara>Se pueden realizar todas las operaciones tradicionales con números enteros. Suma (<emphasis>+</emphasis>), resta (<emphasis>-</emphasis>), multiplicación (<emphasis>*</emphasis>), división (<emphasis>/</emphasis>) y módulo (<emphasis>%</emphasis>). Para utilizar exponentes se debe usar el método <emphasis>pow()</emphasis>.</simpara>
+<programlisting language="js" linenumbering="numbered">System.print(3+2)
+
+System.print(3-2)
+
+System.print(3*2)
+
+System.print(3/2)
+
+System.print(3%2)
+
+System.print(3.pow(2))</programlisting>
+<simpara>También se puede utilizar paréntesis para alterar el orden de las operaciones.</simpara>
+<programlisting language="js" linenumbering="numbered">var ordenNormal = 2+3*4
+
+System.print(ordenNormal)
+
+var ordenMio = (2+3)*4
+
+System.print(ordenMio)</programlisting>
+</section>
 <section xml:id="_punto_flotante">
 <title><link xl:href="https://github.com/Pybonacci/puntoflotante.org">Punto Flotante</link></title>
-<simpara>La mayor parte de este apartado está basado en el contenido proporcionado por <xref linkend="puntoflotante"/>.</simpara>
-<simpara>Como la memoria de las computadoras es limitada, no puedes almacenar números
-con precisión infinita, en algún momento tienes que cortar. Pero ¿Cuánta precisión se necesita?
+<simpara>Los números de punto flotante se refieren a cualquier número con una parte decimal. La mayoría del tiempo se comportan de una forma matemática tradicional. Pero en muchas ocaciones se obtienen resultados con una parte decimal más larga de lo esperado. Esto ocurre por como las computadoras representan los números internamente; no tiene que ver con <emphasis>Wren</emphasis> mismo. Básicamente, los humanos están acostumbrados a trabajar con números <emphasis>base 10</emphasis>, donde <emphasis>0.1</emphasis> + <emphasis>0.2</emphasis> = <emphasis>0.3</emphasis>. Pero las computadoras trabajan en <emphasis>base 2</emphasis> y expresan los resultados como una potencia de dos. No existe una representación exacta para <emphasis>0.3</emphasis> en una potencia de dos y por esa razón el resultado presenta tantos decimales.</simpara>
+<simpara>Como la memoria de las computadoras es limitada, no pueden almacenar números
+con precisión infinita, en algún momento se debe limitar. Pero ¿Cuánta precisión se necesita?
 ¿Y <emphasis>dónde</emphasis> se necesita?, ¿Cuántos dígitos enteros y cuántos fraccionarios?</simpara>
 <itemizedlist>
 <listitem>
@@ -849,10 +887,10 @@ ser posible hacer cálculos que involucren números de órdenes muy dispares.</s
 var b = 0.1 + 0.2
 
 // puede ser falso
-if (a == b)
+if (a == b) {}
 
 // también puede ser falso
-if (a &gt;= b)</programlisting>
+if (a &gt;= b) {}</programlisting>
 <simpara>Como los números de punto flotante tienen una cantidad de dígitos limitados, no pueden representar todos los <link xl:href="http://es.wikipedia.org/wiki/N%C3%BAmero_real">números reales</link> de forma precisa: cuando hay más dígitos de los que permite el formato, los que sobran se omiten.</simpara>
 <simpara>La solución es comprobar no si los números son exactamente iguales, sino si su <emphasis>diferencia es muy pequeña</emphasis>. El margen de error frente al que se compara esta diferencia normalmente se llama <emphasis>epsilon</emphasis>.</simpara>
 <simpara>El valor de <emphasis>epsilon</emphasis> dependerá del contexto. Nunca usar un <emphasis>epsilon</emphasis> fijo. Un <emphasis>epsilon</emphasis> fijo elegido porque «parece pequeño» podría perfectamente ser demasiado grande cuando los números que se comparan son también muy pequeños. La comparación devolvería «verdadero» para números muy diferentes. Y cuando los números son muy grandes, el <emphasis>epsilon</emphasis> puede acabar siendo más pequeño que el mínimo error de redondeo, por lo que la comparación siempre devolvería «falso». Por tanto, es necesario ver si el error relativo es menor que <emphasis>epsilon</emphasis>.</simpara>

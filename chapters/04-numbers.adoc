@@ -1,11 +1,62 @@
 ## https://wren.io/modules/core/num.html[Num: Números]
 
+Los datos numéricos son bastante conocidos, sin embargo hay algunas cosas que se deben tener en cuenta. Como la mayoría de los lenguajes interpretados, _Wren_ tiene un único tipo numérico: punto flotante de doble precisión. Los números en _Wren_ son similares a otros lenguajes y son instancias de la clase _Num_.
+
+Los siguientes son algunos ejemplos:
+
+```js
+// Enteros
+0
+1234
+-5678
+
+// Decimales
+3.14159
+1.0
+-12.34
+
+// Notación científica
+0.0314159e02
+314.159e-02
+```
+
+### Enteros
+
+Se pueden realizar todas las operaciones tradicionales con números enteros. Suma (_+_), resta (_-_), multiplicación (_*_), división (_/_) y módulo (_%_). Para utilizar exponentes se debe usar el método _pow()_.
+
+```js
+System.print(3+2)
+
+System.print(3-2)
+
+System.print(3*2)
+
+System.print(3/2)
+
+System.print(3%2)
+
+System.print(3.pow(2))
+```
+
+También se puede utilizar paréntesis para alterar el orden de las operaciones.
+
+```js
+
+var ordenNormal = 2+3*4
+
+System.print(ordenNormal)
+
+var ordenMio = (2+3)*4
+
+System.print(ordenMio)
+```
+
 ### https://github.com/Pybonacci/puntoflotante.org[Punto Flotante]
 
-La mayor parte de este apartado está basado en el contenido proporcionado por <<puntoflotante>>.
+Los números de punto flotante se refieren a cualquier número con una parte decimal. La mayoría del tiempo se comportan de una forma matemática tradicional. Pero en muchas ocaciones se obtienen resultados con una parte decimal más larga de lo esperado. Esto ocurre por como las computadoras representan los números internamente; no tiene que ver con _Wren_ mismo. Básicamente, los humanos están acostumbrados a trabajar con números _base 10_, donde _0.1_ + _0.2_ = _0.3_. Pero las computadoras trabajan en _base 2_ y expresan los resultados como una potencia de dos. No existe una representación exacta para _0.3_ en una potencia de dos y por esa razón el resultado presenta tantos decimales.
 
-Como la memoria de las computadoras es limitada, no puedes almacenar números
-con precisión infinita, en algún momento tienes que cortar. Pero ¿Cuánta precisión se necesita?
+Como la memoria de las computadoras es limitada, no pueden almacenar números
+con precisión infinita, en algún momento se debe limitar. Pero ¿Cuánta precisión se necesita?
 ¿Y _dónde_ se necesita?, ¿Cuántos dígitos enteros y cuántos fraccionarios?
 
 * Para un ingeniero construyendo una autopista, no importa si tiene 10 metros o 10.0001 metros de ancho ─ posiblemente ni siquiera sus mediciones eran así de precisas.
@@ -32,10 +83,10 @@ var a = 0.15 + 0.15
 var b = 0.1 + 0.2
 
 // puede ser falso
-if (a == b)
+if (a == b) {}
 
 // también puede ser falso
-if (a >= b)
+if (a >= b) {}
 ```
 
 Como los números de punto flotante tienen una cantidad de dígitos limitados, no pueden representar todos los http://es.wikipedia.org/wiki/N%C3%BAmero_real[números reales] de forma precisa: cuando hay más dígitos de los que permite el formato, los que sobran se omiten.
