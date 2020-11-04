@@ -1,5 +1,5 @@
-
-<<ex-c1-e1>>
+[[chap1-ex1-sol]]
+#### Solución: <<chap1-ex1>>
 
 .Ejecución
 `$ ./wren hola.wren`
@@ -12,5 +12,5 @@
 .Código
 [source, js, linenums]
 ----
-include::hello.wren[]
+include::hello-solution.wren[]
 ----

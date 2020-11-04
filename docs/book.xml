@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>El <emphasis>Wren</emphasis> libro</title>
-<date>2020-11-01</date>
+<date>2020-11-03</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -260,7 +260,7 @@ son complejos: <emphasis>C++</emphasis>, <emphasis>Java</emphasis>, <link xl:hre
 </section>
 <section xml:id="_ejercicios">
 <title>Ejercicios</title>
-<section xml:id="ex-c1-e1">
+<section xml:id="chap1-ex1">
 <title>¡Hola Wren!</title>
 <simpara>Es una <link xl:href="https://es.wikipedia.org/wiki/Hola_mundo">tradición</link> que cuando se esté aprendiendo
 un lenguaje de programación se escriba una variante
@@ -281,6 +281,16 @@ que muestre el mensaje "¡Hola Wren!".</simpara>
 <para>
 <screen linenumbering="numbered">¡Hola Wren!</screen>
 </para>
+</formalpara>
+<formalpara>
+<title>Código</title>
+<para>
+<programlisting language="js" linenumbering="numbered">// muestra: ¡Hola Wren!</programlisting>
+</para>
+</formalpara>
+<formalpara>
+<title>Solución</title>
+<para><xref linkend="chap1-ex1-sol"/></para>
 </formalpara>
 </section>
 </section>
@@ -831,6 +841,63 @@ System.print("hola wren"[2..3])</programlisting>
 <title>Invertir una cadena de caracteres</title>
 <programlisting language="js" linenumbering="numbered">// muestra: nerw aloh
 System.print("hola wren"[-1..0])</programlisting>
+</section>
+</section>
+<section xml:id="_ejercicios_3">
+<title>Ejercicios</title>
+<section xml:id="chap3-ex1">
+<title>Donas</title>
+<simpara>Dada una cantidad de un número de donas,
+retornar un string con el contenido
+<emphasis>"Número de donas: &lt;cantidad&gt;"</emphasis>. Si
+la cantidad es mayor o igual a 10, usar
+la palabras <emphasis>'muchas'</emphasis> en vez del número de cantidad.</simpara>
+<simpara>Ejercicio basado en <xref linkend="googlepython"/>.</simpara>
+<formalpara>
+<title>Ejecución</title>
+<para><literal>$ ./wren donas.wren</literal></para>
+</formalpara>
+<itemizedlist>
+<title>Ejemplo</title>
+<listitem>
+<simpara><literal>donas.call(5)</literal> retorna <emphasis>"Número de donas: 5"</emphasis></simpara>
+</listitem>
+<listitem>
+<simpara><literal>donas.call(23)</literal> retorna <emphasis>"Número de donas: muchas"</emphasis></simpara>
+</listitem>
+</itemizedlist>
+<formalpara>
+<title>Código</title>
+<para>
+<programlisting language="js" linenumbering="numbered">var donas = Fn.new {|cantidad|
+  // Tu código aquí
+}
+
+
+// Pruebas para evaluar que el ejercicio
+// se ha completado exitosamente.
+// no modificar.
+
+var probar = Fn.new {|tengo, quiero|
+  var prefijo = " X "
+  if (tengo == quiero) {
+    prefijo = " OK "
+  }
+  System.print("%(prefijo) tengo: %(tengo) quiero: %(quiero)")
+}
+
+System.print("Probando donas")
+probar.call(donas.call(4), "Número de donas: 4")
+probar.call(donas.call(9), "Número de donas: 9")
+probar.call(donas.call(10), "Número de donas: muchas")
+probar.call(donas.call(99), "Número de donas: muchas")
+System.print()</programlisting>
+</para>
+</formalpara>
+<formalpara>
+<title>Solución</title>
+<para><xref linkend="chap3-ex1-sol"/></para>
+</formalpara>
 </section>
 </section>
 </chapter>
@@ -2617,7 +2684,8 @@ class Game is TIC {
 <simpara>Las siguientes son las soluciones a los ejercicios planteados en el libro. No necesariamente son la única forma de resolverlos. Se recomienda intentar resolver los ejercicios antes de ver las soluciones.</simpara>
 <section xml:id="_capítulo_1">
 <title>Capítulo 1</title>
-<simpara><xref linkend="ex-c1-e1"/></simpara>
+<section xml:id="chap1-ex1-sol">
+<title>Solución: <xref linkend="chap1-ex1"/></title>
 <formalpara>
 <title>Ejecución</title>
 <para><literal>$ ./wren hola.wren</literal></para>
@@ -2635,6 +2703,50 @@ class Game is TIC {
 System.print("¡Hola Wren!")</programlisting>
 </para>
 </formalpara>
+</section>
+</section>
+<section xml:id="_capítulo_3">
+<title>Capítulo 3</title>
+<section xml:id="chap3-ex1-sol">
+<title>Solución: <xref linkend="chap3-ex1"/></title>
+<formalpara>
+<title>Ejecución</title>
+<para><literal>$ ./wren donas.wren</literal></para>
+</formalpara>
+<formalpara>
+<title>Código</title>
+<para>
+<programlisting language="js" linenumbering="numbered">var donas = Fn.new {|cantidad|
+  // Tu código aquí
+  var mensaje = "Número de donas:"
+  if (cantidad &gt;= 10) {
+    return "%(mensaje) muchas"
+  }
+  return "%(mensaje) %(cantidad)"
+}
+
+
+// Pruebas para evaluar que el ejercicio
+// se ha completado exitosamente.
+// no modificar.
+
+var probar = Fn.new {|tengo, quiero|
+  var prefijo = " X "
+  if (tengo == quiero) {
+    prefijo = " OK "
+  }
+  System.print("%(prefijo) tengo: %(tengo) quiero: %(quiero)")
+}
+
+System.print("Probando donas")
+probar.call(donas.call(4), "Número de donas: 4")
+probar.call(donas.call(9), "Número de donas: 9")
+probar.call(donas.call(10), "Número de donas: muchas")
+probar.call(donas.call(99), "Número de donas: muchas")
+System.print()</programlisting>
+</para>
+</formalpara>
+</section>
 </section>
 </chapter>
 <glossary xml:id="_glosario">

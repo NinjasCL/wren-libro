@@ -208,3 +208,7 @@ System.print("hola wren"[2..3])
 // muestra: nerw aloh
 System.print("hola wren"[-1..0])
 ```
+
+### Ejercicios
+
+include::exercises/chapter-3/donas/donas.adoc[]

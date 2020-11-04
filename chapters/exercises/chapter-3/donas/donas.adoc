@@ -1,0 +1,28 @@
+[[chap3-ex1]]
+#### Donas
+
+Dada una cantidad de un número de donas, 
+retornar un string con el contenido
+_"Número de donas: <cantidad>"_. Si
+la cantidad es mayor o igual a 10, usar
+la palabras _'muchas'_ en vez del número de cantidad.
+
+Ejercicio basado en <<googlepython>>.
+
+.Ejecución
+`$ ./wren donas.wren`
+
+.Ejemplo
+- `donas.call(5)` retorna _"Número de donas: 5"_
+
+- `donas.call(23)` retorna _"Número de donas: muchas"_
+
+.Código
+[source, js, linenums]
+----
+include::donas.wren[]
+----
+
+.Solución
+
+<<chap3-ex1-sol>>

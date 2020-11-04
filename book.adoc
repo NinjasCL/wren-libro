@@ -37,7 +37,7 @@ include::chapters/04-numbers.adoc[]
 
 include::examples/examples.adoc[]
 
-include::exercises/solutions.adoc[]
+include::chapters/exercises/solutions.adoc[]
 
 include::glossary.adoc[]
 

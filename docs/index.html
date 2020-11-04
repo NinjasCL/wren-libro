@@ -468,7 +468,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_ejercicios">1.5. Ejercicios</a>
 <ul class="sectlevel3">
-<li><a href="#ex-c1-e1">1.5.1. ¡Hola Wren!</a></li>
+<li><a href="#chap1-ex1">1.5.1. ¡Hola Wren!</a></li>
 </ul>
 </li>
 </ul>
@@ -534,6 +534,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_invertir_una_cadena_de_caracteres">3.9.3. Invertir una cadena de caracteres</a></li>
 </ul>
 </li>
+<li><a href="#_ejercicios_3">3.10. Ejercicios</a>
+<ul class="sectlevel3">
+<li><a href="#chap3-ex1">3.10.1. Donas</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_num_números">4. Num: Números</a>
@@ -569,7 +574,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_soluciones_a_ejercicios">6. Soluciones a Ejercicios</a>
 <ul class="sectlevel2">
-<li><a href="#_capítulo_1">6.1. Capítulo 1</a></li>
+<li><a href="#_capítulo_1">6.1. Capítulo 1</a>
+<ul class="sectlevel3">
+<li><a href="#chap1-ex1-sol">6.1.1. Solución: ¡Hola Wren!</a></li>
+</ul>
+</li>
+<li><a href="#_capítulo_3">6.2. Capítulo 3</a>
+<ul class="sectlevel3">
+<li><a href="#chap3-ex1-sol">6.2.1. Solución: Donas</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_glosario">Glosario</a></li>
@@ -887,7 +901,7 @@ son complejos: <em>C++</em>, <em>Java</em>, <a href="https://docs.microsoft.com/
 <div class="sect2">
 <h3 id="_ejercicios">1.5. Ejercicios</h3>
 <div class="sect3">
-<h4 id="ex-c1-e1">1.5.1. ¡Hola Wren!</h4>
+<h4 id="chap1-ex1">1.5.1. ¡Hola Wren!</h4>
 <div class="paragraph">
 <p>Es una <a href="https://es.wikipedia.org/wiki/Hola_mundo">tradición</a> que cuando se esté aprendiendo
 un lenguaje de programación se escriba una variante
@@ -913,6 +927,16 @@ que muestre el mensaje "¡Hola Wren!".</p>
 <div class="content">
 <pre class="highlight"><code>¡Hola Wren!</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="title">Código</div>
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// muestra: ¡Hola Wren!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Solución</div>
+<p><a href="#chap1-ex1-sol">Solución: <a href="#chap1-ex1">¡Hola Wren!</a></a></p>
 </div>
 </div>
 </div>
@@ -1770,6 +1794,69 @@ System.print("hola wren"[2..3])</code></pre>
 <pre class="highlight"><code class="language-js" data-lang="js">// muestra: nerw aloh
 System.print("hola wren"[-1..0])</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ejercicios_3">3.10. Ejercicios</h3>
+<div class="sect3">
+<h4 id="chap3-ex1">3.10.1. Donas</h4>
+<div class="paragraph">
+<p>Dada una cantidad de un número de donas,
+retornar un string con el contenido
+<em>"Número de donas: &lt;cantidad&gt;"</em>. Si
+la cantidad es mayor o igual a 10, usar
+la palabras <em>'muchas'</em> en vez del número de cantidad.</p>
+</div>
+<div class="paragraph">
+<p>Ejercicio basado en <a href="#googlepython">[googlepython]</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Ejecución</div>
+<p><code>$ ./wren donas.wren</code></p>
+</div>
+<div class="ulist">
+<div class="title">Ejemplo</div>
+<ul>
+<li>
+<p><code>donas.call(5)</code> retorna <em>"Número de donas: 5"</em></p>
+</li>
+<li>
+<p><code>donas.call(23)</code> retorna <em>"Número de donas: muchas"</em></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Código</div>
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var donas = Fn.new {|cantidad|
+  // Tu código aquí
+}
+
+
+// Pruebas para evaluar que el ejercicio
+// se ha completado exitosamente.
+// no modificar.
+
+var probar = Fn.new {|tengo, quiero|
+  var prefijo = " X "
+  if (tengo == quiero) {
+    prefijo = " OK "
+  }
+  System.print("%(prefijo) tengo: %(tengo) quiero: %(quiero)")
+}
+
+System.print("Probando donas")
+probar.call(donas.call(4), "Número de donas: 4")
+probar.call(donas.call(9), "Número de donas: 9")
+probar.call(donas.call(10), "Número de donas: muchas")
+probar.call(donas.call(99), "Número de donas: muchas")
+System.print()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Solución</div>
+<p><a href="#chap3-ex1-sol">Solución: <a href="#chap3-ex1">Donas</a></a></p>
 </div>
 </div>
 </div>
@@ -3735,9 +3822,8 @@ class Game is TIC {
 </div>
 <div class="sect2">
 <h3 id="_capítulo_1">6.1. Capítulo 1</h3>
-<div class="paragraph">
-<p><a href="#ex-c1-e1">¡Hola Wren!</a></p>
-</div>
+<div class="sect3">
+<h4 id="chap1-ex1-sol">6.1.1. Solución: <a href="#chap1-ex1">¡Hola Wren!</a></h4>
 <div class="paragraph">
 <div class="title">Ejecución</div>
 <p><code>$ ./wren hola.wren</code></p>
@@ -3753,6 +3839,50 @@ class Game is TIC {
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">// muestra: ¡Hola Wren!
 System.print("¡Hola Wren!")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_capítulo_3">6.2. Capítulo 3</h3>
+<div class="sect3">
+<h4 id="chap3-ex1-sol">6.2.1. Solución: <a href="#chap3-ex1">Donas</a></h4>
+<div class="paragraph">
+<div class="title">Ejecución</div>
+<p><code>$ ./wren donas.wren</code></p>
+</div>
+<div class="listingblock">
+<div class="title">Código</div>
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var donas = Fn.new {|cantidad|
+  // Tu código aquí
+  var mensaje = "Número de donas:"
+  if (cantidad &gt;= 10) {
+    return "%(mensaje) muchas"
+  }
+  return "%(mensaje) %(cantidad)"
+}
+
+
+// Pruebas para evaluar que el ejercicio
+// se ha completado exitosamente.
+// no modificar.
+
+var probar = Fn.new {|tengo, quiero|
+  var prefijo = " X "
+  if (tengo == quiero) {
+    prefijo = " OK "
+  }
+  System.print("%(prefijo) tengo: %(tengo) quiero: %(quiero)")
+}
+
+System.print("Probando donas")
+probar.call(donas.call(4), "Número de donas: 4")
+probar.call(donas.call(9), "Número de donas: 9")
+probar.call(donas.call(10), "Número de donas: muchas")
+probar.call(donas.call(99), "Número de donas: muchas")
+System.print()</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -3951,7 +4081,7 @@ Ejemplo <code>import "random" for Random</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-01 20:32:09 -0300
+Last updated 2020-11-03 23:40:12 -0300
 </div>
 </div>
 </body>

@@ -5,4 +5,8 @@ Las siguientes son las soluciones a los ejercicios planteados en el libro. No ne
 
 ### Capítulo 1
 
-include::chapter-1/hello/hello.adoc[]
+include::chapter-1/hello/hello-solution.adoc[]
+
+### Capítulo 3
+
+include::chapter-3/donas/donas-solution.adoc[]
