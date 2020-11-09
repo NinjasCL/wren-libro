@@ -5,8 +5,10 @@ Debes eliminar todos los bloques dentro de la pantalla utilizando
 una raqueta y una pelota. El juego termina si la raqueta falla
 en golpear la pelota.
 
-
 image:https://raw.githubusercontent.com/NinjasCL/breakout/main/breakout.gif[Breakout]
+
+.Nivel
+Avanzado
 
 ##### Código fuente
 

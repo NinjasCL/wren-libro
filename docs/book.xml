@@ -356,6 +356,10 @@ capítulo detalla las normas básicas con las que funciona
 </listitem>
 </orderedlist>
 <formalpara>
+<title>Importante</title>
+<para>No se puede heredar desde estas clases debido al problema de <link xl:href="https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)"><emphasis>Reentrancia</emphasis></link>. Para extender solo es posible usando la composición (Crear una nueva clase).</para>
+</formalpara>
+<formalpara>
 <title>Wren CLI</title>
 <para>Estas clases son exclusivas de la <emphasis>Wren CLI</emphasis>. No estarán disponibles fuera del entorno de ejecución de este intérprete de <emphasis>Wren</emphasis>.</para>
 </formalpara>
@@ -388,6 +392,90 @@ capítulo detalla las normas básicas con las que funciona
 <simpara><emphasis>Timer</emphasis></simpara>
 </listitem>
 </orderedlist>
+</section>
+<section xml:id="_variables">
+<title>Variables</title>
+<simpara>Una variable es un contenedor de un valor específico.
+Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.</simpara>
+<programlisting language="js" linenumbering="numbered">var mensaje = "Hola mundo Wren"
+System.print(mensaje)</programlisting>
+<simpara>Se puede modificar el valor posteriormente</simpara>
+<programlisting language="js" linenumbering="numbered">var mensaje = "Hola mundo Wren"
+System.print(mensaje)
+
+mensaje = "El chercán es una bonita ave"
+System.print(mensaje)</programlisting>
+<simpara>Si usamos una variable sin haberla declarado antes
+recibiremos un error similar a lo siguiente:</simpara>
+<programlisting language="js" linenumbering="numbered">var mensaje = "Hola"
+System.print(mensaj)
+[repl line 1] Error at 'mensaj': Variable is used but not defined.</programlisting>
+<simpara>Debemos siempre procurar que todas nuestras variables estén declaradas
+dentro del contexto y que no existan errores de escritura en sus nombres.</simpara>
+</section>
+<section xml:id="_identificadores">
+<title>Identificadores</title>
+<simpara>Similar al <emphasis>Lenguaje C</emphasis>, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la <link xl:href="http://www.asciitable.com/">lista <literal>ascii</literal></link> y comenzar con un caracter alfabético o guión bajo. Los identificadores en <emphasis>Wren</emphasis> diferencian entre mayúsculas y minúsculas. Solo se permiten letras (<literal>A - Z</literal>, <literal>a - z</literal>), números (<literal>0 - 9</literal>) y guión bajo (<literal>_</literal>). No se permiten espacios o comenzar con un número o guión alto (<literal>-</literal>).</simpara>
+<section xml:id="_ejemplo_de_identificadores_válidos">
+<title>Ejemplo de Identificadores válidos</title>
+<programlisting language="js" linenumbering="numbered">hola
+camelCase
+PascalCase
+_under_score
+abc123
+TODAS_MAYUSCULAS</programlisting>
+</section>
+<section xml:id="_ejemplo_de_identificadores_no_válidos">
+<title>Ejemplo de Identificadores no válidos</title>
+<screen linenumbering="numbered">13hola
+mi-variable
+$miVariable
+mi variable
+ñandú
+👨miMetodo
+Mi👩clase</screen>
+</section>
+<section xml:id="_unicode">
+<title>Unicode</title>
+<simpara>No están permitidos caracteres <link xl:href="https://es.wikipedia.org/wiki/UTF-8">UTF-8</link> como la <literal>Ñ</literal> o los emojis en los identificadores. Sin embargo las <literal>Strings</literal> las soportan en su contenido sin problemas. Hay lenguajes como <link xl:href="https://swift.org/"><emphasis>Swift</emphasis></link> o <link xl:href="https://www.emojicode.org/">Emoji Code</link> que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.</simpara>
+<formalpara>
+<title>EmojiCode</title>
+<para>
+<screen linenumbering="numbered">🏁 🍇
+  😀 🔤Hello World!🔤❗️
+🍉</screen>
+</para>
+</formalpara>
+</section>
+<section xml:id="_identificadores_que_inician_con_guión_bajo">
+<title>Identificadores que inician con guión bajo</title>
+<simpara>Un caso especial es para los identificadores con guión bajo como <literal>_color</literal> (un guión bajo al principio) y <literal>__sabor</literal> (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.</simpara>
+</section>
+<section xml:id="_identificadores_de_clase">
+<title>Identificadores de clase</title>
+<simpara>Para <emphasis>Wren</emphasis> es importante que las clases comiencen
+su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.</simpara>
+<simpara>Ejemplos</simpara>
+<programlisting language="js" linenumbering="numbered">// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
+var Numero = Num</programlisting>
+<programlisting language="js" linenumbering="numbered">// Dará error. No se puede heredar de las clases primitivas.
+class Numero is Num {}</programlisting>
+<programlisting language="js" linenumbering="numbered">// Es posible nombrar con minúsculas, pero puede dar
+// conflictos de contexto al momento de usarlo dentro
+// de una clase. (Puede hacer colisión con nombres de variable)
+class numero {}</programlisting>
+</section>
+<section xml:id="_recomendaciones">
+<title>Recomendaciones</title>
+<itemizedlist>
+<listitem>
+<simpara>Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo <emphasis>"ruedasMotocicleta"</emphasis> es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".</simpara>
+</listitem>
+<listitem>
+<simpara>La letra <emphasis>"l"</emphasis> mínuscula y la letra <emphasis>"O"</emphasis> mayúscula puede ser confundida con el número <emphasis>"1"</emphasis> y "0" respectivamente.</simpara>
+</listitem>
+</itemizedlist>
+</section>
 </section>
 <section xml:id="_saltos_de_línea">
 <title>Saltos de línea</title>
@@ -485,6 +573,69 @@ in is null return static super this true var while</programlisting>
 </itemizedlist>
 </section>
 </section>
+<section xml:id="_funciones_fn">
+<title>Funciones (<emphasis>Fn</emphasis>)</title>
+<simpara>Las funciones en <emphasis>Wren</emphasis> son instancias de la clase <emphasis>Fn</emphasis> y deben ser llamadas utilizando su método <emphasis>call()</emphasis>. Al ser un objeto más, pueden ser pasadas como parámetros a métodos u otras funciones.</simpara>
+<programlisting language="js" linenumbering="numbered">var mostrar = Fn.new {|parametro|
+  System.print(parametro)
+}
+
+// muestra: hola
+mostrar.call("hola")</programlisting>
+</section>
+<section xml:id="_fibras_fiber">
+<title>Fibras (<emphasis>Fiber</emphasis>)</title>
+<simpara>Son similares a las funciones, con la diferencia en que se ejecutarán en un hilo (<emphasis>thread</emphasis>) distinto. Además del método <emphasis>call()</emphasis> tienen un método <emphasis>try()</emphasis> usado normalmente para "atajar" errores.</simpara>
+<programlisting language="js" linenumbering="numbered">var mostrar = Fn.new {|parametro|
+  System.print(parametro)
+}
+
+// Si existe un error se almacenará en la variable error
+var error = Fiber.new { mostrar.call("hola") }.try()</programlisting>
+</section>
+<section xml:id="_clases_class">
+<title>Clases (<emphasis>class</emphasis>)</title>
+<simpara>Las clases se declaran utilizando la palabra clave <emphasis>class</emphasis> antes del nombre.</simpara>
+<programlisting language="js" linenumbering="numbered">class MiClase {}</programlisting>
+<simpara>La herencia se define utilizando la palabra clave <emphasis>is</emphasis>.</simpara>
+<programlisting language="js" linenumbering="numbered">class Perro is Animal {}</programlisting>
+<simpara>Para definir un constructor se utiliza la palabra clave <emphasis>construct</emphasis>.</simpara>
+<programlisting language="js" linenumbering="numbered">class Auto {
+  construct nuevo() {
+
+  }
+}</programlisting>
+<simpara>Para definir un método o propiedad de clase se utiliza la palabra clave <emphasis>static</emphasis>.</simpara>
+<programlisting language="js" linenumbering="numbered">class Fruta {
+  // getter
+  static cantidad {__cantidad}
+
+  // setter
+  static cantidad = (value) {
+    // doble guión bajo indica propiedad de clase
+    __cantidad = value
+  }
+
+  // método de clase
+  static comer() {
+    cantidad = cantidad - 1
+  }
+}</programlisting>
+</section>
+<section xml:id="_control_de_flujo">
+<title>Control de Flujo</title>
+<simpara>Existen las estructuras de control de flujo tradicionales: <emphasis>if</emphasis>, <emphasis>for</emphasis>, <emphasis>while</emphasis> y <emphasis>break</emphasis>.</simpara>
+<programlisting language="js" linenumbering="numbered">if (condicion) {
+  // codigo
+}</programlisting>
+<programlisting language="js" linenumbering="numbered">while (condicion) {
+  // codigo
+}</programlisting>
+<programlisting language="js" linenumbering="numbered">for (elemento in secuencia) {
+  // codigo
+  break
+}</programlisting>
+</section>
 <section xml:id="_comentarios">
 <title>Comentarios</title>
 <simpara>Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
@@ -577,86 +728,6 @@ circulo(x, y, radio)</programlisting>
 </listitem>
 </itemizedlist>
 <simpara>Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.</simpara>
-</section>
-</section>
-<section xml:id="_variables">
-<title>Variables</title>
-<simpara>Una variable es un contenedor de un valor específico.
-Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.</simpara>
-<programlisting language="js" linenumbering="numbered">var mensaje = "Hola mundo Wren"
-System.print(mensaje)</programlisting>
-<simpara>Se puede modificar el valor posteriormente</simpara>
-<programlisting language="js" linenumbering="numbered">var mensaje = "Hola mundo Wren"
-System.print(mensaje)
-
-mensaje = "El chercán es una bonita ave"
-System.print(mensaje)</programlisting>
-<simpara>Si usamos una variable sin haberla declarado antes
-recibiremos un error similar a lo siguiente:</simpara>
-<programlisting language="js" linenumbering="numbered">var mensaje = "Hola"
-System.print(mensaj)
-[repl line 1] Error at 'mensaj': Variable is used but not defined.</programlisting>
-<simpara>Debemos siempre procurar que todas nuestras variables estén declaradas
-dentro del contexto y que no existan errores de escritura en sus nombres.</simpara>
-</section>
-<section xml:id="_identificadores">
-<title>Identificadores</title>
-<simpara>Similar al <emphasis>Lenguaje C</emphasis>, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la <link xl:href="http://www.asciitable.com/">lista <literal>ascii</literal></link> y comenzar con un caracter alfabético o guión bajo. Los identificadores en <emphasis>Wren</emphasis> diferencian entre mayúsculas y minúsculas. Solo se permiten letras (<literal>A - Z</literal>, <literal>a - z</literal>), números (<literal>0 - 9</literal>) y guión bajo (<literal>_</literal>). No se permiten espacios o comenzar con un número o guión alto (<literal>-</literal>).</simpara>
-<section xml:id="_ejemplo_de_identificadores_válidos">
-<title>Ejemplo de Identificadores válidos</title>
-<programlisting language="js" linenumbering="numbered">hola
-camelCase
-PascalCase
-_under_score
-abc123
-TODAS_MAYUSCULAS</programlisting>
-</section>
-<section xml:id="_ejemplo_de_identificadores_no_válidos">
-<title>Ejemplo de Identificadores no válidos</title>
-<screen linenumbering="numbered">13hola
-mi-variable
-$miVariable
-mi variable
-ñandú
-👨miMetodo
-Mi👩clase</screen>
-</section>
-<section xml:id="_unicode">
-<title>Unicode</title>
-<simpara>No están permitidos caracteres <link xl:href="https://es.wikipedia.org/wiki/UTF-8">UTF-8</link> como la <literal>Ñ</literal> o los emojis en los identificadores. Sin embargo las <literal>Strings</literal> las soportan en su contenido sin problemas. Hay lenguajes como <link xl:href="https://swift.org/"><emphasis>Swift</emphasis></link> o <link xl:href="https://www.emojicode.org/">Emoji Code</link> que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.</simpara>
-<formalpara>
-<title>EmojiCode</title>
-<para>
-<screen linenumbering="numbered">🏁 🍇
-  😀 🔤Hello World!🔤❗️
-🍉</screen>
-</para>
-</formalpara>
-</section>
-<section xml:id="_identificadores_que_inician_con_guión_bajo">
-<title>Identificadores que inician con guión bajo</title>
-<simpara>Un caso especial es para los identificadores con guión bajo como <literal>_color</literal> (un guión bajo al principio) y <literal>__sabor</literal> (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.</simpara>
-</section>
-<section xml:id="_identificadores_de_clase">
-<title>Identificadores de clase</title>
-<simpara>Para <emphasis>Wren</emphasis> es importante que las clases comiencen
-su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.</simpara>
-<simpara>Ejemplos</simpara>
-<programlisting language="js" linenumbering="numbered">// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
-var Numero = Num</programlisting>
-<programlisting language="js" linenumbering="numbered">// También es válido pero no es recomendable
-class numero is Num {}</programlisting>
-</section>
-<section xml:id="_recomendaciones">
-<title>Recomendaciones</title>
-<itemizedlist>
-<listitem>
-<simpara>Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo <emphasis>"ruedasMotocicleta"</emphasis> es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".</simpara>
-</listitem>
-<listitem>
-<simpara>La letra <emphasis>"l"</emphasis> mínuscula y la letra <emphasis>"O"</emphasis> mayúscula puede ser confundida con el número <emphasis>"1"</emphasis> y "0" respectivamente.</simpara>
-</listitem>
-</itemizedlist>
 </section>
 </section>
 <section xml:id="_ejercicios_2">
@@ -1067,6 +1138,32 @@ System.print(formateado)</programlisting>
 <simpara>Una colección de código fuente <emphasis>Wren</emphasis> con juegos y aplicaciones simples.
 Se recomienda utilizar un editor de código como <link xl:href="https://vscodium.com/">VS Codium</link>
 para escribir los ejemplos.</simpara>
+<simpara>Cada ejemplo puede ser categorizado en los siguientes niveles:</simpara>
+<table frame="all" rowsep="1" colsep="1">
+<title>Niveles</title>
+<tgroup cols="2">
+<colspec colname="col_1" colwidth="50*"/>
+<colspec colname="col_2" colwidth="50*"/>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>Nivel</simpara></entry>
+<entry align="left" valign="top"><simpara>Descripción</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Novato</simpara></entry>
+<entry align="left" valign="top"><simpara>Utiliza operaciones simples como suma, resta, multiplicación, división, <emphasis>System.print()</emphasis> y estructuras de control.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Intermedio</simpara></entry>
+<entry align="left" valign="top"><simpara>Utiliza funciones, diccionarios y clases simples.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Avanzado</simpara></entry>
+<entry align="left" valign="top"><simpara>Utiliza clases, herencia y algoritmos avanzados.</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
 <section xml:id="_terminal">
 <title>Terminal</title>
 <simpara>Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando <emphasis>Wren CLI</emphasis> y la entrada/salida estándar.</simpara>
@@ -1081,6 +1178,10 @@ para escribir los ejemplos.</simpara>
 <simpara>Basado en <link xl:href="http://inventwithpython.com/es/4.html">Adivina del Número</link>.</simpara>
 <simpara>En el juego <emphasis>"Adivina el Número"</emphasis>. La computadora pensará un número aleatorio entre 1 y 20, y te pedirá que intentes adivinarlo. La computadora te dirá si cada intento es muy alto o muy bajo. Tú ganas si adivinas el número en seis intentos o menos.</simpara>
 <simpara>Este es un buen juego para codificar ya que usa números aleatorios y bucles, y recibe entradas del usuario en un programa corto. Aprenderás cómo convertir valores a diferentes tipos de datos, y por qué es necesario hacer esto. Dado que este programa es un juego, nos referiremos al usuario como el jugador. Pero llamarlo “usuario” también sería correcto.</simpara>
+<formalpara>
+<title>Nivel</title>
+<para>Novato</para>
+</formalpara>
 <section xml:id="_ejemplo_de_ejecución">
 <title>Ejemplo de Ejecución</title>
 <simpara><literal>$ ./wren adivina/adivina.wren</literal></simpara>
@@ -1164,6 +1265,10 @@ if (estimacion != numero) {
 <title>Reino de Dragones</title>
 <simpara>Basado en <link xl:href="http://inventwithpython.com/es/6.html">Reino de Dragones</link>.</simpara>
 <simpara>El juego se llama <emphasis>"Reino de Dragones"</emphasis>, y permite al jugador elegir entre dos cuevas, en una de las cuales encontrará un tesoro y en la otra su perdición.</simpara>
+<formalpara>
+<title>Nivel</title>
+<para>Novato</para>
+</formalpara>
 <section xml:id="_cómo_jugar_a_reino_de_dragones">
 <title>¿Cómo Jugar a Reino de Dragones?</title>
 <simpara>En este juego, el jugador está en una tierra llena de dragones. Todos los dragones viven en cuevas junto a sus grandes montones de tesoros encontrados. Algunos dragones son amigables, y compartirán sus tesoros contigo. Otros son codiciosos y hambrientos, y se comerán a cualquiera que entre a su cueva. El jugador se encuentra frente a dos cuevas, una con un dragón amigable y la otra con un dragón hambriento. El jugador tiene que elegir entre las dos.</simpara>
@@ -1269,6 +1374,10 @@ System.print("¡Eso fue divertido, nos vemos luego!")</programlisting>
 <simpara>Esta es una simple aplicación creativa que muestra
 diamantes de distintos tamaños.
 Basado en <link xl:href="https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamonds.py">Diamonds</link>.</simpara>
+<formalpara>
+<title>Nivel</title>
+<para>Novato</para>
+</formalpara>
 <section xml:id="_ejemplo_de_ejecución_3">
 <title>Ejemplo de Ejecución</title>
 <simpara><literal>./wren diamantes/diamantes.wren</literal></simpara>
@@ -1357,6 +1466,10 @@ for(dimension in 0..5) {
 <title>Carrera de Caracoles</title>
 <simpara>Una alucinante carrera entre 2 a 8 caracoles.
 Basado en <link xl:href="https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py">SnailRace</link>.</simpara>
+<formalpara>
+<title>Nivel</title>
+<para>Intermedio</para>
+</formalpara>
 <section xml:id="_ejemplo_de_ejecución_4">
 <title>Ejemplo de Ejecución</title>
 <simpara><literal>$ ./wren caracoles/caracoles.wren</literal></simpara>
@@ -1492,7 +1605,11 @@ while (true) {
 <section xml:id="_cañon">
 <title>Cañon</title>
 <simpara>Este juego simula el disparo de un cañón hacia un objetivo.
-Código levemente basado en <xref linkend="alfonseca"/></simpara>
+Código levemente basado en <xref linkend="alfonseca"/>.</simpara>
+<formalpara>
+<title>Nivel</title>
+<para>Intermedio</para>
+</formalpara>
 <section xml:id="_cómo_jugar">
 <title>¿Cómo Jugar?</title>
 <simpara>El jugador debe ingresar el ángulo para cada tiro del cañón.</simpara>
@@ -1676,6 +1793,10 @@ en golpear la pelota.</simpara>
 </imageobject>
 <textobject><phrase>Breakout</phrase></textobject>
 </inlinemediaobject></simpara>
+<formalpara>
+<title>Nivel</title>
+<para>Avanzado</para>
+</formalpara>
 <section xml:id="_código_fuente_6">
 <title>Código fuente</title>
 <programlisting language="js" linenumbering="numbered">// title:  Clone de breakout para TIC-80
@@ -2250,6 +2371,10 @@ toque una parte de su propio cuerpo.</simpara>
 </imageobject>
 <textobject><phrase>Snake</phrase></textobject>
 </inlinemediaobject></simpara>
+<formalpara>
+<title>Nivel</title>
+<para>Avanzado</para>
+</formalpara>
 <section xml:id="_código_fuente_7">
 <title>Código fuente</title>
 <programlisting language="js" linenumbering="numbered">// title:  Clone de Snake para TIC-80

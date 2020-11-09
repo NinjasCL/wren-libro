@@ -5,6 +5,16 @@ Una colección de código fuente _Wren_ con juegos y aplicaciones simples.
 Se recomienda utilizar un editor de código como https://vscodium.com/[VS Codium] 
 para escribir los ejemplos.
 
+Cada ejemplo puede ser categorizado en los siguientes niveles:
+
+.Niveles
+|===
+|Nivel|Descripción
+|Novato| Utiliza operaciones simples como suma, resta, multiplicación, división, _System.print()_ y estructuras de control.
+|Intermedio| Utiliza funciones, diccionarios y clases simples.
+|Avanzado| Utiliza clases, herencia y algoritmos avanzados.
+|===
+
 ### Terminal
 
 Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando _Wren CLI_ y la entrada/salida estándar.

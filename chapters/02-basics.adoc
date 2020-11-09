@@ -29,6 +29,10 @@ Estas son las clases disponibles dentro del lenguaje _Wren_ "vainilla".
 . _Meta_
 . _Random_
 
+.Importante
+
+No se puede heredar desde estas clases debido al problema de https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)[_Reentrancia_]. Para extender solo es posible usando la composición (Crear una nueva clase).
+
 .Wren CLI
 
 Estas clases son exclusivas de la _Wren CLI_. No estarán disponibles fuera del entorno de ejecución de este intérprete de _Wren_.
@@ -42,6 +46,110 @@ Estas clases son exclusivas de la _Wren CLI_. No estarán disponibles fuera del 
 . _Process_
 . _Scheduler_
 . _Timer_
+
+### Variables
+
+Una variable es un contenedor de un valor específico.
+Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.
+
+```js
+var mensaje = "Hola mundo Wren"
+System.print(mensaje)
+```
+
+Se puede modificar el valor posteriormente
+
+```js
+var mensaje = "Hola mundo Wren"
+System.print(mensaje)
+
+mensaje = "El chercán es una bonita ave"
+System.print(mensaje)
+```
+
+Si usamos una variable sin haberla declarado antes
+recibiremos un error similar a lo siguiente:
+
+```js
+var mensaje = "Hola"
+System.print(mensaj)
+[repl line 1] Error at 'mensaj': Variable is used but not defined.
+```
+
+Debemos siempre procurar que todas nuestras variables estén declaradas
+dentro del contexto y que no existan errores de escritura en sus nombres.
+
+### Identificadores
+
+Similar al _Lenguaje C_, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas. Solo se permiten letras (`A - Z`, `a - z`), números (`0 - 9`) y guión bajo (`_`). No se permiten espacios o comenzar con un número o guión alto (`-`).
+
+#### Ejemplo de Identificadores válidos
+
+```js
+hola 
+camelCase 
+PascalCase 
+_under_score 
+abc123 
+TODAS_MAYUSCULAS
+```
+
+#### Ejemplo de Identificadores no válidos
+
+```
+13hola 
+mi-variable
+$miVariable 
+mi variable
+ñandú
+👨miMetodo
+Mi👩clase
+```
+
+#### Unicode
+
+No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] o https://www.emojicode.org/[Emoji Code] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.
+
+.EmojiCode
+```
+🏁 🍇
+  😀 🔤Hello World!🔤❗️
+🍉
+```
+
+#### Identificadores que inician con guión bajo
+
+Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.
+
+#### Identificadores de clase
+
+Para _Wren_ es importante que las clases comiencen
+su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.
+
+Ejemplos
+
+```js
+// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
+var Numero = Num
+```
+
+```js
+// Dará error. No se puede heredar de las clases primitivas.
+class Numero is Num {}
+```
+
+```js
+// Es posible nombrar con minúsculas, pero puede dar
+// conflictos de contexto al momento de usarlo dentro
+// de una clase. (Puede hacer colisión con nombres de variable)
+class numero {}
+```
+
+#### Recomendaciones
+
+- Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo _"ruedasMotocicleta"_ es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".
+
+- La letra _"l"_ mínuscula y la letra _"O"_ mayúscula puede ser confundida con el número _"1"_ y "0" respectivamente.
 
 ### Saltos de línea
 
@@ -174,6 +282,99 @@ Una palabra reservada tiene un significado especial para _Wren_, por lo que no s
 - Caracteres comunes (`+ - * / % < > = ! ( ) [ ] | . " { } , & ^ ? : ~ _`)
 - Retorno de carro (`\n`)
 
+### Funciones (_Fn_)
+
+Las funciones en _Wren_ son instancias de la clase _Fn_ y deben ser llamadas utilizando su método _call()_. Al ser un objeto más, pueden ser pasadas como parámetros a métodos u otras funciones.
+
+```js
+var mostrar = Fn.new {|parametro|
+  System.print(parametro)
+}
+
+// muestra: hola
+mostrar.call("hola")
+```
+
+### Fibras (_Fiber_)
+
+Son similares a las funciones, con la diferencia en que se ejecutarán en un hilo (_thread_) distinto. Además del método _call()_ tienen un método _try()_ usado normalmente para "atajar" errores.
+
+```js
+var mostrar = Fn.new {|parametro|
+  System.print(parametro)
+}
+
+// Si existe un error se almacenará en la variable error
+var error = Fiber.new { mostrar.call("hola") }.try()
+```
+
+### Clases (_class_)
+
+Las clases se declaran utilizando la palabra clave _class_ antes del nombre.
+
+```js
+class MiClase {}
+```
+
+La herencia se define utilizando la palabra clave _is_.
+
+```js
+class Perro is Animal {}
+```
+
+Para definir un constructor se utiliza la palabra clave _construct_.
+
+```js
+class Auto {
+  construct nuevo() {
+
+  }
+}
+```
+
+Para definir un método o propiedad de clase se utiliza la palabra clave _static_.
+
+```js
+class Fruta {
+  // getter
+  static cantidad {__cantidad}
+
+  // setter
+  static cantidad = (value) {
+    // doble guión bajo indica propiedad de clase
+    __cantidad = value
+  }
+  
+  // método de clase
+  static comer() {
+    cantidad = cantidad - 1
+  }
+}
+```
+
+### Control de Flujo
+
+Existen las estructuras de control de flujo tradicionales: _if_, _for_, _while_ y _break_.
+
+```js
+if (condicion) {
+  // codigo
+}
+```
+
+```js
+while (condicion) {
+  // codigo
+}
+```
+
+```js
+for (elemento in secuencia) {
+  // codigo
+  break
+}
+```
+
 ### Comentarios
 
 Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
@@ -280,102 +481,5 @@ circulo(x, y, radio)
 - Cuando es poco probable que otros comprendan cómo haz resuelto un problema.
 
 Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.
-
-### Variables
-
-Una variable es un contenedor de un valor específico.
-Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.
-
-```js
-var mensaje = "Hola mundo Wren"
-System.print(mensaje)
-```
-
-Se puede modificar el valor posteriormente
-
-```js
-var mensaje = "Hola mundo Wren"
-System.print(mensaje)
-
-mensaje = "El chercán es una bonita ave"
-System.print(mensaje)
-```
-
-Si usamos una variable sin haberla declarado antes
-recibiremos un error similar a lo siguiente:
-
-```js
-var mensaje = "Hola"
-System.print(mensaj)
-[repl line 1] Error at 'mensaj': Variable is used but not defined.
-```
-
-Debemos siempre procurar que todas nuestras variables estén declaradas
-dentro del contexto y que no existan errores de escritura en sus nombres.
-
-### Identificadores
-
-Similar al _Lenguaje C_, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la http://www.asciitable.com/[lista `ascii`] y comenzar con un caracter alfabético o guión bajo. Los identificadores en _Wren_ diferencian entre mayúsculas y minúsculas. Solo se permiten letras (`A - Z`, `a - z`), números (`0 - 9`) y guión bajo (`_`). No se permiten espacios o comenzar con un número o guión alto (`-`).
-
-#### Ejemplo de Identificadores válidos
-
-```js
-hola 
-camelCase 
-PascalCase 
-_under_score 
-abc123 
-TODAS_MAYUSCULAS
-```
-
-#### Ejemplo de Identificadores no válidos
-
-```
-13hola 
-mi-variable
-$miVariable 
-mi variable
-ñandú
-👨miMetodo
-Mi👩clase
-```
-
-#### Unicode
-
-No están permitidos caracteres https://es.wikipedia.org/wiki/UTF-8[UTF-8] como la `Ñ` o los emojis en los identificadores. Sin embargo las `Strings` las soportan en su contenido sin problemas. Hay lenguajes como https://swift.org/[_Swift_] o https://www.emojicode.org/[Emoji Code] que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.
-
-.EmojiCode
-```
-🏁 🍇
-  😀 🔤Hello World!🔤❗️
-🍉
-```
-
-#### Identificadores que inician con guión bajo
-
-Un caso especial es para los identificadores con guión bajo como `_color` (un guión bajo al principio) y `__sabor` (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.
-
-#### Identificadores de clase
-
-Para _Wren_ es importante que las clases comiencen
-su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.
-
-Ejemplos
-
-```js
-// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
-var Numero = Num
-```
-
-```js
-// También es válido pero no es recomendable
-class numero is Num {}
-```
-
-#### Recomendaciones
-
-- Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo _"ruedasMotocicleta"_ es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".
-
-- La letra _"l"_ mínuscula y la letra _"O"_ mayúscula puede ser confundida con el número _"1"_ y "0" respectivamente.
 
 ### Ejercicios

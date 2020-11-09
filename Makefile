@@ -1,6 +1,6 @@
-.PHONY: build
+.PHONY: build docs
 
-b build:
+b build d docs:
 	asciidoctor -a lang=es -b docbook book.adoc
 	asciidoctor -a lang=es book.adoc
 	mkdir -p docs

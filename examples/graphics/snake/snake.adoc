@@ -6,6 +6,9 @@ toque una parte de su propio cuerpo.
 
 image:https://raw.githubusercontent.com/NinjasCL/snake/main/game.gif[Snake]
 
+.Nivel
+Avanzado
+
 ##### Código fuente
 
 [source, js, linenums]

@@ -3,6 +3,8 @@
 Una alucinante carrera entre 2 a 8 caracoles.
 Basado en https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py[SnailRace].
 
+.Nivel
+Intermedio
 
 ##### Ejemplo de Ejecución
 

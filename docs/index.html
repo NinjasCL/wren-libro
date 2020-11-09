@@ -476,41 +476,45 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_nociones_básicas">2. Nociones Básicas</a>
 <ul class="sectlevel2">
 <li><a href="#_tipos_de_datos">2.1. Tipos de datos</a></li>
-<li><a href="#_saltos_de_línea">2.2. Saltos de línea</a>
+<li><a href="#_variables">2.2. Variables</a></li>
+<li><a href="#_identificadores">2.3. Identificadores</a>
 <ul class="sectlevel3">
-<li><a href="#_ejemplo_lista_de_elementos">2.2.1. Ejemplo: Lista de elementos</a></li>
-<li><a href="#_ejemplo_parámetros_de_un_método">2.2.2. Ejemplo: Parámetros de un método</a></li>
-<li><a href="#_ejemplo_condicionales">2.2.3. Ejemplo: Condicionales</a></li>
-<li><a href="#_ejemplo_generar_un_número_al_azar_del_0_al_9">2.2.4. Ejemplo: Generar un número al azar del 0 al 9</a></li>
-<li><a href="#_ejemplo_error">2.2.5. Ejemplo: <strong>Error</strong></a></li>
+<li><a href="#_ejemplo_de_identificadores_válidos">2.3.1. Ejemplo de Identificadores válidos</a></li>
+<li><a href="#_ejemplo_de_identificadores_no_válidos">2.3.2. Ejemplo de Identificadores no válidos</a></li>
+<li><a href="#_unicode">2.3.3. Unicode</a></li>
+<li><a href="#_identificadores_que_inician_con_guión_bajo">2.3.4. Identificadores que inician con guión bajo</a></li>
+<li><a href="#_identificadores_de_clase">2.3.5. Identificadores de clase</a></li>
+<li><a href="#_recomendaciones">2.3.6. Recomendaciones</a></li>
 </ul>
 </li>
-<li><a href="#_retorno_implícito">2.3. Retorno implícito</a></li>
-<li><a href="#_palabras_reservadas">2.4. Palabras Reservadas</a>
+<li><a href="#_saltos_de_línea">2.4. Saltos de línea</a>
 <ul class="sectlevel3">
-<li><a href="#_caracteres_significativos">2.4.1. Caracteres significativos</a></li>
+<li><a href="#_ejemplo_lista_de_elementos">2.4.1. Ejemplo: Lista de elementos</a></li>
+<li><a href="#_ejemplo_parámetros_de_un_método">2.4.2. Ejemplo: Parámetros de un método</a></li>
+<li><a href="#_ejemplo_condicionales">2.4.3. Ejemplo: Condicionales</a></li>
+<li><a href="#_ejemplo_generar_un_número_al_azar_del_0_al_9">2.4.4. Ejemplo: Generar un número al azar del 0 al 9</a></li>
+<li><a href="#_ejemplo_error">2.4.5. Ejemplo: <strong>Error</strong></a></li>
 </ul>
 </li>
-<li><a href="#_comentarios">2.5. Comentarios</a>
+<li><a href="#_retorno_implícito">2.5. Retorno implícito</a></li>
+<li><a href="#_palabras_reservadas">2.6. Palabras Reservadas</a>
 <ul class="sectlevel3">
-<li><a href="#_tip_comentarios_tijera">2.5.1. Tip: Comentarios Tijera</a></li>
-<li><a href="#_tip_comentarios_de_parámetros">2.5.2. Tip: Comentarios de parámetros</a></li>
-<li><a href="#_cómo_es_un_buen_comentario">2.5.3. ¿Cómo es un buen comentario?</a></li>
-<li><a href="#_cuándo_comentar">2.5.4. ¿Cuándo comentar?</a></li>
+<li><a href="#_caracteres_significativos">2.6.1. Caracteres significativos</a></li>
 </ul>
 </li>
-<li><a href="#_variables">2.6. Variables</a></li>
-<li><a href="#_identificadores">2.7. Identificadores</a>
+<li><a href="#_funciones_fn">2.7. Funciones (<em>Fn</em>)</a></li>
+<li><a href="#_fibras_fiber">2.8. Fibras (<em>Fiber</em>)</a></li>
+<li><a href="#_clases_class">2.9. Clases (<em>class</em>)</a></li>
+<li><a href="#_control_de_flujo">2.10. Control de Flujo</a></li>
+<li><a href="#_comentarios">2.11. Comentarios</a>
 <ul class="sectlevel3">
-<li><a href="#_ejemplo_de_identificadores_válidos">2.7.1. Ejemplo de Identificadores válidos</a></li>
-<li><a href="#_ejemplo_de_identificadores_no_válidos">2.7.2. Ejemplo de Identificadores no válidos</a></li>
-<li><a href="#_unicode">2.7.3. Unicode</a></li>
-<li><a href="#_identificadores_que_inician_con_guión_bajo">2.7.4. Identificadores que inician con guión bajo</a></li>
-<li><a href="#_identificadores_de_clase">2.7.5. Identificadores de clase</a></li>
-<li><a href="#_recomendaciones">2.7.6. Recomendaciones</a></li>
+<li><a href="#_tip_comentarios_tijera">2.11.1. Tip: Comentarios Tijera</a></li>
+<li><a href="#_tip_comentarios_de_parámetros">2.11.2. Tip: Comentarios de parámetros</a></li>
+<li><a href="#_cómo_es_un_buen_comentario">2.11.3. ¿Cómo es un buen comentario?</a></li>
+<li><a href="#_cuándo_comentar">2.11.4. ¿Cuándo comentar?</a></li>
 </ul>
 </li>
-<li><a href="#_ejercicios_2">2.8. Ejercicios</a></li>
+<li><a href="#_ejercicios_2">2.12. Ejercicios</a></li>
 </ul>
 </li>
 <li><a href="#_strings_cadena_de_caracteres">3. Strings: Cadena de caracteres</a>
@@ -1010,6 +1014,10 @@ capítulo detalla las normas básicas con las que funciona
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Importante</div>
+<p>No se puede heredar desde estas clases debido al problema de <a href="https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)"><em>Reentrancia</em></a>. Para extender solo es posible usando la composición (Crear una nueva clase).</p>
+</div>
+<div class="paragraph">
 <div class="title">Wren CLI</div>
 <p>Estas clases son exclusivas de la <em>Wren CLI</em>. No estarán disponibles fuera del entorno de ejecución de este intérprete de <em>Wren</em>.</p>
 </div>
@@ -1046,12 +1054,148 @@ capítulo detalla las normas básicas con las que funciona
 </div>
 </div>
 <div class="sect2">
-<h3 id="_saltos_de_línea">2.2. Saltos de línea</h3>
+<h3 id="_variables">2.2. Variables</h3>
+<div class="paragraph">
+<p>Una variable es un contenedor de un valor específico.
+Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola mundo Wren"
+System.print(mensaje)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Se puede modificar el valor posteriormente</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola mundo Wren"
+System.print(mensaje)
+
+mensaje = "El chercán es una bonita ave"
+System.print(mensaje)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si usamos una variable sin haberla declarado antes
+recibiremos un error similar a lo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola"
+System.print(mensaj)
+[repl line 1] Error at 'mensaj': Variable is used but not defined.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Debemos siempre procurar que todas nuestras variables estén declaradas
+dentro del contexto y que no existan errores de escritura en sus nombres.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_identificadores">2.3. Identificadores</h3>
+<div class="paragraph">
+<p>Similar al <em>Lenguaje C</em>, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la <a href="http://www.asciitable.com/">lista <code>ascii</code></a> y comenzar con un caracter alfabético o guión bajo. Los identificadores en <em>Wren</em> diferencian entre mayúsculas y minúsculas. Solo se permiten letras (<code>A - Z</code>, <code>a - z</code>), números (<code>0 - 9</code>) y guión bajo (<code>_</code>). No se permiten espacios o comenzar con un número o guión alto (<code>-</code>).</p>
+</div>
+<div class="sect3">
+<h4 id="_ejemplo_de_identificadores_válidos">2.3.1. Ejemplo de Identificadores válidos</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">hola
+camelCase
+PascalCase
+_under_score
+abc123
+TODAS_MAYUSCULAS</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ejemplo_de_identificadores_no_válidos">2.3.2. Ejemplo de Identificadores no válidos</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>13hola
+mi-variable
+$miVariable
+mi variable
+ñandú
+👨miMetodo
+Mi👩clase</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_unicode">2.3.3. Unicode</h4>
+<div class="paragraph">
+<p>No están permitidos caracteres <a href="https://es.wikipedia.org/wiki/UTF-8">UTF-8</a> como la <code>Ñ</code> o los emojis en los identificadores. Sin embargo las <code>Strings</code> las soportan en su contenido sin problemas. Hay lenguajes como <a href="https://swift.org/"><em>Swift</em></a> o <a href="https://www.emojicode.org/">Emoji Code</a> que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.</p>
+</div>
+<div class="listingblock">
+<div class="title">EmojiCode</div>
+<div class="content">
+<pre class="highlight"><code>🏁 🍇
+  😀 🔤Hello World!🔤❗️
+🍉</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_identificadores_que_inician_con_guión_bajo">2.3.4. Identificadores que inician con guión bajo</h4>
+<div class="paragraph">
+<p>Un caso especial es para los identificadores con guión bajo como <code>_color</code> (un guión bajo al principio) y <code>__sabor</code> (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_identificadores_de_clase">2.3.5. Identificadores de clase</h4>
+<div class="paragraph">
+<p>Para <em>Wren</em> es importante que las clases comiencen
+su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.</p>
+</div>
+<div class="paragraph">
+<p>Ejemplos</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
+var Numero = Num</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Dará error. No se puede heredar de las clases primitivas.
+class Numero is Num {}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Es posible nombrar con minúsculas, pero puede dar
+// conflictos de contexto al momento de usarlo dentro
+// de una clase. (Puede hacer colisión con nombres de variable)
+class numero {}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_recomendaciones">2.3.6. Recomendaciones</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo <em>"ruedasMotocicleta"</em> es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".</p>
+</li>
+<li>
+<p>La letra <em>"l"</em> mínuscula y la letra <em>"O"</em> mayúscula puede ser confundida con el número <em>"1"</em> y "0" respectivamente.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_saltos_de_línea">2.4. Saltos de línea</h3>
 <div class="paragraph">
 <p><em>Wren</em> utiliza los saltos de línea (<code>\n</code>), por lo que no es necesario utilizar el punto y coma (<code>;</code>) para separar instrucciones. Sin embargo omite los saltos de línea si la instrucción espera más información para ser válida.</p>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_lista_de_elementos">2.2.1. Ejemplo: Lista de elementos</h4>
+<h4 id="_ejemplo_lista_de_elementos">2.4.1. Ejemplo: Lista de elementos</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">var animales = [
@@ -1064,7 +1208,7 @@ capítulo detalla las normas básicas con las que funciona
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_parámetros_de_un_método">2.2.2. Ejemplo: Parámetros de un método</h4>
+<h4 id="_ejemplo_parámetros_de_un_método">2.4.2. Ejemplo: Parámetros de un método</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">MiClase.metodo(
@@ -1076,7 +1220,7 @@ capítulo detalla las normas básicas con las que funciona
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_condicionales">2.2.3. Ejemplo: Condicionales</h4>
+<h4 id="_ejemplo_condicionales">2.4.3. Ejemplo: Condicionales</h4>
 <div class="paragraph">
 <p>Los saltos de línea son considerados en la declaración de bloques de código.
 Por lo tanto es importante la posición de las llaves (<em>"{}"</em>) dentro de una instrucción.</p>
@@ -1115,7 +1259,7 @@ if (condiction == true)
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_generar_un_número_al_azar_del_0_al_9">2.2.4. Ejemplo: Generar un número al azar del 0 al 9</h4>
+<h4 id="_ejemplo_generar_un_número_al_azar_del_0_al_9">2.4.4. Ejemplo: Generar un número al azar del 0 al 9</h4>
 <div class="paragraph">
 <p>Al considerar los saltos de línea significativos,
 provoca un comportamiento inusual al momento de llamar métodos.</p>
@@ -1158,7 +1302,7 @@ int(10)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ejemplo_error">2.2.5. Ejemplo: <strong>Error</strong></h4>
+<h4 id="_ejemplo_error">2.4.5. Ejemplo: <strong>Error</strong></h4>
 <div class="paragraph">
 <p>La siguiente línea arroja error debido a que no tiene un salto de línea o una operación.</p>
 </div>
@@ -1170,7 +1314,7 @@ int(10)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_retorno_implícito">2.3. Retorno implícito</h3>
+<h3 id="_retorno_implícito">2.5. Retorno implícito</h3>
 <div class="paragraph">
 <p>Al tener instrucciones de una sola línea, <em>Wren</em> asume
 la existencia de una instrucción de retorno (<em>"return"</em>).
@@ -1192,7 +1336,7 @@ es <em>null</em>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_palabras_reservadas">2.4. Palabras Reservadas</h3>
+<h3 id="_palabras_reservadas">2.6. Palabras Reservadas</h3>
 <div class="paragraph">
 <p><em>Wren</em> es un lenguaje simple y pequeño. Sus palabras reservadas son las siguientes:</p>
 </div>
@@ -1206,7 +1350,7 @@ in is null return static super this true var while</code></pre>
 <p>Una palabra reservada tiene un significado especial para <em>Wren</em>, por lo que no se recomienda usarlas para llamar a variables o clases. De esta forma se evita conflictos y confusiones.</p>
 </div>
 <div class="sect3">
-<h4 id="_caracteres_significativos">2.4.1. Caracteres significativos</h4>
+<h4 id="_caracteres_significativos">2.6.1. Caracteres significativos</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1220,7 +1364,120 @@ in is null return static super this true var while</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_comentarios">2.5. Comentarios</h3>
+<h3 id="_funciones_fn">2.7. Funciones (<em>Fn</em>)</h3>
+<div class="paragraph">
+<p>Las funciones en <em>Wren</em> son instancias de la clase <em>Fn</em> y deben ser llamadas utilizando su método <em>call()</em>. Al ser un objeto más, pueden ser pasadas como parámetros a métodos u otras funciones.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var mostrar = Fn.new {|parametro|
+  System.print(parametro)
+}
+
+// muestra: hola
+mostrar.call("hola")</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fibras_fiber">2.8. Fibras (<em>Fiber</em>)</h3>
+<div class="paragraph">
+<p>Son similares a las funciones, con la diferencia en que se ejecutarán en un hilo (<em>thread</em>) distinto. Además del método <em>call()</em> tienen un método <em>try()</em> usado normalmente para "atajar" errores.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var mostrar = Fn.new {|parametro|
+  System.print(parametro)
+}
+
+// Si existe un error se almacenará en la variable error
+var error = Fiber.new { mostrar.call("hola") }.try()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_clases_class">2.9. Clases (<em>class</em>)</h3>
+<div class="paragraph">
+<p>Las clases se declaran utilizando la palabra clave <em>class</em> antes del nombre.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">class MiClase {}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La herencia se define utilizando la palabra clave <em>is</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">class Perro is Animal {}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para definir un constructor se utiliza la palabra clave <em>construct</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">class Auto {
+  construct nuevo() {
+
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para definir un método o propiedad de clase se utiliza la palabra clave <em>static</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">class Fruta {
+  // getter
+  static cantidad {__cantidad}
+
+  // setter
+  static cantidad = (value) {
+    // doble guión bajo indica propiedad de clase
+    __cantidad = value
+  }
+
+  // método de clase
+  static comer() {
+    cantidad = cantidad - 1
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_control_de_flujo">2.10. Control de Flujo</h3>
+<div class="paragraph">
+<p>Existen las estructuras de control de flujo tradicionales: <em>if</em>, <em>for</em>, <em>while</em> y <em>break</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">if (condicion) {
+  // codigo
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">while (condicion) {
+  // codigo
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">for (elemento in secuencia) {
+  // codigo
+  break
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_comentarios">2.11. Comentarios</h3>
 <div class="paragraph">
 <p>Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
 como codificar las soluciones a los problemas. Una vez que se soluciona el problema,
@@ -1263,7 +1520,7 @@ líneas.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tip_comentarios_tijera">2.5.1. Tip: Comentarios Tijera</h4>
+<h4 id="_tip_comentarios_tijera">2.11.1. Tip: Comentarios Tijera</h4>
 <div class="paragraph">
 <p>Puedes combinar los comentarios de una sola línea con los de múltiples líneas para
 comentar/descomentar rápidamente secciones de código. Se llaman comentarios tijera
@@ -1309,7 +1566,7 @@ puedes activar o desactivar secciones de código.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tip_comentarios_de_parámetros">2.5.2. Tip: Comentarios de parámetros</h4>
+<h4 id="_tip_comentarios_de_parámetros">2.11.2. Tip: Comentarios de parámetros</h4>
 <div class="paragraph">
 <p>En <em>Wren</em> no es posible llamar a los parámetros por su nombre. Por lo que si utilizas una función
 con algunos parámetros, puede ser útil comentarlos.</p>
@@ -1332,7 +1589,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cómo_es_un_buen_comentario">2.5.3. ¿Cómo es un buen comentario?</h4>
+<h4 id="_cómo_es_un_buen_comentario">2.11.3. ¿Cómo es un buen comentario?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1351,7 +1608,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cuándo_comentar">2.5.4. ¿Cuándo comentar?</h4>
+<h4 id="_cuándo_comentar">2.11.4. ¿Cuándo comentar?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1374,135 +1631,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_variables">2.6. Variables</h3>
-<div class="paragraph">
-<p>Una variable es un contenedor de un valor específico.
-Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo de objeto.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola mundo Wren"
-System.print(mensaje)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Se puede modificar el valor posteriormente</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola mundo Wren"
-System.print(mensaje)
-
-mensaje = "El chercán es una bonita ave"
-System.print(mensaje)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si usamos una variable sin haberla declarado antes
-recibiremos un error similar a lo siguiente:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola"
-System.print(mensaj)
-[repl line 1] Error at 'mensaj': Variable is used but not defined.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Debemos siempre procurar que todas nuestras variables estén declaradas
-dentro del contexto y que no existan errores de escritura en sus nombres.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_identificadores">2.7. Identificadores</h3>
-<div class="paragraph">
-<p>Similar al <em>Lenguaje C</em>, para los indentificadores (nombres de variables, clases, metodos, funciones) se pueden utilizar los caracteres de la <a href="http://www.asciitable.com/">lista <code>ascii</code></a> y comenzar con un caracter alfabético o guión bajo. Los identificadores en <em>Wren</em> diferencian entre mayúsculas y minúsculas. Solo se permiten letras (<code>A - Z</code>, <code>a - z</code>), números (<code>0 - 9</code>) y guión bajo (<code>_</code>). No se permiten espacios o comenzar con un número o guión alto (<code>-</code>).</p>
-</div>
-<div class="sect3">
-<h4 id="_ejemplo_de_identificadores_válidos">2.7.1. Ejemplo de Identificadores válidos</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">hola
-camelCase
-PascalCase
-_under_score
-abc123
-TODAS_MAYUSCULAS</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_ejemplo_de_identificadores_no_válidos">2.7.2. Ejemplo de Identificadores no válidos</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>13hola
-mi-variable
-$miVariable
-mi variable
-ñandú
-👨miMetodo
-Mi👩clase</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_unicode">2.7.3. Unicode</h4>
-<div class="paragraph">
-<p>No están permitidos caracteres <a href="https://es.wikipedia.org/wiki/UTF-8">UTF-8</a> como la <code>Ñ</code> o los emojis en los identificadores. Sin embargo las <code>Strings</code> las soportan en su contenido sin problemas. Hay lenguajes como <a href="https://swift.org/"><em>Swift</em></a> o <a href="https://www.emojicode.org/">Emoji Code</a> que si soportan identificadores con emojis, aunque la utilidad de esta práctica es debatible.</p>
-</div>
-<div class="listingblock">
-<div class="title">EmojiCode</div>
-<div class="content">
-<pre class="highlight"><code>🏁 🍇
-  😀 🔤Hello World!🔤❗️
-🍉</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_identificadores_que_inician_con_guión_bajo">2.7.4. Identificadores que inician con guión bajo</h4>
-<div class="paragraph">
-<p>Un caso especial es para los identificadores con guión bajo como <code>_color</code> (un guión bajo al principio) y <code>__sabor</code> (dos guiones bajos al principio). Con un guión bajo indica que es una propiedad de instancia, mientras que con dos guiones bajos indican que es una propiedad de clase. Más detalles en la sección de Clases.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_identificadores_de_clase">2.7.5. Identificadores de clase</h4>
-<div class="paragraph">
-<p>Para <em>Wren</em> es importante que las clases comiencen
-su nombre con mayúsculas. Si bien es posible definir clases con letras minúsculas no es recomendable hacerlo debido a que pueden colisionar con variables dentro del contexto de clase o método.</p>
-</div>
-<div class="paragraph">
-<p>Ejemplos</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
-var Numero = Num</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// También es válido pero no es recomendable
-class numero is Num {}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_recomendaciones">2.7.6. Recomendaciones</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Los nombres de los identificadores deben ser descriptivos, sin ser muy largos. Ejemplo <em>"ruedasMotocicleta"</em> es mejor que solo "ruedas" y "numero_de_ruedas_en_una_moto".</p>
-</li>
-<li>
-<p>La letra <em>"l"</em> mínuscula y la letra <em>"O"</em> mayúscula puede ser confundida con el número <em>"1"</em> y "0" respectivamente.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ejercicios_2">2.8. Ejercicios</h3>
+<h3 id="_ejercicios_2">2.12. Ejercicios</h3>
 
 </div>
 </div>
@@ -2117,6 +2246,34 @@ System.print(formateado)</code></pre>
 Se recomienda utilizar un editor de código como <a href="https://vscodium.com/">VS Codium</a>
 para escribir los ejemplos.</p>
 </div>
+<div class="paragraph">
+<p>Cada ejemplo puede ser categorizado en los siguientes niveles:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Niveles</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nivel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Descripción</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Novato</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utiliza operaciones simples como suma, resta, multiplicación, división, <em>System.print()</em> y estructuras de control.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intermedio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utiliza funciones, diccionarios y clases simples.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Avanzado</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utiliza clases, herencia y algoritmos avanzados.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect2">
 <h3 id="_terminal">5.1. Terminal</h3>
 <div class="paragraph">
@@ -2144,6 +2301,10 @@ para escribir los ejemplos.</p>
 </div>
 <div class="paragraph">
 <p>Este es un buen juego para codificar ya que usa números aleatorios y bucles, y recibe entradas del usuario en un programa corto. Aprenderás cómo convertir valores a diferentes tipos de datos, y por qué es necesario hacer esto. Dado que este programa es un juego, nos referiremos al usuario como el jugador. Pero llamarlo “usuario” también sería correcto.</p>
+</div>
+<div class="paragraph">
+<div class="title">Nivel</div>
+<p>Novato</p>
 </div>
 <div class="sect4">
 <h5 id="_ejemplo_de_ejecución">Ejemplo de Ejecución</h5>
@@ -2241,6 +2402,10 @@ if (estimacion != numero) {
 </div>
 <div class="paragraph">
 <p>El juego se llama <em>"Reino de Dragones"</em>, y permite al jugador elegir entre dos cuevas, en una de las cuales encontrará un tesoro y en la otra su perdición.</p>
+</div>
+<div class="paragraph">
+<div class="title">Nivel</div>
+<p>Novato</p>
 </div>
 <div class="sect4">
 <h5 id="_cómo_jugar_a_reino_de_dragones">¿Cómo Jugar a Reino de Dragones?</h5>
@@ -2361,6 +2526,10 @@ System.print("¡Eso fue divertido, nos vemos luego!")</code></pre>
 diamantes de distintos tamaños.
 Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamonds.py">Diamonds</a>.</p>
 </div>
+<div class="paragraph">
+<div class="title">Nivel</div>
+<p>Novato</p>
+</div>
 <div class="sect4">
 <h5 id="_ejemplo_de_ejecución_3">Ejemplo de Ejecución</h5>
 <div class="paragraph">
@@ -2460,6 +2629,10 @@ for(dimension in 0..5) {
 <div class="paragraph">
 <p>Una alucinante carrera entre 2 a 8 caracoles.
 Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py">SnailRace</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Nivel</div>
+<p>Intermedio</p>
 </div>
 <div class="sect4">
 <h5 id="_ejemplo_de_ejecución_4">Ejemplo de Ejecución</h5>
@@ -2607,7 +2780,11 @@ while (true) {
 <h4 id="_cañon">5.1.6. Cañon</h4>
 <div class="paragraph">
 <p>Este juego simula el disparo de un cañón hacia un objetivo.
-Código levemente basado en <a href="#alfonseca">[alfonseca]</a></p>
+Código levemente basado en <a href="#alfonseca">[alfonseca]</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Nivel</div>
+<p>Intermedio</p>
 </div>
 <div class="sect4">
 <h5 id="_cómo_jugar">¿Cómo Jugar?</h5>
@@ -2802,6 +2979,10 @@ en golpear la pelota.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="https://raw.githubusercontent.com/NinjasCL/breakout/main/breakout.gif" alt="Breakout"></span></p>
+</div>
+<div class="paragraph">
+<div class="title">Nivel</div>
+<p>Avanzado</p>
 </div>
 <div class="sect4">
 <h5 id="_código_fuente_6">Código fuente</h5>
@@ -3379,6 +3560,10 @@ toque una parte de su propio cuerpo.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="https://raw.githubusercontent.com/NinjasCL/snake/main/game.gif" alt="Snake"></span></p>
+</div>
+<div class="paragraph">
+<div class="title">Nivel</div>
+<p>Avanzado</p>
 </div>
 <div class="sect4">
 <h5 id="_código_fuente_7">Código fuente</h5>
