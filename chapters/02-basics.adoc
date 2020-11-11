@@ -317,17 +317,46 @@ class MiClase {}
 ```
 
 La herencia se define utilizando la palabra clave _is_.
+Solo se heredan los métodos de instancia.
+Propiedades de clase (__var) y de instancia (_var),
+constructores y métodos de clase no son heredados (todos son privados).
 
 ```js
-class Perro is Animal {}
+class Animal {
+  // la propiedad _nombre solo puede ser accesible
+  // a clases hijos si se definen como métodos accesadores
+  nombre {_nombre}
+
+  // creamos un mutador de la clase
+  nombre = (value) {
+    _nombre = value
+  }
+}
+
+class Perro is Animal {
+  // constructores no son heredables
+  construct nuevo(nom) {
+    // llamamos al método mutador de la clase padre
+    this.nombre = nom
+    
+    // Muestra "Joe" usando el método accesador
+    System.print(nombre)
+    
+    // Muestra null
+    System.print(_nombre)
+  }
+}
+
+var perrito = Perro.nuevo("Joe")
 ```
 
-Para definir un constructor se utiliza la palabra clave _construct_.
+Para definir un constructor se utiliza la palabra clave `construct`.
+Para llamar a la instancia se usa `this` (opcional).
 
 ```js
 class Auto {
   construct nuevo() {
-
+    System.print(this)
   }
 }
 ```
@@ -336,10 +365,10 @@ Para definir un método o propiedad de clase se utiliza la palabra clave _static
 
 ```js
 class Fruta {
-  // getter
+  // accesador (getter)
   static cantidad {__cantidad}
 
-  // setter
+  // mutador (setter)
   static cantidad = (value) {
     // doble guión bajo indica propiedad de clase
     __cantidad = value
@@ -350,6 +379,56 @@ class Fruta {
     cantidad = cantidad - 1
   }
 }
+```
+
+Para saber el padre de la clase se utiliza la propiedad `supertype`.
+Esta propiedad debe ser llamada recursivamente para obtener el árbol de herencia.
+
+- La clase primitiva base de todas es `Object`.
+- No se puede heredar de los primitivos como `String`, `Num`, `Map`, entre otros.
+
+```js
+class Animal {}
+
+class Perro is Animal {}
+
+System.print(Perro.supertype) // Animal
+
+if (Perro.supertype == Animal) {
+  // Perro es animal
+}
+```
+
+Si queremos saber el tipo de una _instancia_ se puede usar `is`.
+
+```js
+
+var perrito = Perro.new()
+if (perrito is Perro) {
+  // perrito es Perro
+}
+
+if (Perro is Animal) {
+  // Falso, ya que son clases distintas
+}
+```
+
+- Las propiedades `type`, `supertype` y `name` vienen dentro de cada clase.
+- `Object` es la única clase que no tiene `supertype`.
+
+```js
+class Animal {}
+
+class Perro is Animal {}
+
+System.print(Perro.name)
+System.print(Perro.type)
+
+System.print(Perro.supertype.name)
+System.print(Perro.supertype.type)
+System.print(Perro.supertype.supertype)
+
+System.print(Object.supertype)
 ```
 
 ### Control de Flujo

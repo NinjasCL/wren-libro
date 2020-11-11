@@ -1406,21 +1406,50 @@ var error = Fiber.new { mostrar.call("hola") }.try()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>La herencia se define utilizando la palabra clave <em>is</em>.</p>
+<p>La herencia se define utilizando la palabra clave <em>is</em>.
+Solo se heredan los métodos de instancia.
+Propiedades de clase (__var) y de instancia (_var),
+constructores y métodos de clase no son heredados (todos son privados).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">class Perro is Animal {}</code></pre>
+<pre class="highlight"><code class="language-js" data-lang="js">class Animal {
+  // la propiedad _nombre solo puede ser accesible
+  // a clases hijos si se definen como métodos accesadores
+  nombre {_nombre}
+
+  // creamos un mutador de la clase
+  nombre = (value) {
+    _nombre = value
+  }
+}
+
+class Perro is Animal {
+  // constructores no son heredables
+  construct nuevo(nom) {
+    // llamamos al método mutador de la clase padre
+    this.nombre = nom
+
+    // Muestra "Joe" usando el método accesador
+    System.print(nombre)
+
+    // Muestra null
+    System.print(_nombre)
+  }
+}
+
+var perrito = Perro.nuevo("Joe")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Para definir un constructor se utiliza la palabra clave <em>construct</em>.</p>
+<p>Para definir un constructor se utiliza la palabra clave <code>construct</code>.
+Para llamar a la instancia se usa <code>this</code> (opcional).</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">class Auto {
   construct nuevo() {
-
+    System.print(this)
   }
 }</code></pre>
 </div>
@@ -1431,10 +1460,10 @@ var error = Fiber.new { mostrar.call("hola") }.try()</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">class Fruta {
-  // getter
+  // accesador (getter)
   static cantidad {__cantidad}
 
-  // setter
+  // mutador (setter)
   static cantidad = (value) {
     // doble guión bajo indica propiedad de clase
     __cantidad = value
@@ -1445,6 +1474,74 @@ var error = Fiber.new { mostrar.call("hola") }.try()</code></pre>
     cantidad = cantidad - 1
   }
 }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para saber el padre de la clase se utiliza la propiedad <code>supertype</code>.
+Esta propiedad debe ser llamada recursivamente para obtener el árbol de herencia.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La clase primitiva base de todas es <code>Object</code>.</p>
+</li>
+<li>
+<p>No se puede heredar de los primitivos como <code>String</code>, <code>Num</code>, <code>Map</code>, entre otros.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">class Animal {}
+
+class Perro is Animal {}
+
+System.print(Perro.supertype) // Animal
+
+if (Perro.supertype == Animal) {
+  // Perro es animal
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si queremos saber el tipo de una <em>instancia</em> se puede usar <code>is</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var perrito = Perro.new()
+if (perrito is Perro) {
+  // perrito es Perro
+}
+
+if (Perro is Animal) {
+  // Falso, ya que son clases distintas
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Las propiedades <code>type</code>, <code>supertype</code> y <code>name</code> vienen dentro de cada clase.</p>
+</li>
+<li>
+<p><code>Object</code> es la única clase que no tiene <code>supertype</code>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">class Animal {}
+
+class Perro is Animal {}
+
+System.print(Perro.name)
+System.print(Perro.type)
+
+System.print(Perro.supertype.name)
+System.print(Perro.supertype.type)
+System.print(Perro.supertype.supertype)
+
+System.print(Object.supertype)</code></pre>
 </div>
 </div>
 </div>
