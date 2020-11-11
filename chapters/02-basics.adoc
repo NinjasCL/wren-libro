@@ -31,7 +31,7 @@ Estas son las clases disponibles dentro del lenguaje _Wren_ "vainilla".
 
 .Importante
 
-No se puede heredar desde estas clases debido al problema de https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)[_Reentrancia_]. Para extender solo es posible usando la composición (Crear una nueva clase).
+No se puede heredar desde estas clases debido al problema de https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)[_Reentrancia_]. Para extender solo es posible usando la composición (Crear una nueva clase). Esto significa que al llamar a un método de una clase que herede de un tipo base, la máquina virtual no podrá diferenciar los métodos, lo que puede causar errores, por esta razón no está permitido heredar de las clases primitivas.
 
 .Wren CLI
 
@@ -454,6 +454,18 @@ for (elemento in secuencia) {
 }
 ```
 
+### Importar
+
+Para separar el código en diversos archivos esta la instrucción `import`.
+El leer los archivos e importar su contenido dependerá del intérprete.
+
+La instrucción `import` va de la mano con la palabra `for`.
+
+```js
+// El módulo se llama "random" e importamos la clase "Random" dentro de este módulo
+import "random" for Random
+```
+
 ### Comentarios
 
 Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
@@ -560,5 +572,3 @@ circulo(x, y, radio)
 - Cuando es poco probable que otros comprendan cómo haz resuelto un problema.
 
 Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.
-
-### Ejercicios

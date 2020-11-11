@@ -506,15 +506,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_fibras_fiber">2.8. Fibras (<em>Fiber</em>)</a></li>
 <li><a href="#_clases_class">2.9. Clases (<em>class</em>)</a></li>
 <li><a href="#_control_de_flujo">2.10. Control de Flujo</a></li>
-<li><a href="#_comentarios">2.11. Comentarios</a>
+<li><a href="#_importar">2.11. Importar</a></li>
+<li><a href="#_comentarios">2.12. Comentarios</a>
 <ul class="sectlevel3">
-<li><a href="#_tip_comentarios_tijera">2.11.1. Tip: Comentarios Tijera</a></li>
-<li><a href="#_tip_comentarios_de_parámetros">2.11.2. Tip: Comentarios de parámetros</a></li>
-<li><a href="#_cómo_es_un_buen_comentario">2.11.3. ¿Cómo es un buen comentario?</a></li>
-<li><a href="#_cuándo_comentar">2.11.4. ¿Cuándo comentar?</a></li>
+<li><a href="#_tip_comentarios_tijera">2.12.1. Tip: Comentarios Tijera</a></li>
+<li><a href="#_tip_comentarios_de_parámetros">2.12.2. Tip: Comentarios de parámetros</a></li>
+<li><a href="#_cómo_es_un_buen_comentario">2.12.3. ¿Cómo es un buen comentario?</a></li>
+<li><a href="#_cuándo_comentar">2.12.4. ¿Cuándo comentar?</a></li>
 </ul>
 </li>
-<li><a href="#_ejercicios_2">2.12. Ejercicios</a></li>
 </ul>
 </li>
 <li><a href="#_strings_cadena_de_caracteres">3. Strings: Cadena de caracteres</a>
@@ -538,7 +538,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_invertir_una_cadena_de_caracteres">3.9.3. Invertir una cadena de caracteres</a></li>
 </ul>
 </li>
-<li><a href="#_ejercicios_3">3.10. Ejercicios</a>
+<li><a href="#_ejercicios_2">3.10. Ejercicios</a>
 <ul class="sectlevel3">
 <li><a href="#chap3-ex1">3.10.1. Donas</a></li>
 </ul>
@@ -1015,7 +1015,7 @@ capítulo detalla las normas básicas con las que funciona
 </div>
 <div class="paragraph">
 <div class="title">Importante</div>
-<p>No se puede heredar desde estas clases debido al problema de <a href="https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)"><em>Reentrancia</em></a>. Para extender solo es posible usando la composición (Crear una nueva clase).</p>
+<p>No se puede heredar desde estas clases debido al problema de <a href="https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)"><em>Reentrancia</em></a>. Para extender solo es posible usando la composición (Crear una nueva clase). Esto significa que al llamar a un método de una clase que herede de un tipo base, la máquina virtual no podrá diferenciar los métodos, lo que puede causar errores, por esta razón no está permitido heredar de las clases primitivas.</p>
 </div>
 <div class="paragraph">
 <div class="title">Wren CLI</div>
@@ -1574,7 +1574,23 @@ System.print(Object.supertype)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_comentarios">2.11. Comentarios</h3>
+<h3 id="_importar">2.11. Importar</h3>
+<div class="paragraph">
+<p>Para separar el código en diversos archivos esta la instrucción <code>import</code>.
+El leer los archivos e importar su contenido dependerá del intérprete.</p>
+</div>
+<div class="paragraph">
+<p>La instrucción <code>import</code> va de la mano con la palabra <code>for</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// El módulo se llama "random" e importamos la clase "Random" dentro de este módulo
+import "random" for Random</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_comentarios">2.12. Comentarios</h3>
 <div class="paragraph">
 <p>Cuando se comienza a escribir código más elaborado, existe mayor necesidad de pensar
 como codificar las soluciones a los problemas. Una vez que se soluciona el problema,
@@ -1617,7 +1633,7 @@ líneas.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tip_comentarios_tijera">2.11.1. Tip: Comentarios Tijera</h4>
+<h4 id="_tip_comentarios_tijera">2.12.1. Tip: Comentarios Tijera</h4>
 <div class="paragraph">
 <p>Puedes combinar los comentarios de una sola línea con los de múltiples líneas para
 comentar/descomentar rápidamente secciones de código. Se llaman comentarios tijera
@@ -1663,7 +1679,7 @@ puedes activar o desactivar secciones de código.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_tip_comentarios_de_parámetros">2.11.2. Tip: Comentarios de parámetros</h4>
+<h4 id="_tip_comentarios_de_parámetros">2.12.2. Tip: Comentarios de parámetros</h4>
 <div class="paragraph">
 <p>En <em>Wren</em> no es posible llamar a los parámetros por su nombre. Por lo que si utilizas una función
 con algunos parámetros, puede ser útil comentarlos.</p>
@@ -1686,7 +1702,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cómo_es_un_buen_comentario">2.11.3. ¿Cómo es un buen comentario?</h4>
+<h4 id="_cómo_es_un_buen_comentario">2.12.3. ¿Cómo es un buen comentario?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1705,7 +1721,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cuándo_comentar">2.11.4. ¿Cuándo comentar?</h4>
+<h4 id="_cuándo_comentar">2.12.4. ¿Cuándo comentar?</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1726,10 +1742,6 @@ circulo(x, y, radio)</code></pre>
 <p>Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.</p>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_ejercicios_2">2.12. Ejercicios</h3>
-
 </div>
 </div>
 </div>
@@ -2024,7 +2036,7 @@ System.print("hola wren"[-1..0])</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ejercicios_3">3.10. Ejercicios</h3>
+<h3 id="_ejercicios_2">3.10. Ejercicios</h3>
 <div class="sect3">
 <h4 id="chap3-ex1">3.10.1. Donas</h4>
 <div class="paragraph">
