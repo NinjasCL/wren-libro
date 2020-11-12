@@ -35,6 +35,18 @@ include::chapters/03-strings.adoc[]
 
 include::chapters/04-numbers.adoc[]
 
+include::chapters/05-lists.adoc[]
+
+include::chapters/06-functions.adoc[]
+
+include::chapters/07-control.adoc[]
+
+include::chapters/08-maps.adoc[]
+
+include::chapters/09-classes.adoc[]
+
+include::chapters/10-cli.adoc[]
+
 include::examples/examples.adoc[]
 
 include::chapters/exercises/solutions.adoc[]

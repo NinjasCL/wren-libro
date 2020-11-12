@@ -1,0 +1,21 @@
+## Listas y Secuencias
+
+### https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L7[Secuencias]
+
+La secuencia es la clase padre de _List_, _String_, _Map_ y cualquier otra que implemente el _protocolo de iteración._
+
+
+### https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L318[Lista]
+
+Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.
+
+El siguiente ejemplo muestra como iterar una lista:
+
+```js
+var estudiantes = ["Pedro", "Javier", "Nicolás"]
+
+for (estudiante in estudiantes) {
+    System.print("¡Hola, " + estudiante + "!")
+}
+```
+

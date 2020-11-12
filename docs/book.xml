@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>El <emphasis>Wren</emphasis> libro</title>
-<date>2020-11-03</date>
+<date>2020-11-12</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -1223,6 +1223,43 @@ var formateado = entero + "." + decimales
 
 System.print(formateado)</programlisting>
 </section>
+</chapter>
+<chapter xml:id="_listas_y_secuencias">
+<title>Listas y Secuencias</title>
+<section xml:id="_secuencias">
+<title><link xl:href="https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L7">Secuencias</link></title>
+<simpara>La secuencia es la clase padre de <emphasis>List</emphasis>, <emphasis>String</emphasis>, <emphasis>Map</emphasis> y cualquier otra que implemente el <emphasis>protocolo de iteración.</emphasis></simpara>
+</section>
+<section xml:id="_lista">
+<title><link xl:href="https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L318">Lista</link></title>
+<simpara>Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.</simpara>
+<simpara>El siguiente ejemplo muestra como iterar una lista:</simpara>
+<programlisting language="js" linenumbering="numbered">var estudiantes = ["Pedro", "Javier", "Nicolás"]
+
+for (estudiante in estudiantes) {
+    System.print("¡Hola, " + estudiante + "!")
+}</programlisting>
+</section>
+</chapter>
+<chapter xml:id="_funciones_y_fibras">
+<title>Funciones y Fibras</title>
+
+</chapter>
+<chapter xml:id="_control_de_flujo_2">
+<title>Control de Flujo</title>
+
+</chapter>
+<chapter xml:id="_mapas">
+<title>Mapas</title>
+
+</chapter>
+<chapter xml:id="_clases">
+<title>Clases</title>
+
+</chapter>
+<chapter xml:id="_terminal_de_comandos">
+<title>Terminal de Comandos</title>
+
 </chapter>
 <chapter xml:id="_proyectos_de_ejemplo_en_wren">
 <title>Proyectos de ejemplo en Wren</title>

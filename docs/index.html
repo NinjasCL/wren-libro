@@ -556,36 +556,47 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_formateo_de_punto_flotante">4.3. Formateo de Punto Flotante</a></li>
 </ul>
 </li>
-<li><a href="#_proyectos_de_ejemplo_en_wren">5. Proyectos de ejemplo en Wren</a>
+<li><a href="#_listas_y_secuencias">5. Listas y Secuencias</a>
 <ul class="sectlevel2">
-<li><a href="#_terminal">5.1. Terminal</a>
-<ul class="sectlevel3">
-<li><a href="#_cómo_ejecutarlos">5.1.1. ¿Cómo ejecutarlos?</a></li>
-<li><a href="#_adivina_el_número">5.1.2. Adivina el Número</a></li>
-<li><a href="#_reino_de_dragones">5.1.3. Reino de Dragones</a></li>
-<li><a href="#_diamantes">5.1.4. Diamantes</a></li>
-<li><a href="#_carrera_de_caracoles">5.1.5. Carrera de Caracoles</a></li>
-<li><a href="#_cañon">5.1.6. Cañon</a></li>
+<li><a href="#_secuencias">5.1. Secuencias</a></li>
+<li><a href="#_lista">5.2. Lista</a></li>
 </ul>
 </li>
-<li><a href="#_gráficos">5.2. Gráficos</a>
-<ul class="sectlevel3">
-<li><a href="#_breakout">5.2.1. Breakout</a></li>
-<li><a href="#_snake">5.2.2. Snake</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_soluciones_a_ejercicios">6. Soluciones a Ejercicios</a>
+<li><a href="#_funciones_y_fibras">6. Funciones y Fibras</a></li>
+<li><a href="#_control_de_flujo_2">7. Control de Flujo</a></li>
+<li><a href="#_mapas">8. Mapas</a></li>
+<li><a href="#_clases">9. Clases</a></li>
+<li><a href="#_terminal_de_comandos">10. Terminal de Comandos</a></li>
+<li><a href="#_proyectos_de_ejemplo_en_wren">11. Proyectos de ejemplo en Wren</a>
 <ul class="sectlevel2">
-<li><a href="#_capítulo_1">6.1. Capítulo 1</a>
+<li><a href="#_terminal">11.1. Terminal</a>
 <ul class="sectlevel3">
-<li><a href="#chap1-ex1-sol">6.1.1. Solución: ¡Hola Wren!</a></li>
+<li><a href="#_cómo_ejecutarlos">11.1.1. ¿Cómo ejecutarlos?</a></li>
+<li><a href="#_adivina_el_número">11.1.2. Adivina el Número</a></li>
+<li><a href="#_reino_de_dragones">11.1.3. Reino de Dragones</a></li>
+<li><a href="#_diamantes">11.1.4. Diamantes</a></li>
+<li><a href="#_carrera_de_caracoles">11.1.5. Carrera de Caracoles</a></li>
+<li><a href="#_cañon">11.1.6. Cañon</a></li>
 </ul>
 </li>
-<li><a href="#_capítulo_3">6.2. Capítulo 3</a>
+<li><a href="#_gráficos">11.2. Gráficos</a>
 <ul class="sectlevel3">
-<li><a href="#chap3-ex1-sol">6.2.1. Solución: Donas</a></li>
+<li><a href="#_breakout">11.2.1. Breakout</a></li>
+<li><a href="#_snake">11.2.2. Snake</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_soluciones_a_ejercicios">12. Soluciones a Ejercicios</a>
+<ul class="sectlevel2">
+<li><a href="#_capítulo_1">12.1. Capítulo 1</a>
+<ul class="sectlevel3">
+<li><a href="#chap1-ex1-sol">12.1.1. Solución: ¡Hola Wren!</a></li>
+</ul>
+</li>
+<li><a href="#_capítulo_3">12.2. Capítulo 3</a>
+<ul class="sectlevel3">
+<li><a href="#chap3-ex1-sol">12.2.1. Solución: Donas</a></li>
 </ul>
 </li>
 </ul>
@@ -2358,7 +2369,66 @@ System.print(formateado)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_proyectos_de_ejemplo_en_wren">5. Proyectos de ejemplo en Wren</h2>
+<h2 id="_listas_y_secuencias">5. Listas y Secuencias</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_secuencias">5.1. <a href="https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L7">Secuencias</a></h3>
+<div class="paragraph">
+<p>La secuencia es la clase padre de <em>List</em>, <em>String</em>, <em>Map</em> y cualquier otra que implemente el <em>protocolo de iteración.</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_lista">5.2. <a href="https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L318">Lista</a></h3>
+<div class="paragraph">
+<p>Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.</p>
+</div>
+<div class="paragraph">
+<p>El siguiente ejemplo muestra como iterar una lista:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var estudiantes = ["Pedro", "Javier", "Nicolás"]
+
+for (estudiante in estudiantes) {
+    System.print("¡Hola, " + estudiante + "!")
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funciones_y_fibras">6. Funciones y Fibras</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_control_de_flujo_2">7. Control de Flujo</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mapas">8. Mapas</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_clases">9. Clases</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_terminal_de_comandos">10. Terminal de Comandos</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_proyectos_de_ejemplo_en_wren">11. Proyectos de ejemplo en Wren</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Una colección de código fuente <em>Wren</em> con juegos y aplicaciones simples.
@@ -2394,7 +2464,7 @@ para escribir los ejemplos.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="_terminal">5.1. Terminal</h3>
+<h3 id="_terminal">11.1. Terminal</h3>
 <div class="paragraph">
 <p>Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando <em>Wren CLI</em> y la entrada/salida estándar.</p>
 </div>
@@ -2402,7 +2472,7 @@ para escribir los ejemplos.</p>
 <p>Basados principalmente en los códigos diponibles en <a href="https://github.com/asweigart/PythonStdioGames">Python Stdio Games</a> y <a href="https://github.com/asweigart/inventwithpython3rded">Invent With Python</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="_cómo_ejecutarlos">5.1.1. ¿Cómo ejecutarlos?</h4>
+<h4 id="_cómo_ejecutarlos">11.1.1. ¿Cómo ejecutarlos?</h4>
 <div class="paragraph">
 <p>Primero se necesita el <a href="https://github.com/wren-lang/wren-cli/releases/latest">intérprete de Wren</a>.</p>
 </div>
@@ -2411,7 +2481,7 @@ para escribir los ejemplos.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_adivina_el_número">5.1.2. Adivina el Número</h4>
+<h4 id="_adivina_el_número">11.1.2. Adivina el Número</h4>
 <div class="paragraph">
 <p>Basado en <a href="http://inventwithpython.com/es/4.html">Adivina del Número</a>.</p>
 </div>
@@ -2515,7 +2585,7 @@ if (estimacion != numero) {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_reino_de_dragones">5.1.3. Reino de Dragones</h4>
+<h4 id="_reino_de_dragones">11.1.3. Reino de Dragones</h4>
 <div class="paragraph">
 <p>Basado en <a href="http://inventwithpython.com/es/6.html">Reino de Dragones</a>.</p>
 </div>
@@ -2639,7 +2709,7 @@ System.print("¡Eso fue divertido, nos vemos luego!")</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_diamantes">5.1.4. Diamantes</h4>
+<h4 id="_diamantes">11.1.4. Diamantes</h4>
 <div class="paragraph">
 <p>Esta es una simple aplicación creativa que muestra
 diamantes de distintos tamaños.
@@ -2744,7 +2814,7 @@ for(dimension in 0..5) {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_carrera_de_caracoles">5.1.5. Carrera de Caracoles</h4>
+<h4 id="_carrera_de_caracoles">11.1.5. Carrera de Caracoles</h4>
 <div class="paragraph">
 <p>Una alucinante carrera entre 2 a 8 caracoles.
 Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py">SnailRace</a>.</p>
@@ -2896,7 +2966,7 @@ while (true) {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cañon">5.1.6. Cañon</h4>
+<h4 id="_cañon">11.1.6. Cañon</h4>
 <div class="paragraph">
 <p>Este juego simula el disparo de un cañón hacia un objetivo.
 Código levemente basado en <a href="#alfonseca">[alfonseca]</a>.</p>
@@ -3084,12 +3154,12 @@ while (jugar) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gráficos">5.2. Gráficos</h3>
+<h3 id="_gráficos">11.2. Gráficos</h3>
 <div class="paragraph">
 <p>Aplicaciones que necesitan <a href="http://tic80.com/"><em>TIC 80</em></a> u <a href="https://domeengine.com/"><em>Dome Engine</em></a> para ser ejecutados.</p>
 </div>
 <div class="sect3">
-<h4 id="_breakout">5.2.1. <a href="https://github.com/NinjasCL/breakout">Breakout</a></h4>
+<h4 id="_breakout">11.2.1. <a href="https://github.com/NinjasCL/breakout">Breakout</a></h4>
 <div class="paragraph">
 <p>Un clon simple del famoso juego de <em>Breakout</em>.
 Debes eliminar todos los bloques dentro de la pantalla utilizando
@@ -3671,7 +3741,7 @@ class Game is TIC {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_snake">5.2.2. <a href="https://github.com/NinjasCL/snake">Snake</a></h4>
+<h4 id="_snake">11.2.2. <a href="https://github.com/NinjasCL/snake">Snake</a></h4>
 <div class="paragraph">
 <p>Un clon simple del famoso juego de la serpiente.
 Si come se agranda su cola y el juego termina al momento de que la cabeza
@@ -4119,15 +4189,15 @@ class Game is TIC {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_soluciones_a_ejercicios">6. Soluciones a Ejercicios</h2>
+<h2 id="_soluciones_a_ejercicios">12. Soluciones a Ejercicios</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Las siguientes son las soluciones a los ejercicios planteados en el libro. No necesariamente son la única forma de resolverlos. Se recomienda intentar resolver los ejercicios antes de ver las soluciones.</p>
 </div>
 <div class="sect2">
-<h3 id="_capítulo_1">6.1. Capítulo 1</h3>
+<h3 id="_capítulo_1">12.1. Capítulo 1</h3>
 <div class="sect3">
-<h4 id="chap1-ex1-sol">6.1.1. Solución: <a href="#chap1-ex1">¡Hola Wren!</a></h4>
+<h4 id="chap1-ex1-sol">12.1.1. Solución: <a href="#chap1-ex1">¡Hola Wren!</a></h4>
 <div class="paragraph">
 <div class="title">Ejecución</div>
 <p><code>$ ./wren hola.wren</code></p>
@@ -4148,9 +4218,9 @@ System.print("¡Hola Wren!")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_capítulo_3">6.2. Capítulo 3</h3>
+<h3 id="_capítulo_3">12.2. Capítulo 3</h3>
 <div class="sect3">
-<h4 id="chap3-ex1-sol">6.2.1. Solución: <a href="#chap3-ex1">Donas</a></h4>
+<h4 id="chap3-ex1-sol">12.2.1. Solución: <a href="#chap3-ex1">Donas</a></h4>
 <div class="paragraph">
 <div class="title">Ejecución</div>
 <p><code>$ ./wren donas.wren</code></p>
@@ -4385,7 +4455,7 @@ Ejemplo <code>import "random" for Random</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-03 23:40:12 -0300
+Last updated 2020-11-12 12:52:36 -0300
 </div>
 </div>
 </body>
