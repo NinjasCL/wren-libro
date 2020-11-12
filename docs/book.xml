@@ -610,16 +610,26 @@ constructores y métodos de clase no son heredados (todos son privados).</simpar
   nombre = (value) {
     _nombre = value
   }
+
+  imprimir() {
+    System.print(nombre)
+  }
 }
 
 class Perro is Animal {
+
+  imprimir() {
+    System.print("imprimir en hijo")
+  }
+
   // constructores no son heredables
   construct nuevo(nom) {
     // llamamos al método mutador de la clase padre
     this.nombre = nom
 
-    // Muestra "Joe" usando el método accesador
-    System.print(nombre)
+    // Usamos `super` para llamar a un método de la clase padre
+    // Muestra "Joe" usando el método accesador del padre
+    super.imprimir()
 
     // Muestra null
     System.print(_nombre)
