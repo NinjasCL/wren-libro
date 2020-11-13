@@ -825,6 +825,17 @@ circulo(x, y, radio)</programlisting>
 <simpara>Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.</simpara>
 </section>
 </section>
+<section xml:id="_límites">
+<title>Límites</title>
+<itemizedlist>
+<listitem>
+<simpara>Máximo de 16 parámetros en una función o método.</simpara>
+</listitem>
+<listitem>
+<simpara>Máximo de 255 propiedades en una clase (incluyendo la herencia).</simpara>
+</listitem>
+</itemizedlist>
+</section>
 </chapter>
 <chapter xml:id="_strings_cadena_de_caracteres">
 <title><link xl:href="http://wren.io/modules/core/string.html">Strings: Cadena de caracteres</link></title>

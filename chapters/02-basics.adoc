@@ -582,3 +582,8 @@ circulo(x, y, radio)
 - Cuando es poco probable que otros comprendan cómo haz resuelto un problema.
 
 Escribir buenos comentarios es un indicador de un buen programador. Úsalos siempre. Verás comentarios a lo largo de los ejemplos en este documento.
+
+### Límites
+
+- Máximo de 16 parámetros en una función o método.
+- Máximo de 255 propiedades en una clase (incluyendo la herencia).
