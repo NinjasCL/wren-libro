@@ -17,3 +17,5 @@ Una lista de recursos complementarios y referenciales.
 - [[[googlepython]]] Google. 'Python Class' http://code.google.com/edu/languages/google-python-class/
 
 - [[[puntoflotante]]] Michael Borgwardt. https://github.com/Pybonacci/puntoflotante.org
+
+- [[[rosettacode-wren]]] Rosetta Code. https://rosettacode.org/wiki/Category:Wren

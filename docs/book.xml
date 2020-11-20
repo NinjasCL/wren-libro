@@ -3251,6 +3251,9 @@ Ejemplo <literal>import "random" for Random</literal>.</simpara>
 <bibliomixed>
 <bibliomisc><anchor xml:id="puntoflotante" xreflabel="[puntoflotante]"/> Michael Borgwardt. <link xl:href="https://github.com/Pybonacci/puntoflotante.org">https://github.com/Pybonacci/puntoflotante.org</link></bibliomisc>
 </bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="rosettacode-wren" xreflabel="[rosettacode-wren]"/> Rosetta Code. <link xl:href="https://rosettacode.org/wiki/Category:Wren">https://rosettacode.org/wiki/Category:Wren</link></bibliomisc>
+</bibliomixed>
 </bibliodiv>
 </bibliography>
 <index xml:id="_índice">
