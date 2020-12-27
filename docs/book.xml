@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>El <emphasis>Wren</emphasis> libro</title>
-<date>2020-11-12</date>
+<date>2020-12-27</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -1259,21 +1259,227 @@ var formateado = entero + "." + decimales
 System.print(formateado)</programlisting>
 </section>
 </chapter>
-<chapter xml:id="_listas_y_secuencias">
-<title>Listas y Secuencias</title>
-<section xml:id="_secuencias">
-<title><link xl:href="https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L7">Secuencias</link></title>
-<simpara>La secuencia es la clase padre de <emphasis>List</emphasis>, <emphasis>String</emphasis>, <emphasis>Map</emphasis> y cualquier otra que implemente el <emphasis>protocolo de iteración.</emphasis></simpara>
+<chapter xml:id="_secuencias_listas_y_rangos">
+<title>Secuencias, Listas y Rangos</title>
+<section xml:id="_sequence">
+<title><link xl:href="https://wren.io/modules/core/sequence.html">Sequence</link></title>
+<simpara>La secuencia es la clase padre de <emphasis>List</emphasis>, <emphasis>String</emphasis>, <emphasis>Map</emphasis>, <emphasis>Range</emphasis> y cualquier otra que implemente el <link xl:href="https://wren.io/control-flow.html#the-iterator-protocol"><emphasis>protocolo de iteración</emphasis></link>. La característica principal de una secuencia es que esta podría ser virtualmente infinita (sin elementos que indiquen un fin).
+Entre los métodos que podemos destacar de <emphasis>Sequence</emphasis> están:</simpara>
+<section xml:id="_each">
+<title>each</title>
+<simpara>Similar a un bucle <literal>for</literal>. Por cada elemento dentro de la secuencia llama a una función cuyo parámetro es el siguiente elemento en la secuencia.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3]
+numeros.each {|num|
+  System.print(num)
+}</programlisting>
 </section>
-<section xml:id="_lista">
-<title><link xl:href="https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L318">Lista</link></title>
+<section xml:id="_map">
+<title>map</title>
+<simpara>Llama a una función cuyo parámetro es el siguiente elemento en la secuencia. Retorna una nueva secuencia con el resultado de las operación en cada elemento.
+El resultado de <literal>map</literal> es almacenado por referencia. Lo que significa que cambios posteriores en la secuencia original pueden afectar el valor del resultado de <literal>map</literal>.
+Para pasarlo a una variable independiente, se debe ejecutar el método <literal>toList</literal>.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3]
+
+// .toList es necesario para que System.print() muestre la lista apropiadamente.
+// Esto es debido a que una secuencia puede no tener fin. Necesitamos pasarlo a una estructura de datos finita.
+// También estamos utilizando el "retorno implícito".
+numeros = numeros.map{|num| num + 1}.toList
+
+// Muestra [2, 3, 4]
+System.print(numeros)</programlisting>
+</section>
+<section xml:id="_where">
+<title>where</title>
+<simpara>Filtra una secuencia. Entregará una nueva lista la cual cumpla la condicional. Al igual que <literal>map</literal> se debe ejecutar el método <literal>toList</literal> para evitar que modificaciones en la secuencia original afecten la nueva secuencia.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3, 4]
+
+var pares = numeros.where{|num| num % 2 == 0}.toList
+
+// Muestra [2, 4]
+System.print(pares)</programlisting>
+</section>
+<section xml:id="_reduce">
+<title>reduce</title>
+<simpara>Llama a una función cuyo parámetro es el siguiente elemento en al secuencia. Retorna un único elemento, producto de las operaciones en cada elemento.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3]
+
+// Si no se pasa un acumulador, se considera el primer elemento como valor inicial
+var resultado = numeros.reduce {|acumulador, num| acumulador + num}
+
+// Muestra 6
+System.print(resultado)
+
+// Iniciamos el acumulador con valor -1
+resultado = numeros.reduce(-1) {|acumulador, num| acumulador + num}
+
+// Muestra 5
+System.print(resultado)</programlisting>
+</section>
+<section xml:id="_take">
+<title>take</title>
+<simpara>Obtiene un número de elementos dentro de una secuencia.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3, 4]
+var primeros = numeros.take(2).toList
+
+// Muestra [1, 2]
+System.print(primeros)</programlisting>
+</section>
+<section xml:id="_skip">
+<title>skip</title>
+<simpara>La operación inversa de <literal>take</literal>. Salta un número determinado de elementos.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3, 4]
+var ultimos = numeros.skip(2).toList
+
+// Muestra [3, 4]
+System.print(ultimos)</programlisting>
+</section>
+<section xml:id="_contains">
+<title>contains</title>
+<simpara>Retorna verdadero si la secuencia contiene al elemento.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3]
+
+// Muestra "false" debido a que no contiene el número 4
+System.print(numeros.contains(4))</programlisting>
+</section>
+<section xml:id="_count">
+<title>count</title>
+<simpara>Retorna el número de elementos de la secuencia. También es posible solamente contar elementos que cumplan una condición.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3, 4]
+
+// 4
+System.print(numeros.count)
+
+// Contamos solamente los números múltiplos de 2
+var pares = numeros.count {|num| num % 2 == 0}
+
+// 2
+System.print(pares)</programlisting>
+</section>
+<section xml:id="_join">
+<title>join</title>
+<simpara>Une a los elementos de una secuencia transformándolos en un <emphasis>String</emphasis>. Si no se pasa un parámetro se asume un caracter vació como unión.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3]
+
+// Muestra "123"
+System.print(numeros.join())
+
+// Muestra "1$2$3"
+System.print(numeros.join("$"))
+
+// Muestra "1 num 2 num 3"
+System.print(numeros.join(" num "))</programlisting>
+</section>
+<section xml:id="_all">
+<title>all</title>
+<simpara>Itera sobre los elementos de una secuencia con una condicional. Devuelve verdadero si todos los elementos pasan la condición.
+Si alguno de los elementos es falso, termina de iterar y devuelve falso.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3]
+var resultado = numeros.all {|num| num &gt; 2}
+
+// Falso. No todos los números en la secuencia son mayores a 2
+System.print(resultado)
+
+resultado = numeros.all{|num| num &lt; 4}
+
+// Verdadero. Todos los números en la secuencia son menores a 4
+System.print(resultado)</programlisting>
+</section>
+<section xml:id="_any">
+<title>any</title>
+<simpara>Similar a <literal>all</literal>. Devuelve verdadero al primer elemento que pase la condición. Si ninguno de los elementos pasa la condición, devuelve falso.</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3]
+var resultado = numeros.any {|num| num % 2 == 0}
+
+// Verdadero. Existe un número múltiplo de 2.
+System.print(resultado)
+
+resultado = numeros.any {|num| num % 5 == 0}
+
+// Falso. Ningún número es múltiplo de 5.
+System.print(resultado)</programlisting>
+</section>
+</section>
+<section xml:id="_list">
+<title><link xl:href="https://wren.io/modules/core/list.html">List</link></title>
 <simpara>Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.</simpara>
 <simpara>El siguiente ejemplo muestra como iterar una lista:</simpara>
 <programlisting language="js" linenumbering="numbered">var estudiantes = ["Pedro", "Javier", "Nicolás"]
 
 for (estudiante in estudiantes) {
     System.print("¡Hola, " + estudiante + "!")
+}
+
+// La misma operación anterior, pero utilizando la función each
+estudiantes.each{|estudiante|
+  System.print("¡Hola, " + estudiante + "!")
+}
+
+// Añadimos un nuevo estudiante
+estudiantes.add("Juan")
+
+// Muestra ["Pedro", "Javier", "Nicolás", "Juan"]
+System.print(estudiantes)
+
+// Muestra "false" por que no existe el estudiante María
+System.print(estudiantes.contains("María"))
+
+// Muestra ["Pedro", "Javier"]
+System.print(estudiantes.take(2).toList)
+
+// Muestra "2"
+System.print(estudiantes.indexOf("Javier"))</programlisting>
+<programlisting language="js" linenumbering="numbered">// Generamos una lista de 4 elementos con valor 1
+var elementos = [1] * 4
+
+// Muestra [1, 1, 1, 1]
+System.print(elementos)</programlisting>
+<simpara>También podemos combinar listas fácilmente</simpara>
+<programlisting language="js" linenumbering="numbered">var numeros = [1, 2, 3]
+var letras = ["a", "b", "c"]
+var elementos = numeros + letras
+
+// Muestra [1, 2, 3, a, b, c]
+System.print(elementos)</programlisting>
+</section>
+<section xml:id="_range">
+<title><link xl:href="https://wren.io/modules/core/range.html">Range</link></title>
+<simpara>Un rango es un objeto que representa una lista finita, incremental e iterable de números.
+Es una operación disponible en cada instancia de un número.
+Es dada por la operación <literal>..</literal> y la operación <literal>&#8230;&#8203;</literal>.</simpara>
+<itemizedlist>
+<listitem>
+<simpara><literal>inicio..fin</literal>: Incluye al número <literal>fin</literal>. Ejemplo: <literal>1..3</literal> retorna <literal>[1, 2, 3]</literal>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>inicio&#8230;&#8203;fin</literal>: No incluye al número <literal>fin</literal>. Ejemplo <literal>1&#8230;&#8203;3</literal> retorna <literal>[1, 2]</literal>.</simpara>
+</listitem>
+</itemizedlist>
+<programlisting language="js" linenumbering="numbered">// Mostramos los números del 1 al 5
+(1..5).each {|num|
+  System.print("Número %(num)")
 }</programlisting>
+<programlisting language="js" linenumbering="numbered">// Mostramos del 3 al 1
+((1 + 2)..(3 - 2)).each {|num|
+  System.print("Número %(num)")
+}</programlisting>
+<programlisting language="js" linenumbering="numbered">// Mostramos del 1 al 3 utilizando bucle for.
+for (num in 1..3) {
+  System.print("Número %(num)")
+}</programlisting>
+<simpara>Los rangos son muy útiles para obtener subconjuntos dentro de objetos iterables
+como <emphasis>Strings</emphasis> y <emphasis>Lists</emphasis>.</simpara>
+<programlisting language="js" linenumbering="numbered">var nombre = "Juanito"
+
+// Muestra "nito"
+System.print(nombre[3..-1])
+
+// Muestra "otinauJ"
+System.print(nombre[-1..0])</programlisting>
+<programlisting language="js" linenumbering="numbered">var letras = ["a", "b", "c", "d", "e"]
+var subconjunto = letras[1..3]
+
+// Muestra [b, c, d]
+System.print(subconjunto)</programlisting>
 </section>
 </chapter>
 <chapter xml:id="_funciones_y_fibras">
@@ -1401,7 +1607,7 @@ var estimacion = -1
 while (intentos &lt; maxIntentos) {
     intentos = intentos + 1
     System.print("Intenta adivinar %(intentos)/%(maxIntentos)")
-
+    
     estimacion = Num.fromString(Stdin.readLine())
 
     if (estimacion is Null) {
@@ -1497,10 +1703,10 @@ var explorarCueva = Fn.new { |cueva|
 
     System.print("Te aproximas a la cueva...")
     Timer.sleep(dosSegundos)
-
+    
     System.print("Es oscura y espeluznante...")
     Timer.sleep(dosSegundos)
-
+    
     System.print("¡Un gran dragon aparece súbitamente frente a tí! Abre sus fauces y...")
     System.print()
     Timer.sleep(dosSegundos)
@@ -1704,13 +1910,13 @@ var nombres = []
 for (i in 1..cantidad) {
   var nombre = ""
   while (true) {
-
+    
     System.print("Ingresa el nombre del caracol #%(i):")
     nombre = Stdin.readLine()
 
     // Reducimos el nombre a su largo máximo
     nombre = nombre.take(Constantes.maxLargoNombre).join()
-
+    
     if (nombre.count == 0) {
       System.print("Por favor ingresa un nombre.")
     } else if (nombres.contains(nombre)) {
@@ -1862,7 +2068,7 @@ while (jugar) {
   anguloElevacion = 0
   distanciaFinal = 0
   tiros = 1
-
+  
   // Un número aleatorio entre 10K y 50K
   // Usamos notación científica para simplificar el número
   alcance = random.int(10e3, 50e3 + 1)
@@ -1929,7 +2135,7 @@ while (jugar) {
     } else {
       System.print("El tiro quedó corto por %(distanciaFinal) metros.")
     }
-
+    
     jugar = (oportunidades &gt; 0)
     if (jugar) {
       System.print("¡Prueba otra vez!, quedan %(oportunidades) tiros")
@@ -1982,7 +2188,7 @@ class ScreenHeight {
     static min {0}
     static max {136}
 }
-
+    
 class Screen {
     static height {ScreenHeight}
     static width {ScreenWidth}
@@ -2018,12 +2224,12 @@ class PlayerSpeed {
     x = (value) {
         _x = value
     }
-
+    
     max {_max}
     max = (value) {
         _max = value
     }
-
+    
     construct new() {
         _x = 0
         _max = 4
@@ -2089,7 +2295,7 @@ class Player {
                     speed.x = -speed.max
                 }
             }
-
+            
             if (Input.right) {
                 if (speed.x &lt; speed.max) {
                         speed.x = speed.x + 2
@@ -2105,14 +2311,14 @@ class BallSpeed {
     x = (value) {
         _x = value
     }
-
+    
     y {_y}
     y = (value) {
         _y = value
     }
-
+    
     max {_max}
-
+    
     construct new() {
         _x = 0
         _y = 0
@@ -2128,14 +2334,14 @@ class Ball {
     color {_color}
     deactive {_deactive}
     speed {_speed}
-
+    
     player {_player}
     player = (value) {
         _player = value
     }
-
+    
     state {_state}
-
+    
     construct new(player, state) {
         _width = 3
         _height = 3
@@ -2144,18 +2350,18 @@ class Ball {
         _state = state
         reset()
     }
-
+    
     position() {
         _x = player.x + (player.width / 2) - 1.5
         _y = player.y - 5
     }
-
+    
     reset() {
         position()
         _deactive = true
         _speed = BallSpeed.new()
     }
-
+    
     input() {
         if (deactive) {
                 position()
@@ -2166,36 +2372,36 @@ class Ball {
                 }
             }
     }
-
+    
     wall() {
         // top
         if (y &lt; 0) {
             speed.y = -speed.y
-
+            
         // left
         } else if (x &lt; 0) {
             speed.x = -speed.x
-
+        
         // right
         } else if (x &gt; 240 - width) {
             speed.x = -speed.x
         }
     }
-
+    
     ground() {
         if (y &gt; 136 - width) {
                 reset()
                 state.lifeDown()
         }
     }
-
+    
     paddle() {
         if (Collisions.collide(this, player)) {
             speed.y = -speed.y
             speed.x = speed.x + 0.3 * player.speed.x
-        }
+        } 
     }
-
+    
     brick(brick) {
 
         // collide left or right side
@@ -2215,18 +2421,18 @@ class Ball {
     collisions() {
         wall()
         ground()
-        paddle()
+        paddle() 
     }
-
+    
     update() {
         _x = x + speed.x
         _y = y + speed.y
-
+        
         if (speed.x &gt; speed.max) {
             speed.x = speed.max
         }
     }
-
+    
     draw() {
         T.rect(x, y, width, height, color)
     }
@@ -2246,7 +2452,7 @@ class Brick {
         _height = 4
         _color = color
     }
-
+    
     draw() {
         T.rect(x, y, width, height, color)
     }
@@ -2266,7 +2472,7 @@ class Board {
 
         return _bricks
     }
-
+        
     construct new(ball, state) {
         _ball = ball
         _state = state
@@ -2286,13 +2492,13 @@ class Board {
         }
 								ball.reset()
     }
-
+        
     draw() {
         bricks.each {|brick|
             brick.draw()
         }
     }
-
+    
     collisions() {
         var index = 0
         if (bricks.count &lt;= 0) {
@@ -2311,7 +2517,7 @@ class Board {
             index = index + 1
         }
     }
-
+    
     update() {}
     input() {}
 }
@@ -2319,44 +2525,44 @@ class Board {
 class Stage {
     objects {_objects}
     state {_state}
-
+    
     construct new(state) {
         _objects = []
         _state = state
     }
-
+    
     add(object) {
         objects.add(object)
     }
-
+    
     input() {
         if (!state.isPlaying) return
-
+        
         objects.each {|object|
             object.input()
         }
     }
-
+    
     draw() {
         if (!state.isPlaying) return
-
+        
         objects.each {|object|
             object.draw()
         }
     }
-
+    
     update() {
-
+    
         if (!state.isPlaying) return
-
+        
         objects.each {|object|
             object.update()
         }
     }
-
+    
     collisions() {
-        if (!state.isPlaying) return
-
+        if (!state.isPlaying) return 
+        
         objects.each {|object|
             object.collisions()
         }
@@ -2366,40 +2572,40 @@ class Stage {
 class GUI {
     player {_player}
     state {_state}
-
+    
     construct new(player, state) {
         _player = player
         _state = state
     }
-
+    
     scores() {
        // shadow
         T.print("SCORE ", 5, 1, Color.greyd)
         T.print(state.score, 40, 1, Color.greyd)
-
+        
         // forecolor
         T.print("SCORE ", 5, 0, Color.white)
         T.print(state.score, 40, 0, Color.white)
-
+        
         // shadow
         T.print("LIVES ", 190, 1, Color.greyd)
         T.print(state.lives, 225, 1, Color.greyd)
-
+        
         // forecolor
         T.print("LIVES ", 190, 0, Color.white)
         T.print(state.lives, 225, 0, Color.white)
     }
-
+    
     gameover() {
-      T.print("Game Over", (Screen.width.max/2) - 6 * 4.5, 136/2, Color.white)
+      T.print("Game Over", (Screen.width.max/2) - 6 * 4.5, 136/2, Color.white) 
     }
-
+    
     input() {
         if (!state.isPlaying &amp;&amp; Input.x) {
             state.start()
         }
     }
-
+    
     draw() {
         if (state.isPlaying) {
             return scores()
@@ -2415,51 +2621,51 @@ class GameState {
     }
 
     static isPlaying {__playing}
-
+    
     static score {
         if (!__score) {
             __score = 0
         }
-
+        
         return __score
     }
-
+    
     static score = (value) {
         __score = value
     }
-
+    
     static lives {
         if (!__lives || __lives &lt; 0) {
             __lives = 3
         }
-
+        
         return __lives
     }
-
+    
     static lives = (value) {
         if (value &lt; 0) {
             over()
         }
         __lives = value
     }
-
+    
     static over() {
         reset()
         __playing = false
     }
-
+    
     static start() {
         __playing = true
     }
-
+    
     static lifeDown() {
         lives = lives - 1
     }
-
+    
     static scoreUp() {
         score = score + 100
     }
-
+    
     static reset() {
         score = 0
         lives = 3
@@ -2473,7 +2679,7 @@ class Game is TIC {
     player {_player }
     stage {_stage }
     gui {_gui }
-
+    
     construct new() {
         reset()
     }
@@ -2484,17 +2690,17 @@ class Game is TIC {
 
         _player = Player.new(GameState)
         _ball = Ball.new(_player, GameState)
-
+        
         _gui = GUI.new(_player, GameState)
-
+        
         _board = Board.new(_ball, GameState)
-
+            
         _stage = Stage.new(GameState)
         _stage.add(_player)
         _stage.add(_ball)
         _stage.add(_board)
     }
-
+    
     TIC() {
         T.cls(0)
         input()
@@ -2502,20 +2708,20 @@ class Game is TIC {
         collisions()
         draw()
     }
-
+    
     input() {
         gui.input()
         stage.input()
     }
-
+    
     update() {
         stage.update()
     }
-
+    
     collisions() {
         stage.collisions()
     }
-
+    
     draw() {
         stage.draw()
         gui.draw()
@@ -2565,7 +2771,7 @@ class Color {
 		static green {5}
 		static blue {10}
 		static orange {3}
-		static greyd {15}
+		static greyd {15} 
 }
 
 class Screen {
@@ -2580,22 +2786,22 @@ class Position {
 			}
 			return _x
 		}
-
+		
 		x = (value) {
 		_x = value
 		}
-
+		
 		y {
 		if (!_y) {
 			_y = 0
 			}
 			return _y
 		}
-
+		
 		y = (value) {
 		_y = value
 		}
-
+		
 		construct new(x, y) {
 			_x = x
 			_y = y
@@ -2607,75 +2813,75 @@ class GameState {
 		static game = (value) {
 			__game = value
 		}
-
+		
 		static snake {__snake}
 		static snake = (value) {
 			__snake = value
 		}
-
+		
 		static score {
 			if (!__score) {
 				__score = 0
 			}
 			return __score
-		}
-
+		} 
+		
 		static scoreUp() {
 			__score = score + 100
 		}
-
+		
   static frame {
 		if (!__frame || __frame &gt; Num.largest - 1) {
 					__frame = 0
 				}
 				return __frame
 		}
-
+		
 		static frameUp() {
 			__frame = frame + 1
 		}
-
+		
 		static isTenthFrame {frame % 10 == 0}
-
+		
 		static isPlaying {
 			if (__isPlaying is Null) {
 				__isPlaying = true
 			}
 			return __isPlaying
 		}
-
+		
 		static isPlaying = (value) {
 			__isPlaying = value
 		}
-
+		
 		static start() {
 			isPlaying = true
 		}
-
+		
 		static gameover() {
 			reset()
 				isPlaying = false
 		}
-
+		
 		static reset() {
 			__score = 0
 			game.reset()
-		}
+		} 
 }
 
 class Food is Position {
 	snake {_snake}
-
+	
 	construct new (snake) {
 			_snake = snake
 			place()
 	}
-
+	
 	random() {
 		x = Rand.int(0, 29)
 		y = Rand.int(0, 16)
 	}
-
+	
 	place() {
 		random()
 		snake.body.each{|part|
@@ -2684,14 +2890,14 @@ class Food is Position {
 			}
 		}
 	}
-
+	
 	draw() {
 	  T.rect(x * 8, y * 8, 8, 8, Color.orange)
 	}
-
+	
 	update() {}
 	input() {}
-
+	
 	collisions() {
 		snake.eat(this)
 	}
@@ -2709,7 +2915,7 @@ class Direction {
 			}
 			return __directions
 		}
-
+		
 		static up {directions[0]}
 		static down {directions[1]}
 		static left {directions[2]}
@@ -2725,81 +2931,81 @@ class Snake {
 					var tail = Position.new(15, 8)
 					var neck = Position.new(14, 8)
 					var head = Position.new(13, 8)
-					_body = [tail, neck, head]
+					_body = [tail, neck, head]				 
 				}
 				return _body
 		}
-
+		
 		direction {
 			if (!_direction) {
 				_direction = Direction.up
 			}
 			return _direction
 		}
-
+		
 		state {_state}
-
+		
 		construct new(state) {
 			_state = state
 		}
-
+		
 		reset() {
 			_body = null
 			_direction = Direction.up
 		}
-
+		
 		input() {
 			var last = direction
-
+			
 			if (Input.up) {
 				_direction = Direction.up
 			}
-
+			
 			if (Input.down) {
 				_direction = Direction.down
 			}
-
+			
 			if (Input.left) {
 				_direction = Direction.left
 			}
-
+			
 			if (Input.right) {
 				_direction = Direction.right
 			}
-
+			
 			if (head.x + direction.x == neck.x &amp;&amp;
 				head.y + direction.y == neck.y) {
 					_direction = last
 			}
 		}
-
+		
 		draw() {
 			body.each{|part|
 			 T.rect(part.x * 8, part.y * 8, 8, 8, Color.blue)
 			}
 		}
-
+		
 		update() {
-
+		
 			var x = (head.x + direction.x) % 30
 			if (x &lt; 0) {
 				x = 29
 			}
-
+			
 			var y = (head.y + direction.y) % 17
 			if (y &lt; 0) {
 				y = 17
 			}
-
+			
 			var part = Position.new(x, y)
-
+			
 			body.add(part)
 		}
-
+		
 		removeTail() {
 			body.removeAt(0)
 		}
-
+		
 		eat(food) {
 			if (head.x == food.x &amp;&amp; head.y == food.y) {
 				T.sfx(0, "C-5", 10)
@@ -2809,9 +3015,9 @@ class Snake {
 				removeTail()
 			}
 		}
-
+		
 		collisions() {
-
+				
 				// Search if head collisions with body parts
 				// omit last part since its the head
 			body[0...(body.count - 1)].each{|part|
@@ -2824,33 +3030,33 @@ class Snake {
 
 class Stage {
   items {_items}
-
+		
 	construct new() {
 		_items = []
 	}
-
+		
   add(object) {
 			items.add(object)
 	}
-
+		
   input() {
 			items.each{|object|
 					object.input()
 			}
 	}
-
+		
 	draw() {
 		items.each{|object|
 			object.draw()
 		}
 	}
-
+	
 	update() {
 		items.each{|object|
 			object.update()
 		}
 	}
-
+	
 	collisions() {
 		items.each{|object|
 			object.collisions()
@@ -2860,30 +3066,30 @@ class Stage {
 
 class GUI {
 		state {_state}
-
+		
 		construct new(state) {
 			_state = state
 		}
-
+		
 		score() {
 			T.print("SCORE %(state.score)", 5, 5, Color.blue)
 			T.print("SCORE %(state.score)", 5, 4, Color.white)
 		}
-
+		
 		gameover() {
 			T.cls(Color.black)
 			T.print("Game Over", (Screen.width/2) - 6 * 4.5, (Screen.height / 2), Color.white)
 		}
-
+		
 		input() {
 			if (!state.isPlaying &amp;&amp; Input.x) {
 					state.start()
 			}
 		}
-
+		
 		update() {}
 		collisions() {}
-
+		
 		draw() {
 			if (state.isPlaying) {
 					return score()
@@ -2903,14 +3109,14 @@ class Game is TIC {
 			}
 			return _stage
 		}
-
+		
 		gui {
 			if (!_gui) {
 				_gui = GUI.new(GameState)
 			}
 			return _gui
 		}
-
+		
 		snake {
 			if (!_snake) {
 				_snake = Snake.new(GameState)
@@ -2918,47 +3124,47 @@ class Game is TIC {
 			}
 			return _snake
 		}
-
+		
 		food {
 			if (!_food) {
 				_food = Food.new(snake)
 			}
 			return _food
 		}
-
+		
 		construct new() {
 				reset()
 		}
-
+		
 		reset() {
 			snake.reset()
 		}
-
+		
 		TIC() {
 			T.cls(Color.green)
 			GameState.frameUp()
 			input()
-
-			if (GameState.isTenthFrame) {
+			
+			if (GameState.isTenthFrame) { 
 				update()
 				collisions()
 			}
 
 			draw()
 		}
-
+		
 		input() {
 			stage.input()
 		}
-
+		
 		update() {
 			stage.update()
 		}
-
+		
 		collisions() {
 			stage.collisions()
 		}
-
+		
 		draw() {
 			stage.draw()
 		}
@@ -3234,29 +3440,29 @@ Ejemplo <literal>import "random" for Random</literal>.</simpara>
 <bibliodiv>
 <title>Libros</title>
 <bibliomixed>
-<bibliomisc><anchor xml:id="inventwithpython" xreflabel="[inventwithpython]"/> Albert Sweigart. 'Inventa tus Propios Juegos de computadora con Python'. <link xl:href="http://inventwithpython.com/es">http://inventwithpython.com/es</link>. ISBN 978-1514370926</bibliomisc>
+<bibliomisc><anchor xml:id="inventwithpython" xreflabel="[inventwithpython]"/>[inventwithpython] Albert Sweigart. 'Inventa tus Propios Juegos de computadora con Python'. <link xl:href="http://inventwithpython.com/es">http://inventwithpython.com/es</link>. ISBN 978-1514370926</bibliomisc>
 </bibliomixed>
 <bibliomixed>
-<bibliomisc><anchor xml:id="alfonseca" xreflabel="[alfonseca]"/> Manuel Alfonseca. 'Cómo construir juegos de aventura'. <link xl:href="https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura">https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura</link>. ISBN 84-7688-019-7</bibliomisc>
+<bibliomisc><anchor xml:id="alfonseca" xreflabel="[alfonseca]"/>[alfonseca] Manuel Alfonseca. 'Cómo construir juegos de aventura'. <link xl:href="https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura">https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura</link>. ISBN 84-7688-019-7</bibliomisc>
 </bibliomixed>
 </bibliodiv>
 <bibliodiv>
 <title>Sitios Web</title>
 <bibliomixed>
-<bibliomisc><anchor xml:id="introtopython" xreflabel="[introtopython]"/> Eric Matthes. 'Introduction to Python' <link xl:href="https://github.com/ehmatthes/intro_programming">https://github.com/ehmatthes/intro_programming</link></bibliomisc>
+<bibliomisc><anchor xml:id="introtopython" xreflabel="[introtopython]"/>[introtopython] Eric Matthes. 'Introduction to Python' <link xl:href="https://github.com/ehmatthes/intro_programming">https://github.com/ehmatthes/intro_programming</link></bibliomisc>
 </bibliomixed>
 <bibliomixed>
-<bibliomisc><anchor xml:id="googlepython" xreflabel="[googlepython]"/> Google. 'Python Class' <link xl:href="http://code.google.com/edu/languages/google-python-class/">http://code.google.com/edu/languages/google-python-class/</link></bibliomisc>
+<bibliomisc><anchor xml:id="googlepython" xreflabel="[googlepython]"/>[googlepython] Google. 'Python Class' <link xl:href="http://code.google.com/edu/languages/google-python-class/">http://code.google.com/edu/languages/google-python-class/</link></bibliomisc>
 </bibliomixed>
 <bibliomixed>
-<bibliomisc><anchor xml:id="puntoflotante" xreflabel="[puntoflotante]"/> Michael Borgwardt. <link xl:href="https://github.com/Pybonacci/puntoflotante.org">https://github.com/Pybonacci/puntoflotante.org</link></bibliomisc>
+<bibliomisc><anchor xml:id="puntoflotante" xreflabel="[puntoflotante]"/>[puntoflotante] Michael Borgwardt. <link xl:href="https://github.com/Pybonacci/puntoflotante.org">https://github.com/Pybonacci/puntoflotante.org</link></bibliomisc>
 </bibliomixed>
 <bibliomixed>
-<bibliomisc><anchor xml:id="rosettacode-wren" xreflabel="[rosettacode-wren]"/> Rosetta Code. <link xl:href="https://rosettacode.org/wiki/Category:Wren">https://rosettacode.org/wiki/Category:Wren</link></bibliomisc>
+<bibliomisc><anchor xml:id="rosettacode-wren" xreflabel="[rosettacode-wren]"/>[rosettacode-wren] Rosetta Code. <link xl:href="https://rosettacode.org/wiki/Category:Wren">https://rosettacode.org/wiki/Category:Wren</link></bibliomisc>
 </bibliomixed>
 </bibliodiv>
 </bibliography>
-<index xml:id="_índice">
+<index xml:id="_Índice">
 <title>Índice</title>
 
 </index>
@@ -3264,6 +3470,11 @@ Ejemplo <literal>import "random" for Random</literal>.</simpara>
 <title>Colofón</title>
 <simpara>Escrito por <link xl:href="https://ninjas.cl">Camilo Castro</link> y <link xl:href="https://github.com/ninjascl/wren-adventures/graphs/contributors">colaboradores</link>. Para <link xl:href="https://ninjas.cl">Ninjas.cl</link>.</simpara>
 <simpara>Esta obra está bajo una <link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-No-Comercial-Compartir-Igual 4.0 Internacional</link></simpara>
-<simpara><link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><inlinemediaobject></link></simpara>
+<simpara><link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/>
+</imageobject>
+<textobject><phrase>Licencia Creative Commons</phrase></textobject>
+</inlinemediaobject></link></simpara>
 </colophon>
 </book>

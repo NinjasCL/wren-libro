@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="generator" content="Asciidoctor 2.0.12">
 <meta name="description" content="Un libro sobre el lenguaje de programación Wren.">
 <meta name="keywords" content="wren, programación, lenguaje, referencia">
 <meta name="author" content="Camilo A. Castro">
@@ -51,7 +51,7 @@ textarea{overflow:auto;vertical-align:top}
 table{border-collapse:collapse;border-spacing:0}
 *,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 html,body{font-size:100%}
-body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
 a:hover{cursor:pointer}
 img,object,embed{max-width:100%;height:auto}
 object,embed{height:100%}
@@ -66,10 +66,8 @@ img{-ms-interpolation-mode:bicubic}
 img,object,svg{display:inline-block;vertical-align:middle}
 textarea{height:auto;min-height:50px}
 select{width:100%}
-.center{margin-left:auto;margin-right:auto}
-.stretch{width:100%}
 .subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
-div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
 a{color:#2156a5;text-decoration:underline;line-height:inherit}
 a:hover,a:focus{color:#1d4b8f}
 a img{border:0}
@@ -109,19 +107,22 @@ h1{font-size:2.75em}
 h2{font-size:2.3125em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
 h4{font-size:1.4375em}}
-table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede;word-wrap:normal}
 table thead,table tfoot{background:#f7f8f7}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
 table tr.even,table tr.alt{background:#f8f8f7}
-table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
 .clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
 .clearfix::after,.float-group::after{clear:both}
-:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
-:not(pre)>code.nobreak{word-wrap:normal}
-:not(pre)>code.nowrap{white-space:nowrap}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
 pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
 pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
 pre>code{display:block}
@@ -186,7 +187,7 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
 #content #toc>:first-child{margin-top:0}
 #content #toc>:last-child{margin-bottom:0}
-#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
 #footer-text{color:rgba(255,255,255,.8);line-height:1.44}
 #content{margin-bottom:.625em}
 .sect1{padding-bottom:.625em}
@@ -209,7 +210,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .admonitionblock>table td.icon{text-align:center;width:80px}
 .admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
 .exampleblock>.content>:first-child{margin-top:0}
@@ -219,7 +220,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
 .exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
-.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
 .literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
@@ -265,21 +266,20 @@ pre.pygments .lineno::before{content:"";margin-right:-.125em}
 .quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
 .quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
 .quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
-table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
 td.tableblock>.content>:last-child{margin-bottom:-1.25em}
-td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
-table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
-table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
-table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
-table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
-table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
-table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
 table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
 table.frame-sides{border-width:0 1px}
-table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
 table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
 th.halign-left,td.halign-left{text-align:left}
 th.halign-right,td.halign-right{text-align:right}
@@ -288,7 +288,7 @@ th.valign-top,td.valign-top{vertical-align:top}
 th.valign-bottom,td.valign-bottom{vertical-align:bottom}
 th.valign-middle,td.valign-middle{vertical-align:middle}
 table thead th,table tfoot th{font-weight:bold}
-tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th{background:#f7f8f7}
 tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
 p.tableblock>code:only-child{background:none;padding:0}
 p.tableblock{font-size:1em}
@@ -317,6 +317,7 @@ ol.lowergreek{list-style-type:lower-greek}
 .hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
 .colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
 .colist td:not([class]):first-child img{max-width:none}
@@ -389,7 +390,7 @@ a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
 .admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
 .admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
-.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:50%;border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
 .conum[data-value] *{color:#fff!important}
 .conum[data-value]+b{display:none}
 .conum[data-value]::after{content:attr(data-value)}
@@ -416,6 +417,7 @@ thead{display:table-header-group}
 svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
 #toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
 body.book #header{text-align:center}
@@ -558,10 +560,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_formateo_de_punto_flotante">4.3. Formateo de Punto Flotante</a></li>
 </ul>
 </li>
-<li><a href="#_listas_y_secuencias">5. Listas y Secuencias</a>
+<li><a href="#_secuencias_listas_y_rangos">5. Secuencias, Listas y Rangos</a>
 <ul class="sectlevel2">
-<li><a href="#_secuencias">5.1. Secuencias</a></li>
-<li><a href="#_lista">5.2. Lista</a></li>
+<li><a href="#_sequence">5.1. Sequence</a>
+<ul class="sectlevel3">
+<li><a href="#_each">5.1.1. each</a></li>
+<li><a href="#_map">5.1.2. map</a></li>
+<li><a href="#_where">5.1.3. where</a></li>
+<li><a href="#_reduce">5.1.4. reduce</a></li>
+<li><a href="#_take">5.1.5. take</a></li>
+<li><a href="#_skip">5.1.6. skip</a></li>
+<li><a href="#_contains">5.1.7. contains</a></li>
+<li><a href="#_count">5.1.8. count</a></li>
+<li><a href="#_join">5.1.9. join</a></li>
+<li><a href="#_all">5.1.10. all</a></li>
+<li><a href="#_any">5.1.11. any</a></li>
+</ul>
+</li>
+<li><a href="#_list">5.2. List</a></li>
+<li><a href="#_range">5.3. Range</a></li>
 </ul>
 </li>
 <li><a href="#_funciones_y_fibras">6. Funciones y Fibras</a></li>
@@ -605,7 +622,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_glosario">Glosario</a></li>
 <li><a href="#_bibliografía">Bibliografía</a></li>
-<li><a href="#_índice">Índice</a></li>
+<li><a href="#_Índice">Índice</a></li>
 <li><a href="#_colofón">Colofón</a></li>
 </ul>
 </div>
@@ -953,7 +970,7 @@ que muestre el mensaje "¡Hola Wren!".</p>
 </div>
 <div class="paragraph">
 <div class="title">Solución</div>
-<p><a href="#chap1-ex1-sol">Solución: <a href="#chap1-ex1">¡Hola Wren!</a></a></p>
+<p><a href="#chap1-ex1-sol">Solución: ¡Hola Wren!</a></p>
 </div>
 </div>
 </div>
@@ -2164,7 +2181,7 @@ System.print()</code></pre>
 </div>
 <div class="paragraph">
 <div class="title">Solución</div>
-<p><a href="#chap3-ex1-sol">Solución: <a href="#chap3-ex1">Donas</a></a></p>
+<p><a href="#chap3-ex1-sol">Solución: Donas</a></p>
 </div>
 </div>
 </div>
@@ -2418,16 +2435,216 @@ System.print(formateado)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_listas_y_secuencias">5. Listas y Secuencias</h2>
+<h2 id="_secuencias_listas_y_rangos">5. Secuencias, Listas y Rangos</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_secuencias">5.1. <a href="https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L7">Secuencias</a></h3>
+<h3 id="_sequence">5.1. <a href="https://wren.io/modules/core/sequence.html">Sequence</a></h3>
 <div class="paragraph">
-<p>La secuencia es la clase padre de <em>List</em>, <em>String</em>, <em>Map</em> y cualquier otra que implemente el <em>protocolo de iteración.</em></p>
+<p>La secuencia es la clase padre de <em>List</em>, <em>String</em>, <em>Map</em>, <em>Range</em> y cualquier otra que implemente el <a href="https://wren.io/control-flow.html#the-iterator-protocol"><em>protocolo de iteración</em></a>. La característica principal de una secuencia es que esta podría ser virtualmente infinita (sin elementos que indiquen un fin).
+Entre los métodos que podemos destacar de <em>Sequence</em> están:</p>
+</div>
+<div class="sect3">
+<h4 id="_each">5.1.1. each</h4>
+<div class="paragraph">
+<p>Similar a un bucle <code>for</code>. Por cada elemento dentro de la secuencia llama a una función cuyo parámetro es el siguiente elemento en la secuencia.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+numeros.each {|num|
+  System.print(num)
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_map">5.1.2. map</h4>
+<div class="paragraph">
+<p>Llama a una función cuyo parámetro es el siguiente elemento en la secuencia. Retorna una nueva secuencia con el resultado de las operación en cada elemento.
+El resultado de <code>map</code> es almacenado por referencia. Lo que significa que cambios posteriores en la secuencia original pueden afectar el valor del resultado de <code>map</code>.
+Para pasarlo a una variable independiente, se debe ejecutar el método <code>toList</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+
+// .toList es necesario para que System.print() muestre la lista apropiadamente.
+// Esto es debido a que una secuencia puede no tener fin. Necesitamos pasarlo a una estructura de datos finita.
+// También estamos utilizando el "retorno implícito".
+numeros = numeros.map{|num| num + 1}.toList
+
+// Muestra [2, 3, 4]
+System.print(numeros)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_where">5.1.3. where</h4>
+<div class="paragraph">
+<p>Filtra una secuencia. Entregará una nueva lista la cual cumpla la condicional. Al igual que <code>map</code> se debe ejecutar el método <code>toList</code> para evitar que modificaciones en la secuencia original afecten la nueva secuencia.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3, 4]
+
+var pares = numeros.where{|num| num % 2 == 0}.toList
+
+// Muestra [2, 4]
+System.print(pares)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reduce">5.1.4. reduce</h4>
+<div class="paragraph">
+<p>Llama a una función cuyo parámetro es el siguiente elemento en al secuencia. Retorna un único elemento, producto de las operaciones en cada elemento.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+
+// Si no se pasa un acumulador, se considera el primer elemento como valor inicial
+var resultado = numeros.reduce {|acumulador, num| acumulador + num}
+
+// Muestra 6
+System.print(resultado)
+
+// Iniciamos el acumulador con valor -1
+resultado = numeros.reduce(-1) {|acumulador, num| acumulador + num}
+
+// Muestra 5
+System.print(resultado)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_take">5.1.5. take</h4>
+<div class="paragraph">
+<p>Obtiene un número de elementos dentro de una secuencia.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3, 4]
+var primeros = numeros.take(2).toList
+
+// Muestra [1, 2]
+System.print(primeros)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_skip">5.1.6. skip</h4>
+<div class="paragraph">
+<p>La operación inversa de <code>take</code>. Salta un número determinado de elementos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3, 4]
+var ultimos = numeros.skip(2).toList
+
+// Muestra [3, 4]
+System.print(ultimos)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_contains">5.1.7. contains</h4>
+<div class="paragraph">
+<p>Retorna verdadero si la secuencia contiene al elemento.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+
+// Muestra "false" debido a que no contiene el número 4
+System.print(numeros.contains(4))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_count">5.1.8. count</h4>
+<div class="paragraph">
+<p>Retorna el número de elementos de la secuencia. También es posible solamente contar elementos que cumplan una condición.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3, 4]
+
+// 4
+System.print(numeros.count)
+
+// Contamos solamente los números múltiplos de 2
+var pares = numeros.count {|num| num % 2 == 0}
+
+// 2
+System.print(pares)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_join">5.1.9. join</h4>
+<div class="paragraph">
+<p>Une a los elementos de una secuencia transformándolos en un <em>String</em>. Si no se pasa un parámetro se asume un caracter vació como unión.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+
+// Muestra "123"
+System.print(numeros.join())
+
+// Muestra "1$2$3"
+System.print(numeros.join("$"))
+
+// Muestra "1 num 2 num 3"
+System.print(numeros.join(" num "))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_all">5.1.10. all</h4>
+<div class="paragraph">
+<p>Itera sobre los elementos de una secuencia con una condicional. Devuelve verdadero si todos los elementos pasan la condición.
+Si alguno de los elementos es falso, termina de iterar y devuelve falso.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+var resultado = numeros.all {|num| num &gt; 2}
+
+// Falso. No todos los números en la secuencia son mayores a 2
+System.print(resultado)
+
+resultado = numeros.all{|num| num &lt; 4}
+
+// Verdadero. Todos los números en la secuencia son menores a 4
+System.print(resultado)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_any">5.1.11. any</h4>
+<div class="paragraph">
+<p>Similar a <code>all</code>. Devuelve verdadero al primer elemento que pase la condición. Si ninguno de los elementos pasa la condición, devuelve falso.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+var resultado = numeros.any {|num| num % 2 == 0}
+
+// Verdadero. Existe un número múltiplo de 2.
+System.print(resultado)
+
+resultado = numeros.any {|num| num % 5 == 0}
+
+// Falso. Ningún número es múltiplo de 5.
+System.print(resultado)</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_lista">5.2. <a href="https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L318">Lista</a></h3>
+<h3 id="_list">5.2. <a href="https://wren.io/modules/core/list.html">List</a></h3>
 <div class="paragraph">
 <p>Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.</p>
 </div>
@@ -2440,7 +2657,115 @@ System.print(formateado)</code></pre>
 
 for (estudiante in estudiantes) {
     System.print("¡Hola, " + estudiante + "!")
+}
+
+// La misma operación anterior, pero utilizando la función each
+estudiantes.each{|estudiante|
+  System.print("¡Hola, " + estudiante + "!")
+}
+
+// Añadimos un nuevo estudiante
+estudiantes.add("Juan")
+
+// Muestra ["Pedro", "Javier", "Nicolás", "Juan"]
+System.print(estudiantes)
+
+// Muestra "false" por que no existe el estudiante María
+System.print(estudiantes.contains("María"))
+
+// Muestra ["Pedro", "Javier"]
+System.print(estudiantes.take(2).toList)
+
+// Muestra "2"
+System.print(estudiantes.indexOf("Javier"))</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Generamos una lista de 4 elementos con valor 1
+var elementos = [1] * 4
+
+// Muestra [1, 1, 1, 1]
+System.print(elementos)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También podemos combinar listas fácilmente</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+var letras = ["a", "b", "c"]
+var elementos = numeros + letras
+
+// Muestra [1, 2, 3, a, b, c]
+System.print(elementos)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_range">5.3. <a href="https://wren.io/modules/core/range.html">Range</a></h3>
+<div class="paragraph">
+<p>Un rango es un objeto que representa una lista finita, incremental e iterable de números.
+Es una operación disponible en cada instancia de un número.
+Es dada por la operación <code>..</code> y la operación <code>&#8230;&#8203;</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>inicio..fin</code>: Incluye al número <code>fin</code>. Ejemplo: <code>1..3</code> retorna <code>[1, 2, 3]</code>.</p>
+</li>
+<li>
+<p><code>inicio&#8230;&#8203;fin</code>: No incluye al número <code>fin</code>. Ejemplo <code>1&#8230;&#8203;3</code> retorna <code>[1, 2]</code>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Mostramos los números del 1 al 5
+(1..5).each {|num|
+  System.print("Número %(num)")
 }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Mostramos del 3 al 1
+((1 + 2)..(3 - 2)).each {|num|
+  System.print("Número %(num)")
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">// Mostramos del 1 al 3 utilizando bucle for.
+for (num in 1..3) {
+  System.print("Número %(num)")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Los rangos son muy útiles para obtener subconjuntos dentro de objetos iterables
+como <em>Strings</em> y <em>Lists</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var nombre = "Juanito"
+
+// Muestra "nito"
+System.print(nombre[3..-1])
+
+// Muestra "otinauJ"
+System.print(nombre[-1..0])</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-js" data-lang="js">var letras = ["a", "b", "c", "d", "e"]
+var subconjunto = letras[1..3]
+
+// Muestra [b, c, d]
+System.print(subconjunto)</code></pre>
 </div>
 </div>
 </div>
@@ -2608,7 +2933,7 @@ var estimacion = -1
 while (intentos &lt; maxIntentos) {
     intentos = intentos + 1
     System.print("Intenta adivinar %(intentos)/%(maxIntentos)")
-
+    
     estimacion = Num.fromString(Stdin.readLine())
 
     if (estimacion is Null) {
@@ -2720,10 +3045,10 @@ var explorarCueva = Fn.new { |cueva|
 
     System.print("Te aproximas a la cueva...")
     Timer.sleep(dosSegundos)
-
+    
     System.print("Es oscura y espeluznante...")
     Timer.sleep(dosSegundos)
-
+    
     System.print("¡Un gran dragon aparece súbitamente frente a tí! Abre sus fauces y...")
     System.print()
     Timer.sleep(dosSegundos)
@@ -2951,13 +3276,13 @@ var nombres = []
 for (i in 1..cantidad) {
   var nombre = ""
   while (true) {
-
+    
     System.print("Ingresa el nombre del caracol #%(i):")
     nombre = Stdin.readLine()
 
     // Reducimos el nombre a su largo máximo
     nombre = nombre.take(Constantes.maxLargoNombre).join()
-
+    
     if (nombre.count == 0) {
       System.print("Por favor ingresa un nombre.")
     } else if (nombres.contains(nombre)) {
@@ -3121,7 +3446,7 @@ while (jugar) {
   anguloElevacion = 0
   distanciaFinal = 0
   tiros = 1
-
+  
   // Un número aleatorio entre 10K y 50K
   // Usamos notación científica para simplificar el número
   alcance = random.int(10e3, 50e3 + 1)
@@ -3188,7 +3513,7 @@ while (jugar) {
     } else {
       System.print("El tiro quedó corto por %(distanciaFinal) metros.")
     }
-
+    
     jugar = (oportunidades &gt; 0)
     if (jugar) {
       System.print("¡Prueba otra vez!, quedan %(oportunidades) tiros")
@@ -3246,7 +3571,7 @@ class ScreenHeight {
     static min {0}
     static max {136}
 }
-
+    
 class Screen {
     static height {ScreenHeight}
     static width {ScreenWidth}
@@ -3282,12 +3607,12 @@ class PlayerSpeed {
     x = (value) {
         _x = value
     }
-
+    
     max {_max}
     max = (value) {
         _max = value
     }
-
+    
     construct new() {
         _x = 0
         _max = 4
@@ -3353,7 +3678,7 @@ class Player {
                     speed.x = -speed.max
                 }
             }
-
+            
             if (Input.right) {
                 if (speed.x &lt; speed.max) {
                         speed.x = speed.x + 2
@@ -3369,14 +3694,14 @@ class BallSpeed {
     x = (value) {
         _x = value
     }
-
+    
     y {_y}
     y = (value) {
         _y = value
     }
-
+    
     max {_max}
-
+    
     construct new() {
         _x = 0
         _y = 0
@@ -3392,14 +3717,14 @@ class Ball {
     color {_color}
     deactive {_deactive}
     speed {_speed}
-
+    
     player {_player}
     player = (value) {
         _player = value
     }
-
+    
     state {_state}
-
+    
     construct new(player, state) {
         _width = 3
         _height = 3
@@ -3408,18 +3733,18 @@ class Ball {
         _state = state
         reset()
     }
-
+    
     position() {
         _x = player.x + (player.width / 2) - 1.5
         _y = player.y - 5
     }
-
+    
     reset() {
         position()
         _deactive = true
         _speed = BallSpeed.new()
     }
-
+    
     input() {
         if (deactive) {
                 position()
@@ -3430,36 +3755,36 @@ class Ball {
                 }
             }
     }
-
+    
     wall() {
         // top
         if (y &lt; 0) {
             speed.y = -speed.y
-
+            
         // left
         } else if (x &lt; 0) {
             speed.x = -speed.x
-
+        
         // right
         } else if (x &gt; 240 - width) {
             speed.x = -speed.x
         }
     }
-
+    
     ground() {
         if (y &gt; 136 - width) {
                 reset()
                 state.lifeDown()
         }
     }
-
+    
     paddle() {
         if (Collisions.collide(this, player)) {
             speed.y = -speed.y
             speed.x = speed.x + 0.3 * player.speed.x
-        }
+        } 
     }
-
+    
     brick(brick) {
 
         // collide left or right side
@@ -3479,18 +3804,18 @@ class Ball {
     collisions() {
         wall()
         ground()
-        paddle()
+        paddle() 
     }
-
+    
     update() {
         _x = x + speed.x
         _y = y + speed.y
-
+        
         if (speed.x &gt; speed.max) {
             speed.x = speed.max
         }
     }
-
+    
     draw() {
         T.rect(x, y, width, height, color)
     }
@@ -3510,7 +3835,7 @@ class Brick {
         _height = 4
         _color = color
     }
-
+    
     draw() {
         T.rect(x, y, width, height, color)
     }
@@ -3530,7 +3855,7 @@ class Board {
 
         return _bricks
     }
-
+        
     construct new(ball, state) {
         _ball = ball
         _state = state
@@ -3550,13 +3875,13 @@ class Board {
         }
 								ball.reset()
     }
-
+        
     draw() {
         bricks.each {|brick|
             brick.draw()
         }
     }
-
+    
     collisions() {
         var index = 0
         if (bricks.count &lt;= 0) {
@@ -3575,7 +3900,7 @@ class Board {
             index = index + 1
         }
     }
-
+    
     update() {}
     input() {}
 }
@@ -3583,44 +3908,44 @@ class Board {
 class Stage {
     objects {_objects}
     state {_state}
-
+    
     construct new(state) {
         _objects = []
         _state = state
     }
-
+    
     add(object) {
         objects.add(object)
     }
-
+    
     input() {
         if (!state.isPlaying) return
-
+        
         objects.each {|object|
             object.input()
         }
     }
-
+    
     draw() {
         if (!state.isPlaying) return
-
+        
         objects.each {|object|
             object.draw()
         }
     }
-
+    
     update() {
-
+    
         if (!state.isPlaying) return
-
+        
         objects.each {|object|
             object.update()
         }
     }
-
+    
     collisions() {
-        if (!state.isPlaying) return
-
+        if (!state.isPlaying) return 
+        
         objects.each {|object|
             object.collisions()
         }
@@ -3630,40 +3955,40 @@ class Stage {
 class GUI {
     player {_player}
     state {_state}
-
+    
     construct new(player, state) {
         _player = player
         _state = state
     }
-
+    
     scores() {
        // shadow
         T.print("SCORE ", 5, 1, Color.greyd)
         T.print(state.score, 40, 1, Color.greyd)
-
+        
         // forecolor
         T.print("SCORE ", 5, 0, Color.white)
         T.print(state.score, 40, 0, Color.white)
-
+        
         // shadow
         T.print("LIVES ", 190, 1, Color.greyd)
         T.print(state.lives, 225, 1, Color.greyd)
-
+        
         // forecolor
         T.print("LIVES ", 190, 0, Color.white)
         T.print(state.lives, 225, 0, Color.white)
     }
-
+    
     gameover() {
-      T.print("Game Over", (Screen.width.max/2) - 6 * 4.5, 136/2, Color.white)
+      T.print("Game Over", (Screen.width.max/2) - 6 * 4.5, 136/2, Color.white) 
     }
-
+    
     input() {
         if (!state.isPlaying &amp;&amp; Input.x) {
             state.start()
         }
     }
-
+    
     draw() {
         if (state.isPlaying) {
             return scores()
@@ -3679,51 +4004,51 @@ class GameState {
     }
 
     static isPlaying {__playing}
-
+    
     static score {
         if (!__score) {
             __score = 0
         }
-
+        
         return __score
     }
-
+    
     static score = (value) {
         __score = value
     }
-
+    
     static lives {
         if (!__lives || __lives &lt; 0) {
             __lives = 3
         }
-
+        
         return __lives
     }
-
+    
     static lives = (value) {
         if (value &lt; 0) {
             over()
         }
         __lives = value
     }
-
+    
     static over() {
         reset()
         __playing = false
     }
-
+    
     static start() {
         __playing = true
     }
-
+    
     static lifeDown() {
         lives = lives - 1
     }
-
+    
     static scoreUp() {
         score = score + 100
     }
-
+    
     static reset() {
         score = 0
         lives = 3
@@ -3737,7 +4062,7 @@ class Game is TIC {
     player {_player }
     stage {_stage }
     gui {_gui }
-
+    
     construct new() {
         reset()
     }
@@ -3748,17 +4073,17 @@ class Game is TIC {
 
         _player = Player.new(GameState)
         _ball = Ball.new(_player, GameState)
-
+        
         _gui = GUI.new(_player, GameState)
-
+        
         _board = Board.new(_ball, GameState)
-
+            
         _stage = Stage.new(GameState)
         _stage.add(_player)
         _stage.add(_ball)
         _stage.add(_board)
     }
-
+    
     TIC() {
         T.cls(0)
         input()
@@ -3766,20 +4091,20 @@ class Game is TIC {
         collisions()
         draw()
     }
-
+    
     input() {
         gui.input()
         stage.input()
     }
-
+    
     update() {
         stage.update()
     }
-
+    
     collisions() {
         stage.collisions()
     }
-
+    
     draw() {
         stage.draw()
         gui.draw()
@@ -3832,7 +4157,7 @@ class Color {
 		static green {5}
 		static blue {10}
 		static orange {3}
-		static greyd {15}
+		static greyd {15} 
 }
 
 class Screen {
@@ -3847,22 +4172,22 @@ class Position {
 			}
 			return _x
 		}
-
+		
 		x = (value) {
 		_x = value
 		}
-
+		
 		y {
 		if (!_y) {
 			_y = 0
 			}
 			return _y
 		}
-
+		
 		y = (value) {
 		_y = value
 		}
-
+		
 		construct new(x, y) {
 			_x = x
 			_y = y
@@ -3874,75 +4199,75 @@ class GameState {
 		static game = (value) {
 			__game = value
 		}
-
+		
 		static snake {__snake}
 		static snake = (value) {
 			__snake = value
 		}
-
+		
 		static score {
 			if (!__score) {
 				__score = 0
 			}
 			return __score
-		}
-
+		} 
+		
 		static scoreUp() {
 			__score = score + 100
 		}
-
+		
   static frame {
 		if (!__frame || __frame &gt; Num.largest - 1) {
 					__frame = 0
 				}
 				return __frame
 		}
-
+		
 		static frameUp() {
 			__frame = frame + 1
 		}
-
+		
 		static isTenthFrame {frame % 10 == 0}
-
+		
 		static isPlaying {
 			if (__isPlaying is Null) {
 				__isPlaying = true
 			}
 			return __isPlaying
 		}
-
+		
 		static isPlaying = (value) {
 			__isPlaying = value
 		}
-
+		
 		static start() {
 			isPlaying = true
 		}
-
+		
 		static gameover() {
 			reset()
 				isPlaying = false
 		}
-
+		
 		static reset() {
 			__score = 0
 			game.reset()
-		}
+		} 
 }
 
 class Food is Position {
 	snake {_snake}
-
+	
 	construct new (snake) {
 			_snake = snake
 			place()
 	}
-
+	
 	random() {
 		x = Rand.int(0, 29)
 		y = Rand.int(0, 16)
 	}
-
+	
 	place() {
 		random()
 		snake.body.each{|part|
@@ -3951,14 +4276,14 @@ class Food is Position {
 			}
 		}
 	}
-
+	
 	draw() {
 	  T.rect(x * 8, y * 8, 8, 8, Color.orange)
 	}
-
+	
 	update() {}
 	input() {}
-
+	
 	collisions() {
 		snake.eat(this)
 	}
@@ -3976,7 +4301,7 @@ class Direction {
 			}
 			return __directions
 		}
-
+		
 		static up {directions[0]}
 		static down {directions[1]}
 		static left {directions[2]}
@@ -3992,81 +4317,81 @@ class Snake {
 					var tail = Position.new(15, 8)
 					var neck = Position.new(14, 8)
 					var head = Position.new(13, 8)
-					_body = [tail, neck, head]
+					_body = [tail, neck, head]				 
 				}
 				return _body
 		}
-
+		
 		direction {
 			if (!_direction) {
 				_direction = Direction.up
 			}
 			return _direction
 		}
-
+		
 		state {_state}
-
+		
 		construct new(state) {
 			_state = state
 		}
-
+		
 		reset() {
 			_body = null
 			_direction = Direction.up
 		}
-
+		
 		input() {
 			var last = direction
-
+			
 			if (Input.up) {
 				_direction = Direction.up
 			}
-
+			
 			if (Input.down) {
 				_direction = Direction.down
 			}
-
+			
 			if (Input.left) {
 				_direction = Direction.left
 			}
-
+			
 			if (Input.right) {
 				_direction = Direction.right
 			}
-
+			
 			if (head.x + direction.x == neck.x &amp;&amp;
 				head.y + direction.y == neck.y) {
 					_direction = last
 			}
 		}
-
+		
 		draw() {
 			body.each{|part|
 			 T.rect(part.x * 8, part.y * 8, 8, 8, Color.blue)
 			}
 		}
-
+		
 		update() {
-
+		
 			var x = (head.x + direction.x) % 30
 			if (x &lt; 0) {
 				x = 29
 			}
-
+			
 			var y = (head.y + direction.y) % 17
 			if (y &lt; 0) {
 				y = 17
 			}
-
+			
 			var part = Position.new(x, y)
-
+			
 			body.add(part)
 		}
-
+		
 		removeTail() {
 			body.removeAt(0)
 		}
-
+		
 		eat(food) {
 			if (head.x == food.x &amp;&amp; head.y == food.y) {
 				T.sfx(0, "C-5", 10)
@@ -4076,9 +4401,9 @@ class Snake {
 				removeTail()
 			}
 		}
-
+		
 		collisions() {
-
+				
 				// Search if head collisions with body parts
 				// omit last part since its the head
 			body[0...(body.count - 1)].each{|part|
@@ -4091,33 +4416,33 @@ class Snake {
 
 class Stage {
   items {_items}
-
+		
 	construct new() {
 		_items = []
 	}
-
+		
   add(object) {
 			items.add(object)
 	}
-
+		
   input() {
 			items.each{|object|
 					object.input()
 			}
 	}
-
+		
 	draw() {
 		items.each{|object|
 			object.draw()
 		}
 	}
-
+	
 	update() {
 		items.each{|object|
 			object.update()
 		}
 	}
-
+	
 	collisions() {
 		items.each{|object|
 			object.collisions()
@@ -4127,30 +4452,30 @@ class Stage {
 
 class GUI {
 		state {_state}
-
+		
 		construct new(state) {
 			_state = state
 		}
-
+		
 		score() {
 			T.print("SCORE %(state.score)", 5, 5, Color.blue)
 			T.print("SCORE %(state.score)", 5, 4, Color.white)
 		}
-
+		
 		gameover() {
 			T.cls(Color.black)
 			T.print("Game Over", (Screen.width/2) - 6 * 4.5, (Screen.height / 2), Color.white)
 		}
-
+		
 		input() {
 			if (!state.isPlaying &amp;&amp; Input.x) {
 					state.start()
 			}
 		}
-
+		
 		update() {}
 		collisions() {}
-
+		
 		draw() {
 			if (state.isPlaying) {
 					return score()
@@ -4170,14 +4495,14 @@ class Game is TIC {
 			}
 			return _stage
 		}
-
+		
 		gui {
 			if (!_gui) {
 				_gui = GUI.new(GameState)
 			}
 			return _gui
 		}
-
+		
 		snake {
 			if (!_snake) {
 				_snake = Snake.new(GameState)
@@ -4185,47 +4510,47 @@ class Game is TIC {
 			}
 			return _snake
 		}
-
+		
 		food {
 			if (!_food) {
 				_food = Food.new(snake)
 			}
 			return _food
 		}
-
+		
 		construct new() {
 				reset()
 		}
-
+		
 		reset() {
 			snake.reset()
 		}
-
+		
 		TIC() {
 			T.cls(Color.green)
 			GameState.frameUp()
 			input()
-
-			if (GameState.isTenthFrame) {
+			
+			if (GameState.isTenthFrame) { 
 				update()
 				collisions()
 			}
 
 			draw()
 		}
-
+		
 		input() {
 			stage.input()
 		}
-
+		
 		update() {
 			stage.update()
 		}
-
+		
 		collisions() {
 			stage.collisions()
 		}
-
+		
 		draw() {
 			stage.draw()
 		}
@@ -4485,7 +4810,7 @@ Ejemplo <code>import "random" for Random</code>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_índice">Índice</h2>
+<h2 id="_Índice">Índice</h2>
 <div class="sectionbody">
 
 </div>
@@ -4507,7 +4832,7 @@ Ejemplo <code>import "random" for Random</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-12 12:52:36 -0300
+Last updated 2020-12-27 11:19:08 -0300
 </div>
 </div>
 </body>

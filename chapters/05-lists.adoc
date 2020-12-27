@@ -1,11 +1,179 @@
-## Listas y Secuencias
+## Secuencias, Listas y Rangos
 
-### https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L7[Secuencias]
+### https://wren.io/modules/core/sequence.html[Sequence]
 
-La secuencia es la clase padre de _List_, _String_, _Map_ y cualquier otra que implemente el _protocolo de iteración._
+La secuencia es la clase padre de _List_, _String_, _Map_, _Range_ y cualquier otra que implemente el https://wren.io/control-flow.html#the-iterator-protocol[_protocolo de iteración_]. La característica principal de una secuencia es que esta podría ser virtualmente infinita (sin elementos que indiquen un fin).
+Entre los métodos que podemos destacar de _Sequence_ están:
+
+#### each
+
+Similar a un bucle `for`. Por cada elemento dentro de la secuencia llama a una función cuyo parámetro es el siguiente elemento en la secuencia.
+
+```js
+var numeros = [1, 2, 3]
+numeros.each {|num|
+  System.print(num)
+}
+```
+
+#### map
+
+Llama a una función cuyo parámetro es el siguiente elemento en la secuencia. Retorna una nueva secuencia con el resultado de las operación en cada elemento.
+El resultado de `map` es almacenado por referencia. Lo que significa que cambios posteriores en la secuencia original pueden afectar el valor del resultado de `map`.
+Para pasarlo a una variable independiente, se debe ejecutar el método `toList`.
+
+```js
+var numeros = [1, 2, 3]
+
+// .toList es necesario para que System.print() muestre la lista apropiadamente.
+// Esto es debido a que una secuencia puede no tener fin. Necesitamos pasarlo a una estructura de datos finita.
+// También estamos utilizando el "retorno implícito".
+numeros = numeros.map{|num| num + 1}.toList
+
+// Muestra [2, 3, 4]
+System.print(numeros)
+```
+
+#### where
+
+Filtra una secuencia. Entregará una nueva lista la cual cumpla la condicional. Al igual que `map` se debe ejecutar el método `toList` para evitar que modificaciones en la secuencia original afecten la nueva secuencia.
+
+```js
+
+var numeros = [1, 2, 3, 4]
+
+var pares = numeros.where{|num| num % 2 == 0}.toList
+
+// Muestra [2, 4]
+System.print(pares)
+```
+
+#### reduce
+
+Llama a una función cuyo parámetro es el siguiente elemento en al secuencia. Retorna un único elemento, producto de las operaciones en cada elemento.
+
+```js
+var numeros = [1, 2, 3]
+
+// Si no se pasa un acumulador, se considera el primer elemento como valor inicial
+var resultado = numeros.reduce {|acumulador, num| acumulador + num}
+
+// Muestra 6
+System.print(resultado)
+
+// Iniciamos el acumulador con valor -1
+resultado = numeros.reduce(-1) {|acumulador, num| acumulador + num}
+
+// Muestra 5
+System.print(resultado)
+```
+
+#### take
+
+Obtiene un número de elementos dentro de una secuencia.
+
+```js
+var numeros = [1, 2, 3, 4]
+var primeros = numeros.take(2).toList
+
+// Muestra [1, 2]
+System.print(primeros)
+```
+
+#### skip
+
+La operación inversa de `take`. Salta un número determinado de elementos.
+
+```js
+var numeros = [1, 2, 3, 4]
+var ultimos = numeros.skip(2).toList
+
+// Muestra [3, 4]
+System.print(ultimos)
+```
+
+#### contains
+Retorna verdadero si la secuencia contiene al elemento.
+
+```js
+var numeros = [1, 2, 3]
+
+// Muestra "false" debido a que no contiene el número 4
+System.print(numeros.contains(4))
+```
+
+#### count
+
+Retorna el número de elementos de la secuencia. También es posible solamente contar elementos que cumplan una condición.
+
+```js
+var numeros = [1, 2, 3, 4]
+
+// 4
+System.print(numeros.count)
+
+// Contamos solamente los números múltiplos de 2
+var pares = numeros.count {|num| num % 2 == 0}
+
+// 2
+System.print(pares)
+```
+
+#### join
+
+Une a los elementos de una secuencia transformándolos en un _String_. Si no se pasa un parámetro se asume un caracter vació como unión.
+
+```js
+
+var numeros = [1, 2, 3]
+
+// Muestra "123"
+System.print(numeros.join())
+
+// Muestra "1$2$3"
+System.print(numeros.join("$"))
+
+// Muestra "1 num 2 num 3"
+System.print(numeros.join(" num "))
+```
+
+#### all
+
+Itera sobre los elementos de una secuencia con una condicional. Devuelve verdadero si todos los elementos pasan la condición.
+Si alguno de los elementos es falso, termina de iterar y devuelve falso.
+
+```js
+var numeros = [1, 2, 3]
+var resultado = numeros.all {|num| num > 2}
+
+// Falso. No todos los números en la secuencia son mayores a 2
+System.print(resultado)
+
+resultado = numeros.all{|num| num < 4}
+
+// Verdadero. Todos los números en la secuencia son menores a 4
+System.print(resultado)
+```
+
+#### any
+
+Similar a `all`. Devuelve verdadero al primer elemento que pase la condición. Si ninguno de los elementos pasa la condición, devuelve falso.
+
+```js
+var numeros = [1, 2, 3]
+var resultado = numeros.any {|num| num % 2 == 0}
+
+// Verdadero. Existe un número múltiplo de 2.
+System.print(resultado)
+
+resultado = numeros.any {|num| num % 5 == 0}
+
+// Falso. Ningún número es múltiplo de 5.
+System.print(resultado)
+```
 
 
-### https://github.com/wren-lang/wren/blob/main/src/vm/wren_core.wren#L318[Lista]
+### https://wren.io/modules/core/list.html[List]
 
 Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.
 
@@ -17,5 +185,94 @@ var estudiantes = ["Pedro", "Javier", "Nicolás"]
 for (estudiante in estudiantes) {
     System.print("¡Hola, " + estudiante + "!")
 }
+
+// La misma operación anterior, pero utilizando la función each
+estudiantes.each{|estudiante|
+  System.print("¡Hola, " + estudiante + "!")
+}
+
+// Añadimos un nuevo estudiante
+estudiantes.add("Juan")
+
+// Muestra ["Pedro", "Javier", "Nicolás", "Juan"]
+System.print(estudiantes)
+
+// Muestra "false" por que no existe el estudiante María
+System.print(estudiantes.contains("María"))
+
+// Muestra ["Pedro", "Javier"]
+System.print(estudiantes.take(2).toList)
+
+// Muestra "2"
+System.print(estudiantes.indexOf("Javier"))
 ```
 
+```js
+// Generamos una lista de 4 elementos con valor 1
+var elementos = [1] * 4
+
+// Muestra [1, 1, 1, 1]
+System.print(elementos)
+```
+
+También podemos combinar listas fácilmente
+
+```js
+var numeros = [1, 2, 3]
+var letras = ["a", "b", "c"]
+var elementos = numeros + letras
+
+// Muestra [1, 2, 3, a, b, c]
+System.print(elementos)
+```
+
+### https://wren.io/modules/core/range.html[Range]
+
+Un rango es un objeto que representa una lista finita, incremental e iterable de números.
+Es una operación disponible en cada instancia de un número. 
+Es dada por la operación `..` y la operación `...`.
+
+- `inicio..fin`: Incluye al número `fin`. Ejemplo: `1..3` retorna `[1, 2, 3]`.
+- `inicio...fin`: No incluye al número `fin`. Ejemplo `1...3` retorna `[1, 2]`.
+
+```js
+// Mostramos los números del 1 al 5
+(1..5).each {|num|
+  System.print("Número %(num)")
+}
+```
+
+```js
+// Mostramos del 3 al 1
+((1 + 2)..(3 - 2)).each {|num|
+  System.print("Número %(num)")
+}
+```
+
+```js
+// Mostramos del 1 al 3 utilizando bucle for.
+for (num in 1..3) {
+  System.print("Número %(num)")
+}
+```
+
+Los rangos son muy útiles para obtener subconjuntos dentro de objetos iterables
+como _Strings_ y _Lists_.
+
+```js
+var nombre = "Juanito"
+
+// Muestra "nito"
+System.print(nombre[3..-1])
+
+// Muestra "otinauJ"
+System.print(nombre[-1..0])
+```
+
+```js
+var letras = ["a", "b", "c", "d", "e"]
+var subconjunto = letras[1..3]
+
+// Muestra [b, c, d]
+System.print(subconjunto)
+```
