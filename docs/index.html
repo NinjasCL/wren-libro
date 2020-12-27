@@ -562,7 +562,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_secuencias_listas_y_rangos">5. Secuencias, Listas y Rangos</a>
 <ul class="sectlevel2">
-<li><a href="#_sequence">5.1. Sequence</a>
+<li><a href="#_sequence_secuencias">5.1. Sequence: Secuencias</a>
 <ul class="sectlevel3">
 <li><a href="#_each">5.1.1. each</a></li>
 <li><a href="#_map">5.1.2. map</a></li>
@@ -577,8 +577,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_any">5.1.11. any</a></li>
 </ul>
 </li>
-<li><a href="#_list">5.2. List</a></li>
-<li><a href="#_range">5.3. Range</a></li>
+<li><a href="#_list_listas">5.2. List: Listas</a></li>
+<li><a href="#_range_rangos">5.3. Range: Rangos</a></li>
 </ul>
 </li>
 <li><a href="#_funciones_y_fibras">6. Funciones y Fibras</a></li>
@@ -2438,7 +2438,7 @@ System.print(formateado)</code></pre>
 <h2 id="_secuencias_listas_y_rangos">5. Secuencias, Listas y Rangos</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_sequence">5.1. <a href="https://wren.io/modules/core/sequence.html">Sequence</a></h3>
+<h3 id="_sequence_secuencias">5.1. <a href="https://wren.io/modules/core/sequence.html">Sequence: Secuencias</a></h3>
 <div class="paragraph">
 <p>La secuencia es la clase padre de <em>List</em>, <em>String</em>, <em>Map</em>, <em>Range</em> y cualquier otra que implemente el <a href="https://wren.io/control-flow.html#the-iterator-protocol"><em>protocolo de iteración</em></a>. La característica principal de una secuencia es que esta podría ser virtualmente infinita (sin elementos que indiquen un fin).
 Entre los métodos que podemos destacar de <em>Sequence</em> están:</p>
@@ -2644,17 +2644,18 @@ System.print(resultado)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_list">5.2. <a href="https://wren.io/modules/core/list.html">List</a></h3>
+<h3 id="_list_listas">5.2. <a href="https://wren.io/modules/core/list.html">List: Listas</a></h3>
 <div class="paragraph">
 <p>Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.</p>
 </div>
 <div class="paragraph">
-<p>El siguiente ejemplo muestra como iterar una lista:</p>
+<p>El siguiente ejemplo muestra algunas operaciones disponibles para listas:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-js" data-lang="js">var estudiantes = ["Pedro", "Javier", "Nicolás"]
 
+// Iteramos sobre los elementos de la lista
 for (estudiante in estudiantes) {
     System.print("¡Hola, " + estudiante + "!")
 }
@@ -2664,7 +2665,7 @@ estudiantes.each{|estudiante|
   System.print("¡Hola, " + estudiante + "!")
 }
 
-// Añadimos un nuevo estudiante
+// Añadimos un nuevo estudiante en la última posición
 estudiantes.add("Juan")
 
 // Muestra ["Pedro", "Javier", "Nicolás", "Juan"]
@@ -2676,8 +2677,15 @@ System.print(estudiantes.contains("María"))
 // Muestra ["Pedro", "Javier"]
 System.print(estudiantes.take(2).toList)
 
-// Muestra "2"
-System.print(estudiantes.indexOf("Javier"))</code></pre>
+// Insertamos un nuevo elemento en la última posición disponible
+estudiantes.insert(estudiantes.count - 1, "Javier Manzana")
+
+// Filtramos todos los estudiantes que se llamen Javier
+// Muestra: ["Javier", "Javier Manzana"]
+System.print(estudiantes.where {|nombre| nombre.startsWith("Javier")}.toList)
+
+// Elimina todos los estudiantes
+estudiantes.clear()</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2704,7 +2712,7 @@ System.print(elementos)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_range">5.3. <a href="https://wren.io/modules/core/range.html">Range</a></h3>
+<h3 id="_range_rangos">5.3. <a href="https://wren.io/modules/core/range.html">Range: Rangos</a></h3>
 <div class="paragraph">
 <p>Un rango es un objeto que representa una lista finita, incremental e iterable de números.
 Es una operación disponible en cada instancia de un número.

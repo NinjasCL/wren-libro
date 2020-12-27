@@ -1261,8 +1261,8 @@ System.print(formateado)</programlisting>
 </chapter>
 <chapter xml:id="_secuencias_listas_y_rangos">
 <title>Secuencias, Listas y Rangos</title>
-<section xml:id="_sequence">
-<title><link xl:href="https://wren.io/modules/core/sequence.html">Sequence</link></title>
+<section xml:id="_sequence_secuencias">
+<title><link xl:href="https://wren.io/modules/core/sequence.html">Sequence: Secuencias</link></title>
 <simpara>La secuencia es la clase padre de <emphasis>List</emphasis>, <emphasis>String</emphasis>, <emphasis>Map</emphasis>, <emphasis>Range</emphasis> y cualquier otra que implemente el <link xl:href="https://wren.io/control-flow.html#the-iterator-protocol"><emphasis>protocolo de iteración</emphasis></link>. La característica principal de una secuencia es que esta podría ser virtualmente infinita (sin elementos que indiquen un fin).
 Entre los métodos que podemos destacar de <emphasis>Sequence</emphasis> están:</simpara>
 <section xml:id="_each">
@@ -1399,12 +1399,13 @@ resultado = numeros.any {|num| num % 5 == 0}
 System.print(resultado)</programlisting>
 </section>
 </section>
-<section xml:id="_list">
-<title><link xl:href="https://wren.io/modules/core/list.html">List</link></title>
+<section xml:id="_list_listas">
+<title><link xl:href="https://wren.io/modules/core/list.html">List: Listas</link></title>
 <simpara>Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.</simpara>
-<simpara>El siguiente ejemplo muestra como iterar una lista:</simpara>
+<simpara>El siguiente ejemplo muestra algunas operaciones disponibles para listas:</simpara>
 <programlisting language="js" linenumbering="numbered">var estudiantes = ["Pedro", "Javier", "Nicolás"]
 
+// Iteramos sobre los elementos de la lista
 for (estudiante in estudiantes) {
     System.print("¡Hola, " + estudiante + "!")
 }
@@ -1414,7 +1415,7 @@ estudiantes.each{|estudiante|
   System.print("¡Hola, " + estudiante + "!")
 }
 
-// Añadimos un nuevo estudiante
+// Añadimos un nuevo estudiante en la última posición
 estudiantes.add("Juan")
 
 // Muestra ["Pedro", "Javier", "Nicolás", "Juan"]
@@ -1426,8 +1427,15 @@ System.print(estudiantes.contains("María"))
 // Muestra ["Pedro", "Javier"]
 System.print(estudiantes.take(2).toList)
 
-// Muestra "2"
-System.print(estudiantes.indexOf("Javier"))</programlisting>
+// Insertamos un nuevo elemento en la última posición disponible
+estudiantes.insert(estudiantes.count - 1, "Javier Manzana")
+
+// Filtramos todos los estudiantes que se llamen Javier
+// Muestra: ["Javier", "Javier Manzana"]
+System.print(estudiantes.where {|nombre| nombre.startsWith("Javier")}.toList)
+
+// Elimina todos los estudiantes
+estudiantes.clear()</programlisting>
 <programlisting language="js" linenumbering="numbered">// Generamos una lista de 4 elementos con valor 1
 var elementos = [1] * 4
 
@@ -1441,8 +1449,8 @@ var elementos = numeros + letras
 // Muestra [1, 2, 3, a, b, c]
 System.print(elementos)</programlisting>
 </section>
-<section xml:id="_range">
-<title><link xl:href="https://wren.io/modules/core/range.html">Range</link></title>
+<section xml:id="_range_rangos">
+<title><link xl:href="https://wren.io/modules/core/range.html">Range: Rangos</link></title>
 <simpara>Un rango es un objeto que representa una lista finita, incremental e iterable de números.
 Es una operación disponible en cada instancia de un número.
 Es dada por la operación <literal>..</literal> y la operación <literal>&#8230;&#8203;</literal>.</simpara>
