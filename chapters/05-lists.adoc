@@ -1,6 +1,6 @@
 ## Secuencias, Listas y Rangos
 
-### https://wren.io/modules/core/sequence.html[Sequence]
+### https://wren.io/modules/core/sequence.html[Sequence: Secuencias]
 
 La secuencia es la clase padre de _List_, _String_, _Map_, _Range_ y cualquier otra que implemente el https://wren.io/control-flow.html#the-iterator-protocol[_protocolo de iteración_]. La característica principal de una secuencia es que esta podría ser virtualmente infinita (sin elementos que indiquen un fin).
 Entre los métodos que podemos destacar de _Sequence_ están:
@@ -173,15 +173,16 @@ System.print(resultado)
 ```
 
 
-### https://wren.io/modules/core/list.html[List]
+### https://wren.io/modules/core/list.html[List: Listas]
 
 Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.
 
-El siguiente ejemplo muestra como iterar una lista:
+El siguiente ejemplo muestra algunas operaciones disponibles para listas:
 
 ```js
 var estudiantes = ["Pedro", "Javier", "Nicolás"]
 
+// Iteramos sobre los elementos de la lista
 for (estudiante in estudiantes) {
     System.print("¡Hola, " + estudiante + "!")
 }
@@ -191,7 +192,7 @@ estudiantes.each{|estudiante|
   System.print("¡Hola, " + estudiante + "!")
 }
 
-// Añadimos un nuevo estudiante
+// Añadimos un nuevo estudiante en la última posición
 estudiantes.add("Juan")
 
 // Muestra ["Pedro", "Javier", "Nicolás", "Juan"]
@@ -203,8 +204,15 @@ System.print(estudiantes.contains("María"))
 // Muestra ["Pedro", "Javier"]
 System.print(estudiantes.take(2).toList)
 
-// Muestra "2"
-System.print(estudiantes.indexOf("Javier"))
+// Insertamos un nuevo elemento en la última posición disponible
+estudiantes.insert(estudiantes.count - 1, "Javier Manzana")
+
+// Filtramos todos los estudiantes que se llamen Javier
+// Muestra: ["Javier", "Javier Manzana"]
+System.print(estudiantes.where {|nombre| nombre.startsWith("Javier")}.toList)
+
+// Elimina todos los estudiantes
+estudiantes.clear()
 ```
 
 ```js
@@ -226,7 +234,7 @@ var elementos = numeros + letras
 System.print(elementos)
 ```
 
-### https://wren.io/modules/core/range.html[Range]
+### https://wren.io/modules/core/range.html[Range: Rangos]
 
 Un rango es un objeto que representa una lista finita, incremental e iterable de números.
 Es una operación disponible en cada instancia de un número. 
