@@ -1,17 +1,39 @@
 :toc: macro
 :toc-title: Tabla de Contenidos
 :toclevels: 3
+:ext-relative:
 
 # El https://github.com/wren-lang/wren[_Wren]_ Libro
 
 En este pequeño documento se detallarán lo básico del lenguaje de programación http://wren.io[Wren]. 
 
-Escrito por https://ninjas.cl[Camilo Castro] y https://github.com/ninjascl/wren-adventures/graphs/contributors[colaboradores]. Para https://ninjas.cl[Ninjas.cl].
+toc::[]
+
+
+## https://ninjascl.github.io/wren-libro/[Leer Online]
+
+Este libro puede ser leido gratuitamente en https://ninjascl.github.io/wren-libro/.
+
+## Licencia
+
+### Documento
 
 Esta obra está bajo una http://creativecommons.org/licenses/by-nc-sa/4.0/[Licencia Creative Commons Atribución-No-Comercial-Compartir-Igual 4.0 Internacional]
 
 http://creativecommons.org/licenses/by-nc-sa/4.0/[image:https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png[Licencia Creative Commons]]
 
-toc::[]
+### Código Fuente
+
+A menos que se especifique explícitamente, el código fuente esta bajo una licencia https://opensource.org/licenses/BSD-2-Clause[BSD-2].
 
 
+## 🤩 Creditos
+
+++++
+<p>
+  Hecho con <i class="fa fa-heart">&#9829;</i> por
+  <a href="https://ninjas.cl">
+    Ninjas.cl
+  </a>.
+</p>
+++++
