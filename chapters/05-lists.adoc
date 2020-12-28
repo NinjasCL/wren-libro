@@ -172,6 +172,37 @@ resultado = numeros.any {|num| num % 5 == 0}
 System.print(resultado)
 ```
 
+#### ejemplo
+
+El siguiente ejemplo utiliza algunas funciones de `Sequence` para obtener el primer elemento
+de una secuencia dependiendo de una condición.
+
+```js
+  // Creamos una nueva función para nuestra lógica
+  var primerElemento = Fn.new {|elementos, predicado|
+
+    // Si existe un elemento que cumpla la condición, obtenemos el primero de la secuencia.
+    var resultado = elementos.any(predicado) ? elementos.where(predicado).take(1) : false
+    if (resultado && resultado.count > 0) {
+      return resultado.toList[0]
+    }
+
+    // Caso contrario devolvemos nulo
+    return null
+  }
+
+  var numeros = [1, 2, 3]
+  var resultado = primerElemento.call(numeros) {|item| item > 1}
+
+  // Muestra 2
+  System.print(resultado)
+
+  resultado = primerElemento.call(numeros) {|item| item > 3}
+
+  // Muestra null
+  System.print(resultado)
+```
+
 
 ### https://wren.io/modules/core/list.html[List: Listas]
 

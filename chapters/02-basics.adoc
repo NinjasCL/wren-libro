@@ -198,6 +198,21 @@ if (condiccion == true)   {
 if (condicion == true) x = 0
 ```
 
+Condicionales de una sola línea. Tienen el formato de
+`condición` `?` `retorno si es verdadero` `:` `retorno si es falso`.
+
+```js
+  // Si la condición es verdadera, x será 0. Si es falsa, x será 1
+  var x = condicion ? 0 : 1
+```
+
+Utilizando el operador `OR (||)`. Se puede asignar un valor predeterminado a una variable.
+
+```js
+  // Si x es nulo se asignará 0. Caso contrario mantiene su valor anterior.
+  x = x || 0
+```
+
 Si la llave no está presente en la misma línea, gatillará un error.
 
 ```js

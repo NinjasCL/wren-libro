@@ -509,6 +509,13 @@ if (condiccion == true)   {
 }</programlisting>
 <programlisting language="js" linenumbering="numbered">// Correcto
 if (condicion == true) x = 0</programlisting>
+<simpara>Condicionales de una sola línea. Tienen el formato de
+<literal>condición</literal> <literal>?</literal> <literal>retorno si es verdadero</literal> <literal>:</literal> <literal>retorno si es falso</literal>.</simpara>
+<programlisting language="js" linenumbering="numbered">  // Si la condición es verdadera, x será 0. Si es falsa, x será 1
+  var x = condicion ? 0 : 1</programlisting>
+<simpara>Utilizando el operador <literal>OR (||)</literal>. Se puede asignar un valor predeterminado a una variable.</simpara>
+<programlisting language="js" linenumbering="numbered">  // Si x es nulo se asignará 0. Caso contrario mantiene su valor anterior.
+  x = x || 0</programlisting>
 <simpara>Si la llave no está presente en la misma línea, gatillará un error.</simpara>
 <programlisting language="js" linenumbering="numbered">// Error
 if (condiction == true)
@@ -1397,6 +1404,34 @@ resultado = numeros.any {|num| num % 5 == 0}
 
 // Falso. Ningún número es múltiplo de 5.
 System.print(resultado)</programlisting>
+</section>
+<section xml:id="_ejemplo">
+<title>ejemplo</title>
+<simpara>El siguiente ejemplo utiliza algunas funciones de <literal>Sequence</literal> para obtener el primer elemento
+de una secuencia dependiendo de una condición.</simpara>
+<programlisting language="js" linenumbering="numbered">  // Creamos una nueva función para nuestra lógica
+  var primerElemento = Fn.new {|elementos, predicado|
+
+    // Si existe un elemento que cumpla la condición, obtenemos el primero de la secuencia.
+    var resultado = elementos.any(predicado) ? elementos.where(predicado).take(1) : false
+    if (resultado &amp;&amp; resultado.count &gt; 0) {
+      return resultado.toList[0]
+    }
+
+    // Caso contrario devolvemos nulo
+    return null
+  }
+
+  var numeros = [1, 2, 3]
+  var resultado = primerElemento.call(numeros) {|item| item &gt; 1}
+
+  // Muestra 2
+  System.print(resultado)
+
+  resultado = primerElemento.call(numeros) {|item| item &gt; 3}
+
+  // Muestra null
+  System.print(resultado)</programlisting>
 </section>
 </section>
 <section xml:id="_list_listas">
