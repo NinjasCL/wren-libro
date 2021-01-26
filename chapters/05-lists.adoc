@@ -204,6 +204,30 @@ de una secuencia dependiendo de una condición.
 ```
 
 
+### https://wren.io/method-calls.html#subscripts[Subscripts: Subíndices]
+
+Los _Subíndices_ nos ayudan a obtener valores dentro de una lista, mapa u objeto que implemente
+el método de subíndice utilizando los paréntesis cuadrados (corchetes) `[]`. 
+
+```js
+lista[0]    // Obtiene el primer elmento de la lista
+mapa["id"] // Obtiene el valor asociado con "id"
+```
+
+El siguiente código muestra como implementar un objeto que acepta dos parámetros en su método de subíndice.
+
+```js
+class Matriz {
+  [x, y] {"x %(x), y %(y)"}
+  construct nueva() {}
+}
+
+var matriz = Matriz.nueva()
+
+// Muestra x 1 y 1
+System.print(matriz[1,1])
+```
+
 ### https://wren.io/modules/core/list.html[List: Listas]
 
 Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.
