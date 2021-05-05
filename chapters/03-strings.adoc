@@ -257,7 +257,38 @@ Ambos darán el siguiente resultado:
 mi raw string """
 ```
 
-### https://github.com/wren-lang/wren/wiki/%5BCookbook%5D-Trim-String-Indent[Eliminando Sangría Sobrante]
+### Rangos de caracteres
+
+Un _String_ es una _Secuencia_ de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
+utilizando rangos (_Range_). El índice comieza contando
+desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
+desde el final de la cadena.
+
+#### Caracter en posición específica
+
+```js
+// muestra: h
+System.print("hola wren"[0])
+
+// muestra: n
+System.print("hola wren"[-1])
+```
+
+#### Rango de caracteres dentro de una cadena
+
+```js
+// muestra: la
+System.print("hola wren"[2..3])
+```
+
+#### Invertir una cadena de caracteres
+
+```js
+// muestra: nerw aloh
+System.print("hola wren"[-1..0])
+```
+
+#### https://github.com/wren-lang/wren/wiki/%5BCookbook%5D-Trim-String-Indent[Eliminando Sangría Sobrante]
 
 En muchas ocasiones nos encontramos con la necesidad de eliminar la sangría que se genera al escribir código.
 Para esto podemos utilizar la siguientes funciones:
@@ -300,40 +331,6 @@ var frase = """        Mucha Sangría"""
 
 // Elimina la sangría de la frase
 System.print(borrar_sangrado.call(frase))
-```
-
-
-
-
-### Rangos de caracteres
-
-Un _String_ es una _Secuencia_ de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
-utilizando rangos (_Range_). El índice comieza contando
-desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
-desde el final de la cadena.
-
-#### Caracter en posición específica
-
-```js
-// muestra: h
-System.print("hola wren"[0])
-
-// muestra: n
-System.print("hola wren"[-1])
-```
-
-#### Rango de caracteres dentro de una cadena
-
-```js
-// muestra: la
-System.print("hola wren"[2..3])
-```
-
-#### Invertir una cadena de caracteres
-
-```js
-// muestra: nerw aloh
-System.print("hola wren"[-1..0])
 ```
 
 

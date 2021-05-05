@@ -1,1 +1,23 @@
 ## Funciones y Fibras
+
+Uno de los principios de los lenguajes de programación es evitar código repetitivo (_Don't Repeat Yourself_). Si una acción se debe ejecutar más de una vez se puede definir esa acción una única vez y luego reutilizarla cuantas veces se necesite.
+
+Las funciones permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores. En escencia
+son un conjunto de acciones que están agrupadas.
+
+En _Wren_ las funciones son objetos, esto significa que son iguales que cualquier otra variable y pueden ser usadas como
+parámetros al igual que un _String_ o un número. Otros lenguajes como _Java_ no tienen esta característica.
+
+En el sentido matemático podemos tener la siguiente expresión:
+
+```txt
+f(x) = (x + 10) / 2
+```
+
+Lo cual puede ser expresado en _Wren_ de la siguiente forma:
+
+```js
+Fn.new {|x| (x + 10) / 2}
+```
+
+

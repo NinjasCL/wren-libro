@@ -1075,6 +1075,30 @@ el método <literal>replace</literal>.</simpara>
 <programlisting language="txt" linenumbering="numbered">mi raw string """</programlisting>
 </section>
 </section>
+<section xml:id="_rangos_de_caracteres">
+<title>Rangos de caracteres</title>
+<simpara>Un <emphasis>String</emphasis> es una <emphasis>Secuencia</emphasis> de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
+utilizando rangos (<emphasis>Range</emphasis>). El índice comieza contando
+desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
+desde el final de la cadena.</simpara>
+<section xml:id="_caracter_en_posición_específica">
+<title>Caracter en posición específica</title>
+<programlisting language="js" linenumbering="numbered">// muestra: h
+System.print("hola wren"[0])
+
+// muestra: n
+System.print("hola wren"[-1])</programlisting>
+</section>
+<section xml:id="_rango_de_caracteres_dentro_de_una_cadena">
+<title>Rango de caracteres dentro de una cadena</title>
+<programlisting language="js" linenumbering="numbered">// muestra: la
+System.print("hola wren"[2..3])</programlisting>
+</section>
+<section xml:id="_invertir_una_cadena_de_caracteres">
+<title>Invertir una cadena de caracteres</title>
+<programlisting language="js" linenumbering="numbered">// muestra: nerw aloh
+System.print("hola wren"[-1..0])</programlisting>
+</section>
 <section xml:id="_eliminando_sangría_sobrante">
 <title><link xl:href="https://github.com/wren-lang/wren/wiki/%5BCookbook%5D-Trim-String-Indent">Eliminando Sangría Sobrante</link></title>
 <simpara>En muchas ocasiones nos encontramos con la necesidad de eliminar la sangría que se genera al escribir código.
@@ -1111,30 +1135,6 @@ var frase = """        Mucha Sangría"""
 
 // Elimina la sangría de la frase
 System.print(borrar_sangrado.call(frase))</programlisting>
-</section>
-<section xml:id="_rangos_de_caracteres">
-<title>Rangos de caracteres</title>
-<simpara>Un <emphasis>String</emphasis> es una <emphasis>Secuencia</emphasis> de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
-utilizando rangos (<emphasis>Range</emphasis>). El índice comieza contando
-desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
-desde el final de la cadena.</simpara>
-<section xml:id="_caracter_en_posición_específica">
-<title>Caracter en posición específica</title>
-<programlisting language="js" linenumbering="numbered">// muestra: h
-System.print("hola wren"[0])
-
-// muestra: n
-System.print("hola wren"[-1])</programlisting>
-</section>
-<section xml:id="_rango_de_caracteres_dentro_de_una_cadena">
-<title>Rango de caracteres dentro de una cadena</title>
-<programlisting language="js" linenumbering="numbered">// muestra: la
-System.print("hola wren"[2..3])</programlisting>
-</section>
-<section xml:id="_invertir_una_cadena_de_caracteres">
-<title>Invertir una cadena de caracteres</title>
-<programlisting language="js" linenumbering="numbered">// muestra: nerw aloh
-System.print("hola wren"[-1..0])</programlisting>
 </section>
 </section>
 <section xml:id="_ejercicios_2">
@@ -1634,7 +1634,15 @@ System.print(subconjunto)</programlisting>
 </chapter>
 <chapter xml:id="_funciones_y_fibras">
 <title>Funciones y Fibras</title>
-
+<simpara>Uno de los principios de los lenguajes de programación es evitar código repetitivo (<emphasis>Don&#8217;t Repeat Yourself</emphasis>). Si una acción se debe ejecutar más de una vez se puede definir esa acción una única vez y luego reutilizarla cuantas veces se necesite.</simpara>
+<simpara>Las funciones permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores. En escencia
+son un conjunto de acciones que están agrupadas.</simpara>
+<simpara>En <emphasis>Wren</emphasis> las funciones son objetos, esto significa que son iguales que cualquier otra variable y pueden ser usadas como
+parámetros al igual que un <emphasis>String</emphasis> o un número. Otros lenguajes como <emphasis>Java</emphasis> no tienen esta característica.</simpara>
+<simpara>En el sentido matemático podemos tener la siguiente expresión:</simpara>
+<programlisting language="txt" linenumbering="numbered">f(x) = (x + 10) / 2</programlisting>
+<simpara>Lo cual puede ser expresado en <emphasis>Wren</emphasis> de la siguiente forma:</simpara>
+<programlisting language="js" linenumbering="numbered">Fn.new {|x| (x + 10) / 2}</programlisting>
 </chapter>
 <chapter xml:id="_control_de_flujo_2">
 <title>Control de Flujo</title>

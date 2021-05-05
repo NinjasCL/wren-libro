@@ -541,17 +541,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_incluyendo_el_delimitador_dentro_de_un_raw_string">3.9.1. Incluyendo el delimitador dentro de un <em>Raw String</em></a></li>
 </ul>
 </li>
-<li><a href="#_eliminando_sangría_sobrante">3.10. Eliminando Sangría Sobrante</a></li>
-<li><a href="#_rangos_de_caracteres">3.11. Rangos de caracteres</a>
+<li><a href="#_rangos_de_caracteres">3.10. Rangos de caracteres</a>
 <ul class="sectlevel3">
-<li><a href="#_caracter_en_posición_específica">3.11.1. Caracter en posición específica</a></li>
-<li><a href="#_rango_de_caracteres_dentro_de_una_cadena">3.11.2. Rango de caracteres dentro de una cadena</a></li>
-<li><a href="#_invertir_una_cadena_de_caracteres">3.11.3. Invertir una cadena de caracteres</a></li>
+<li><a href="#_caracter_en_posición_específica">3.10.1. Caracter en posición específica</a></li>
+<li><a href="#_rango_de_caracteres_dentro_de_una_cadena">3.10.2. Rango de caracteres dentro de una cadena</a></li>
+<li><a href="#_invertir_una_cadena_de_caracteres">3.10.3. Invertir una cadena de caracteres</a></li>
+<li><a href="#_eliminando_sangría_sobrante">3.10.4. Eliminando Sangría Sobrante</a></li>
 </ul>
 </li>
-<li><a href="#_ejercicios_2">3.12. Ejercicios</a>
+<li><a href="#_ejercicios_2">3.11. Ejercicios</a>
 <ul class="sectlevel3">
-<li><a href="#chap3-ex1">3.12.1. Donas</a></li>
+<li><a href="#chap3-ex1">3.11.1. Donas</a></li>
 </ul>
 </li>
 </ul>
@@ -2209,7 +2209,45 @@ el método <code>replace</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_eliminando_sangría_sobrante">3.10. <a href="https://github.com/wren-lang/wren/wiki/%5BCookbook%5D-Trim-String-Indent">Eliminando Sangría Sobrante</a></h3>
+<h3 id="_rangos_de_caracteres">3.10. Rangos de caracteres</h3>
+<div class="paragraph">
+<p>Un <em>String</em> es una <em>Secuencia</em> de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
+utilizando rangos (<em>Range</em>). El índice comieza contando
+desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
+desde el final de la cadena.</p>
+</div>
+<div class="sect3">
+<h4 id="_caracter_en_posición_específica">3.10.1. Caracter en posición específica</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: h
+System.print("hola wren"[0])
+
+// muestra: n
+System.print("hola wren"[-1])</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rango_de_caracteres_dentro_de_una_cadena">3.10.2. Rango de caracteres dentro de una cadena</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: la
+System.print("hola wren"[2..3])</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_invertir_una_cadena_de_caracteres">3.10.3. Invertir una cadena de caracteres</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: nerw aloh
+System.print("hola wren"[-1..0])</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_eliminando_sangría_sobrante">3.10.4. <a href="https://github.com/wren-lang/wren/wiki/%5BCookbook%5D-Trim-String-Indent">Eliminando Sangría Sobrante</a></h4>
 <div class="paragraph">
 <p>En muchas ocasiones nos encontramos con la necesidad de eliminar la sangría que se genera al escribir código.
 Para esto podemos utilizar la siguientes funciones:</p>
@@ -2257,49 +2295,11 @@ System.print(borrar_sangrado.call(frase))</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_rangos_de_caracteres">3.11. Rangos de caracteres</h3>
-<div class="paragraph">
-<p>Un <em>String</em> es una <em>Secuencia</em> de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
-utilizando rangos (<em>Range</em>). El índice comieza contando
-desde cero para contar desde el principio de la cadena y puede tener valores negativos para contar
-desde el final de la cadena.</p>
-</div>
-<div class="sect3">
-<h4 id="_caracter_en_posición_específica">3.11.1. Caracter en posición específica</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: h
-System.print("hola wren"[0])
-
-// muestra: n
-System.print("hola wren"[-1])</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_rango_de_caracteres_dentro_de_una_cadena">3.11.2. Rango de caracteres dentro de una cadena</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: la
-System.print("hola wren"[2..3])</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_invertir_una_cadena_de_caracteres">3.11.3. Invertir una cadena de caracteres</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: nerw aloh
-System.print("hola wren"[-1..0])</code></pre>
-</div>
-</div>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_ejercicios_2">3.12. Ejercicios</h3>
+<h3 id="_ejercicios_2">3.11. Ejercicios</h3>
 <div class="sect3">
-<h4 id="chap3-ex1">3.12.1. Donas</h4>
+<h4 id="chap3-ex1">3.11.1. Donas</h4>
 <div class="paragraph">
 <p>Dada una cantidad de un número de donas,
 retornar un string con el contenido
@@ -3019,7 +3019,33 @@ System.print(subconjunto)</code></pre>
 <div class="sect1">
 <h2 id="_funciones_y_fibras">6. Funciones y Fibras</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Uno de los principios de los lenguajes de programación es evitar código repetitivo (<em>Don&#8217;t Repeat Yourself</em>). Si una acción se debe ejecutar más de una vez se puede definir esa acción una única vez y luego reutilizarla cuantas veces se necesite.</p>
+</div>
+<div class="paragraph">
+<p>Las funciones permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores. En escencia
+son un conjunto de acciones que están agrupadas.</p>
+</div>
+<div class="paragraph">
+<p>En <em>Wren</em> las funciones son objetos, esto significa que son iguales que cualquier otra variable y pueden ser usadas como
+parámetros al igual que un <em>String</em> o un número. Otros lenguajes como <em>Java</em> no tienen esta característica.</p>
+</div>
+<div class="paragraph">
+<p>En el sentido matemático podemos tener la siguiente expresión:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt">f(x) = (x + 10) / 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lo cual puede ser expresado en <em>Wren</em> de la siguiente forma:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">Fn.new {|x| (x + 10) / 2}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
