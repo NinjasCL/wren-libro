@@ -170,6 +170,12 @@ Muchas veces se necesitan escribir caracteres especiales en un string. Por ejemp
 "\r" // Retorno de carro.
 "\t" // Tabulación.
 "\v" // Tabulación vertical.
+"\x48"        // Byte sin codificar     (hexadecimal de 2 dígitos).
+"\u0041"      // Code point Unicode (hexadecimal de 4 dígitos).
+"\U0001F64A"  // Code point Unicode (hexadecimal de 8 dígitos).
+
+// Wren 0.4 ha introducido
+"\e"          // Secuencia de escape de terminal ESC.
 ```
 
 Para indicar caracteres especiales podemos utilizar `\u` (unicode para letras disponibles en los idiomas humanos), `\U` (unicode para letras especiales como emoji) y `\x` (bytes sin codificar).
@@ -177,6 +183,127 @@ Para indicar caracteres especiales podemos utilizar `\u` (unicode para letras di
 - `System.print("\u0041\u0b83\u00DE")` = AஃÞ
 - `System.print("\U0001F64A\U0001F680")` = 🙊🚀
 - `System.print("\x48\x69\x2e")` = Hi.
+
+### https://wren.io/values.html#raw-strings[Raw Strings: Cadenas de caracteres sin procesar]
+
+En _Wren 0.4_ se ha introducido un nuevo tipo de _String_ que permite utilizar las comillas sin necesidad de escaparlas.
+Útil por ejemplo cuando se necesita incrustar código de otros lenguajes como _HTML_ o _JSON_ dentro de un script.
+
+Los _Raw Strings_ tienen todas las mismas características que un _String_ normal. La única excepción es que no ejecutan
+*interpolación* ni tampoco las secuencias de escape, ya que todos los caracteres son asimilados sin procesar.
+
+Son delimitados por tres caracteres de doble comilla (`"""`). Si los delimitadores están en su propia línea los caracteres
+de espaciado (`\t, espacio, \n`) no serán considerados. Este delimitador no se puede escapar por lo que a penas se detecte
+se considerará como terminado el _Raw String_.
+
+En el siguiente ejemplo vemos un simple _JSON_. Donde se puede apreciar que no es necesario escapar las comillas.
+
+```js
+"""
+  {
+    "hola": "wren",
+    "de" : "json"
+  }
+"""
+```
+
+Podemos ver la característica de ignorar los espaciados iniciales y finales con la siguiente comparación:
+
+```js
+// La siguiente frase tiene 8 caracteres de sangría despúes del delimitador y antes del limitador
+var frase = """        
+        Hola Wren Raw
+        """
+
+System.print("'%(frase)'") // Mostrará Hola Wren con 8 espacios de sangría
+
+// La siguiente frase incluye 8 caracteres de espacio
+frase = "        
+        Hola Wren
+        "
+
+System.print("'%(frase)'") // Muestra Hola Wren con 24 espacios de sangría
+```
+
+Dando el siguiente resultado (se han agregado comillas para mostrar cuando comienza y termina un resultado):
+
+```txt
+'        Hola Wren Raw'
+'        
+        Hola Wren
+        '
+```
+
+#### Incluyendo el delimitador dentro de un _Raw String_
+
+Debido a que el delimitador no se puede escapar. Para incluirlo se debe utilizar la concatenación de _Strings_ o utilizando
+el método `replace`.
+
+Concatenación de _String_.
+
+```js
+System.print(""" mi raw string """ + "\"\"\"")
+```
+
+Utilizando `replace`
+
+```js
+System.print(""" mi raw string '''""".replace("'", "\""))
+```
+
+Ambos darán el siguiente resultado:
+
+```txt
+mi raw string """
+```
+
+### https://github.com/wren-lang/wren/wiki/%5BCookbook%5D-Trim-String-Indent[Eliminando Sangría Sobrante]
+
+En muchas ocasiones nos encontramos con la necesidad de eliminar la sangría que se genera al escribir código.
+Para esto podemos utilizar la siguientes funciones:
+
+```js
+
+var contar_sangria = Fn.new {|string|
+    var indice = 0
+    var bytes = string.bytes
+    while(indice < bytes.count) {
+        var caracter = bytes[indice]
+        if(caracter == 0x20 || caracter == 0x09) {
+          indice = indice + 1
+          continue
+        }
+        return indice
+    }
+    return 0
+}
+  
+var borrar_sangrado = Fn.new {|string|
+    var inicio = contar_sangria.call(string)
+    if(inicio == 0) return string
+    var lineas = string.split("\n")
+
+    lineas = lineas.map {|linea|
+        var izquierda = contar_sangria.call(linea)
+        if(izquierda >= inicio) return linea[inicio..-1]
+        return linea
+    }
+    return lineas.join("\n")
+}
+```
+
+Ejemplo de uso:
+
+```js
+// Ejemplo
+var frase = """        Mucha Sangría"""
+
+// Elimina la sangría de la frase
+System.print(borrar_sangrado.call(frase))
+```
+
+
+
 
 ### Rangos de caracteres
 
@@ -208,6 +335,7 @@ System.print("hola wren"[2..3])
 // muestra: nerw aloh
 System.print("hola wren"[-1..0])
 ```
+
 
 ### Ejercicios
 

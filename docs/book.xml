@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>El <emphasis>Wren</emphasis> libro</title>
-<date>2020-12-27</date>
+<date>2021-05-05</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -1008,7 +1008,13 @@ System.print("-" + nombre.trim() + "-")</programlisting>
 "\n" // Salto de línea.
 "\r" // Retorno de carro.
 "\t" // Tabulación.
-"\v" // Tabulación vertical.</programlisting>
+"\v" // Tabulación vertical.
+"\x48"        // Byte sin codificar     (hexadecimal de 2 dígitos).
+"\u0041"      // Code point Unicode (hexadecimal de 4 dígitos).
+"\U0001F64A"  // Code point Unicode (hexadecimal de 8 dígitos).
+
+// Wren 0.4 ha introducido
+"\e"          // Secuencia de escape de terminal ESC.</programlisting>
 <simpara>Para indicar caracteres especiales podemos utilizar <literal>\u</literal> (unicode para letras disponibles en los idiomas humanos), <literal>\U</literal> (unicode para letras especiales como emoji) y <literal>\x</literal> (bytes sin codificar).</simpara>
 <itemizedlist>
 <listitem>
@@ -1021,6 +1027,90 @@ System.print("-" + nombre.trim() + "-")</programlisting>
 <simpara><literal>System.print("\x48\x69\x2e")</literal> = Hi.</simpara>
 </listitem>
 </itemizedlist>
+</section>
+<section xml:id="_raw_strings_cadenas_de_caracteres_sin_procesar">
+<title><link xl:href="https://wren.io/values.html#raw-strings">Raw Strings: Cadenas de caracteres sin procesar</link></title>
+<simpara>En <emphasis>Wren 0.4</emphasis> se ha introducido un nuevo tipo de <emphasis>String</emphasis> que permite utilizar las comillas sin necesidad de escaparlas.
+Útil por ejemplo cuando se necesita incrustar código de otros lenguajes como <emphasis>HTML</emphasis> o <emphasis>JSON</emphasis> dentro de un script.</simpara>
+<simpara>Los <emphasis>Raw Strings</emphasis> tienen todas las mismas características que un <emphasis>String</emphasis> normal. La única excepción es que no ejecutan
+<emphasis role="strong">interpolación</emphasis> ni tampoco las secuencias de escape, ya que todos los caracteres son asimilados sin procesar.</simpara>
+<simpara>Son delimitados por tres caracteres de doble comilla (<literal>"""</literal>). Si los delimitadores están en su propia línea los caracteres
+de espaciado (<literal>\t, espacio, \n</literal>) no serán considerados. Este delimitador no se puede escapar por lo que a penas se detecte
+se considerará como terminado el <emphasis>Raw String</emphasis>.</simpara>
+<simpara>En el siguiente ejemplo vemos un simple <emphasis>JSON</emphasis>. Donde se puede apreciar que no es necesario escapar las comillas.</simpara>
+<programlisting language="js" linenumbering="numbered">"""
+  {
+    "hola": "wren",
+    "de" : "json"
+  }
+"""</programlisting>
+<simpara>Podemos ver la característica de ignorar los espaciados iniciales y finales con la siguiente comparación:</simpara>
+<programlisting language="js" linenumbering="numbered">// La siguiente frase tiene 8 caracteres de sangría despúes del delimitador y antes del limitador
+var frase = """
+        Hola Wren Raw
+        """
+
+System.print("'%(frase)'") // Mostrará Hola Wren con 8 espacios de sangría
+
+// La siguiente frase incluye 8 caracteres de espacio
+frase = "
+        Hola Wren
+        "
+
+System.print("'%(frase)'") // Muestra Hola Wren con 24 espacios de sangría</programlisting>
+<simpara>Dando el siguiente resultado (se han agregado comillas para mostrar cuando comienza y termina un resultado):</simpara>
+<programlisting language="txt" linenumbering="numbered">'        Hola Wren Raw'
+'
+        Hola Wren
+        '</programlisting>
+<section xml:id="_incluyendo_el_delimitador_dentro_de_un_raw_string">
+<title>Incluyendo el delimitador dentro de un <emphasis>Raw String</emphasis></title>
+<simpara>Debido a que el delimitador no se puede escapar. Para incluirlo se debe utilizar la concatenación de <emphasis>Strings</emphasis> o utilizando
+el método <literal>replace</literal>.</simpara>
+<simpara>Concatenación de <emphasis>String</emphasis>.</simpara>
+<programlisting language="js" linenumbering="numbered">System.print(""" mi raw string """ + "\"\"\"")</programlisting>
+<simpara>Utilizando <literal>replace</literal></simpara>
+<programlisting language="js" linenumbering="numbered">System.print(""" mi raw string '''""".replace("'", "\""))</programlisting>
+<simpara>Ambos darán el siguiente resultado:</simpara>
+<programlisting language="txt" linenumbering="numbered">mi raw string """</programlisting>
+</section>
+</section>
+<section xml:id="_eliminando_sangría_sobrante">
+<title><link xl:href="https://github.com/wren-lang/wren/wiki/%5BCookbook%5D-Trim-String-Indent">Eliminando Sangría Sobrante</link></title>
+<simpara>En muchas ocasiones nos encontramos con la necesidad de eliminar la sangría que se genera al escribir código.
+Para esto podemos utilizar la siguientes funciones:</simpara>
+<programlisting language="js" linenumbering="numbered">var contar_sangria = Fn.new {|string|
+    var indice = 0
+    var bytes = string.bytes
+    while(indice &lt; bytes.count) {
+        var caracter = bytes[indice]
+        if(caracter == 0x20 || caracter == 0x09) {
+          indice = indice + 1
+          continue
+        }
+        return indice
+    }
+    return 0
+}
+
+var borrar_sangrado = Fn.new {|string|
+    var inicio = contar_sangria.call(string)
+    if(inicio == 0) return string
+    var lineas = string.split("\n")
+
+    lineas = lineas.map {|linea|
+        var izquierda = contar_sangria.call(linea)
+        if(izquierda &gt;= inicio) return linea[inicio..-1]
+        return linea
+    }
+    return lineas.join("\n")
+}</programlisting>
+<simpara>Ejemplo de uso:</simpara>
+<programlisting language="js" linenumbering="numbered">// Ejemplo
+var frase = """        Mucha Sangría"""
+
+// Elimina la sangría de la frase
+System.print(borrar_sangrado.call(frase))</programlisting>
 </section>
 <section xml:id="_rangos_de_caracteres">
 <title>Rangos de caracteres</title>
@@ -1433,6 +1523,23 @@ de una secuencia dependiendo de una condición.</simpara>
   // Muestra null
   System.print(resultado)</programlisting>
 </section>
+</section>
+<section xml:id="_subscripts_subíndices">
+<title><link xl:href="https://wren.io/method-calls.html#subscripts">Subscripts: Subíndices</link></title>
+<simpara>Los <emphasis>Subíndices</emphasis> nos ayudan a obtener valores dentro de una lista, mapa u objeto que implemente
+el método de subíndice utilizando los paréntesis cuadrados (corchetes) <literal>[]</literal>.</simpara>
+<programlisting language="js" linenumbering="numbered">lista[0]    // Obtiene el primer elmento de la lista
+mapa["id"] // Obtiene el valor asociado con "id"</programlisting>
+<simpara>El siguiente código muestra como implementar un objeto que acepta dos parámetros en su método de subíndice.</simpara>
+<programlisting language="js" linenumbering="numbered">class Matriz {
+  [x, y] {"x %(x), y %(y)"}
+  construct nueva() {}
+}
+
+var matriz = Matriz.nueva()
+
+// Muestra x 1 y 1
+System.print(matriz[1,1])</programlisting>
 </section>
 <section xml:id="_list_listas">
 <title><link xl:href="https://wren.io/modules/core/list.html">List: Listas</link></title>

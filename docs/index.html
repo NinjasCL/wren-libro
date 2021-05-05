@@ -441,6 +441,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -535,16 +536,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_caracteres_de_escape">3.8. Caracteres de escape</a></li>
-<li><a href="#_rangos_de_caracteres">3.9. Rangos de caracteres</a>
+<li><a href="#_raw_strings_cadenas_de_caracteres_sin_procesar">3.9. Raw Strings: Cadenas de caracteres sin procesar</a>
 <ul class="sectlevel3">
-<li><a href="#_caracter_en_posición_específica">3.9.1. Caracter en posición específica</a></li>
-<li><a href="#_rango_de_caracteres_dentro_de_una_cadena">3.9.2. Rango de caracteres dentro de una cadena</a></li>
-<li><a href="#_invertir_una_cadena_de_caracteres">3.9.3. Invertir una cadena de caracteres</a></li>
+<li><a href="#_incluyendo_el_delimitador_dentro_de_un_raw_string">3.9.1. Incluyendo el delimitador dentro de un <em>Raw String</em></a></li>
 </ul>
 </li>
-<li><a href="#_ejercicios_2">3.10. Ejercicios</a>
+<li><a href="#_eliminando_sangría_sobrante">3.10. Eliminando Sangría Sobrante</a></li>
+<li><a href="#_rangos_de_caracteres">3.11. Rangos de caracteres</a>
 <ul class="sectlevel3">
-<li><a href="#chap3-ex1">3.10.1. Donas</a></li>
+<li><a href="#_caracter_en_posición_específica">3.11.1. Caracter en posición específica</a></li>
+<li><a href="#_rango_de_caracteres_dentro_de_una_cadena">3.11.2. Rango de caracteres dentro de una cadena</a></li>
+<li><a href="#_invertir_una_cadena_de_caracteres">3.11.3. Invertir una cadena de caracteres</a></li>
+</ul>
+</li>
+<li><a href="#_ejercicios_2">3.12. Ejercicios</a>
+<ul class="sectlevel3">
+<li><a href="#chap3-ex1">3.12.1. Donas</a></li>
 </ul>
 </li>
 </ul>
@@ -578,8 +585,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_ejemplo">5.1.12. ejemplo</a></li>
 </ul>
 </li>
-<li><a href="#_list_listas">5.2. List: Listas</a></li>
-<li><a href="#_range_rangos">5.3. Range: Rangos</a></li>
+<li><a href="#_subscripts_subíndices">5.2. Subscripts: Subíndices</a></li>
+<li><a href="#_list_listas">5.3. List: Listas</a></li>
+<li><a href="#_range_rangos">5.4. Range: Rangos</a></li>
 </ul>
 </li>
 <li><a href="#_funciones_y_fibras">6. Funciones y Fibras</a></li>
@@ -714,7 +722,7 @@ oficial, poder reemplazarlos adecuadamente.</p>
 <div class="listingblock">
 <div class="title">Lua</div>
 <div class="content">
-<pre class="highlight"><code class="language-lua" data-lang="lua">-- cuenta.lua
+<pre class="highlightjs highlight"><code class="language-lua hljs" data-lang="lua">-- cuenta.lua
 
 Cuenta = {}
 Cuenta.__index = Cuenta
@@ -738,7 +746,7 @@ cuenta:retirar(100)</code></pre>
 <div class="listingblock">
 <div class="title">Wren</div>
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// cuenta.wren
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// cuenta.wren
 
 class Cuenta {
   construct crear(balance) { _balance = balance }
@@ -872,7 +880,7 @@ son complejos: <em>C++</em>, <em>Java</em>, <a href="https://docs.microsoft.com/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>0 - Fin del programa exitoso
+<pre class="highlightjs highlight"><code class="language-none hljs">0 - Fin del programa exitoso
 1 - Error desconocido
 2 - (grep) Uso incorrecto del comando | (bash) Error de entrada/salida
 64 - Uso incorrecto del comando
@@ -904,7 +912,7 @@ son complejos: <em>C++</em>, <em>Java</em>, <a href="https://docs.microsoft.com/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-c" data-lang="c">// Exit codes used by the wren binaries, following the BSD standard
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">// Exit codes used by the wren binaries, following the BSD standard
 //
 // The interpreter was used with an incorrect number of arguments
 #define WREN_EX_USAGE 64
@@ -960,13 +968,13 @@ que muestre el mensaje "¡Hola Wren!".</p>
 <div class="listingblock">
 <div class="title">Salida</div>
 <div class="content">
-<pre class="highlight"><code>¡Hola Wren!</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">¡Hola Wren!</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Código</div>
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// muestra: ¡Hola Wren!</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: ¡Hola Wren!</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1092,7 +1100,7 @@ Este valor puede ser una cadena de caracteres, númerico, booleano u otro tipo d
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola mundo Wren"
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var mensaje = "Hola mundo Wren"
 System.print(mensaje)</code></pre>
 </div>
 </div>
@@ -1101,7 +1109,7 @@ System.print(mensaje)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola mundo Wren"
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var mensaje = "Hola mundo Wren"
 System.print(mensaje)
 
 mensaje = "El chercán es una bonita ave"
@@ -1114,7 +1122,7 @@ recibiremos un error similar a lo siguiente:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var mensaje = "Hola"
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var mensaje = "Hola"
 System.print(mensaj)
 [repl line 1] Error at 'mensaj': Variable is used but not defined.</code></pre>
 </div>
@@ -1133,7 +1141,7 @@ dentro del contexto y que no existan errores de escritura en sus nombres.</p>
 <h4 id="_ejemplo_de_identificadores_válidos">2.3.1. Ejemplo de Identificadores válidos</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">hola
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">hola
 camelCase
 PascalCase
 _under_score
@@ -1146,7 +1154,7 @@ TODAS_MAYUSCULAS</code></pre>
 <h4 id="_ejemplo_de_identificadores_no_válidos">2.3.2. Ejemplo de Identificadores no válidos</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>13hola
+<pre class="highlightjs highlight"><code class="language-none hljs">13hola
 mi-variable
 $miVariable
 mi variable
@@ -1164,7 +1172,7 @@ Mi👩clase</code></pre>
 <div class="listingblock">
 <div class="title">EmojiCode</div>
 <div class="content">
-<pre class="highlight"><code>🏁 🍇
+<pre class="highlightjs highlight"><code class="language-none hljs">🏁 🍇
   😀 🔤Hello World!🔤❗️
 🍉</code></pre>
 </div>
@@ -1187,19 +1195,19 @@ su nombre con mayúsculas. Si bien es posible definir clases con letras minúscu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Asociamos la clase `Numero` como un substituto para llamar a la clase `Num`
 var Numero = Num</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Dará error. No se puede heredar de las clases primitivas.
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Dará error. No se puede heredar de las clases primitivas.
 class Numero is Num {}</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Es posible nombrar con minúsculas, pero puede dar
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Es posible nombrar con minúsculas, pero puede dar
 // conflictos de contexto al momento de usarlo dentro
 // de una clase. (Puede hacer colisión con nombres de variable)
 class numero {}</code></pre>
@@ -1229,7 +1237,7 @@ class numero {}</code></pre>
 <h4 id="_ejemplo_lista_de_elementos">2.4.1. Ejemplo: Lista de elementos</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var animales = [
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var animales = [
   "perro",
   "gato",
   "condor",
@@ -1242,7 +1250,7 @@ class numero {}</code></pre>
 <h4 id="_ejemplo_parámetros_de_un_método">2.4.2. Ejemplo: Parámetros de un método</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">MiClase.metodo(
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">MiClase.metodo(
   parametro1,
   parametro2,
   parametro3
@@ -1258,13 +1266,13 @@ Por lo tanto es importante la posición de las llaves (<em>"{}"</em>) dentro de 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Correcto
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Correcto
 if (condiccion == true) { x = 0 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Correcto
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Correcto
 if (condiccion == true)   {
   x = 0
 }</code></pre>
@@ -1272,7 +1280,7 @@ if (condiccion == true)   {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Correcto
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Correcto
 if (condicion == true) x = 0</code></pre>
 </div>
 </div>
@@ -1282,7 +1290,7 @@ if (condicion == true) x = 0</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">  // Si la condición es verdadera, x será 0. Si es falsa, x será 1
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">  // Si la condición es verdadera, x será 0. Si es falsa, x será 1
   var x = condicion ? 0 : 1</code></pre>
 </div>
 </div>
@@ -1291,7 +1299,7 @@ if (condicion == true) x = 0</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">  // Si x es nulo se asignará 0. Caso contrario mantiene su valor anterior.
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">  // Si x es nulo se asignará 0. Caso contrario mantiene su valor anterior.
   x = x || 0</code></pre>
 </div>
 </div>
@@ -1300,7 +1308,7 @@ if (condicion == true) x = 0</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Error
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Error
 if (condiction == true)
 {
   x = 0
@@ -1324,7 +1332,7 @@ provoca un comportamiento inusual al momento de llamar métodos.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">Random.new().int(10)</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">Random.new().int(10)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1332,7 +1340,7 @@ provoca un comportamiento inusual al momento de llamar métodos.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">Random
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">Random
 .new()
 .int(10)</code></pre>
 </div>
@@ -1342,7 +1350,7 @@ provoca un comportamiento inusual al momento de llamar métodos.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">Random.
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">Random.
 new().
 int(10)</code></pre>
 </div>
@@ -1358,7 +1366,7 @@ int(10)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">Random.new().int(10) Random.new().int(10)</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">Random.new().int(10) Random.new().int(10)</code></pre>
 </div>
 </div>
 </div>
@@ -1373,7 +1381,7 @@ es <em>null</em>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">class Auto {
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class Auto {
   // ruedas retornará siempre el valor "4"
   ruedas {4}
 
@@ -1392,7 +1400,7 @@ es <em>null</em>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">break class construct else false for foreign if import
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">break class construct else false for foreign if import
 in is null return static super this true var while</code></pre>
 </div>
 </div>
@@ -1420,7 +1428,7 @@ in is null return static super this true var while</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var mostrar = Fn.new {|parametro|
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var mostrar = Fn.new {|parametro|
   System.print(parametro)
 }
 
@@ -1436,7 +1444,7 @@ mostrar.call("hola")</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var mostrar = Fn.new {|parametro|
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var mostrar = Fn.new {|parametro|
   System.print(parametro)
 }
 
@@ -1452,7 +1460,7 @@ var error = Fiber.new { mostrar.call("hola") }.try()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">class MiClase {}</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class MiClase {}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1463,7 +1471,7 @@ constructores y métodos de clase no son heredados (todos son privados).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">class Animal {
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class Animal {
   // la propiedad _nombre solo puede ser accesible
   // a clases hijos si se definen como métodos accesadores
   nombre {_nombre}
@@ -1507,7 +1515,7 @@ Para llamar a la instancia se usa <code>this</code> (opcional).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">class Auto {
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class Auto {
   construct nuevo() {
     System.print(this)
   }
@@ -1519,7 +1527,7 @@ Para llamar a la instancia se usa <code>this</code> (opcional).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">class Fruta {
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class Fruta {
   // accesador (getter)
   static cantidad {__cantidad}
 
@@ -1552,7 +1560,7 @@ Esta propiedad debe ser llamada recursivamente para obtener el árbol de herenci
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">class Animal {}
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class Animal {}
 
 class Perro is Animal {}
 
@@ -1568,7 +1576,7 @@ if (Perro.supertype == Animal) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var perrito = Perro.new()
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var perrito = Perro.new()
 if (perrito is Perro) {
   // perrito es Perro
 }
@@ -1590,7 +1598,7 @@ if (Perro is Animal) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">class Animal {}
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class Animal {}
 
 class Perro is Animal {}
 
@@ -1612,21 +1620,21 @@ System.print(Object.supertype)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">if (condicion) {
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">if (condicion) {
   // codigo
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">while (condicion) {
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">while (condicion) {
   // codigo
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">for (elemento in secuencia) {
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">for (elemento in secuencia) {
   // codigo
   break
 }</code></pre>
@@ -1644,7 +1652,7 @@ El leer los archivos e importar su contenido dependerá del intérprete.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// El módulo se llama "random" e importamos la clase "Random" que está dentro de este módulo
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// El módulo se llama "random" e importamos la clase "Random" que está dentro de este módulo
 import "random" for Random</code></pre>
 </div>
 </div>
@@ -1669,7 +1677,7 @@ import "random" for Random</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Convertimos los datos a un String serializable
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Convertimos los datos a un String serializable
 3.toString
 ["1",2,"tres", true].toString
 
@@ -1702,7 +1710,7 @@ de los programas.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Comentario de una sola línea
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Comentario de una sola línea
 
 /*
 Este comentario
@@ -1716,7 +1724,7 @@ líneas
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">/*
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">/*
 Este comentario
 tiene múltiples
 líneas.
@@ -1735,7 +1743,7 @@ por que pueden "cortar" un código para no ser ejecutado.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// /*
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// /*
   codigo()
 // */</code></pre>
 </div>
@@ -1746,7 +1754,7 @@ puedes activar o desactivar secciones de código.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">/*
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">/*
   codigo()
 // */</code></pre>
 </div>
@@ -1756,7 +1764,7 @@ puedes activar o desactivar secciones de código.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">//*
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">//*
   codigo()
 // */</code></pre>
 </div>
@@ -1766,7 +1774,7 @@ puedes activar o desactivar secciones de código.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">/*
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">/*
   codigo()
 // */</code></pre>
 </div>
@@ -1780,7 +1788,7 @@ con algunos parámetros, puede ser útil comentarlos.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">circulo(/* x */ 10, /* y */ 20, /* radio */ 10)</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">circulo(/* x */ 10, /* y */ 20, /* radio */ 10)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1788,7 +1796,7 @@ con algunos parámetros, puede ser útil comentarlos.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var x = 10
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var x = 10
 var y = 20
 var radio = 10
 circulo(x, y, radio)</code></pre>
@@ -1884,7 +1892,7 @@ circulo(x, y, radio)</code></pre>
 <h3 id="_string_de_una_línea">3.1. String de una línea</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">"Solo es necesario comillas dobles"</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">"Solo es necesario comillas dobles"</code></pre>
 </div>
 </div>
 </div>
@@ -1895,7 +1903,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">"
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">"
  Todo esto es una string multi línea
  Wren esperará hasta que aparezca
  la siguiente comilla doble.
@@ -1915,7 +1923,7 @@ circulo(x, y, radio)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">System.print("a".count) // Retorna 1.
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">System.print("a".count) // Retorna 1.
 System.print("a".bytes.count) // Retorna 1 (Parte de la tabla ASCII original).
 
 System.print("ñ".count) // Retorna 1.
@@ -1968,7 +1976,7 @@ System.print("👨‍👩‍👧‍👦".bytes.count) // Retorna 25 al contar lo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// muestra: La respuesta es 42.
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: La respuesta es 42.
 System.print("La respuesta es %(20 * 2 + 2).")
 
 // muestra: wow 149
@@ -1983,7 +1991,7 @@ System.print("wow %((1..3).map {|n| n * n}.join())")</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// muestra hola hola hola
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra hola hola hola
 System.print("hola " * 3)</code></pre>
 </div>
 </div>
@@ -2004,7 +2012,7 @@ en un <em>String</em>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// muestra: hola
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: hola
 System.print("hola wren".take(4).join())</code></pre>
 </div>
 </div>
@@ -2021,7 +2029,7 @@ para una persona. Los caracteres no imprimibles más comunes son el espacio (<em
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">System.print("Hola a todos")
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">System.print("Hola a todos")
 System.print("\tHola a todos")
 System.print("Hola\na todos")
 System.print("\n\n\nHola\ta\ttodos")</code></pre>
@@ -2034,7 +2042,7 @@ System.print("\n\n\nHola\ta\ttodos")</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var nombre = " arturo "
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var nombre = " arturo "
 
 // Elimina solamente espacio final
 System.print(nombre.trimEnd())
@@ -2052,7 +2060,7 @@ se puede usar el siguiente código:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var nombre = " arturo "
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var nombre = " arturo "
 
 // Elimina solamente espacio final
 System.print("-" + nombre.trimEnd() + "-")
@@ -2073,7 +2081,7 @@ System.print("-" + nombre.trim() + "-")</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">"\0" // byte NUL (Nulo) : 0.
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">"\0" // byte NUL (Nulo) : 0.
 "\"" // Comillas dobles.
 "\\" // Barra invertida.
 "\%" // Signo porcentaje.
@@ -2083,7 +2091,13 @@ System.print("-" + nombre.trim() + "-")</code></pre>
 "\n" // Salto de línea.
 "\r" // Retorno de carro.
 "\t" // Tabulación.
-"\v" // Tabulación vertical.</code></pre>
+"\v" // Tabulación vertical.
+"\x48"        // Byte sin codificar     (hexadecimal de 2 dígitos).
+"\u0041"      // Code point Unicode (hexadecimal de 4 dígitos).
+"\U0001F64A"  // Code point Unicode (hexadecimal de 8 dígitos).
+
+// Wren 0.4 ha introducido
+"\e"          // Secuencia de escape de terminal ESC.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2104,7 +2118,147 @@ System.print("-" + nombre.trim() + "-")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_rangos_de_caracteres">3.9. Rangos de caracteres</h3>
+<h3 id="_raw_strings_cadenas_de_caracteres_sin_procesar">3.9. <a href="https://wren.io/values.html#raw-strings">Raw Strings: Cadenas de caracteres sin procesar</a></h3>
+<div class="paragraph">
+<p>En <em>Wren 0.4</em> se ha introducido un nuevo tipo de <em>String</em> que permite utilizar las comillas sin necesidad de escaparlas.
+Útil por ejemplo cuando se necesita incrustar código de otros lenguajes como <em>HTML</em> o <em>JSON</em> dentro de un script.</p>
+</div>
+<div class="paragraph">
+<p>Los <em>Raw Strings</em> tienen todas las mismas características que un <em>String</em> normal. La única excepción es que no ejecutan
+<strong>interpolación</strong> ni tampoco las secuencias de escape, ya que todos los caracteres son asimilados sin procesar.</p>
+</div>
+<div class="paragraph">
+<p>Son delimitados por tres caracteres de doble comilla (<code>"""</code>). Si los delimitadores están en su propia línea los caracteres
+de espaciado (<code>\t, espacio, \n</code>) no serán considerados. Este delimitador no se puede escapar por lo que a penas se detecte
+se considerará como terminado el <em>Raw String</em>.</p>
+</div>
+<div class="paragraph">
+<p>En el siguiente ejemplo vemos un simple <em>JSON</em>. Donde se puede apreciar que no es necesario escapar las comillas.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">"""
+  {
+    "hola": "wren",
+    "de" : "json"
+  }
+"""</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Podemos ver la característica de ignorar los espaciados iniciales y finales con la siguiente comparación:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// La siguiente frase tiene 8 caracteres de sangría despúes del delimitador y antes del limitador
+var frase = """
+        Hola Wren Raw
+        """
+
+System.print("'%(frase)'") // Mostrará Hola Wren con 8 espacios de sangría
+
+// La siguiente frase incluye 8 caracteres de espacio
+frase = "
+        Hola Wren
+        "
+
+System.print("'%(frase)'") // Muestra Hola Wren con 24 espacios de sangría</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dando el siguiente resultado (se han agregado comillas para mostrar cuando comienza y termina un resultado):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt">'        Hola Wren Raw'
+'
+        Hola Wren
+        '</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_incluyendo_el_delimitador_dentro_de_un_raw_string">3.9.1. Incluyendo el delimitador dentro de un <em>Raw String</em></h4>
+<div class="paragraph">
+<p>Debido a que el delimitador no se puede escapar. Para incluirlo se debe utilizar la concatenación de <em>Strings</em> o utilizando
+el método <code>replace</code>.</p>
+</div>
+<div class="paragraph">
+<p>Concatenación de <em>String</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">System.print(""" mi raw string """ + "\"\"\"")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Utilizando <code>replace</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">System.print(""" mi raw string '''""".replace("'", "\""))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ambos darán el siguiente resultado:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt">mi raw string """</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_eliminando_sangría_sobrante">3.10. <a href="https://github.com/wren-lang/wren/wiki/%5BCookbook%5D-Trim-String-Indent">Eliminando Sangría Sobrante</a></h3>
+<div class="paragraph">
+<p>En muchas ocasiones nos encontramos con la necesidad de eliminar la sangría que se genera al escribir código.
+Para esto podemos utilizar la siguientes funciones:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var contar_sangria = Fn.new {|string|
+    var indice = 0
+    var bytes = string.bytes
+    while(indice &lt; bytes.count) {
+        var caracter = bytes[indice]
+        if(caracter == 0x20 || caracter == 0x09) {
+          indice = indice + 1
+          continue
+        }
+        return indice
+    }
+    return 0
+}
+
+var borrar_sangrado = Fn.new {|string|
+    var inicio = contar_sangria.call(string)
+    if(inicio == 0) return string
+    var lineas = string.split("\n")
+
+    lineas = lineas.map {|linea|
+        var izquierda = contar_sangria.call(linea)
+        if(izquierda &gt;= inicio) return linea[inicio..-1]
+        return linea
+    }
+    return lineas.join("\n")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ejemplo de uso:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Ejemplo
+var frase = """        Mucha Sangría"""
+
+// Elimina la sangría de la frase
+System.print(borrar_sangrado.call(frase))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rangos_de_caracteres">3.11. Rangos de caracteres</h3>
 <div class="paragraph">
 <p>Un <em>String</em> es una <em>Secuencia</em> de caracteres. Por lo que es posible obtener caracteres en posiciones específicas
 utilizando rangos (<em>Range</em>). El índice comieza contando
@@ -2112,10 +2266,10 @@ desde cero para contar desde el principio de la cadena y puede tener valores neg
 desde el final de la cadena.</p>
 </div>
 <div class="sect3">
-<h4 id="_caracter_en_posición_específica">3.9.1. Caracter en posición específica</h4>
+<h4 id="_caracter_en_posición_específica">3.11.1. Caracter en posición específica</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// muestra: h
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: h
 System.print("hola wren"[0])
 
 // muestra: n
@@ -2124,28 +2278,28 @@ System.print("hola wren"[-1])</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_rango_de_caracteres_dentro_de_una_cadena">3.9.2. Rango de caracteres dentro de una cadena</h4>
+<h4 id="_rango_de_caracteres_dentro_de_una_cadena">3.11.2. Rango de caracteres dentro de una cadena</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// muestra: la
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: la
 System.print("hola wren"[2..3])</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_invertir_una_cadena_de_caracteres">3.9.3. Invertir una cadena de caracteres</h4>
+<h4 id="_invertir_una_cadena_de_caracteres">3.11.3. Invertir una cadena de caracteres</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// muestra: nerw aloh
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: nerw aloh
 System.print("hola wren"[-1..0])</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ejercicios_2">3.10. Ejercicios</h3>
+<h3 id="_ejercicios_2">3.12. Ejercicios</h3>
 <div class="sect3">
-<h4 id="chap3-ex1">3.10.1. Donas</h4>
+<h4 id="chap3-ex1">3.12.1. Donas</h4>
 <div class="paragraph">
 <p>Dada una cantidad de un número de donas,
 retornar un string con el contenido
@@ -2174,7 +2328,7 @@ la palabras <em>'muchas'</em> en vez del número de cantidad.</p>
 <div class="listingblock">
 <div class="title">Código</div>
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var donas = Fn.new {|cantidad|
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var donas = Fn.new {|cantidad|
   // Tu código aquí
 }
 
@@ -2218,7 +2372,7 @@ System.print()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Enteros
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Enteros
 0
 1234
 -5678
@@ -2240,7 +2394,7 @@ System.print()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">System.print(3+2)
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">System.print(3+2)
 
 System.print(3-2)
 
@@ -2258,7 +2412,7 @@ System.print(3.pow(2))</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var ordenNormal = 2+3*4
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var ordenNormal = 2+3*4
 
 System.print(ordenNormal)
 
@@ -2310,7 +2464,7 @@ ser posible hacer cálculos que involucren números de órdenes muy dispares.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var a = 0.15 + 0.15
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var a = 0.15 + 0.15
 var b = 0.1 + 0.2
 
 // puede ser falso
@@ -2337,7 +2491,7 @@ if (a &gt;= b) {}</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var equivalentes = Fn.new { |a, b, epsilon|
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var equivalentes = Fn.new { |a, b, epsilon|
 
   var absA = a.abs
   var absB = b.abs
@@ -2395,7 +2549,7 @@ con instrucciones para formatear números como <em>C</em> u otros lenguajes (Eje
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Solamente muestra 3
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Solamente muestra 3
 System.print(Num.pi.truncate)</code></pre>
 </div>
 </div>
@@ -2407,7 +2561,7 @@ System.print(Num.pi.truncate)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var formateado = (Num.pi * 1e2).truncate / 1e2
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var formateado = (Num.pi * 1e2).truncate / 1e2
 
 // Muestra 3.14
 System.print(formateado)</code></pre>
@@ -2418,7 +2572,7 @@ System.print(formateado)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var formatear = Fn.new {|numero, decimales| (numero * 10.pow(decimales)).truncate / 10.pow(decimales)}
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var formatear = Fn.new {|numero, decimales| (numero * 10.pow(decimales)).truncate / 10.pow(decimales)}
 
 // Muestra 3.14
 System.print(formatear.call(Num.pi, 2))</code></pre>
@@ -2429,7 +2583,7 @@ System.print(formatear.call(Num.pi, 2))</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Convertimos el número a String
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Convertimos el número a String
 var string = Num.pi.toString
 
 // Queremos mostrar 3.14
@@ -2470,7 +2624,7 @@ Entre los métodos que podemos destacar de <em>Sequence</em> están:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3]
 numeros.each {|num|
   System.print(num)
 }</code></pre>
@@ -2486,7 +2640,7 @@ Para pasarlo a una variable independiente, se debe ejecutar el método <code>toL
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3]
 
 // .toList es necesario para que System.print() muestre la lista apropiadamente.
 // Esto es debido a que una secuencia puede no tener fin. Necesitamos pasarlo a una estructura de datos finita.
@@ -2505,7 +2659,7 @@ System.print(numeros)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3, 4]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3, 4]
 
 var pares = numeros.where{|num| num % 2 == 0}.toList
 
@@ -2521,7 +2675,7 @@ System.print(pares)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3]
 
 // Si no se pasa un acumulador, se considera el primer elemento como valor inicial
 var resultado = numeros.reduce {|acumulador, num| acumulador + num}
@@ -2544,7 +2698,7 @@ System.print(resultado)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3, 4]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3, 4]
 var primeros = numeros.take(2).toList
 
 // Muestra [1, 2]
@@ -2559,7 +2713,7 @@ System.print(primeros)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3, 4]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3, 4]
 var ultimos = numeros.skip(2).toList
 
 // Muestra [3, 4]
@@ -2574,7 +2728,7 @@ System.print(ultimos)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3]
 
 // Muestra "false" debido a que no contiene el número 4
 System.print(numeros.contains(4))</code></pre>
@@ -2588,7 +2742,7 @@ System.print(numeros.contains(4))</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3, 4]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3, 4]
 
 // 4
 System.print(numeros.count)
@@ -2608,7 +2762,7 @@ System.print(pares)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3]
 
 // Muestra "123"
 System.print(numeros.join())
@@ -2629,7 +2783,7 @@ Si alguno de los elementos es falso, termina de iterar y devuelve falso.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3]
 var resultado = numeros.all {|num| num &gt; 2}
 
 // Falso. No todos los números en la secuencia son mayores a 2
@@ -2649,7 +2803,7 @@ System.print(resultado)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3]
 var resultado = numeros.any {|num| num % 2 == 0}
 
 // Verdadero. Existe un número múltiplo de 2.
@@ -2670,7 +2824,7 @@ de una secuencia dependiendo de una condición.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">  // Creamos una nueva función para nuestra lógica
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">  // Creamos una nueva función para nuestra lógica
   var primerElemento = Fn.new {|elementos, predicado|
 
     // Si existe un elemento que cumpla la condición, obtenemos el primero de la secuencia.
@@ -2698,7 +2852,36 @@ de una secuencia dependiendo de una condición.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_list_listas">5.2. <a href="https://wren.io/modules/core/list.html">List: Listas</a></h3>
+<h3 id="_subscripts_subíndices">5.2. <a href="https://wren.io/method-calls.html#subscripts">Subscripts: Subíndices</a></h3>
+<div class="paragraph">
+<p>Los <em>Subíndices</em> nos ayudan a obtener valores dentro de una lista, mapa u objeto que implemente
+el método de subíndice utilizando los paréntesis cuadrados (corchetes) <code>[]</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">lista[0]    // Obtiene el primer elmento de la lista
+mapa["id"] // Obtiene el valor asociado con "id"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El siguiente código muestra como implementar un objeto que acepta dos parámetros en su método de subíndice.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class Matriz {
+  [x, y] {"x %(x), y %(y)"}
+  construct nueva() {}
+}
+
+var matriz = Matriz.nueva()
+
+// Muestra x 1 y 1
+System.print(matriz[1,1])</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_list_listas">5.3. <a href="https://wren.io/modules/core/list.html">List: Listas</a></h3>
 <div class="paragraph">
 <p>Una lista es una colección de elementos que son almacenados en una variable. Los elementos pueden estar relacionados de cierta forma o no tener ningún tipo de relación.</p>
 </div>
@@ -2707,7 +2890,7 @@ de una secuencia dependiendo de una condición.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var estudiantes = ["Pedro", "Javier", "Nicolás"]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var estudiantes = ["Pedro", "Javier", "Nicolás"]
 
 // Iteramos sobre los elementos de la lista
 for (estudiante in estudiantes) {
@@ -2744,7 +2927,7 @@ estudiantes.clear()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Generamos una lista de 4 elementos con valor 1
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Generamos una lista de 4 elementos con valor 1
 var elementos = [1] * 4
 
 // Muestra [1, 1, 1, 1]
@@ -2756,7 +2939,7 @@ System.print(elementos)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var numeros = [1, 2, 3]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var numeros = [1, 2, 3]
 var letras = ["a", "b", "c"]
 var elementos = numeros + letras
 
@@ -2766,7 +2949,7 @@ System.print(elementos)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_range_rangos">5.3. <a href="https://wren.io/modules/core/range.html">Range: Rangos</a></h3>
+<h3 id="_range_rangos">5.4. <a href="https://wren.io/modules/core/range.html">Range: Rangos</a></h3>
 <div class="paragraph">
 <p>Un rango es un objeto que representa una lista finita, incremental e iterable de números.
 Es una operación disponible en cada instancia de un número.
@@ -2784,7 +2967,7 @@ Es dada por la operación <code>..</code> y la operación <code>&#8230;&#8203;</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Mostramos los números del 1 al 5
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Mostramos los números del 1 al 5
 (1..5).each {|num|
   System.print("Número %(num)")
 }</code></pre>
@@ -2792,7 +2975,7 @@ Es dada por la operación <code>..</code> y la operación <code>&#8230;&#8203;</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Mostramos del 3 al 1
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Mostramos del 3 al 1
 ((1 + 2)..(3 - 2)).each {|num|
   System.print("Número %(num)")
 }</code></pre>
@@ -2800,7 +2983,7 @@ Es dada por la operación <code>..</code> y la operación <code>&#8230;&#8203;</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// Mostramos del 1 al 3 utilizando bucle for.
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Mostramos del 1 al 3 utilizando bucle for.
 for (num in 1..3) {
   System.print("Número %(num)")
 }</code></pre>
@@ -2812,7 +2995,7 @@ como <em>Strings</em> y <em>Lists</em>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var nombre = "Juanito"
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var nombre = "Juanito"
 
 // Muestra "nito"
 System.print(nombre[3..-1])
@@ -2823,7 +3006,7 @@ System.print(nombre[-1..0])</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var letras = ["a", "b", "c", "d", "e"]
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var letras = ["a", "b", "c", "d", "e"]
 var subconjunto = letras[1..3]
 
 // Muestra [b, c, d]
@@ -2938,7 +3121,7 @@ para escribir los ejemplos.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sh" data-lang="sh">¡Hola! ¿Cómo te llamas?
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">¡Hola! ¿Cómo te llamas?
 
 Alberto
 
@@ -2968,7 +3151,7 @@ Intenta adivinar 3/6.
 <h5 id="_código_fuente">Código fuente</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// nombre: adivina.wren
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// nombre: adivina.wren
 // autor: Camilo Castro &lt;camilo@ninjas.cl&gt;
 // original: https://github.com/asweigart/inventwithpython3rded/blob/master/translations/es/src/adivinaElN%C3%BAmero.py
 // ejecutar: wren adivina/adivina.wren
@@ -3045,7 +3228,7 @@ if (estimacion != numero) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sh" data-lang="sh">Estás en una tierra llena de dragones. Frente a tí
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">Estás en una tierra llena de dragones. Frente a tí
 hay dos cuevas. En una de ellas, el dragón es generoso y amigable y compartirá su tesoro contigo. El otro dragón
 es codicioso y está hambriento, y te devorará inmediatamente.
 
@@ -3068,7 +3251,7 @@ no</code></pre>
 <h5 id="_código_fuente_2">Código fuente</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// nombre: dragon.wren
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// nombre: dragon.wren
 // autor: Camilo Castro &lt;camilo@ninjas.cl&gt;
 // original: https://github.com/asweigart/inventwithpython3rded/blob/master/translations/es/src/drag%C3%B3n.py
 // ejecutar: wren dragon/dragon.wren
@@ -3162,7 +3345,7 @@ Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sh" data-lang="sh">/\
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">/\
 \/
 
 /\
@@ -3180,7 +3363,7 @@ Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/g
 <h5 id="_código_fuente_3">Código fuente</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">/*
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">/*
 Diamantes, por Al Sweigart &lt;al@inventwithpython.com&gt;
 https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/diamonds.py
 Dibuja diamantes de varios tamaños.
@@ -3266,7 +3449,7 @@ Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>La gran carrera de caracoles
+<pre class="highlightjs highlight"><code class="language-none hljs">La gran carrera de caracoles
 
     @v &lt;-- caracol
 
@@ -3292,7 +3475,7 @@ INICIO                                  META
 <h5 id="_código_fuente_4">Código fuente</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">/*
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">/*
 Snail Race, por Al Sweigart &lt;al@inventwithpython.com&gt;
 https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py
 Una carrera de caracoles, ¡alucinante!.
@@ -3421,7 +3604,7 @@ Código levemente basado en <a href="#alfonseca">[alfonseca]</a>.</p>
 <h5 id="_ejemplo_de_ejecución_5">Ejemplo de Ejecución</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Quedan 1 objetivos
+<pre class="highlightjs highlight"><code class="language-none hljs">Quedan 1 objetivos
 El cañón puede disparar hasta 34595 metros
 El objetivo está a 6788 metros
 La fórmula de la distancia es: alcance * sin(2 * ángulo * π / 180)
@@ -3446,7 +3629,7 @@ Distancia Alcanzada: 6695 Distancia Objetivo: 6788
 <h5 id="_código_fuente_5">Código fuente</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">/**
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">/**
 Juego que simula el disparo de un cañón hacia un objetivo.
 El jugador debe ingresar el ángulo para cada tiro del cañón.
 Código levemente basado en la obra "Cómo construir juegos de aventura"
@@ -3613,7 +3796,7 @@ en golpear la pelota.</p>
 <h5 id="_código_fuente_6">Código fuente</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// title:  Clone de breakout para TIC-80
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// title:  Clone de breakout para TIC-80
 // author: Camilo Castro
 // desc:   Un simple clon de breakout en Wren
 // script: wren
@@ -4194,7 +4377,7 @@ toque una parte de su propio cuerpo.</p>
 <h5 id="_código_fuente_7">Código fuente</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// title:  Clone de Snake para TIC-80
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// title:  Clone de Snake para TIC-80
 // author: Camilo castro
 // desc:   Un pequeño clon de Snake
 // script: wren
@@ -4641,13 +4824,13 @@ class Game is TIC {
 <div class="listingblock">
 <div class="title">Salida</div>
 <div class="content">
-<pre class="highlight"><code>¡Hola Wren!</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">¡Hola Wren!</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Código</div>
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">// muestra: ¡Hola Wren!
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// muestra: ¡Hola Wren!
 System.print("¡Hola Wren!")</code></pre>
 </div>
 </div>
@@ -4664,7 +4847,7 @@ System.print("¡Hola Wren!")</code></pre>
 <div class="listingblock">
 <div class="title">Código</div>
 <div class="content">
-<pre class="highlight"><code class="language-js" data-lang="js">var donas = Fn.new {|cantidad|
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var donas = Fn.new {|cantidad|
   // Tu código aquí
   var mensaje = "Número de donas:"
   if (cantidad &gt;= 10) {
@@ -4894,8 +5077,19 @@ Ejemplo <code>import "random" for Random</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-27 11:19:08 -0300
+Last updated 2021-05-05 12:51:55 -0400
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/languages/lua.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/languages/bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/languages/txt.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 </body>
 </html>
