@@ -1,1 +1,84 @@
 ## Clases
+
+
+```js
+// Usando el Patron de Doble Dispatch
+// https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/
+// 
+class Elemento {
+  pierdeCon(elemento) {}
+  leGanaAPiedra(){}
+  leGanaAPapel(){}
+  leGanaATijera(){}
+}
+
+class Piedra is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaAPiedra()
+  }
+  
+  leGanaAPiedra() {
+    return false
+  }
+  
+  leGanaAPapel() {
+    return false
+  }
+  
+  leGanaATijera() {
+    return true
+  }
+}
+
+class Papel is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaAPapel()
+  }
+  
+  leGanaAPiedra() {
+    return true
+  }
+  
+  leGanaAPapel() {
+    return false
+  }
+  
+  leGanaATijera() {
+    return false
+  }
+}
+
+class Tijera is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaATijera()
+  }
+  
+  leGanaAPiedra() {
+    return false
+  }
+  
+  leGanaAPapel() {
+    return true
+  }
+  
+  leGanaATijera() {
+    return false
+  }
+}
+
+var piedra = Piedra.crear()
+var papel = Papel.crear()
+var tijera = Tijera.crear()
+
+System.print(piedra.pierdeCon(papel))  // true
+System.print(tijera.pierdeCon(piedra)) // true
+System.print(piedra.pierdeCon(tijera)) // false
+System.print(papel.pierdeCon(tijera))  // true
+System.print(papel.pierdeCon(piedra))  // false
+```

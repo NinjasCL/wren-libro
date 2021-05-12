@@ -2,8 +2,10 @@
 
 Uno de los principios de los lenguajes de programación es evitar código repetitivo (_Don't Repeat Yourself_). Si una acción se debe ejecutar más de una vez se puede definir esa acción una única vez y luego reutilizarla cuantas veces se necesite.
 
-Las funciones permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores. En escencia
-son un conjunto de acciones que están agrupadas.
+Las funciones y fibras permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores. 
+En escencia son un conjunto de acciones que están agrupadas.
+
+### https://wren.io/functions.html[Functions: Funciones]
 
 En _Wren_ las funciones son objetos, esto significa que son iguales que cualquier otra variable y pueden ser usadas como
 parámetros al igual que un _String_ o un número. Otros lenguajes como _Java_ no tienen esta característica.
@@ -14,10 +16,38 @@ En el sentido matemático podemos tener la siguiente expresión:
 f(x) = (x + 10) / 2
 ```
 
+Podemos interpretarla como
+
+```txt
+y = (x + 10) / 2
+```
+
 Lo cual puede ser expresado en _Wren_ de la siguiente forma:
 
 ```js
-Fn.new {|x| (x + 10) / 2}
+var y = Fn.new {|x| (x + 10) / 2}
 ```
 
+Como se puede apreciar una función está definida por la clase `Fn`.
+Se ejecuta el método `new` para crear una nueva función.
+El cuerpo de la función está definido por las llaves `{}`.
+Los parámetros están definidos entre las barras `||`.
+
+Para poder llamar a la función y obtener su resultado, basta simplemente
+con ejecutar el método `call`.
+
+```js
+var y = Fn.new {|x| (x + 10) / 2}
+var resultado = y,call(10) // x valdría 10
+System.print(resultado) // muestra: 10
+```
+
+### https://wren.io/concurrency.html[Fibers: Fibras]
+
+Las fibras son similares a las funciones, pero tienen la característica de que pueden ser
+pausadas y re-ejecutadas a voluntad. Esto es especialmente útil para obtener concurrencia, 
+es decir, ejecutar varias operaciones de forma paralela.
+
+Todas las fibras en _Wren_ son manejadas por la máquina virtual de _Wren_. Lo cual es excelente
+ya que no dependerá del sistema operativo para gatillar nuevos procesos, permitiendo ahorrar recursos.
 

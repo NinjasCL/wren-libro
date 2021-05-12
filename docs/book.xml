@@ -1635,14 +1635,36 @@ System.print(subconjunto)</programlisting>
 <chapter xml:id="_funciones_y_fibras">
 <title>Funciones y Fibras</title>
 <simpara>Uno de los principios de los lenguajes de programación es evitar código repetitivo (<emphasis>Don&#8217;t Repeat Yourself</emphasis>). Si una acción se debe ejecutar más de una vez se puede definir esa acción una única vez y luego reutilizarla cuantas veces se necesite.</simpara>
-<simpara>Las funciones permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores. En escencia
-son un conjunto de acciones que están agrupadas.</simpara>
+<simpara>Las funciones y fibras permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores.
+En escencia son un conjunto de acciones que están agrupadas.</simpara>
+<section xml:id="_functions_funciones">
+<title><link xl:href="https://wren.io/functions.html">Functions: Funciones</link></title>
 <simpara>En <emphasis>Wren</emphasis> las funciones son objetos, esto significa que son iguales que cualquier otra variable y pueden ser usadas como
 parámetros al igual que un <emphasis>String</emphasis> o un número. Otros lenguajes como <emphasis>Java</emphasis> no tienen esta característica.</simpara>
 <simpara>En el sentido matemático podemos tener la siguiente expresión:</simpara>
 <programlisting language="txt" linenumbering="numbered">f(x) = (x + 10) / 2</programlisting>
+<simpara>Podemos interpretarla como</simpara>
+<programlisting language="txt" linenumbering="numbered">y = (x + 10) / 2</programlisting>
 <simpara>Lo cual puede ser expresado en <emphasis>Wren</emphasis> de la siguiente forma:</simpara>
-<programlisting language="js" linenumbering="numbered">Fn.new {|x| (x + 10) / 2}</programlisting>
+<programlisting language="js" linenumbering="numbered">var y = Fn.new {|x| (x + 10) / 2}</programlisting>
+<simpara>Como se puede apreciar una función está definida por la clase <literal>Fn</literal>.
+Se ejecuta el método <literal>new</literal> para crear una nueva función.
+El cuerpo de la función está definido por las llaves <literal>{}</literal>.
+Los parámetros están definidos entre las barras <literal>||</literal>.</simpara>
+<simpara>Para poder llamar a la función y obtener su resultado, basta simplemente
+con ejecutar el método <literal>call</literal>.</simpara>
+<programlisting language="js" linenumbering="numbered">var y = Fn.new {|x| (x + 10) / 2}
+var resultado = y,call(10) // x valdría 10
+System.print(resultado) // muestra: 10</programlisting>
+</section>
+<section xml:id="_fibers_fibras">
+<title><link xl:href="https://wren.io/concurrency.html">Fibers: Fibras</link></title>
+<simpara>Las fibras son similares a las funciones, pero tienen la característica de que pueden ser
+pausadas y re-ejecutadas a voluntad. Esto es especialmente útil para obtener concurrencia,
+es decir, ejecutar varias operaciones de forma paralela.</simpara>
+<simpara>Todas las fibras en <emphasis>Wren</emphasis> son manejadas por la máquina virtual de <emphasis>Wren</emphasis>. Lo cual es excelente
+ya que no dependerá del sistema operativo para gatillar nuevos procesos, permitiendo ahorrar recursos.</simpara>
+</section>
 </chapter>
 <chapter xml:id="_control_de_flujo_2">
 <title>Control de Flujo</title>
@@ -1654,7 +1676,85 @@ parámetros al igual que un <emphasis>String</emphasis> o un número. Otros leng
 </chapter>
 <chapter xml:id="_clases">
 <title>Clases</title>
+<programlisting language="js" linenumbering="numbered">// Usando el Patron de Doble Dispatch
+// https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/
+//
+class Elemento {
+  pierdeCon(elemento) {}
+  leGanaAPiedra(){}
+  leGanaAPapel(){}
+  leGanaATijera(){}
+}
 
+class Piedra is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaAPiedra()
+  }
+
+  leGanaAPiedra() {
+    return false
+  }
+
+  leGanaAPapel() {
+    return false
+  }
+
+  leGanaATijera() {
+    return true
+  }
+}
+
+class Papel is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaAPapel()
+  }
+
+  leGanaAPiedra() {
+    return true
+  }
+
+  leGanaAPapel() {
+    return false
+  }
+
+  leGanaATijera() {
+    return false
+  }
+}
+
+class Tijera is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaATijera()
+  }
+
+  leGanaAPiedra() {
+    return false
+  }
+
+  leGanaAPapel() {
+    return true
+  }
+
+  leGanaATijera() {
+    return false
+  }
+}
+
+var piedra = Piedra.crear()
+var papel = Papel.crear()
+var tijera = Tijera.crear()
+
+System.print(piedra.pierdeCon(papel))  // true
+System.print(tijera.pierdeCon(piedra)) // true
+System.print(piedra.pierdeCon(tijera)) // false
+System.print(papel.pierdeCon(tijera))  // true
+System.print(papel.pierdeCon(piedra))  // false</programlisting>
 </chapter>
 <chapter xml:id="_terminal_de_comandos">
 <title>Terminal de Comandos</title>
@@ -3603,6 +3703,9 @@ Ejemplo <literal>import "random" for Random</literal>.</simpara>
 <bibliomixed>
 <bibliomisc><anchor xml:id="alfonseca" xreflabel="[alfonseca]"/>[alfonseca] Manuel Alfonseca. 'Cómo construir juegos de aventura'. <link xl:href="https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura">https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura</link>. ISBN 84-7688-019-7</bibliomisc>
 </bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="thinkpython" xreflabel="[thinkpython]"/>[thinkpython] Allen Downey. 'Think Python: How to Think Like a Computer Scientist, Traducción de Jorge Espinoza'. <link xl:href="https://github.com/espinoza/ThinkPython2-spanish">https://github.com/espinoza/ThinkPython2-spanish</link>. ISBN 978-1491939369</bibliomisc>
+</bibliomixed>
 </bibliodiv>
 <bibliodiv>
 <title>Sitios Web</title>
@@ -3617,6 +3720,9 @@ Ejemplo <literal>import "random" for Random</literal>.</simpara>
 </bibliomixed>
 <bibliomixed>
 <bibliomisc><anchor xml:id="rosettacode-wren" xreflabel="[rosettacode-wren]"/>[rosettacode-wren] Rosetta Code. <link xl:href="https://rosettacode.org/wiki/Category:Wren">https://rosettacode.org/wiki/Category:Wren</link></bibliomisc>
+</bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="mit600" xreflabel="[mit600]"/>[mit600] Introduction to Computer Science and Programming. <link xl:href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/</link></bibliomisc>
 </bibliomixed>
 </bibliodiv>
 </bibliography>

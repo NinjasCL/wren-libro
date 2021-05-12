@@ -590,7 +590,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_range_rangos">5.4. Range: Rangos</a></li>
 </ul>
 </li>
-<li><a href="#_funciones_y_fibras">6. Funciones y Fibras</a></li>
+<li><a href="#_funciones_y_fibras">6. Funciones y Fibras</a>
+<ul class="sectlevel2">
+<li><a href="#_functions_funciones">6.1. Functions: Funciones</a></li>
+<li><a href="#_fibers_fibras">6.2. Fibers: Fibras</a></li>
+</ul>
+</li>
 <li><a href="#_control_de_flujo_2">7. Control de Flujo</a></li>
 <li><a href="#_mapas">8. Mapas</a></li>
 <li><a href="#_clases">9. Clases</a></li>
@@ -3023,9 +3028,11 @@ System.print(subconjunto)</code></pre>
 <p>Uno de los principios de los lenguajes de programación es evitar código repetitivo (<em>Don&#8217;t Repeat Yourself</em>). Si una acción se debe ejecutar más de una vez se puede definir esa acción una única vez y luego reutilizarla cuantas veces se necesite.</p>
 </div>
 <div class="paragraph">
-<p>Las funciones permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores. En escencia
-son un conjunto de acciones que están agrupadas.</p>
+<p>Las funciones y fibras permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores.
+En escencia son un conjunto de acciones que están agrupadas.</p>
 </div>
+<div class="sect2">
+<h3 id="_functions_funciones">6.1. <a href="https://wren.io/functions.html">Functions: Funciones</a></h3>
 <div class="paragraph">
 <p>En <em>Wren</em> las funciones son objetos, esto significa que son iguales que cualquier otra variable y pueden ser usadas como
 parámetros al igual que un <em>String</em> o un número. Otros lenguajes como <em>Java</em> no tienen esta característica.</p>
@@ -3039,11 +3046,49 @@ parámetros al igual que un <em>String</em> o un número. Otros lenguajes como <
 </div>
 </div>
 <div class="paragraph">
+<p>Podemos interpretarla como</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt">y = (x + 10) / 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Lo cual puede ser expresado en <em>Wren</em> de la siguiente forma:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">Fn.new {|x| (x + 10) / 2}</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var y = Fn.new {|x| (x + 10) / 2}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Como se puede apreciar una función está definida por la clase <code>Fn</code>.
+Se ejecuta el método <code>new</code> para crear una nueva función.
+El cuerpo de la función está definido por las llaves <code>{}</code>.
+Los parámetros están definidos entre las barras <code>||</code>.</p>
+</div>
+<div class="paragraph">
+<p>Para poder llamar a la función y obtener su resultado, basta simplemente
+con ejecutar el método <code>call</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var y = Fn.new {|x| (x + 10) / 2}
+var resultado = y,call(10) // x valdría 10
+System.print(resultado) // muestra: 10</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fibers_fibras">6.2. <a href="https://wren.io/concurrency.html">Fibers: Fibras</a></h3>
+<div class="paragraph">
+<p>Las fibras son similares a las funciones, pero tienen la característica de que pueden ser
+pausadas y re-ejecutadas a voluntad. Esto es especialmente útil para obtener concurrencia,
+es decir, ejecutar varias operaciones de forma paralela.</p>
+</div>
+<div class="paragraph">
+<p>Todas las fibras en <em>Wren</em> son manejadas por la máquina virtual de <em>Wren</em>. Lo cual es excelente
+ya que no dependerá del sistema operativo para gatillar nuevos procesos, permitiendo ahorrar recursos.</p>
 </div>
 </div>
 </div>
@@ -3063,7 +3108,89 @@ parámetros al igual que un <em>String</em> o un número. Otros lenguajes como <
 <div class="sect1">
 <h2 id="_clases">9. Clases</h2>
 <div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Usando el Patron de Doble Dispatch
+// https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/
+//
+class Elemento {
+  pierdeCon(elemento) {}
+  leGanaAPiedra(){}
+  leGanaAPapel(){}
+  leGanaATijera(){}
+}
 
+class Piedra is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaAPiedra()
+  }
+
+  leGanaAPiedra() {
+    return false
+  }
+
+  leGanaAPapel() {
+    return false
+  }
+
+  leGanaATijera() {
+    return true
+  }
+}
+
+class Papel is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaAPapel()
+  }
+
+  leGanaAPiedra() {
+    return true
+  }
+
+  leGanaAPapel() {
+    return false
+  }
+
+  leGanaATijera() {
+    return false
+  }
+}
+
+class Tijera is Elemento {
+  construct crear() {}
+
+  pierdeCon(elemento) {
+    return elemento.leGanaATijera()
+  }
+
+  leGanaAPiedra() {
+    return false
+  }
+
+  leGanaAPapel() {
+    return true
+  }
+
+  leGanaATijera() {
+    return false
+  }
+}
+
+var piedra = Piedra.crear()
+var papel = Papel.crear()
+var tijera = Tijera.crear()
+
+System.print(piedra.pierdeCon(papel))  // true
+System.print(tijera.pierdeCon(piedra)) // true
+System.print(piedra.pierdeCon(tijera)) // false
+System.print(papel.pierdeCon(tijera))  // true
+System.print(papel.pierdeCon(piedra))  // false</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -5059,6 +5186,9 @@ Ejemplo <code>import "random" for Random</code>.</p>
 <li>
 <p><a id="alfonseca"></a>[alfonseca] Manuel Alfonseca. 'Cómo construir juegos de aventura'. <a href="https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura" class="bare">https://worldofspectrum.org/archive/books/enciclopedia-practica-de-la-informatica-aplicada-1-como-construir-juegos-de-aventura</a>. ISBN 84-7688-019-7</p>
 </li>
+<li>
+<p><a id="thinkpython"></a>[thinkpython] Allen Downey. 'Think Python: How to Think Like a Computer Scientist, Traducción de Jorge Espinoza'. <a href="https://github.com/espinoza/ThinkPython2-spanish" class="bare">https://github.com/espinoza/ThinkPython2-spanish</a>. ISBN 978-1491939369</p>
+</li>
 </ul>
 </div>
 <div class="ulist bibliography">
@@ -5075,6 +5205,9 @@ Ejemplo <code>import "random" for Random</code>.</p>
 </li>
 <li>
 <p><a id="rosettacode-wren"></a>[rosettacode-wren] Rosetta Code. <a href="https://rosettacode.org/wiki/Category:Wren" class="bare">https://rosettacode.org/wiki/Category:Wren</a></p>
+</li>
+<li>
+<p><a id="mit600"></a>[mit600] Introduction to Computer Science and Programming. <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" class="bare">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/</a></p>
 </li>
 </ul>
 </div>
