@@ -3025,7 +3025,9 @@ System.print(subconjunto)</code></pre>
 <h2 id="_funciones_y_fibras">6. Funciones y Fibras</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Uno de los principios de los lenguajes de programación es evitar código repetitivo (<em>Don&#8217;t Repeat Yourself</em>). Si una acción se debe ejecutar más de una vez se puede definir esa acción una única vez y luego reutilizarla cuantas veces se necesite.</p>
+<p>Uno de los principios de los lenguajes de programación es evitar código repetitivo (<em>Don&#8217;t Repeat Yourself</em>). Si una acción se debe ejecutar más de una vez se puede definir esa acción una única vez y luego reutilizarla cuantas veces se necesite.
+Hay lenguajes de programación como <a href="https://elixir-lang.org/">Elixir</a> que son solamente funciones. Por lo que son una herramienta
+muy poderosa.</p>
 </div>
 <div class="paragraph">
 <p>Las funciones y fibras permiten reducir el trabajo necesario y su uso efectivo permite un código con menor cantidad de errores.
@@ -3063,18 +3065,18 @@ parámetros al igual que un <em>String</em> o un número. Otros lenguajes como <
 </div>
 <div class="paragraph">
 <p>Como se puede apreciar una función está definida por la clase <code>Fn</code>.
-Se ejecuta el método <code>new</code> para crear una nueva función.
+Se llama al método <code>new</code> para crear una nueva función.
 El cuerpo de la función está definido por las llaves <code>{}</code>.
 Los parámetros están definidos entre las barras <code>||</code>.</p>
 </div>
 <div class="paragraph">
-<p>Para poder llamar a la función y obtener su resultado, basta simplemente
-con ejecutar el método <code>call</code>.</p>
+<p>Para poder ejecutar la función y obtener su resultado, basta simplemente
+con utilizar el método <code>call</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var y = Fn.new {|x| (x + 10) / 2}
-var resultado = y,call(10) // x valdría 10
+var resultado = y.call(10) // x valdría 10
 System.print(resultado) // muestra: 10</code></pre>
 </div>
 </div>
@@ -3089,6 +3091,46 @@ es decir, ejecutar varias operaciones de forma paralela.</p>
 <div class="paragraph">
 <p>Todas las fibras en <em>Wren</em> son manejadas por la máquina virtual de <em>Wren</em>. Lo cual es excelente
 ya que no dependerá del sistema operativo para gatillar nuevos procesos, permitiendo ahorrar recursos.</p>
+</div>
+<div class="paragraph">
+<p>En el siguiente ejemplo podemos ver como pausar y re-ejecutar una fibra.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var fibra = Fiber.new {
+  (1..4).each {|num|
+    // Pausa la fibra y devuelve un valor
+    Fiber.yield(num)
+  }
+}
+
+System.print(fibra.call()) // muestra: 1
+
+// Podemos ejecutar otras instrucciones y continuar la fibra
+System.print(fibra.call()) // muestra: 2
+
+// También podemos pasar un valor como parámetro adicional
+System.print(fibra.call(10)) // muestra: 3
+
+System.print(fibra.call()) // muestra: 4
+System.print(fibra.call()) // muestra: null</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En una función esto no es posible ya que solo tendríamos acceso al último valor calculado.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var funcion = Fn.new {
+  var numero = null
+  (1..4).each{|num|
+    numero = num
+  }
+  return numero
+}
+
+System.print(funcion.call()) // muestra: 4</code></pre>
+</div>
 </div>
 </div>
 </div>
