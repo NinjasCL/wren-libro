@@ -593,7 +593,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_funciones_y_fibras">6. Funciones y Fibras</a>
 <ul class="sectlevel2">
 <li><a href="#_functions_funciones">6.1. Functions: Funciones</a></li>
-<li><a href="#_fibers_fibras">6.2. Fibers: Fibras</a></li>
+<li><a href="#_fibers_fibras">6.2. Fibers: Fibras</a>
+<ul class="sectlevel3">
+<li><a href="#_manejo_de_errores">6.2.1. Manejo de Errores</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_control_de_flujo_2">7. Control de Flujo</a></li>
@@ -3130,6 +3134,58 @@ System.print(fibra.call()) // muestra: null</code></pre>
 }
 
 System.print(funcion.call()) // muestra: 4</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manejo_de_errores">6.2.1. <a href="https://wren.io/error-handling.html">Manejo de Errores</a></h4>
+<div class="paragraph">
+<p>En muchos lenguajes se utiliza una secuencia llamada <code>try-catch</code>. En <em>Wren</em> las fibras
+son las encargadas de manejar los errores en tiempo de ejecución.</p>
+</div>
+<div class="paragraph">
+<p>Utilizando el método <code>try</code> podemos ejecutar una fibra y capturar el error.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var fibra = Fiber.new {
+  123.noExiste
+}
+
+var error = fibra.try()
+System.print("Hubo un Error: " + error)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si deseamos generar un error propio podemos utilizar <code>Fiber.abort()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Este error puede ser un mensaje normal.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">Fiber.abort("Hubo un error")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>O también un objeto personalizado.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class MiError {
+  construct nuevo() {}
+  mensaje {"Este es un objeto error personalizado"}
+}
+
+var fibra = Fiber.new {
+  Fiber.abort(MiError.nuevo())
+}
+
+fibra.try()
+
+if (fibra.error is MiError) {
+  System.print(fibra.error.mensaje)
+}</code></pre>
+</div>
 </div>
 </div>
 </div>

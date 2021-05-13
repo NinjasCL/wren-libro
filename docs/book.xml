@@ -1694,6 +1694,36 @@ System.print(fibra.call()) // muestra: null</programlisting>
 }
 
 System.print(funcion.call()) // muestra: 4</programlisting>
+<section xml:id="_manejo_de_errores">
+<title><link xl:href="https://wren.io/error-handling.html">Manejo de Errores</link></title>
+<simpara>En muchos lenguajes se utiliza una secuencia llamada <literal>try-catch</literal>. En <emphasis>Wren</emphasis> las fibras
+son las encargadas de manejar los errores en tiempo de ejecución.</simpara>
+<simpara>Utilizando el método <literal>try</literal> podemos ejecutar una fibra y capturar el error.</simpara>
+<programlisting language="js" linenumbering="numbered">var fibra = Fiber.new {
+  123.noExiste
+}
+
+var error = fibra.try()
+System.print("Hubo un Error: " + error)</programlisting>
+<simpara>Si deseamos generar un error propio podemos utilizar <literal>Fiber.abort()</literal>.</simpara>
+<simpara>Este error puede ser un mensaje normal.</simpara>
+<programlisting language="js" linenumbering="numbered">Fiber.abort("Hubo un error")</programlisting>
+<simpara>O también un objeto personalizado.</simpara>
+<programlisting language="js" linenumbering="numbered">class MiError {
+  construct nuevo() {}
+  mensaje {"Este es un objeto error personalizado"}
+}
+
+var fibra = Fiber.new {
+  Fiber.abort(MiError.nuevo())
+}
+
+fibra.try()
+
+if (fibra.error is MiError) {
+  System.print(fibra.error.mensaje)
+}</programlisting>
+</section>
 </section>
 </chapter>
 <chapter xml:id="_control_de_flujo_2">

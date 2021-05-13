@@ -89,3 +89,46 @@ var funcion = Fn.new {
 
 System.print(funcion.call()) // muestra: 4
 ```
+
+#### https://wren.io/error-handling.html[Manejo de Errores]
+
+En muchos lenguajes se utiliza una secuencia llamada `try-catch`. En _Wren_ las fibras
+son las encargadas de manejar los errores en tiempo de ejecución.
+
+Utilizando el método `try` podemos ejecutar una fibra y capturar el error.
+
+```js
+var fibra = Fiber.new {
+  123.noExiste
+}
+
+var error = fibra.try()
+System.print("Hubo un Error: " + error)
+```
+
+Si deseamos generar un error propio podemos utilizar `Fiber.abort()`.
+
+Este error puede ser un mensaje normal.
+
+```js
+Fiber.abort("Hubo un error")
+```
+
+O también un objeto personalizado.
+
+```js
+class MiError {
+  construct nuevo() {}
+  mensaje {"Este es un objeto error personalizado"}
+}
+
+var fibra = Fiber.new {
+  Fiber.abort(MiError.nuevo())
+}
+
+fibra.try()
+
+if (fibra.error is MiError) {
+  System.print(fibra.error.mensaje)
+}
+```
