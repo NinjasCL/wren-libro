@@ -1658,6 +1658,47 @@ con utilizar el método <literal>call</literal>.</simpara>
 <programlisting language="js" linenumbering="numbered">var y = Fn.new {|x| (x + 10) / 2}
 var resultado = y.call(10) // x valdría 10
 System.print(resultado) // muestra: 10</programlisting>
+<section xml:id="_recursividad">
+<title>Recursividad</title>
+<simpara>Podemos llamar a una función de forma recursiva, sin embargo
+se debe declarar la variable antes de poder referenciarla.</simpara>
+<simpara>El siguiente ejemplo muestra la implementación del algoritmo de <link xl:href="https://es.wikipedia.org/wiki/B%C3%BAsqueda_binaria">búsqueda binaria (Binary Search)</link>.</simpara>
+<programlisting language="js" linenumbering="numbered">// Declaramos la variable
+var buscar
+
+// Le asignamos el contenido
+buscar = Fn.new {|elementos, objetivo, minimo, maximo|
+    if (maximo &lt; minimo) {
+      return -1
+    }
+
+    var posicion = ((maximo + minimo) / 2).round
+    var candidato = elementos[posicion]
+
+    if (candidato == objetivo) {
+      return posicion
+    }
+
+    if (candidato &gt; objetivo) {
+      // Ahora podemos hacer una llamada recursiva
+      return buscar.call(elementos, objetivo, minimo, posicion - 1)
+    }
+
+    return buscar.call(elementos, objetivo, posicion + 1, maximo)
+}
+
+var elementos = (0..30).toList
+var minimo = 0
+var maximo = elementos.count - 1
+
+System.print(buscar.call(elementos, 30, minimo, maximo)) // 30
+System.print(buscar.call(elementos, 31, minimo, maximo)) // -1
+System.print(buscar.call(elementos, 20, minimo, maximo)) // 20</programlisting>
+<simpara>Si no se declara la variable podría aparecer un error similar a:</simpara>
+<blockquote>
+<simpara>[./scratch line 57] Error at '}': Variable 'buscar' referenced before this definition (first use at line 53).</simpara>
+</blockquote>
+</section>
 </section>
 <section xml:id="_fibers_fibras">
 <title><link xl:href="https://wren.io/concurrency.html">Fibers: Fibras</link></title>

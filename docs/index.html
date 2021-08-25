@@ -592,7 +592,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_funciones_y_fibras">6. Funciones y Fibras</a>
 <ul class="sectlevel2">
-<li><a href="#_functions_funciones">6.1. Functions: Funciones</a></li>
+<li><a href="#_functions_funciones">6.1. Functions: Funciones</a>
+<ul class="sectlevel3">
+<li><a href="#_recursividad">6.1.1. Recursividad</a></li>
+</ul>
+</li>
 <li><a href="#_fibers_fibras">6.2. Fibers: Fibras</a>
 <ul class="sectlevel3">
 <li><a href="#_manejo_de_errores">6.2.1. Manejo de Errores</a></li>
@@ -3082,6 +3086,61 @@ con utilizar el método <code>call</code>.</p>
 <pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var y = Fn.new {|x| (x + 10) / 2}
 var resultado = y.call(10) // x valdría 10
 System.print(resultado) // muestra: 10</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_recursividad">6.1.1. Recursividad</h4>
+<div class="paragraph">
+<p>Podemos llamar a una función de forma recursiva, sin embargo
+se debe declarar la variable antes de poder referenciarla.</p>
+</div>
+<div class="paragraph">
+<p>El siguiente ejemplo muestra la implementación del algoritmo de <a href="https://es.wikipedia.org/wiki/B%C3%BAsqueda_binaria">búsqueda binaria (Binary Search)</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Declaramos la variable
+var buscar
+
+// Le asignamos el contenido
+buscar = Fn.new {|elementos, objetivo, minimo, maximo|
+    if (maximo &lt; minimo) {
+      return -1
+    }
+
+    var posicion = ((maximo + minimo) / 2).round
+    var candidato = elementos[posicion]
+
+    if (candidato == objetivo) {
+      return posicion
+    }
+
+    if (candidato &gt; objetivo) {
+      // Ahora podemos hacer una llamada recursiva
+      return buscar.call(elementos, objetivo, minimo, posicion - 1)
+    }
+
+    return buscar.call(elementos, objetivo, posicion + 1, maximo)
+}
+
+var elementos = (0..30).toList
+var minimo = 0
+var maximo = elementos.count - 1
+
+System.print(buscar.call(elementos, 30, minimo, maximo)) // 30
+System.print(buscar.call(elementos, 31, minimo, maximo)) // -1
+System.print(buscar.call(elementos, 20, minimo, maximo)) // 20</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si no se declara la variable podría aparecer un error similar a:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>[./scratch line 57] Error at '}': Variable 'buscar' referenced before this definition (first use at line 53).</p>
+</div>
+</blockquote>
 </div>
 </div>
 </div>
