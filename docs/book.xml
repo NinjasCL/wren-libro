@@ -606,8 +606,8 @@ var error = Fiber.new { mostrar.call("hola") }.try()</programlisting>
 <programlisting language="js" linenumbering="numbered">class MiClase {}</programlisting>
 <simpara>La herencia se define utilizando la palabra clave <emphasis>is</emphasis>.
 Solo se heredan los métodos de instancia.
-Propiedades de clase (__var) y de instancia (_var),
-constructores y métodos de clase no son heredados (todos son privados).</simpara>
+Propiedades de clase (<emphasis>_var) y de instancia (_var),
+constructores y métodos de clase (_static</emphasis>) no son heredados (todos son privados).</simpara>
 <programlisting language="js" linenumbering="numbered">class Animal {
   // la propiedad _nombre solo puede ser accesible
   // a clases hijos si se definen como métodos accesadores
@@ -1777,9 +1777,35 @@ if (fibra.error is MiError) {
 </chapter>
 <chapter xml:id="_clases">
 <title>Clases</title>
-<programlisting language="js" linenumbering="numbered">// Usando el Patron de Doble Dispatch
-// https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/
-//
+<simpara>Las clases son una estructura de datos bastante flexible. Permiten definir la información y el comportamiento de cualquier unidad que desees modelar en los programas.</simpara>
+<section xml:id="_terminología_de_orientación_a_objetos">
+<title>Terminología de Orientación a Objetos</title>
+<simpara>Las clases son parte de un paradígma llamado "Programación Orientada a Objetos" (Object-oriented programming) (<emphasis>P.O.O</emphasis> u <emphasis>O.O.P</emphasis>). La cual se focaliza en construir bloques reusables de código llamados <emphasis>Clases</emphasis>. Cuando se necesita utilizar una clase se debe crear un objeto (o instancia), por eso el término de orientación a objetos. Para entender mejor, se debe conocer la terminología común.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Una clase es un bloque de código que define atributos (propiedades) y comportamientos necesarios (métodos) para modelar adecuadamente un elemento del programa. Se puede modelar algo del mundo real como una pelota o una guitarra o algo de un mundo virtual como un personaje de un videojuego y sus leyes físicas.</simpara>
+</listitem>
+<listitem>
+<simpara>Un atributo (o propiedad) es una pieza de información. Es técnicamente una variable que es parte de una clase.</simpara>
+</listitem>
+<listitem>
+<simpara>Un comportamiento es una acción definida dentro de una clase. Son comunmente conocidos como métodos, los cuales son las funciones definidoas para la clase.</simpara>
+</listitem>
+<listitem>
+<simpara>Un objeto es una instancia específica de una clase. Tiene valores definidos para los atributos (variables) de la clase. Se pueden crear tantos objetos de una misma clase, como sea necesario.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_el_operador_is">
+<title>El operador <literal>is</literal></title>
+<simpara>El operador <literal>is</literal> tiene dos funciones. La primera es permitir la herencia simple entre clases
+y la segunda permite comparar si un objeto pertenece a una metaclase específica.</simpara>
+<section xml:id="_ejemplo_juego_de_piedra_papel_tijera">
+<title>Ejemplo: Juego de Piedra - Papel - Tijera</title>
+<simpara>El siguiente juego de Piedra, Papel o Tijeras es implementado mediante
+una herencia simple. Se utiliza el <link xl:href="https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/">patrón de diseño de double dispatch</link>, para simplificar su lógica.</simpara>
+<programlisting language="js" linenumbering="numbered">// Piedra, Papel o Tijeras
+// Usando el Patron de Double Dispatch
 class Elemento {
   pierdeCon(elemento) {}
   leGanaAPiedra(){}
@@ -1851,11 +1877,94 @@ var piedra = Piedra.crear()
 var papel = Papel.crear()
 var tijera = Tijera.crear()
 
-System.print(piedra.pierdeCon(papel))  // true
-System.print(tijera.pierdeCon(piedra)) // true
-System.print(piedra.pierdeCon(tijera)) // false
-System.print(papel.pierdeCon(tijera))  // true
-System.print(papel.pierdeCon(piedra))  // false</programlisting>
+System.print(piedra.pierdeCon(papel))  // true (verdadero)
+System.print(tijera.pierdeCon(piedra)) // true (verdadero)
+System.print(piedra.pierdeCon(tijera)) // false (falso)
+System.print(papel.pierdeCon(tijera))  // true (verdadero)
+System.print(papel.pierdeCon(piedra))  // false (falso)</programlisting>
+</section>
+<section xml:id="_ejemplo_de_comparación">
+<title>Ejemplo de comparación</title>
+<simpara>Ahora utilizando las clases de Piedra, Papel o Tijeras vamos a comparar los elementos
+utilizando el operador <literal>is</literal>.</simpara>
+<programlisting language="js" linenumbering="numbered">var piedra = Piedra.crear()
+
+System.print(piedra is Piedra) // true (verdadero)
+System.print(piedra == Piedra) // false (falso)
+
+System.print(piedra is Tijera) // false (falso)
+System.print(piedra == Tijera) // false (falso)
+
+System.print(piedra is Elemento) // true (verdadero)
+System.print(piedra == Elemento) // false (falso)
+
+System.print(Piedra is Elemento) // false (falso)
+System.print(Piedra == Elemento) // false (falso)
+
+System.print(Piedra.supertype is Elemento) // false (falso)
+System.print(Piedra.supertype == Elemento) // true (verdadero)</programlisting>
+<simpara>Analizando los resultados verdaderos:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><literal>(piedra is Piedra)</literal>: Verdadero puesto que el objeto <emphasis>piedra</emphasis> es una instancia de la clase <emphasis>Piedra</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>(piedra is Elemento)</literal>: Verdadero puesto que el objeto <emphasis>piedra</emphasis> es una instancia de la clase <emphasis>Piedra</emphasis> y ésta a su vez hereda de <emphasis>Elemento</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>(Piedra.supertype == Elemento)</literal>: Verdadero puesto que el super tipo de <emphasis>Piedra</emphasis> es la misma referencia a la clase <emphasis>Elemento</emphasis>.</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Analizando los resultados falsos:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><literal>(piedra == Piedra)</literal>: Falso puesto que el objeto <emphasis>piedra</emphasis> no tiene la misma referencia que la clase <emphasis>Piedra</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>(piedra is Tijera)</literal>: Falso puesto que el objeto <emphasis>piedra</emphasis> no es una instancia de la clase <emphasis>Tijera</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>(piedra == Tijera)</literal>: Falso puesto que el objeto <emphasis>piedra</emphasis> no tiene la misma referencia que la clase <emphasis>Tijera</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>(piedra == Elemento)</literal>: Falso puesto que el objeto <emphasis>piedra</emphasis> no tiene la misma referencia que la clase <emphasis>Elemento</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>(Piedra is Elemento)</literal>: Falso puesto que la clase <emphasis>Piedra</emphasis> no es una instancia de la clase <emphasis>Elemento</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>(Piedra == Elemento)</literal>: Falso puesto que la clase <emphasis>Piedra</emphasis> no es una referencia a la clase <emphasis>Elemento</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara><literal>(Piedra.supertype is Elemento)</literal>: Falso pues que el super tipo de <emphasis>Piedra</emphasis> no hereda de <emphasis>Elemento</emphasis> (ya que el super tipo de <emphasis>Piedra</emphasis> es <emphasis>Elemento</emphasis>).</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_ejemplo_sobrecarga_del_operador">
+<title>Ejemplo: Sobrecarga del operador</title>
+<simpara>Podemos sobrecargar el operador <literal>is</literal> en nuestras clases y "ocultar" su real naturaleza.
+Normalmente podría ser usado para reemplazar las clases básicas (<emphasis>String</emphasis>, <emphasis>Num</emphasis>, <emphasis>Bool</emphasis>, <emphasis>Fn</emphasis>, <emphasis>Fiber</emphasis>, <emphasis>Map</emphasis>, <emphasis>List</emphasis>, <emphasis>Null</emphasis>, entre otras)
+y permitir su extensión. Recordemos que en <emphasis>Wren</emphasis> no se puede heredar desde estas clases debido al problema de <link xl:href="https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)"><emphasis>Reentrancia</emphasis></link> (<emphasis>Wren</emphasis> no tiene esta capacidad).</simpara>
+<simpara>Usarlo de esta forma no es común y solo se ha puesto a modo de ejemplo.</simpara>
+<programlisting language="js" linenumbering="numbered">class Original {}
+
+class Extendida {
+  construct nueva() {}
+
+  is(otra) {otra == Original}
+
+  type {Original}
+  static supertype {Original}
+}
+
+var instancia = Extendida.nueva()
+
+System.print(instancia is Original) // true (verdadero)
+System.print(instancia is Extendida) // false (falso)
+System.print(instancia.type) // Original
+System.print(Extendida.supertype) // Original</programlisting>
+</section>
+</section>
 </chapter>
 <chapter xml:id="_terminal_de_comandos">
 <title>Terminal de Comandos</title>
@@ -3824,6 +3933,9 @@ Ejemplo <literal>import "random" for Random</literal>.</simpara>
 </bibliomixed>
 <bibliomixed>
 <bibliomisc><anchor xml:id="mit600" xreflabel="[mit600]"/>[mit600] Introduction to Computer Science and Programming. <link xl:href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/</link></bibliomisc>
+</bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="exercism" xreflabel="[exercism]"/>[exercism] Exercism. 'Wren Track' <link xl:href="https://exercism.org/tracks/wren/">https://exercism.org/tracks/wren/</link></bibliomisc>
 </bibliomixed>
 </bibliodiv>
 </bibliography>

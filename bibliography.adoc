@@ -23,3 +23,5 @@ Una lista de recursos complementarios y referenciales.
 - [[[rosettacode-wren]]] Rosetta Code. https://rosettacode.org/wiki/Category:Wren
 
 - [[[mit600]]] Introduction to Computer Science and Programming. https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/
+
+- [[[exercism]]] Exercism. 'Wren Track' https://exercism.org/tracks/wren/

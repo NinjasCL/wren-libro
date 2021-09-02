@@ -1,10 +1,33 @@
 ## Clases
 
+Las clases son una estructura de datos bastante flexible. Permiten definir la información y el comportamiento de cualquier unidad que desees modelar en los programas.
+
+
+### Terminología de Orientación a Objetos
+
+Las clases son parte de un paradígma llamado "Programación Orientada a Objetos" (Object-oriented programming) (_P.O.O_ u _O.O.P_). La cual se focaliza en construir bloques reusables de código llamados _Clases_. Cuando se necesita utilizar una clase se debe crear un objeto (o instancia), por eso el término de orientación a objetos. Para entender mejor, se debe conocer la terminología común.
+
+- Una clase es un bloque de código que define atributos (propiedades) y comportamientos necesarios (métodos) para modelar adecuadamente un elemento del programa. Se puede modelar algo del mundo real como una pelota o una guitarra o algo de un mundo virtual como un personaje de un videojuego y sus leyes físicas.
+
+- Un atributo (o propiedad) es una pieza de información. Es técnicamente una variable que es parte de una clase.
+
+- Un comportamiento es una acción definida dentro de una clase. Son comunmente conocidos como métodos, los cuales son las funciones definidoas para la clase.
+
+- Un objeto es una instancia específica de una clase. Tiene valores definidos para los atributos (variables) de la clase. Se pueden crear tantos objetos de una misma clase, como sea necesario.
+
+### El operador `is`
+
+El operador `is` tiene dos funciones. La primera es permitir la herencia simple entre clases
+y la segunda permite comparar si un objeto pertenece a una metaclase específica.
+
+#### Ejemplo: Juego de Piedra - Papel - Tijera
+
+El siguiente juego de Piedra, Papel o Tijeras es implementado mediante
+una herencia simple. Se utiliza el https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/[patrón de diseño de double dispatch], para simplificar su lógica.
 
 ```js
-// Usando el Patron de Doble Dispatch
-// https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/
-// 
+// Piedra, Papel o Tijeras
+// Usando el Patron de Double Dispatch
 class Elemento {
   pierdeCon(elemento) {}
   leGanaAPiedra(){}
@@ -76,9 +99,77 @@ var piedra = Piedra.crear()
 var papel = Papel.crear()
 var tijera = Tijera.crear()
 
-System.print(piedra.pierdeCon(papel))  // true
-System.print(tijera.pierdeCon(piedra)) // true
-System.print(piedra.pierdeCon(tijera)) // false
-System.print(papel.pierdeCon(tijera))  // true
-System.print(papel.pierdeCon(piedra))  // false
+System.print(piedra.pierdeCon(papel))  // true (verdadero)
+System.print(tijera.pierdeCon(piedra)) // true (verdadero)
+System.print(piedra.pierdeCon(tijera)) // false (falso)
+System.print(papel.pierdeCon(tijera))  // true (verdadero)
+System.print(papel.pierdeCon(piedra))  // false (falso)
+```
+
+#### Ejemplo de comparación
+
+Ahora utilizando las clases de Piedra, Papel o Tijeras vamos a comparar los elementos
+utilizando el operador `is`.
+
+```js
+var piedra = Piedra.crear()
+
+System.print(piedra is Piedra) // true (verdadero)
+System.print(piedra == Piedra) // false (falso)
+
+System.print(piedra is Tijera) // false (falso)
+System.print(piedra == Tijera) // false (falso)
+
+System.print(piedra is Elemento) // true (verdadero)
+System.print(piedra == Elemento) // false (falso)
+
+System.print(Piedra is Elemento) // false (falso)
+System.print(Piedra == Elemento) // false (falso)
+
+System.print(Piedra.supertype is Elemento) // false (falso)
+System.print(Piedra.supertype == Elemento) // true (verdadero)
+```
+
+Analizando los resultados verdaderos:
+
+- `(piedra is Piedra)`: Verdadero puesto que el objeto _piedra_ es una instancia de la clase _Piedra_.
+- `(piedra is Elemento)`: Verdadero puesto que el objeto _piedra_ es una instancia de la clase _Piedra_ y ésta a su vez hereda de _Elemento_.
+- `(Piedra.supertype == Elemento)`: Verdadero puesto que el super tipo de _Piedra_ es la misma referencia a la clase _Elemento_.
+
+Analizando los resultados falsos:
+
+- `(piedra == Piedra)`: Falso puesto que el objeto _piedra_ no tiene la misma referencia que la clase _Piedra_.
+- `(piedra is Tijera)`: Falso puesto que el objeto _piedra_ no es una instancia de la clase _Tijera_.
+- `(piedra == Tijera)`: Falso puesto que el objeto _piedra_ no tiene la misma referencia que la clase _Tijera_.
+- `(piedra == Elemento)`: Falso puesto que el objeto _piedra_ no tiene la misma referencia que la clase _Elemento_.
+- `(Piedra is Elemento)`: Falso puesto que la clase _Piedra_ no es una instancia de la clase _Elemento_.
+- `(Piedra == Elemento)`: Falso puesto que la clase _Piedra_ no es una referencia a la clase _Elemento_.
+- `(Piedra.supertype is Elemento)`: Falso pues que el super tipo de _Piedra_ no hereda de _Elemento_ (ya que el super tipo de _Piedra_ es _Elemento_).
+
+#### Ejemplo: Sobrecarga del operador
+
+Podemos sobrecargar el operador `is` en nuestras clases y "ocultar" su real naturaleza.
+Normalmente podría ser usado para reemplazar las clases básicas (_String_, _Num_, _Bool_, _Fn_, _Fiber_, _Map_, _List_, _Null_, entre otras)
+y permitir su extensión. Recordemos que en _Wren_ no se puede heredar desde estas clases debido al problema de https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)[_Reentrancia_] (_Wren_ no tiene esta capacidad).
+
+Usarlo de esta forma no es común y solo se ha puesto a modo de ejemplo.
+
+```js
+class Original {}
+
+class Extendida {
+  construct nueva() {}
+  
+  is(otra) {otra == Original}
+
+  type {Original}
+  static supertype {Original}
+}
+
+var instancia = Extendida.nueva()
+
+System.print(instancia is Original) // true (verdadero)
+System.print(instancia is Extendida) // false (falso)
+System.print(instancia.type) // Original
+System.print(Extendida.supertype) // Original
 ```

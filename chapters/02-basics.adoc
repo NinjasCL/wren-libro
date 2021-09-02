@@ -334,7 +334,7 @@ class MiClase {}
 La herencia se define utilizando la palabra clave _is_.
 Solo se heredan los métodos de instancia.
 Propiedades de clase (__var) y de instancia (_var),
-constructores y métodos de clase no son heredados (todos son privados).
+constructores y métodos de clase (_static_) no son heredados (todos son privados).
 
 ```js
 class Animal {

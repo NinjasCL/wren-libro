@@ -606,7 +606,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_control_de_flujo_2">7. Control de Flujo</a></li>
 <li><a href="#_mapas">8. Mapas</a></li>
-<li><a href="#_clases">9. Clases</a></li>
+<li><a href="#_clases">9. Clases</a>
+<ul class="sectlevel2">
+<li><a href="#_terminología_de_orientación_a_objetos">9.1. Terminología de Orientación a Objetos</a></li>
+<li><a href="#_el_operador_is">9.2. El operador <code>is</code></a>
+<ul class="sectlevel3">
+<li><a href="#_ejemplo_juego_de_piedra_papel_tijera">9.2.1. Ejemplo: Juego de Piedra - Papel - Tijera</a></li>
+<li><a href="#_ejemplo_de_comparación">9.2.2. Ejemplo de comparación</a></li>
+<li><a href="#_ejemplo_sobrecarga_del_operador">9.2.3. Ejemplo: Sobrecarga del operador</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#_terminal_de_comandos">10. Terminal de Comandos</a></li>
 <li><a href="#_proyectos_de_ejemplo_en_wren">11. Proyectos de ejemplo en Wren</a>
 <ul class="sectlevel2">
@@ -1479,8 +1490,8 @@ var error = Fiber.new { mostrar.call("hola") }.try()</code></pre>
 <div class="paragraph">
 <p>La herencia se define utilizando la palabra clave <em>is</em>.
 Solo se heredan los métodos de instancia.
-Propiedades de clase (__var) y de instancia (_var),
-constructores y métodos de clase no son heredados (todos son privados).</p>
+Propiedades de clase (<em>_var) y de instancia (_var),
+constructores y métodos de clase (_static</em>) no son heredados (todos son privados).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3265,11 +3276,47 @@ if (fibra.error is MiError) {
 <div class="sect1">
 <h2 id="_clases">9. Clases</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Las clases son una estructura de datos bastante flexible. Permiten definir la información y el comportamiento de cualquier unidad que desees modelar en los programas.</p>
+</div>
+<div class="sect2">
+<h3 id="_terminología_de_orientación_a_objetos">9.1. Terminología de Orientación a Objetos</h3>
+<div class="paragraph">
+<p>Las clases son parte de un paradígma llamado "Programación Orientada a Objetos" (Object-oriented programming) (<em>P.O.O</em> u <em>O.O.P</em>). La cual se focaliza en construir bloques reusables de código llamados <em>Clases</em>. Cuando se necesita utilizar una clase se debe crear un objeto (o instancia), por eso el término de orientación a objetos. Para entender mejor, se debe conocer la terminología común.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Una clase es un bloque de código que define atributos (propiedades) y comportamientos necesarios (métodos) para modelar adecuadamente un elemento del programa. Se puede modelar algo del mundo real como una pelota o una guitarra o algo de un mundo virtual como un personaje de un videojuego y sus leyes físicas.</p>
+</li>
+<li>
+<p>Un atributo (o propiedad) es una pieza de información. Es técnicamente una variable que es parte de una clase.</p>
+</li>
+<li>
+<p>Un comportamiento es una acción definida dentro de una clase. Son comunmente conocidos como métodos, los cuales son las funciones definidoas para la clase.</p>
+</li>
+<li>
+<p>Un objeto es una instancia específica de una clase. Tiene valores definidos para los atributos (variables) de la clase. Se pueden crear tantos objetos de una misma clase, como sea necesario.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_el_operador_is">9.2. El operador <code>is</code></h3>
+<div class="paragraph">
+<p>El operador <code>is</code> tiene dos funciones. La primera es permitir la herencia simple entre clases
+y la segunda permite comparar si un objeto pertenece a una metaclase específica.</p>
+</div>
+<div class="sect3">
+<h4 id="_ejemplo_juego_de_piedra_papel_tijera">9.2.1. Ejemplo: Juego de Piedra - Papel - Tijera</h4>
+<div class="paragraph">
+<p>El siguiente juego de Piedra, Papel o Tijeras es implementado mediante
+una herencia simple. Se utiliza el <a href="https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/">patrón de diseño de double dispatch</a>, para simplificar su lógica.</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Usando el Patron de Doble Dispatch
-// https://lostechies.com/jimmybogard/2010/03/30/strengthening-your-domain-the-double-dispatch-pattern/
-//
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// Piedra, Papel o Tijeras
+// Usando el Patron de Double Dispatch
 class Elemento {
   pierdeCon(elemento) {}
   leGanaAPiedra(){}
@@ -3341,11 +3388,116 @@ var piedra = Piedra.crear()
 var papel = Papel.crear()
 var tijera = Tijera.crear()
 
-System.print(piedra.pierdeCon(papel))  // true
-System.print(tijera.pierdeCon(piedra)) // true
-System.print(piedra.pierdeCon(tijera)) // false
-System.print(papel.pierdeCon(tijera))  // true
-System.print(papel.pierdeCon(piedra))  // false</code></pre>
+System.print(piedra.pierdeCon(papel))  // true (verdadero)
+System.print(tijera.pierdeCon(piedra)) // true (verdadero)
+System.print(piedra.pierdeCon(tijera)) // false (falso)
+System.print(papel.pierdeCon(tijera))  // true (verdadero)
+System.print(papel.pierdeCon(piedra))  // false (falso)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ejemplo_de_comparación">9.2.2. Ejemplo de comparación</h4>
+<div class="paragraph">
+<p>Ahora utilizando las clases de Piedra, Papel o Tijeras vamos a comparar los elementos
+utilizando el operador <code>is</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var piedra = Piedra.crear()
+
+System.print(piedra is Piedra) // true (verdadero)
+System.print(piedra == Piedra) // false (falso)
+
+System.print(piedra is Tijera) // false (falso)
+System.print(piedra == Tijera) // false (falso)
+
+System.print(piedra is Elemento) // true (verdadero)
+System.print(piedra == Elemento) // false (falso)
+
+System.print(Piedra is Elemento) // false (falso)
+System.print(Piedra == Elemento) // false (falso)
+
+System.print(Piedra.supertype is Elemento) // false (falso)
+System.print(Piedra.supertype == Elemento) // true (verdadero)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Analizando los resultados verdaderos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>(piedra is Piedra)</code>: Verdadero puesto que el objeto <em>piedra</em> es una instancia de la clase <em>Piedra</em>.</p>
+</li>
+<li>
+<p><code>(piedra is Elemento)</code>: Verdadero puesto que el objeto <em>piedra</em> es una instancia de la clase <em>Piedra</em> y ésta a su vez hereda de <em>Elemento</em>.</p>
+</li>
+<li>
+<p><code>(Piedra.supertype == Elemento)</code>: Verdadero puesto que el super tipo de <em>Piedra</em> es la misma referencia a la clase <em>Elemento</em>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Analizando los resultados falsos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>(piedra == Piedra)</code>: Falso puesto que el objeto <em>piedra</em> no tiene la misma referencia que la clase <em>Piedra</em>.</p>
+</li>
+<li>
+<p><code>(piedra is Tijera)</code>: Falso puesto que el objeto <em>piedra</em> no es una instancia de la clase <em>Tijera</em>.</p>
+</li>
+<li>
+<p><code>(piedra == Tijera)</code>: Falso puesto que el objeto <em>piedra</em> no tiene la misma referencia que la clase <em>Tijera</em>.</p>
+</li>
+<li>
+<p><code>(piedra == Elemento)</code>: Falso puesto que el objeto <em>piedra</em> no tiene la misma referencia que la clase <em>Elemento</em>.</p>
+</li>
+<li>
+<p><code>(Piedra is Elemento)</code>: Falso puesto que la clase <em>Piedra</em> no es una instancia de la clase <em>Elemento</em>.</p>
+</li>
+<li>
+<p><code>(Piedra == Elemento)</code>: Falso puesto que la clase <em>Piedra</em> no es una referencia a la clase <em>Elemento</em>.</p>
+</li>
+<li>
+<p><code>(Piedra.supertype is Elemento)</code>: Falso pues que el super tipo de <em>Piedra</em> no hereda de <em>Elemento</em> (ya que el super tipo de <em>Piedra</em> es <em>Elemento</em>).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ejemplo_sobrecarga_del_operador">9.2.3. Ejemplo: Sobrecarga del operador</h4>
+<div class="paragraph">
+<p>Podemos sobrecargar el operador <code>is</code> en nuestras clases y "ocultar" su real naturaleza.
+Normalmente podría ser usado para reemplazar las clases básicas (<em>String</em>, <em>Num</em>, <em>Bool</em>, <em>Fn</em>, <em>Fiber</em>, <em>Map</em>, <em>List</em>, <em>Null</em>, entre otras)
+y permitir su extensión. Recordemos que en <em>Wren</em> no se puede heredar desde estas clases debido al problema de <a href="https://es.wikipedia.org/wiki/Reentrancia_(inform%C3%A1tica)"><em>Reentrancia</em></a> (<em>Wren</em> no tiene esta capacidad).</p>
+</div>
+<div class="paragraph">
+<p>Usarlo de esta forma no es común y solo se ha puesto a modo de ejemplo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">class Original {}
+
+class Extendida {
+  construct nueva() {}
+
+  is(otra) {otra == Original}
+
+  type {Original}
+  static supertype {Original}
+}
+
+var instancia = Extendida.nueva()
+
+System.print(instancia is Original) // true (verdadero)
+System.print(instancia is Extendida) // false (falso)
+System.print(instancia.type) // Original
+System.print(Extendida.supertype) // Original</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -5365,6 +5517,9 @@ Ejemplo <code>import "random" for Random</code>.</p>
 </li>
 <li>
 <p><a id="mit600"></a>[mit600] Introduction to Computer Science and Programming. <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" class="bare">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/</a></p>
+</li>
+<li>
+<p><a id="exercism"></a>[exercism] Exercism. 'Wren Track' <a href="https://exercism.org/tracks/wren/" class="bare">https://exercism.org/tracks/wren/</a></p>
 </li>
 </ul>
 </div>
