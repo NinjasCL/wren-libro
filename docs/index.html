@@ -562,9 +562,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_punto_flotante">4.2. Punto Flotante</a>
 <ul class="sectlevel3">
 <li><a href="#_comparación_de_punto_flotante">4.2.1. Comparación de Punto Flotante</a></li>
+<li><a href="#_formateo_de_punto_flotante">4.2.2. Formateo de Punto Flotante</a></li>
 </ul>
 </li>
-<li><a href="#_formateo_de_punto_flotante">4.3. Formateo de Punto Flotante</a></li>
+<li><a href="#_0_y_0">4.3. 0 y -0</a></li>
 </ul>
 </li>
 <li><a href="#_secuencias_listas_y_rangos">5. Secuencias, Listas y Rangos</a>
@@ -2554,9 +2555,8 @@ System.print(eq)</code></pre>
 </div>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_formateo_de_punto_flotante">4.3. Formateo de Punto Flotante</h3>
+<div class="sect3">
+<h4 id="_formateo_de_punto_flotante">4.2.2. Formateo de Punto Flotante</h4>
 <div class="paragraph">
 <p>En muchas ocaciones se necesita limitar la cantidad
 de decimales que un número muestra. <em>Wren</em> no cuenta
@@ -2628,6 +2628,42 @@ var formateado = entero + "." + decimales
 
 System.print(formateado)</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_0_y_0">4.3. <a href="https://github.com/wren-lang/wren/issues/1052">0 y -0</a></h3>
+<div class="paragraph">
+<p>Un asunto interesante es la representación del número cero <code>0</code> y cero negativo <code>-0</code>.
+Para <em>Wren</em> ambos valores son tratados como iguales, aún cuando su representación es diferente a nivel de bits.
+Pero solo aplica si se realiza la comparación utilizando el operador <code>==</code>. Si se utiliza <code>Object.same()</code> retornará
+falso debido a que son objetos distintos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">System.print(0 == -0)            // true (verdadero)
+System.print(Object.same(0, -0)) // false (falso)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Es importante considerar cuando se esté utilizando índices para acceder a los datos
+de un arreglo o un diccionario (mapa).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var cero = 0
+var cerone = -0
+
+var mapa = {
+  cero: 1
+}
+
+System.print(cero == cerone) // true (verdadero)
+System.print(mapa[cerone]) // null (nulo)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En el anterior código <code>mapa[cerone]</code> devuelve nulo debido a que el índice <code>-0</code> no existe.</p>
 </div>
 </div>
 </div>

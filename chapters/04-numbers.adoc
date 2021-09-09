@@ -139,7 +139,7 @@ var eq = equivalentes.call(a, b, epsilon)
 System.print(eq)
 ```
 
-### Formateo de Punto Flotante
+#### Formateo de Punto Flotante
 
 En muchas ocaciones se necesita limitar la cantidad
 de decimales que un número muestra. _Wren_ no cuenta
@@ -201,3 +201,33 @@ var formateado = entero + "." + decimales
 
 System.print(formateado)
 ```
+
+### https://github.com/wren-lang/wren/issues/1052[0 y -0]
+
+Un asunto interesante es la representación del número cero `0` y cero negativo `-0`.
+Para _Wren_ ambos valores son tratados como iguales, aún cuando su representación es diferente a nivel de bits.
+Pero solo aplica si se realiza la comparación utilizando el operador `==`. Si se utiliza `Object.same()` retornará
+falso debido a que son objetos distintos.
+
+```js
+System.print(0 == -0)            // true (verdadero)
+System.print(Object.same(0, -0)) // false (falso)
+```
+
+Es importante considerar cuando se esté utilizando índices para acceder a los datos
+de un arreglo o un diccionario (mapa).
+
+```js
+
+var cero = 0
+var cerone = -0
+
+var mapa = { 
+  cero: 1 
+}
+
+System.print(cero == cerone) // true (verdadero)
+System.print(mapa[cerone]) // null (nulo)
+```
+
+En el anterior código `mapa[cerone]` devuelve nulo debido a que el índice `-0` no existe.

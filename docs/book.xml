@@ -1311,7 +1311,6 @@ var eq = equivalentes.call(a, b, epsilon)
 // Debería ser verdadero
 System.print(eq)</programlisting>
 </section>
-</section>
 <section xml:id="_formateo_de_punto_flotante">
 <title>Formateo de Punto Flotante</title>
 <simpara>En muchas ocaciones se necesita limitar la cantidad
@@ -1354,6 +1353,28 @@ var decimales = decimal.take(posiciones).join()
 var formateado = entero + "." + decimales
 
 System.print(formateado)</programlisting>
+</section>
+</section>
+<section xml:id="_0_y_0">
+<title><link xl:href="https://github.com/wren-lang/wren/issues/1052">0 y -0</link></title>
+<simpara>Un asunto interesante es la representación del número cero <literal>0</literal> y cero negativo <literal>-0</literal>.
+Para <emphasis>Wren</emphasis> ambos valores son tratados como iguales, aún cuando su representación es diferente a nivel de bits.
+Pero solo aplica si se realiza la comparación utilizando el operador <literal>==</literal>. Si se utiliza <literal>Object.same()</literal> retornará
+falso debido a que son objetos distintos.</simpara>
+<programlisting language="js" linenumbering="numbered">System.print(0 == -0)            // true (verdadero)
+System.print(Object.same(0, -0)) // false (falso)</programlisting>
+<simpara>Es importante considerar cuando se esté utilizando índices para acceder a los datos
+de un arreglo o un diccionario (mapa).</simpara>
+<programlisting language="js" linenumbering="numbered">var cero = 0
+var cerone = -0
+
+var mapa = {
+  cero: 1
+}
+
+System.print(cero == cerone) // true (verdadero)
+System.print(mapa[cerone]) // null (nulo)</programlisting>
+<simpara>En el anterior código <literal>mapa[cerone]</literal> devuelve nulo debido a que el índice <literal>-0</literal> no existe.</simpara>
 </section>
 </chapter>
 <chapter xml:id="_secuencias_listas_y_rangos">
