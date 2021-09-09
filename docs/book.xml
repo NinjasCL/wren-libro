@@ -1797,7 +1797,7 @@ if (fibra.error is MiError) {
 
 </chapter>
 <chapter xml:id="_clases">
-<title>Clases</title>
+<title><link xl:href="https://wren.io/classes.html">Clases</link></title>
 <simpara>Las clases son una estructura de datos bastante flexible. Permiten definir la información y el comportamiento de cualquier unidad que desees modelar en los programas.</simpara>
 <section xml:id="_terminología_de_orientación_a_objetos">
 <title>Terminología de Orientación a Objetos</title>
@@ -1985,6 +1985,12 @@ System.print(instancia is Extendida) // false (falso)
 System.print(instancia.type) // Original
 System.print(Extendida.supertype) // Original</programlisting>
 </section>
+</section>
+<section xml:id="_atributos">
+<title><link xl:href="https://wren.io/classes.html#attributes">Atributos</link></title>
+<simpara>Las clases en <emphasis>Wren</emphasis> pueden ser adornadas con atributos especiales. Estos permiten añadir
+información para dar contexto o almacenar datos que pueden ser de utilidad para herramientas
+de programación y otras utilidades.</simpara>
 </section>
 </chapter>
 <chapter xml:id="_terminal_de_comandos">

@@ -1,4 +1,4 @@
-## Clases
+## https://wren.io/classes.html[Clases]
 
 Las clases son una estructura de datos bastante flexible. Permiten definir la información y el comportamiento de cualquier unidad que desees modelar en los programas.
 
@@ -173,3 +173,9 @@ System.print(instancia is Extendida) // false (falso)
 System.print(instancia.type) // Original
 System.print(Extendida.supertype) // Original
 ```
+
+### https://wren.io/classes.html#attributes[Atributos]
+
+Las clases en _Wren_ pueden ser adornadas con atributos especiales. Estos permiten añadir
+información para dar contexto o almacenar datos que pueden ser de utilidad para herramientas
+de programación y otras utilidades.
