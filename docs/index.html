@@ -3307,7 +3307,31 @@ if (fibra.error is MiError) {
 <div class="sect1">
 <h2 id="_mapas">8. Mapas</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Los mapas, también conocidos como "diccionarios" permiten almacenar distintas variables
+que pueden ser accedidas mediante un identificador.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">var mivar = true
 
+var mapa = {
+  "1": 1,
+  "dos": 2,
+  "mivar"; mivar
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A diferencia de otros lenguajes, no se puede acceder directamente a las distintas variables
+con el identificador.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">mapa.mivar // error
+mapa["mivar"] // ok</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3543,6 +3567,32 @@ System.print(Extendida.supertype) // Original</code></pre>
 <p>Las clases en <em>Wren</em> pueden ser adornadas con atributos especiales. Estos permiten añadir
 información para dar contexto o almacenar datos que pueden ser de utilidad para herramientas
 de programación y otras utilidades.</p>
+</div>
+<div class="paragraph">
+<p>Solamente pueden estar dentro de una declaración de clase o de método.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">#atributo = "valor"
+class MiClase {
+  #atributo = "valor"
+  metodo {true}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Los valores pueden ser <em>String</em>, <em>Num</em>, <em>Bool</em> o el tipo especial <em>group</em>.
+que permite agrupar distintos atributos en un marco en común.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">#!cantidad = 10
+#grupo(
+  nombre = "Camilo"
+)
+class MiClase {
+}</code></pre>
+</div>
 </div>
 </div>
 </div>

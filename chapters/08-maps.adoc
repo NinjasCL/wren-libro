@@ -1,1 +1,24 @@
 ## Mapas
+
+Los mapas, también conocidos como "diccionarios" permiten almacenar distintas variables
+que pueden ser accedidas mediante un identificador.
+
+```js
+
+var mivar = true
+
+var mapa = {
+  "1": 1,
+  "dos": 2,
+  "mivar"; mivar
+}
+
+```
+
+A diferencia de otros lenguajes, no se puede acceder directamente a las distintas variables
+con el identificador.
+
+```js
+mapa.mivar // error
+mapa["mivar"] // ok
+```
