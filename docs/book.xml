@@ -2062,63 +2062,67 @@ class MiClase {
 }</programlisting>
 </section>
 </chapter>
-<chapter xml:id="_terminal_de_comandos">
-<title>Terminal de Comandos</title>
+<chapter xml:id="_wren_console">
+<title><link xl:href="https://github.com/joshgoebel/wren-console">Wren Console</link></title>
+<simpara><emphasis>Wren Console</emphasis> es una pequeña y simple herramienta para ejecutar programas en <emphasis>Wren</emphasis>. Está respaldado por <emphasis>libuv</emphasis> (para IO).
+Está basada en el projecto oficial de <emphasis>Wren CLI</emphasis>, aunque todavía es un trabajo en progreso.</simpara>
+<programlisting language="js" linenumbering="numbered">#!/usr/bin/env wrenc
 
-</chapter>
-<chapter xml:id="_proyectos_de_ejemplo_en_wren">
-<title>Proyectos de ejemplo en Wren</title>
-<simpara>Una colección de código fuente <emphasis>Wren</emphasis> con juegos y aplicaciones simples.
-Se recomienda utilizar un editor de código como <link xl:href="https://vscodium.com/">VS Codium</link>
-para escribir los ejemplos.</simpara>
-<simpara>Cada ejemplo puede ser categorizado en los siguientes niveles:</simpara>
-<table frame="all" rowsep="1" colsep="1">
-<title>Niveles</title>
-<tgroup cols="2">
-<colspec colname="col_1" colwidth="50*"/>
-<colspec colname="col_2" colwidth="50*"/>
-<tbody>
-<row>
-<entry align="left" valign="top"><simpara>Nivel</simpara></entry>
-<entry align="left" valign="top"><simpara>Descripción</simpara></entry>
-</row>
-<row>
-<entry align="left" valign="top"><simpara>Novato</simpara></entry>
-<entry align="left" valign="top"><simpara>Utiliza operaciones simples como suma, resta, multiplicación, división, <emphasis>System.print()</emphasis> y estructuras de control.</simpara></entry>
-</row>
-<row>
-<entry align="left" valign="top"><simpara>Intermedio</simpara></entry>
-<entry align="left" valign="top"><simpara>Utiliza funciones, diccionarios y clases simples.</simpara></entry>
-</row>
-<row>
-<entry align="left" valign="top"><simpara>Avanzado</simpara></entry>
-<entry align="left" valign="top"><simpara>Utiliza clases, herencia y algoritmos avanzados.</simpara></entry>
-</row>
-</tbody>
-</tgroup>
-</table>
-<section xml:id="_terminal">
-<title>Terminal</title>
-<simpara>Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando <emphasis>Wren CLI</emphasis> y la entrada/salida estándar.</simpara>
-<simpara>Basados principalmente en los códigos diponibles en <link xl:href="https://github.com/asweigart/PythonStdioGames">Python Stdio Games</link> y <link xl:href="https://github.com/asweigart/inventwithpython3rded">Invent With Python</link>.</simpara>
-<section xml:id="_cómo_ejecutarlos">
-<title>¿Cómo ejecutarlos?</title>
-<simpara>Primero se necesita el <link xl:href="https://github.com/wren-lang/wren-cli/releases/latest">intérprete de Wren</link>.</simpara>
-<simpara>Para mayor documentación sobre la consola y el lenguaje <emphasis>Wren</emphasis> se puede visitar <link xl:href="http://wren.io/cli">http://wren.io/cli</link></simpara>
-</section>
-<section xml:id="_adivina_el_número">
-<title>Adivina el Número</title>
-<simpara>Basado en <link xl:href="http://inventwithpython.com/es/4.html">Adivina del Número</link>.</simpara>
-<simpara>En el juego <emphasis>"Adivina el Número"</emphasis>. La computadora pensará un número aleatorio entre 1 y 20, y te pedirá que intentes adivinarlo. La computadora te dirá si cada intento es muy alto o muy bajo. Tú ganas si adivinas el número en seis intentos o menos.</simpara>
-<simpara>Este es un buen juego para codificar ya que usa números aleatorios y bucles, y recibe entradas del usuario en un programa corto. Aprenderás cómo convertir valores a diferentes tipos de datos, y por qué es necesario hacer esto. Dado que este programa es un juego, nos referiremos al usuario como el jugador. Pero llamarlo “usuario” también sería correcto.</simpara>
-<formalpara>
-<title>Nivel</title>
-<para>Novato</para>
-</formalpara>
-<section xml:id="_ejemplo_de_ejecución">
-<title>Ejemplo de Ejecución</title>
-<simpara><literal>$ ./wren adivina/adivina.wren</literal></simpara>
-<programlisting language="sh" linenumbering="numbered">¡Hola! ¿Cómo te llamas?
+import "io" for Stdin
+
+System.print("Ingresa tu nombre:")
+
+var nombre = Stdin.readLine().trim()
+
+System.print("Hola" + (nombre.isEmpty ? "Mundo" : nombre).toString + "!")
+````
+
+## Proyectos de ejemplo en Wren
+
+Una colección de código fuente _Wren_ con juegos y aplicaciones simples.
+Se recomienda utilizar un editor de código como https://vscodium.com/[VS Codium]
+para escribir los ejemplos.
+
+Cada ejemplo puede ser categorizado en los siguientes niveles:
+
+.Niveles
+|===
+|Nivel|Descripción
+|Novato| Utiliza operaciones simples como suma, resta, multiplicación, división, _System.print()_ y estructuras de control.
+|Intermedio| Utiliza funciones, diccionarios y clases simples.
+|Avanzado| Utiliza clases, herencia y algoritmos avanzados.
+|===
+
+### Terminal
+
+Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando _Wren CLI_ y la entrada/salida estándar.
+
+Basados principalmente en los códigos diponibles en https://github.com/asweigart/PythonStdioGames[Python Stdio Games] y https://github.com/asweigart/inventwithpython3rded[Invent With Python].
+
+#### ¿Cómo ejecutarlos?
+
+Primero se necesita el https://github.com/wren-lang/wren-cli/releases/latest[intérprete de Wren].
+
+Para mayor documentación sobre la consola y el lenguaje _Wren_ se puede visitar http://wren.io/cli
+
+#### Adivina el Número
+
+Basado en http://inventwithpython.com/es/4.html[Adivina del Número].
+
+En el juego _"Adivina el Número"_. La computadora pensará un número aleatorio entre 1 y 20, y te pedirá que intentes adivinarlo. La computadora te dirá si cada intento es muy alto o muy bajo. Tú ganas si adivinas el número en seis intentos o menos.
+
+Este es un buen juego para codificar ya que usa números aleatorios y bucles, y recibe entradas del usuario en un programa corto. Aprenderás cómo convertir valores a diferentes tipos de datos, y por qué es necesario hacer esto. Dado que este programa es un juego, nos referiremos al usuario como el jugador. Pero llamarlo “usuario” también sería correcto.
+
+.Nivel
+Novato
+
+##### Ejemplo de Ejecución
+
+`$ ./wren adivina/adivina.wren`
+
+```sh
+
+¡Hola! ¿Cómo te llamas?
 
 Alberto
 
@@ -2141,7 +2145,6 @@ Intenta adivinar 3/6.
 4
 
 ¡Buen trabajo, Alberto! ¡Has adivinado mi número en 3 intentos!</programlisting>
-</section>
 <section xml:id="_código_fuente">
 <title>Código fuente</title>
 <programlisting language="js" linenumbering="numbered">// nombre: adivina.wren
@@ -2193,7 +2196,6 @@ if (estimacion != numero) {
     System.print("Pues no. El número que estaba pensando era %(numero)")
 }</programlisting>
 </section>
-</section>
 <section xml:id="_reino_de_dragones">
 <title>Reino de Dragones</title>
 <simpara>Basado en <link xl:href="http://inventwithpython.com/es/6.html">Reino de Dragones</link>.</simpara>
@@ -2206,7 +2208,7 @@ if (estimacion != numero) {
 <title>¿Cómo Jugar a Reino de Dragones?</title>
 <simpara>En este juego, el jugador está en una tierra llena de dragones. Todos los dragones viven en cuevas junto a sus grandes montones de tesoros encontrados. Algunos dragones son amigables, y compartirán sus tesoros contigo. Otros son codiciosos y hambrientos, y se comerán a cualquiera que entre a su cueva. El jugador se encuentra frente a dos cuevas, una con un dragón amigable y la otra con un dragón hambriento. El jugador tiene que elegir entre las dos.</simpara>
 </section>
-<section xml:id="_ejemplo_de_ejecución_2">
+<section xml:id="_ejemplo_de_ejecución">
 <title>Ejemplo de Ejecución</title>
 <simpara><literal>$ ./wren dragon/dragon.wren</literal></simpara>
 <programlisting language="sh" linenumbering="numbered">Estás en una tierra llena de dragones. Frente a tí
@@ -2311,7 +2313,7 @@ Basado en <link xl:href="https://github.com/asweigart/PythonStdioGames/blob/main
 <title>Nivel</title>
 <para>Novato</para>
 </formalpara>
-<section xml:id="_ejemplo_de_ejecución_3">
+<section xml:id="_ejemplo_de_ejecución_2">
 <title>Ejemplo de Ejecución</title>
 <simpara><literal>./wren diamantes/diamantes.wren</literal></simpara>
 <programlisting language="sh" linenumbering="numbered">/\
@@ -2403,7 +2405,7 @@ Basado en <link xl:href="https://github.com/asweigart/PythonStdioGames/blob/main
 <title>Nivel</title>
 <para>Intermedio</para>
 </formalpara>
-<section xml:id="_ejemplo_de_ejecución_4">
+<section xml:id="_ejemplo_de_ejecución_3">
 <title>Ejemplo de Ejecución</title>
 <simpara><literal>$ ./wren caracoles/caracoles.wren</literal></simpara>
 <screen linenumbering="numbered">La gran carrera de caracoles
@@ -2547,7 +2549,7 @@ Código levemente basado en <xref linkend="alfonseca"/>.</simpara>
 <title>¿Cómo Jugar?</title>
 <simpara>El jugador debe ingresar el ángulo para cada tiro del cañón.</simpara>
 </section>
-<section xml:id="_ejemplo_de_ejecución_5">
+<section xml:id="_ejemplo_de_ejecución_4">
 <title>Ejemplo de Ejecución</title>
 <screen linenumbering="numbered">Quedan 1 objetivos
 El cañón puede disparar hasta 34595 metros
@@ -2708,7 +2710,6 @@ while (jugar) {
     }
   }
 }</programlisting>
-</section>
 </section>
 </section>
 <section xml:id="_gráficos">
