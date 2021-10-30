@@ -179,3 +179,26 @@ System.print(Extendida.supertype) // Original
 Las clases en _Wren_ pueden ser adornadas con atributos especiales. Estos permiten añadir
 información para dar contexto o almacenar datos que pueden ser de utilidad para herramientas
 de programación y otras utilidades.
+
+Solamente pueden estar dentro de una declaración de clase o de método.
+
+```js
+
+#atributo = "valor"
+class MiClase {
+  #atributo = "valor"
+  metodo {true}
+}
+```
+
+Los valores pueden ser _String_, _Num_, _Bool_ o el tipo especial _group_.
+que permite agrupar distintos atributos en un marco en común.
+
+```js
+#!cantidad = 10
+#grupo(
+  nombre = "Camilo"
+)
+class MiClase {
+}
+```
