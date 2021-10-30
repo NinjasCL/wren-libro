@@ -1794,7 +1794,19 @@ if (fibra.error is MiError) {
 </chapter>
 <chapter xml:id="_mapas">
 <title>Mapas</title>
+<simpara>Los mapas, también conocidos como "diccionarios" permiten almacenar distintas variables
+que pueden ser accedidas mediante un identificador.</simpara>
+<programlisting language="js" linenumbering="numbered">var mivar = true
 
+var mapa = {
+  "1": 1,
+  "dos": 2,
+  "mivar"; mivar
+}</programlisting>
+<simpara>A diferencia de otros lenguajes, no se puede acceder directamente a las distintas variables
+con el identificador.</simpara>
+<programlisting language="js" linenumbering="numbered">mapa.mivar // error
+mapa["mivar"] // ok</programlisting>
 </chapter>
 <chapter xml:id="_clases">
 <title><link xl:href="https://wren.io/classes.html">Clases</link></title>
@@ -1991,6 +2003,20 @@ System.print(Extendida.supertype) // Original</programlisting>
 <simpara>Las clases en <emphasis>Wren</emphasis> pueden ser adornadas con atributos especiales. Estos permiten añadir
 información para dar contexto o almacenar datos que pueden ser de utilidad para herramientas
 de programación y otras utilidades.</simpara>
+<simpara>Solamente pueden estar dentro de una declaración de clase o de método.</simpara>
+<programlisting language="js" linenumbering="numbered">#atributo = "valor"
+class MiClase {
+  #atributo = "valor"
+  metodo {true}
+}</programlisting>
+<simpara>Los valores pueden ser <emphasis>String</emphasis>, <emphasis>Num</emphasis>, <emphasis>Bool</emphasis> o el tipo especial <emphasis>group</emphasis>.
+que permite agrupar distintos atributos en un marco en común.</simpara>
+<programlisting language="js" linenumbering="numbered">#!cantidad = 10
+#grupo(
+  nombre = "Camilo"
+)
+class MiClase {
+}</programlisting>
 </section>
 </chapter>
 <chapter xml:id="_terminal_de_comandos">
