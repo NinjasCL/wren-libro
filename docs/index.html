@@ -620,37 +620,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_atributos">9.3. Atributos</a></li>
 </ul>
 </li>
-<li><a href="#_terminal_de_comandos">10. Terminal de Comandos</a></li>
-<li><a href="#_proyectos_de_ejemplo_en_wren">11. Proyectos de ejemplo en Wren</a>
+<li><a href="#_wren_console">10. Wren Console</a>
+<ul class="sectlevel4">
+<li><a href="#_código_fuente">Código fuente</a></li>
+<li><a href="#_reino_de_dragones">10.2. Reino de Dragones</a></li>
+<li><a href="#_diamantes">10.3. Diamantes</a></li>
+<li><a href="#_carrera_de_caracoles">10.4. Carrera de Caracoles</a></li>
+<li><a href="#_cañon">10.5. Cañon</a></li>
+<li><a href="#_gráficos">10.6. Gráficos</a>
+<ul class="sectlevel3">
+<li><a href="#_breakout">10.6.1. Breakout</a></li>
+<li><a href="#_snake">10.6.2. Snake</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_soluciones_a_ejercicios">11. Soluciones a Ejercicios</a>
 <ul class="sectlevel2">
-<li><a href="#_terminal">11.1. Terminal</a>
+<li><a href="#_capítulo_1">11.1. Capítulo 1</a>
 <ul class="sectlevel3">
-<li><a href="#_cómo_ejecutarlos">11.1.1. ¿Cómo ejecutarlos?</a></li>
-<li><a href="#_adivina_el_número">11.1.2. Adivina el Número</a></li>
-<li><a href="#_reino_de_dragones">11.1.3. Reino de Dragones</a></li>
-<li><a href="#_diamantes">11.1.4. Diamantes</a></li>
-<li><a href="#_carrera_de_caracoles">11.1.5. Carrera de Caracoles</a></li>
-<li><a href="#_cañon">11.1.6. Cañon</a></li>
+<li><a href="#chap1-ex1-sol">11.1.1. Solución: ¡Hola Wren!</a></li>
 </ul>
 </li>
-<li><a href="#_gráficos">11.2. Gráficos</a>
+<li><a href="#_capítulo_3">11.2. Capítulo 3</a>
 <ul class="sectlevel3">
-<li><a href="#_breakout">11.2.1. Breakout</a></li>
-<li><a href="#_snake">11.2.2. Snake</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_soluciones_a_ejercicios">12. Soluciones a Ejercicios</a>
-<ul class="sectlevel2">
-<li><a href="#_capítulo_1">12.1. Capítulo 1</a>
-<ul class="sectlevel3">
-<li><a href="#chap1-ex1-sol">12.1.1. Solución: ¡Hola Wren!</a></li>
-</ul>
-</li>
-<li><a href="#_capítulo_3">12.2. Capítulo 3</a>
-<ul class="sectlevel3">
-<li><a href="#chap3-ex1-sol">12.2.1. Solución: Donas</a></li>
+<li><a href="#chap3-ex1-sol">11.2.1. Solución: Donas</a></li>
 </ul>
 </li>
 </ul>
@@ -3657,87 +3651,71 @@ class MiClase {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_terminal_de_comandos">10. Terminal de Comandos</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_proyectos_de_ejemplo_en_wren">11. Proyectos de ejemplo en Wren</h2>
+<h2 id="_wren_console">10. <a href="https://github.com/joshgoebel/wren-console">Wren Console</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Una colección de código fuente <em>Wren</em> con juegos y aplicaciones simples.
-Se recomienda utilizar un editor de código como <a href="https://vscodium.com/">VS Codium</a>
-para escribir los ejemplos.</p>
-</div>
-<div class="paragraph">
-<p>Cada ejemplo puede ser categorizado en los siguientes niveles:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Niveles</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nivel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Descripción</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Novato</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utiliza operaciones simples como suma, resta, multiplicación, división, <em>System.print()</em> y estructuras de control.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Intermedio</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utiliza funciones, diccionarios y clases simples.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Avanzado</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Utiliza clases, herencia y algoritmos avanzados.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect2">
-<h3 id="_terminal">11.1. Terminal</h3>
-<div class="paragraph">
-<p>Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando <em>Wren CLI</em> y la entrada/salida estándar.</p>
-</div>
-<div class="paragraph">
-<p>Basados principalmente en los códigos diponibles en <a href="https://github.com/asweigart/PythonStdioGames">Python Stdio Games</a> y <a href="https://github.com/asweigart/inventwithpython3rded">Invent With Python</a>.</p>
-</div>
-<div class="sect3">
-<h4 id="_cómo_ejecutarlos">11.1.1. ¿Cómo ejecutarlos?</h4>
-<div class="paragraph">
-<p>Primero se necesita el <a href="https://github.com/wren-lang/wren-cli/releases/latest">intérprete de Wren</a>.</p>
-</div>
-<div class="paragraph">
-<p>Para mayor documentación sobre la consola y el lenguaje <em>Wren</em> se puede visitar <a href="http://wren.io/cli" class="bare">http://wren.io/cli</a></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_adivina_el_número">11.1.2. Adivina el Número</h4>
-<div class="paragraph">
-<p>Basado en <a href="http://inventwithpython.com/es/4.html">Adivina del Número</a>.</p>
-</div>
-<div class="paragraph">
-<p>En el juego <em>"Adivina el Número"</em>. La computadora pensará un número aleatorio entre 1 y 20, y te pedirá que intentes adivinarlo. La computadora te dirá si cada intento es muy alto o muy bajo. Tú ganas si adivinas el número en seis intentos o menos.</p>
-</div>
-<div class="paragraph">
-<p>Este es un buen juego para codificar ya que usa números aleatorios y bucles, y recibe entradas del usuario en un programa corto. Aprenderás cómo convertir valores a diferentes tipos de datos, y por qué es necesario hacer esto. Dado que este programa es un juego, nos referiremos al usuario como el jugador. Pero llamarlo “usuario” también sería correcto.</p>
-</div>
-<div class="paragraph">
-<div class="title">Nivel</div>
-<p>Novato</p>
-</div>
-<div class="sect4">
-<h5 id="_ejemplo_de_ejecución">Ejemplo de Ejecución</h5>
-<div class="paragraph">
-<p><code>$ ./wren adivina/adivina.wren</code></p>
+<p><em>Wren Console</em> es una pequeña y simple herramienta para ejecutar programas en <em>Wren</em>. Está respaldado por <em>libuv</em> (para IO).
+Está basada en el projecto oficial de <em>Wren CLI</em>, aunque todavía es un trabajo en progreso.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">¡Hola! ¿Cómo te llamas?
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">#!/usr/bin/env wrenc
+
+import "io" for Stdin
+
+System.print("Ingresa tu nombre:")
+
+var nombre = Stdin.readLine().trim()
+
+System.print("Hola" + (nombre.isEmpty ? "Mundo" : nombre).toString + "!")
+````
+
+## Proyectos de ejemplo en Wren
+
+Una colección de código fuente _Wren_ con juegos y aplicaciones simples.
+Se recomienda utilizar un editor de código como https://vscodium.com/[VS Codium]
+para escribir los ejemplos.
+
+Cada ejemplo puede ser categorizado en los siguientes niveles:
+
+.Niveles
+|===
+|Nivel|Descripción
+|Novato| Utiliza operaciones simples como suma, resta, multiplicación, división, _System.print()_ y estructuras de control.
+|Intermedio| Utiliza funciones, diccionarios y clases simples.
+|Avanzado| Utiliza clases, herencia y algoritmos avanzados.
+|===
+
+### Terminal
+
+Aplicaciones que no necesitan interfaz gráfica para funcionar, solamente necesitando _Wren CLI_ y la entrada/salida estándar.
+
+Basados principalmente en los códigos diponibles en https://github.com/asweigart/PythonStdioGames[Python Stdio Games] y https://github.com/asweigart/inventwithpython3rded[Invent With Python].
+
+#### ¿Cómo ejecutarlos?
+
+Primero se necesita el https://github.com/wren-lang/wren-cli/releases/latest[intérprete de Wren].
+
+Para mayor documentación sobre la consola y el lenguaje _Wren_ se puede visitar http://wren.io/cli
+
+#### Adivina el Número
+
+Basado en http://inventwithpython.com/es/4.html[Adivina del Número].
+
+En el juego _"Adivina el Número"_. La computadora pensará un número aleatorio entre 1 y 20, y te pedirá que intentes adivinarlo. La computadora te dirá si cada intento es muy alto o muy bajo. Tú ganas si adivinas el número en seis intentos o menos.
+
+Este es un buen juego para codificar ya que usa números aleatorios y bucles, y recibe entradas del usuario en un programa corto. Aprenderás cómo convertir valores a diferentes tipos de datos, y por qué es necesario hacer esto. Dado que este programa es un juego, nos referiremos al usuario como el jugador. Pero llamarlo “usuario” también sería correcto.
+
+.Nivel
+Novato
+
+##### Ejemplo de Ejecución
+
+`$ ./wren adivina/adivina.wren`
+
+```sh
+
+¡Hola! ¿Cómo te llamas?
 
 Alberto
 
@@ -3760,7 +3738,6 @@ Intenta adivinar 3/6.
 4
 
 ¡Buen trabajo, Alberto! ¡Has adivinado mi número en 3 intentos!</code></pre>
-</div>
 </div>
 </div>
 <div class="sect4">
@@ -3818,9 +3795,8 @@ if (estimacion != numero) {
 </div>
 </div>
 </div>
-</div>
 <div class="sect3">
-<h4 id="_reino_de_dragones">11.1.3. Reino de Dragones</h4>
+<h4 id="_reino_de_dragones">10.2. Reino de Dragones</h4>
 <div class="paragraph">
 <p>Basado en <a href="http://inventwithpython.com/es/6.html">Reino de Dragones</a>.</p>
 </div>
@@ -3838,7 +3814,7 @@ if (estimacion != numero) {
 </div>
 </div>
 <div class="sect4">
-<h5 id="_ejemplo_de_ejecución_2">Ejemplo de Ejecución</h5>
+<h5 id="_ejemplo_de_ejecución">Ejemplo de Ejecución</h5>
 <div class="paragraph">
 <p><code>$ ./wren dragon/dragon.wren</code></p>
 </div>
@@ -3944,7 +3920,7 @@ System.print("¡Eso fue divertido, nos vemos luego!")</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_diamantes">11.1.4. Diamantes</h4>
+<h4 id="_diamantes">10.3. Diamantes</h4>
 <div class="paragraph">
 <p>Esta es una simple aplicación creativa que muestra
 diamantes de distintos tamaños.
@@ -3955,7 +3931,7 @@ Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/g
 <p>Novato</p>
 </div>
 <div class="sect4">
-<h5 id="_ejemplo_de_ejecución_3">Ejemplo de Ejecución</h5>
+<h5 id="_ejemplo_de_ejecución_2">Ejemplo de Ejecución</h5>
 <div class="paragraph">
 <p><code>./wren diamantes/diamantes.wren</code></p>
 </div>
@@ -4049,7 +4025,7 @@ for(dimension in 0..5) {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_carrera_de_caracoles">11.1.5. Carrera de Caracoles</h4>
+<h4 id="_carrera_de_caracoles">10.4. Carrera de Caracoles</h4>
 <div class="paragraph">
 <p>Una alucinante carrera entre 2 a 8 caracoles.
 Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/gamesbyexample/snailrace.py">SnailRace</a>.</p>
@@ -4059,7 +4035,7 @@ Basado en <a href="https://github.com/asweigart/PythonStdioGames/blob/main/src/g
 <p>Intermedio</p>
 </div>
 <div class="sect4">
-<h5 id="_ejemplo_de_ejecución_4">Ejemplo de Ejecución</h5>
+<h5 id="_ejemplo_de_ejecución_3">Ejemplo de Ejecución</h5>
 <div class="paragraph">
 <p><code>$ ./wren caracoles/caracoles.wren</code></p>
 </div>
@@ -4201,7 +4177,7 @@ while (true) {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_cañon">11.1.6. Cañon</h4>
+<h4 id="_cañon">10.5. Cañon</h4>
 <div class="paragraph">
 <p>Este juego simula el disparo de un cañón hacia un objetivo.
 Código levemente basado en <a href="#alfonseca">[alfonseca]</a>.</p>
@@ -4217,7 +4193,7 @@ Código levemente basado en <a href="#alfonseca">[alfonseca]</a>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_ejemplo_de_ejecución_5">Ejemplo de Ejecución</h5>
+<h5 id="_ejemplo_de_ejecución_4">Ejemplo de Ejecución</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">Quedan 1 objetivos
@@ -4387,14 +4363,13 @@ while (jugar) {
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="_gráficos">11.2. Gráficos</h3>
+<h3 id="_gráficos">10.6. Gráficos</h3>
 <div class="paragraph">
 <p>Aplicaciones que necesitan <a href="http://tic80.com/"><em>TIC 80</em></a> u <a href="https://domeengine.com/"><em>Dome Engine</em></a> para ser ejecutados.</p>
 </div>
 <div class="sect3">
-<h4 id="_breakout">11.2.1. <a href="https://github.com/NinjasCL/breakout">Breakout</a></h4>
+<h4 id="_breakout">10.6.1. <a href="https://github.com/NinjasCL/breakout">Breakout</a></h4>
 <div class="paragraph">
 <p>Un clon simple del famoso juego de <em>Breakout</em>.
 Debes eliminar todos los bloques dentro de la pantalla utilizando
@@ -4976,7 +4951,7 @@ class Game is TIC {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_snake">11.2.2. <a href="https://github.com/NinjasCL/snake">Snake</a></h4>
+<h4 id="_snake">10.6.2. <a href="https://github.com/NinjasCL/snake">Snake</a></h4>
 <div class="paragraph">
 <p>Un clon simple del famoso juego de la serpiente.
 Si come se agranda su cola y el juego termina al momento de que la cabeza
@@ -5424,15 +5399,15 @@ class Game is TIC {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_soluciones_a_ejercicios">12. Soluciones a Ejercicios</h2>
+<h2 id="_soluciones_a_ejercicios">11. Soluciones a Ejercicios</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Las siguientes son las soluciones a los ejercicios planteados en el libro. No necesariamente son la única forma de resolverlos. Se recomienda intentar resolver los ejercicios antes de ver las soluciones.</p>
 </div>
 <div class="sect2">
-<h3 id="_capítulo_1">12.1. Capítulo 1</h3>
+<h3 id="_capítulo_1">11.1. Capítulo 1</h3>
 <div class="sect3">
-<h4 id="chap1-ex1-sol">12.1.1. Solución: <a href="#chap1-ex1">¡Hola Wren!</a></h4>
+<h4 id="chap1-ex1-sol">11.1.1. Solución: <a href="#chap1-ex1">¡Hola Wren!</a></h4>
 <div class="paragraph">
 <div class="title">Ejecución</div>
 <p><code>$ ./wren hola.wren</code></p>
@@ -5453,9 +5428,9 @@ System.print("¡Hola Wren!")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_capítulo_3">12.2. Capítulo 3</h3>
+<h3 id="_capítulo_3">11.2. Capítulo 3</h3>
 <div class="sect3">
-<h4 id="chap3-ex1-sol">12.2.1. Solución: <a href="#chap3-ex1">Donas</a></h4>
+<h4 id="chap3-ex1-sol">11.2.1. Solución: <a href="#chap3-ex1">Donas</a></h4>
 <div class="paragraph">
 <div class="title">Ejecución</div>
 <p><code>$ ./wren donas.wren</code></p>

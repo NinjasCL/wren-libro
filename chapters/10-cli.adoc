@@ -1,1 +1,19 @@
-## Terminal de Comandos
+## https://github.com/joshgoebel/wren-console[Wren Console]
+
+_Wren Console_ es una pequeña y simple herramienta para ejecutar programas en _Wren_. Está respaldado por _libuv_ (para IO).
+Está basada en el projecto oficial de _Wren CLI_, aunque todavía es un trabajo en progreso.
+
+
+```js
+
+#!/usr/bin/env wrenc
+
+import "io" for Stdin
+
+System.print("Ingresa tu nombre:")
+
+var nombre = Stdin.readLine().trim()
+
+System.print("Hola" + (nombre.isEmpty ? "Mundo" : nombre).toString + "!")
+````
+
