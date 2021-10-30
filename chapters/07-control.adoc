@@ -1,1 +1,49 @@
 ## Control de Flujo
+
+El control de flujo permite modificar la normal ejecución de un programa, 
+cambiando su curso dependiendo de condiciones específicas.
+
+- `if`: (sí) permite ejecutar un bloque de código solamente si la condición es cumplida.
+- `for`: (repetir) permite ejecutar un bloque de código tantas veces como el contador y la condicional permitan.
+- `while` (mientras) permite ejecutar un bloque de código siempre que la condición se cumpla.
+
+```js
+
+var numero = 8
+if (numero % 2 == 0) {
+  System.print("El número es par")
+}
+```
+
+```js
+for(i in 1..3) {
+  /*
+  Paso 1
+  Paso 2
+  Paso 3
+  */
+  System.print("Paso " + i.toString)
+}
+```
+
+```js
+/*
+comienza
+paso 1
+paso 2
+paso 3
+finalizado
+*/
+var verdadero = true
+var contador = 1
+System.print("comienza")
+while(verdadero) {
+  System.print("paso " + contador.toString)
+  if (contador == 3) {
+    verdadero = false
+    System.print("finalizado")
+  }
+
+  contador = contador + 1
+}
+```
