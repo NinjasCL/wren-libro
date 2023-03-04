@@ -27,7 +27,7 @@ http://creativecommons.org/licenses/by-nc-sa/4.0/[image:https://i.creativecommon
 A menos que se especifique explícitamente, el código fuente esta bajo una licencia https://opensource.org/licenses/BSD-2-Clause[BSD-2].
 
 
-## 🤩 Creditos
+## 🤩 Créditos
 
 ++++
 <p>
