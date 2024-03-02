@@ -35,10 +35,16 @@
 </imageobject>
 <textobject><phrase>Licencia Creative Commons</phrase></textobject>
 </inlinemediaobject></link></simpara>
+</colophon>
+<preface xml:id="_sobre_el_autor" role="authors">
+<title>Sobre el Autor</title>
+<simpara>Camilo Castro es un Ingeniero en Software especializado
+en el desarrollo de aplicaciones Web y Móviles.
+Actualmente su lenguaje de programación preferido es <emphasis>Elixir</emphasis> en paradigma funcional y <emphasis>Wren</emphasis> en paradigma orientado a objetos.</simpara>
 <abstract>
 <simpara>En este pequeño documento se detallarán lo básico del lenguaje de programación <link xl:href="http://wren.io">Wren</link>.</simpara>
 </abstract>
-</colophon>
+</preface>
 <chapter xml:id="_pequeña_historia_de_wren">
 <title>Pequeña Historia de <link xl:href="https://github.com/wren-lang/wren"><emphasis>Wren</link></emphasis></title>
 <simpara><link xl:href="https://github.com/wren-lang/wren"><emphasis>Wren</link></emphasis> es un lenguaje de programación <link xl:href="https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos">orientado a objetos</link> creado por <link xl:href="http://journal.stuffwithstuff.com/">Bob Nystrom</link>, un ex desarrollador de videojuegos y creador de otros lenguajes de programación como <link xl:href="https://github.com/munificent/vigil">Vigil</link>, <link xl:href="http://finch.stuffwithstuff.com/">Finch</link> y <link xl:href="http://magpie-lang.org/">Magpie</link>. Ha escrito dos libros: <link xl:href="http://gameprogrammingpatterns.com/">Game Programming Patterns</link> y <link xl:href="http://craftinginterpreters.com/">Crafting Interpreters</link>.</simpara>

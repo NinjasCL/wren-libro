@@ -24,7 +24,7 @@ Camilo A. Castro <https://github.com/clsource[@clsource]>
 Organize your book chapter by chapter
 ////
 include::colophon.adoc[]
-
+include::authors.adoc[]
 include::abstract.adoc[]
 
 //include::preface.adoc[]
