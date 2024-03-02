@@ -18,16 +18,18 @@ Camilo A. Castro <https://github.com/clsource[@clsource]>
 :toclevels: 3
 :toc-title: Tabla de Contenidos
 :source-highlighter: highlight.js
-:highlightjs-languages: lua, javascript, bash, txt
+:highlightjs-languages: lua, javascript, bash, txt, wren
 
 ////
 Organize your book chapter by chapter
 ////
+include::colophon.adoc[]
+
 include::abstract.adoc[]
 
-include::preface.adoc[]
+//include::preface.adoc[]
 
-include::dedication.adoc[]
+//include::dedication.adoc[]
 
 include::chapters/01-introduction.adoc[]
 
@@ -58,5 +60,3 @@ include::glossary.adoc[]
 include::bibliography.adoc[]
 
 include::index.adoc[]
-
-include::colophon.adoc[]

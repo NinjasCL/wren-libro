@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>El <emphasis>Wren</emphasis> libro</title>
-<date>2021-05-05</date>
+<date>2024-03-02</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -25,20 +25,20 @@
 </mediaobject>
 </cover>
 </info>
-<preface>
-<title></title>
+<colophon xml:id="_colofón">
+<title>Colofón</title>
+<simpara>Escrito por <link xl:href="https://ninjas.cl">Camilo Castro</link> y <link xl:href="https://github.com/ninjascl/wren-adventures/graphs/contributors">colaboradores</link>. Para <link xl:href="https://ninjas.cl">Ninjas.cl</link>.</simpara>
+<simpara>Esta obra está bajo una <link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-No-Comercial-Compartir-Igual 4.0 Internacional</link></simpara>
+<simpara><link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/>
+</imageobject>
+<textobject><phrase>Licencia Creative Commons</phrase></textobject>
+</inlinemediaobject></link></simpara>
 <abstract>
 <simpara>En este pequeño documento se detallarán lo básico del lenguaje de programación <link xl:href="http://wren.io">Wren</link>.</simpara>
 </abstract>
-</preface>
-<preface xml:id="_prefacio">
-<title>Prefacio</title>
-
-</preface>
-<dedication xml:id="_dedicatoria">
-<title>Dedicatoria</title>
-
-</dedication>
+</colophon>
 <chapter xml:id="_pequeña_historia_de_wren">
 <title>Pequeña Historia de <link xl:href="https://github.com/wren-lang/wren"><emphasis>Wren</link></emphasis></title>
 <simpara><link xl:href="https://github.com/wren-lang/wren"><emphasis>Wren</link></emphasis> es un lenguaje de programación <link xl:href="https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos">orientado a objetos</link> creado por <link xl:href="http://journal.stuffwithstuff.com/">Bob Nystrom</link>, un ex desarrollador de videojuegos y creador de otros lenguajes de programación como <link xl:href="https://github.com/munificent/vigil">Vigil</link>, <link xl:href="http://finch.stuffwithstuff.com/">Finch</link> y <link xl:href="http://magpie-lang.org/">Magpie</link>. Ha escrito dos libros: <link xl:href="http://gameprogrammingpatterns.com/">Game Programming Patterns</link> y <link xl:href="http://craftinginterpreters.com/">Crafting Interpreters</link>.</simpara>
@@ -2077,6 +2077,8 @@ var nombre = Stdin.readLine().trim()
 System.print("Hola" + (nombre.isEmpty ? "Mundo" : nombre).toString + "!")
 ````
 
+
+
 ## Proyectos de ejemplo en Wren
 
 Una colección de código fuente _Wren_ con juegos y aplicaciones simples.
@@ -4036,19 +4038,8 @@ Ejemplo <literal>import "random" for Random</literal>.</simpara>
 </bibliomixed>
 </bibliodiv>
 </bibliography>
-<index xml:id="_Índice">
+<index xml:id="_índice">
 <title>Índice</title>
 
 </index>
-<colophon xml:id="_colofón">
-<title>Colofón</title>
-<simpara>Escrito por <link xl:href="https://ninjas.cl">Camilo Castro</link> y <link xl:href="https://github.com/ninjascl/wren-adventures/graphs/contributors">colaboradores</link>. Para <link xl:href="https://ninjas.cl">Ninjas.cl</link>.</simpara>
-<simpara>Esta obra está bajo una <link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons Atribución-No-Comercial-Compartir-Igual 4.0 Internacional</link></simpara>
-<simpara><link xl:href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><inlinemediaobject>
-<imageobject>
-<imagedata fileref="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/>
-</imageobject>
-<textobject><phrase>Licencia Creative Commons</phrase></textobject>
-</inlinemediaobject></link></simpara>
-</colophon>
 </book>
