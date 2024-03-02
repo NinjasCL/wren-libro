@@ -42,7 +42,8 @@ Acá podemos comparar la implementación de una clase llamada _Cuenta_ entre
 _Lua_ y _Wren_.
 
 .Lua
-```lua
+[,lua]
+----
 -- cuenta.lua
 
 Cuenta = {}
@@ -62,10 +63,11 @@ end
 -- crear y usar una Cuenta
 cuenta = Cuenta.crear(1000)
 cuenta:retirar(100)
-```
+----
 
 .Wren
-```js
+[js]
+----
 // cuenta.wren
 
 class Cuenta {
@@ -76,7 +78,7 @@ class Cuenta {
 // crear y usar una Cuenta
 var cuenta = Cuenta.crear(1000)
 cuenta.retirar(100)
-```
+----
 
 Los lenguajes orientados a objetos y clases tradicionalmente tienen una reputación
 de ser complejos. Esto es principalmente por que los lenguajes que implementan este paradigma

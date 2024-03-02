@@ -99,7 +99,7 @@ cuenta:retirar(100)</programlisting>
 <formalpara>
 <title>Wren</title>
 <para>
-<programlisting language="js" linenumbering="numbered">// cuenta.wren
+<screen>// cuenta.wren
 
 class Cuenta {
   construct crear(balance) { _balance = balance }
@@ -108,7 +108,7 @@ class Cuenta {
 
 // crear y usar una Cuenta
 var cuenta = Cuenta.crear(1000)
-cuenta.retirar(100)</programlisting>
+cuenta.retirar(100)</screen>
 </para>
 </formalpara>
 <simpara>Los lenguajes orientados a objetos y clases tradicionalmente tienen una reputación
